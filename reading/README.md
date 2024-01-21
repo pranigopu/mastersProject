@@ -20,7 +20,22 @@ This paper introduces _MuZero_, a model-based RL algorithm that outperforms stat
     - Estimation is done through repeated interaction without learning the environment's model
     - Underperform compared to LS (especially where precise & complex planning is needed)
 
+### Arriving at _MuZero_
 The reason model-based RL algorithms underperformed is because they relied on accuractely and precisely learning the whole environment; even small mistakes could compound over time, and complex environments needed unfeasibly many interactions to model to the required accuracy and precision. Model-free RL algorithms did better than model-based RL algorithms here because model-free methods were more efficient in reaching a clearer view of potential rewards, since they did not focus on computationally intensive environment modelling. The reason model-free RL algorithms underperformed compared to lookahead search planning was because only estimating overall rewards of a state or action from a state is insufficient in informing the agent about long-term potential of different sequences of actions.
 <br><br>
 
 Hence, it seems clear that learning accurate and precise modelling for long-term planning is the only way to perform as good as or better than lookahead planning methods. In this spirit, _MuZero_ builds on _AlphaGo_ with respect to (1) search and (2) search-based policy-iteration. _MuZero_ extends _AlphaGo_ by including a learned model in the training process; this extends _AlphaGo_ such that the agent can deal with single-agent domains and non-zero intermediate rewards. However, unlike previous model-based methods, _MuZero_ does not aim to accurately and precisely model the whole environment, but only an abstracted part of the environment that is relevant to long-term planning. In other words, there are no constraints with respect to how the environment's states and rules are represented, allowing the algorithm to work on any condensed, computationally efficient representation it can come up with.
+<br><br>
+
+**Relevant quotation from the paper**...
+
+"_However, unlike traditional approaches to model-based RL, this internal state $s^k$ has no semantics of environment state attached to it – it is simply the hidden state of the overall model, and its sole purpose is to accurately predict relevant, future quantities: policies, values, and rewards._"
+
+### Key points to look out for
+- Appendix A compares _AlphaGo_ to _MuZero_
+    - "_AlphaGo Zero and AlphaZero use knowledge of the rules of the game in three places: (1) state transitions in the search tree, (2) actions available at each node of the search tree, (3) episode termination within the search tree. In MuZero, all of these have been replaced with the use of a_ **_single implicit model learned by a neural network._**"
+    - Training is done using temporal difference learning (as in deep Q-learning network)
+    - _"The network rapidly learns not to predict actions that never occur in the trajectories it is trained on"_ (thus avoiding illegal actions)
+- Appendix B explains the search process
+    - _MuZero_ uses Monte Carlo tree search (MCTS) to estimate action-value function
+    - Action-value function is used to improve the policy (by choosing actions that maximise action values)
