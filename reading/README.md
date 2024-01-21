@@ -33,9 +33,9 @@ Hence, it seems clear that learning accurate and precise modelling for long-term
 
 ### Key points to look out for
 - Appendix A compares _AlphaGo_ to _MuZero_
-    - "_AlphaGo Zero and AlphaZero use knowledge of the rules of the game in three places: (1) state transitions in the search tree, (2) actions available at each node of the search tree, (3) episode termination within the search tree. In MuZero, all of these have been replaced with the use of a_ **_single implicit model learned by a neural network._**"
-    - Training is done using temporal difference learning (as in deep Q-learning network)
-    - _"The network rapidly learns not to predict actions that never occur in the trajectories it is trained on"_ (thus avoiding illegal actions)
+- Comparison in state-representation: (Appendix A) "_AlphaGo Zero and AlphaZero use knowledge of the rules of the game in three places: (1) state transitions in the search tree, (2) actions available at each node of the search tree, (3) episode termination within the search tree. In MuZero, all of these have been replaced with the use of a_ **_single implicit model learned by a neural network._**"
+- Training method: (3. _MuZero_ Algorithm) "_All parameters of the model are trained jointly to accurately match the policy, value, and reward, for every hypothetical step_ $k$, _to corresponding target values observed after_ $k$ _actual time-steps have elapsed._"
+- Avoiding illegal actions: (Appendix A) _"The network rapidly learns not to predict actions that never occur in the trajectories it is trained on"_ (thus avoiding illegal actions)
 - Appendix B explains the search process
     - _MuZero_ uses Monte Carlo tree search (MCTS) to estimate action-value function
     - Action-value function is used to improve the policy (by choosing actions that maximise action values)
