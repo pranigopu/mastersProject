@@ -3,7 +3,7 @@ This directory contains all the papers (or at least their links) relevant to my 
 
 ## Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model
 
->> LINK: https://arxiv.org/abs/1911.08265
+> LINK: https://arxiv.org/abs/1911.08265
 
 This paper introduces _MuZero_, a model-based RL algorithm that outperforms state-of-the-art RL algorithms (model-free algorithms, since model-based model-learning algorithms before this always underperformed in visually complex domains). Furthermore, _MuZero_ is also comparable in its performance to specialised planning algorithms that use a perfect model of the domain (ex. _AlphaGo_ for Go), despite using only a learned model.
 
@@ -42,7 +42,7 @@ Hence, it seems clear that learning accurate and precise modelling for long-term
 
 ## Mastering Diverse Domains through World Models
 
->> LINK: https://arxiv.org/abs/2301.04104
+> LINK: https://arxiv.org/abs/2301.04104
 
 This paper introduces _DreamerV3_, a model-based RL algorithm that is able to perform well in diverse domains (even outperforming specialised models) without manual tuning of hyperparameters. While RL algorithms can solve tasks in diverse domains, they are limited by the resources and knowledge needed to tune them for new tasks. _DreamerV3_ overcomes this limitation by being able to learn in diverse domains with fixed hyperparameters. It is also able to adapt to sparse and dense reward environments as needed. Furthermore, as the scale of the model increases, _DreamerV3_'s final performance and data efficiency also increases monotonically, thereby making _DreamerV3_ both general and scalable.
 
