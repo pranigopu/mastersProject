@@ -65,7 +65,7 @@ This paper introduces _DreamerV3_, a model-based RL algorithm that is able to pe
 #### Solving the dilemma of regularisation strength
 "_Previous world models require scaling the representation loss differently based on the visual complexity of the environment. Complex 3D environments contain details unnecessary for control and thus prompt a stronger regularizer to simplify the representations and make them more predictable. In 2D games, the background is often static and individual pixels may matter for the task, requiring a weak regularizer to perceive fine details. We find that combining free bits with a small scale for the representation loss resolve this dilemma, allowing for fixed hyperparameters across domains. Moreover, symlog predictions for the decoder unify the gradient scale of the prediction loss across environments, further stabilizing the trade-off with the representation loss._"
 
-Question: What are free bits and what do they add to factor of the small scale representation loss?
+Question: What are free bits and what do they add to the factor of small scale representation loss?
 
 #### Ensuring that netork outputs do not become near deterministic (how & why)
 "_We occasionally observed spikes the in KL losses in earlier experiments, consistent with reports for deep variational autoencoders. To prevent this, we parameterize the categorical distributions of the encoder and dynamics predictor as mixtures of 1% uniform and 99% neural network output, making it impossible for them to become near deterministic and thus ensuring well-scaled KL losses_"
