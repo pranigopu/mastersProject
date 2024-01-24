@@ -29,7 +29,7 @@ Hence, it seems clear that learning accurate and precise modelling for long-term
 
 **Relevant quotation from the paper**...
 
-"_However, unlike traditional approaches to model-based RL, this internal state $s^k$ has no semantics of environment state attached to it – it is simply the hidden state of the overall model, and its sole purpose is to accurately predict relevant, future quantities: policies, values, and rewards._"
+"_However, unlike traditional approaches to model-based RL, this internal state_ $s^k$ _has no semantics of environment state attached to it – it is simply the hidden state of the overall model, and its sole purpose is to accurately predict relevant, future quantities: policies, values, and rewards._"
 
 ### Key points to look out for
 - Appendix A compares _AlphaGo_ to _MuZero_
