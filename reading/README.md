@@ -67,7 +67,7 @@ This paper introduces _DreamerV3_, a model-based RL algorithm that is able to pe
 
 Question: What are free bits and what do they add to the factor of small scale representation loss?
 
-#### Ensuring that netork outputs do not become near deterministic (how & why)
+#### Ensuring that network outputs do not become near deterministic (how & why)
 "_We occasionally observed spikes the in KL losses in earlier experiments, consistent with reports for deep variational autoencoders. To prevent this, we parameterize the categorical distributions of the encoder and dynamics predictor as mixtures of 1% uniform and 99% neural network output, making it impossible for them to become near deterministic and thus ensuring well-scaled KL losses_"
 
 **NOTE**: The Kullback–Leibler (KL) divergence (also called relative entropy and I-divergence), is a type of statistical distance: a measure of how one probability distribution $P$ is different from a second, reference probability distribution $Q$. For further reference, click [here](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence)
