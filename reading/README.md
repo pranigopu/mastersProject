@@ -12,7 +12,7 @@
     - Check chapters 3 and 7
 - Paulo Rauber notes on the above (summarises first 17 chapters of the above) (IMPORTANT)
     - https://www.paulorauber.com/files/notes/machine_learning.pdf
-    - Also check chapters 3 and 7
+    - Check chapters 3 and 7 (corresponds to chapters 3 and 7 of Murphy's book)
     - **NOTE**: Is less readable but more mathematically rigorous than Murphy's book
 - Bayesian computation online textbook (IMPORTANT)
     - https://bayesiancomputationbook.com/markdown/chp_01.html
