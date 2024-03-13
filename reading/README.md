@@ -5,6 +5,12 @@
     - The value addition must begin as early in the research as possible
     - It is risky to work on something that only works as a complex integration of many parts
 
+### Possible topics
+- Comparing Bayesian methods for neural networks
+    - Stage 1: Empirical comparison (i.e. understanding what)
+    - Stage 2: Understanding the empirical results theoretically (i.e. understanding why)
+- Extending model-based reinforcement learning methods using Bayesian methods
+
 ## Project resources
 - Benchmark for testing reinforcement learning models
     - https://michelangeloconserva.github.io/Colosseum/mds/intro.html
@@ -47,9 +53,3 @@ Philosophically, all uncertainty (at least with respect to mechanical phenomena)
 ---
 
 2.<br> Making the implicit prior assumptions of a learning model explicit can be challenging.
-
-### Possible topics
-- Comparing Bayesian methods for neural networks
-    - Stage 1: Empirical comparison (i.e. understanding what)
-    - Stage 2: Understanding the empirical results theoretically (i.e. understanding why)
-- Extending model-based reinforcement learning methods using Bayesian methods
