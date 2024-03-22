@@ -24,3 +24,10 @@ This equation is based on the size principle (Tenenbaum), i.e. the model favours
 KEY INTUITION: Conceptually "unnatural" or "contrived" hypotheses are less likely (prior to any observation)
 
 _For example, "powers of 2 except 32" is less conceptually natural to "powers of 2", even if the former has higher "likelihood" as defined previously._
+
+Defining priors can be controversial due to the ill-defined idea of "natural".
+
+**NOTE**: Prior of hypothesis $h$ is written as $p(h)$.
+
+### Defining posterior
+Mathematically, posterior is the normalised value (i.e. value scaled to 0-1) of $p(h|D) = p(D|h) p(h)$.
