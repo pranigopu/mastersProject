@@ -14,11 +14,13 @@ KEY ASSUMPTION: Assume examples are sampled uniformly at random from an extensio
 
 _This is the strong sampling assumption (Tenenbaum)._
 
-Extension of a concept refers to the set of all referents of a concept. Hence, extension of the concept "all even numbers between 1-100" has the extension {0, 2, ... 100}. Given the strong sampling assumption, the probability of sampling $N$ items with replacement from hypothesis class $h$ is given by:
+Extension of a concept refers to the set of all referents of a concept. Hence, extension of the concept "all even numbers between 1-100" is {0, 2, ... 100}. Given the strong sampling assumption, the probability of sampling $N$ items with replacement from hypothesis class $h$ is given by:
 
 $p(D|h) = [\frac{1}{size(h)}]^N = [\frac{1}{|h|}]^N$ ($D$ is the given data)
 
-This equation is based on the size principle (Tenenbaum), i.e. the model favours the simplest (smallest) hypothesis consistent with the data $D$ ("Occam's razor"). In essence, we consider the simplest hypothesis consistent with the data to be the most likely hypothesis; on this basis, likelihood $p(D|h)$ is defined.
+This equation is based on the size principle (Tenenbaum), i.e. the model favours the simplest hypothesis (i.e. one with the smallest extension) consistent with the data $D$ ("Occam's razor"). In essence, we consider the simplest hypothesis consistent with the data to be the most likely hypothesis; on this basis, likelihood $p(D|h)$ is defined.
+
+**NOTE**: A hypothesis is, in essence, a concept assumed to explain the given data $D$. Hence, formally, a hypothesis is the same as a concept.
 
 ### Defining prior
 KEY INTUITION: Conceptually "unnatural" or "contrived" hypotheses are less likely (prior to any observation)
@@ -31,3 +33,9 @@ Defining priors can be controversial due to the ill-defined idea of "natural".
 
 ### Defining posterior
 Mathematically, posterior is the normalised value (i.e. value scaled to 0-1) of $p(h|D) = p(D|h) p(h)$.
+
+If $H$ is the exhaustive set of all hypotheses, then the posterior is given as:
+
+$p(h|D) = \frac{p(D|h) p(h)}{\sum_{h' \in H} p(D|h')}$
+
+Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities for every hypothesis with respect to the data. $p(D, h')$ is the probability of observing both the data $D$ and the hypothesis $h'$ together (not any one _given_ the other). In fact $p(D, h') = p(D|h') p(h')$. Hence, $\sum_{h' \in H} p(D, h') = \sum_{h' \in H} p(D|h') p(h')$; this makes it a suitable normalising value for $p(D|h) p(h)$.
