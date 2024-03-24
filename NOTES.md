@@ -42,4 +42,4 @@ Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities fo
 
 #### Maximum a posteriori (MAP) estimate of best hypothesis
 
-$\displaystyle \hat{h}^{MAP} = \argmax_h p(D|h) p(h) = \argmax_h (\log p(D|h) + \log p(h))$
+$\displaystyle \hat{h}^{MAP} = argmax_h p(D|h) p(h) = argmax_h (\log p(D|h) + \log p(h))$
