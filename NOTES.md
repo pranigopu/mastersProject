@@ -1,6 +1,16 @@
 # NOTES
 
 ## Generative models for discrete data
+
+### Key definitions
+
+- **Concept**: Set of all units that fit a definition
+- **Hypothesis**: A concept proposed to explain given data
+- **Hypothesis space**: Set of all hypotheses being considered to explain given data
+- **Likelohood**: Probability of observing certain data given a certain hypothesis is true
+- **Prior**: Probability of a certain hypothesis being true prior to any observations
+- **Posterior**: Probability of a certain hypothesis being true having observed certain data
+
 KEY IDEA: Generalise discrete class using only positive examples
 
 _Hence, emulate induction using probability calculus._
@@ -47,3 +57,11 @@ $\displaystyle \hat{h}^{MAP} = \text{arg} \max_h p(D|h) p(h) = \text{arg} \max_h
 Note that the likelihood $p(D|h)$ depends exponentially on $N$, i.e. the number of samples drawn, i.e. the size of the dataset $D$, whereas the prior term $p(h)$ stays constant. Hence, when we have enough data, the data overwhelms the prior. In fact, the MAP estimate converges to the maximum likelihood estimate (MLE) as $N \rightarrow \infty$:
 
 **NOTE**: The MLE estimate, for reference, is: <br> $\displaystyle \hat{h}^{MLE} = \text{arg} \max_h p(D|h) = \text{arg} \max_h \log p(D|h)$
+
+---
+
+Hence, as $N \rightarrow \infty$, $\hat{h}^{MAP} \rightarrow \hat{h}^{MLE}$
+
+---
+
+Given these facts, if the true hypothesis is in the hypothesis space, then (since it has the lowest $\frac{1}{|h|}$ value) both the MAP and the MLE estimates will converge upon this hypothesis; hence, Bayesian inference is based on consistent estimators.
