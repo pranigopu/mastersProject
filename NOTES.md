@@ -39,3 +39,7 @@ If $H$ is the exhaustive set of all hypotheses, then the posterior is given as:
 $p(h|D) = \frac{p(D|h) p(h)}{\sum_{h' \in H} p(D|h')}$
 
 Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities for every hypothesis with respect to the data. $p(D, h')$ is the probability of observing both the data $D$ and the hypothesis $h'$ together (not any one _given_ the other). In fact $p(D, h') = p(D|h') p(h')$. Hence, $\sum_{h' \in H} p(D, h') = \sum_{h' \in H} p(D|h') p(h')$; this makes it a suitable normalising value for $p(D|h) p(h)$.
+
+#### Maximum a posteriori (MAP) estimate of best hypothesis
+
+$\displaystyle \hat{h}^{MAP} = \argmax_h p(D|h) p(h) = \argmax_h (\log p(D|h) + \log p(h))$
