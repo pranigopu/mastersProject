@@ -42,4 +42,6 @@ Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities fo
 
 #### Maximum a posteriori (MAP) estimate of best hypothesis
 
-$\displaystyle \hat{h}^{MAP} = \text{arg}_i\max_h p(D|h) p(h) = \text{arg}\max_h (\log p(D|h) + \log p(h))$
+$\displaystyle \hat{h}^{MAP} = \text{arg} \max_h p(D|h) p(h) = \text{arg} \max_h (\log p(D|h) + \log p(h))$
+
+Note that the likelihood $p(D|h)$ depends exponentially on $N$, i.e. the number of samples drawn, i.e. the size of the dataset $D$, whereas the prior term $p(h)$ stays constant. Hence, when we have enough data, the data overwhelms the prior; the MAP estimate converges to the maximum likelihood estimate (MLE) $\displaystyle \text{arg} \max_h p(D|h) = \text{arg} \max_h \log p(D|h)$
