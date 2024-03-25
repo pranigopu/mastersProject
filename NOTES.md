@@ -15,7 +15,7 @@ KEY IDEA: Generalise discrete class using only positive examples
 
 _Hence, emulate induction using probability calculus._
 
-KEY CONCEPT: Posterior predictive distribution
+KEY CONCEPT: Posterior predictive distribution (PPD)
 
 ## Defining likelihood
 KEY INTUITION: Avoid suspicious coincidences
@@ -81,3 +81,19 @@ Here:
 - $y$: Output indicating whether or not $\tilde{x} \in C$ (1 if yes, 0 if no)
 
 Note that each hypothesis $h$ represents an assumption about the sample space from which $\tilde{x}$ is drawn, and remember that each hypothesis is - in essence - a concept whose extension is proposed to be the sample space. $C$, however, is more specific concept that may be a subset of one of the hypotheses.
+
+## Overfitting
+### "Zero frequency problem" or "Sparse data problem"
+The MLE of predictive posterior distribution (PPD) can perform poorly if the sample size is small (since unrepresentative samples are more likely the smaller the samples are). Zero frequency problem is when estimation of frequency (of some variable's occurrence in general, beyond what has been observed) is zero due to zero observed instances.
+
+_Why is this a problem?_
+
+Because this problem makes us assign certainty (absolute impossibility, in this case) to enumeration-based induction. Enumeration cannot lead to certainty in induction, only probabilities; hence, it is misleading to assign certainty to something (a prediction or an estimation) that is not certain.
+
+_Why is this problem relevant?_
+
+_How to solve this problem?_
+
+## Naive Bayes classifiers
+
+To be continued...
