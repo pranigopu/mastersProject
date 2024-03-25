@@ -78,6 +78,6 @@ Here:
 - $D$: Dataset
 - $C$: Concept by which we classify observations
 - $\tilde{x}$: Some observation
-- $y$: Indicator of whether or not $\tilde{x} \in C$ (1 if yes, 0 if no)
+- $y$: Output indicating whether or not $\tilde{x} \in C$ (1 if yes, 0 if no)
 
 Note that each hypothesis $h$ represents an assumption about the sample space from which $\tilde{x}$ is drawn, and remember that each hypothesis is - in essence - a concept whose extension is proposed to be the sample space. $C$, however, is more specific concept that may be a subset of one of the hypotheses.
