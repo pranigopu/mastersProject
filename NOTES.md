@@ -1,8 +1,8 @@
 # NOTES
 
-## Generative models for discrete data
+# Generative models for discrete data
 
-### Key definitions
+## Key definitions
 
 - **Concept**: Set of all units that fit a definition
 - **Hypothesis**: A concept proposed to explain given data
@@ -17,7 +17,7 @@ _Hence, emulate induction using probability calculus._
 
 KEY CONCEPT: Posterior predictive distribution
 
-### Defining likelihood
+## Defining likelihood
 KEY INTUITION: Avoid suspicious coincidences
 
 KEY ASSUMPTION: Assume examples are sampled uniformly at random from an extension of a concept
@@ -32,7 +32,7 @@ This equation is based on the size principle (Tenenbaum), i.e. the model favours
 
 **NOTE**: A hypothesis is, in essence, a concept assumed to explain the given data $D$. Hence, formally, a hypothesis is the same as a concept.
 
-### Defining prior
+## Defining prior
 KEY INTUITION: Conceptually "unnatural" or "contrived" hypotheses are less likely (prior to any observation)
 
 _For example, "powers of 2 except 32" is less conceptually natural to "powers of 2", even if the former has higher "likelihood" as defined previously._
@@ -41,7 +41,7 @@ Defining priors can be controversial due to the ill-defined idea of "natural".
 
 **NOTE**: Prior of hypothesis $h$ is written as $p(h)$.
 
-### Defining posterior
+## Defining posterior
 Mathematically, posterior is the normalised value (i.e. value scaled to 0-1) of $p(h|D) = p(D|h) p(h)$.
 
 If $H$ is the exhaustive set of all hypotheses, then the posterior is given as:
@@ -50,7 +50,9 @@ $p(h|D) = \frac{p(D|h) p(h)}{\sum_{h' \in H} p(D|h')}$
 
 Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities for every hypothesis with respect to the data. $p(D, h')$ is the probability of observing both the data $D$ and the hypothesis $h'$ together (not any one _given_ the other). In fact $p(D, h') = p(D|h') p(h')$. Hence, $\sum_{h' \in H} p(D, h') = \sum_{h' \in H} p(D|h') p(h')$; this makes it a suitable normalising value for $p(D|h) p(h)$.
 
-#### Maximum a posteriori (MAP) estimate of best hypothesis
+_More on posterior_...
+
+### Maximum a posteriori (MAP) estimate of best hypothesis
 
 $\displaystyle \hat{h}^{MAP} = \text{arg} \max_h p(D|h) p(h) = \text{arg} \max_h (\log p(D|h) + \log p(h))$
 
@@ -64,4 +66,9 @@ Hence, as $N \rightarrow \infty$, $\hat{h}^{MAP} \rightarrow \hat{h}^{MLE}$
 
 ---
 
-Given these facts, if the true hypothesis is in the hypothesis space, then (since it has the lowest $\frac{1}{|h|}$ value) both the MAP and the MLE estimates will converge upon this hypothesis; hence, Bayesian inference is based on consistent estimators.
+Given these facts, if the true hypothesis is in the hypothesis space, then (since it has the lowest $\frac{1}{|h|}$ value) both the MAP and the MLE estimates will converge upon this hypothesis; hence, Bayesian inference is based on consistent estimators. Note that if the hypothesis space does not include the true hypothesis (which is usually the case), we will converge upon the closest hypothesis to the true hypothesis ("closeness" can be formalised, as shall be discussed later).
+
+### Posterior predictive distribution (PPD)
+In essence, PPD gives the probability of a certain observation belonging to a certain concept, given (1) the data and (2) the posteriors for each hypothesis. Mathematically, we have that:
+
+$p(\tilde{x})$
