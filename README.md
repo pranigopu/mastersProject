@@ -11,8 +11,16 @@
     - Stage 2: Understanding the empirical results theoretically (i.e. understanding why)
 - Extending model-based reinforcement learning methods using Bayesian methods
 
+**CONSIDER**: To compare BNNs in the context of RL or supervised learning?
+
+While good benchmarks are available, and while BNNs can be used in the pipeline to support RL methods, the end result is opaque w.r.t. the performance of the BNNs themselves, i.e. the actual confidence of the BNN is abstracted away in the agent's performance. _Hence, it is an easier and more informative project to compare BNN methods in the context of supervised learning_, since the confidence of each BNN can be tested against new data to see how well they hold up.
+
+**CONSIDER**: What does comparing BNN methods mean?
+
+It means comparing Bayesian inference algorithms as applied to deep learning.
+
 ## Project resources
-- Benchmark for testing reinforcement learning models
+- Benchmark for testing reinforcement learning models (LESS RELEVANT)
     - https://michelangeloconserva.github.io/Colosseum/mds/intro.html
 - Murphy, Kevin P. Machine Learning: A Probabilistic Perspective, 2012 (IMPORTANT)
     - Check chapters 3 and 7
@@ -24,8 +32,14 @@
     - https://bayesiancomputationbook.com/markdown/chp_01.html
 - Hands-on Bayesian Neural Networks - A Tutorial for Deep Learning Users
     - https://arxiv.org/pdf/2007.06823.pdf
-- Posterior Sampling for Deep Reinforcement Learning (IMPORTANT)
+- Posterior Sampling for Deep Reinforcement Learning (LESS RELEVANT)
     - https://arxiv.org/pdf/2305.00477.pdf
+- Comparing BNNs for supervised learning problems (MORE RELEVANT)
+    - https://www.alignmentforum.org/posts/79eegMp3EBs8ptFqa/neural-uncertainty-estimation-review-article-for-alignment
+- Deep Bayesian Bandit Showdown (comparing BNNs in RL context) (LESS RELEVANT)
+    - https://arxiv.org/pdf/1802.09127.pdf
+- Benchmarking Bayesian Neural Networks and Evaluation Metrics for Regression Tasks (MORE RELEVANT)
+    - https://arxiv.org/pdf/2206.06779.pdf
 
 ## POTENTIAL AREA: Bayesian computation (especially in neural networks)
 ### Advantages of Bayesian approach in machine learning
