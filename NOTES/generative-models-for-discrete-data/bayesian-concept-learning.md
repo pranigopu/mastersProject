@@ -1,8 +1,23 @@
-# NOTES
+**BAYESIAN CONCEPT LEARNING**
 
-# Generative models for discrete data
+---
 
-## Key definitions
+**Contents**:
+
+- [Key definitions](#key-definitions)
+- [Introduction](#introduction)
+- [Components of Bayesian inference w.r.t. concept learning](#components-of-bayesian-inference-wrt-concept-learning)
+  - [Defining likelihood](#defining-likelihood)
+  - [Defining prior](#defining-prior)
+  - [Defining posterior](#defining-posterior)
+- [Maximum a posteriori (MAP) estimate of best hypothesis](#maximum-a-posteriori-map-estimate-of-best-hypothesis)
+- [Posterior predictive distribution (PPD)](#posterior-predictive-distribution-ppd)
+- [Overfitting](#overfitting)
+  - ["Zero frequency problem" or "Sparse data problem"](#zero-frequency-problem-or-sparse-data-problem)
+
+---
+
+# Key definitions
 
 - **Concept**: Set of all units that fit a definition
 - **Hypothesis**: A concept proposed to explain given data
@@ -11,12 +26,14 @@
 - **Prior**: Probability of a certain hypothesis being true prior to any observations
 - **Posterior**: Probability of a certain hypothesis being true having observed certain data
 
+# Introduction
 KEY IDEA: Generalise discrete class (i.e. find the right concept) using only positive examples.
 
 _Hence, emulate induction using probability calculus._
 
-KEY CONCEPT: Posterior predictive distribution (PPD).
+KEY CONCEPT: Posterior predictive distribution (PPD) (discussed later).
 
+# Components of Bayesian inference w.r.t. concept learning
 ## Defining likelihood
 KEY INTUITION: Avoid suspicious coincidences.
 
@@ -54,7 +71,7 @@ Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities fo
 
 _More on posterior_...
 
-### Maximum a posteriori (MAP) estimate of best hypothesis
+# Maximum a posteriori (MAP) estimate of best hypothesis
 
 $\displaystyle \hat{h}^{MAP} = \text{arg} \max_h p(D|h) p(h) = \text{arg} \max_h (\log p(D|h) + \log p(h))$
 
@@ -70,7 +87,7 @@ Hence, as $N \rightarrow \infty$, $\hat{h}^{MAP} \rightarrow \hat{h}^{MLE}$
 
 Given these facts, if the true hypothesis is in the hypothesis space, then (since it has the lowest $\frac{1}{|h|}$ value) both the MAP and the MLE estimates will converge upon this hypothesis; hence, Bayesian inference is based on consistent estimators. Note that if the hypothesis space does not include the true hypothesis (which is usually the case), we will converge upon the closest hypothesis to the true hypothesis ("closeness" can be formalised, as shall be discussed later).
 
-### Posterior predictive distribution (PPD)
+# Posterior predictive distribution (PPD)
 In essence, PPD gives the probability of a certain observation belonging to a certain concept, given (1) the data and (2) the posteriors for each hypothesis. Hence, PPD is basically the formalisation of a classifier based on the empirical evidence so far. In this way, it represents our "belief state" about the "world" (i.e. the environment we are dealing with). Mathematically, we have that:
 
 $\displaystyle p(\tilde{x} \in C | D) = \sum_h p(\tilde{x} \in C | h) p(h|D)$
@@ -81,11 +98,13 @@ Here:
 - $C$: Concept by which we classify observations
 - $\tilde{x}$: Some observation
 
-PPD is essentially the weighted average of the probability of each hypothesis being the true hypothesis given the data. The weighting is done using the probability - for each hypothesis - of the observation $\tilde{x}$ being an instance of the concept $C$ given that the hypothesis is true. Note that each hypothesis $h$ represents an assumption about the sample space from which $\tilde{x}$ is drawn, and remember that each hypothesis is - in essence - a concept whose extension is proposed to be the sample space. $C$, however, is more specific concept that may be a subset of one of the hypotheses.
+We can see that PPD is the weighted average of the probability of each hypothesis being the true hypothesis given the data. The weighting for each hypothesis is done using the probability of the observation $\tilde{x}$ belonging to the concept $C$ given that the hypothesis is true.
 
-## Overfitting
-### "Zero frequency problem" or "Sparse data problem"
-The MLE of predictive posterior distribution (PPD) can perform poorly if the sample size is small (since unrepresentative samples are more likely the smaller the samples are). Zero frequency problem is when estimation of frequency (of some variable's occurrence in general, beyond what has been observed) is zero due to zero observed instances.
+Note that each hypothesis $h$ represents an assumption about the sample space from which $\tilde{x}$ is drawn, and remember that each hypothesis is essentially a concept whose extension is proposed to be the sample space from which the data is drawn. $C$, on the other hand, is more specific concept that may be a subset of one or more of the hypotheses. Hence, PPD gives the posterior probability for an observation belonging to a specific concept (which may be either one of our hypotheses or a subset of one or more of our hypotheses) given the posterior probabilities for each of our hypotheses being true.
+
+# Overfitting
+## "Zero frequency problem" or "Sparse data problem"
+The MLE of PPD can perform poorly if the sample size is small (since unrepresentative samples are more likely the smaller the samples are). Zero frequency problem is when estimation of frequency (of some variable's occurrence in general, beyond what has been observed) is zero due to zero observed instances.
 
 _Why is this a problem?_
 
@@ -94,7 +113,3 @@ Because this problem makes us assign certainty (absolute impossibility, in this 
 _Why is this problem relevant?_
 
 _How to solve this problem?_
-
-## Naive Bayes classifiers
-
-To be continued...
