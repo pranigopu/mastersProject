@@ -11,16 +11,16 @@
 - **Prior**: Probability of a certain hypothesis being true prior to any observations
 - **Posterior**: Probability of a certain hypothesis being true having observed certain data
 
-KEY IDEA: Generalise discrete class using only positive examples
+KEY IDEA: Generalise discrete class (i.e. find the right concept) using only positive examples.
 
 _Hence, emulate induction using probability calculus._
 
-KEY CONCEPT: Posterior predictive distribution (PPD)
+KEY CONCEPT: Posterior predictive distribution (PPD).
 
 ## Defining likelihood
-KEY INTUITION: Avoid suspicious coincidences
+KEY INTUITION: Avoid suspicious coincidences.
 
-KEY ASSUMPTION: Assume examples are sampled uniformly at random from an extension of a concept
+KEY ASSUMPTION: Assume examples are sampled uniformly at random from an extension of a concept.
 
 _This is the strong sampling assumption (Tenenbaum)._
 
@@ -33,7 +33,7 @@ This equation is based on the size principle (Tenenbaum), i.e. the model favours
 **NOTE**: A hypothesis is, in essence, a concept assumed to explain the given data $D$. Hence, formally, a hypothesis is the same as a concept.
 
 ## Defining prior
-KEY INTUITION: Conceptually "unnatural" or "contrived" hypotheses are less likely (prior to any observation)
+KEY INTUITION: Conceptually "unnatural" or "contrived" hypotheses are less likely (prior to any observation).
 
 _For example, "powers of 2 except 32" is less conceptually natural to "powers of 2", even if the former has higher "likelihood" as defined previously._
 
