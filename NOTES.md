@@ -42,7 +42,7 @@ Defining priors can be controversial due to the ill-defined idea of "natural".
 **NOTE**: Prior of hypothesis $h$ is written as $p(h)$.
 
 ## Defining posterior
-Mathematically, posterior is the normalised value (i.e. value scaled to 0-1) of $p(h|D) = p(D|h) p(h)$.
+Mathematically, posterior  $p(h|D)$ is the normalised value (i.e. value scaled to 0-1) of $p(D|h) p(h)$. Hence, $p(h|D) \propto p(D|h) p(h)$.
 
 If $H$ is the exhaustive set of all hypotheses, then the posterior is given as:
 
