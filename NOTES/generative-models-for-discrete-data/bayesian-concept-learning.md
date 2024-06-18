@@ -31,8 +31,6 @@ KEY IDEA: Generalise discrete class (i.e. find the right concept) using only pos
 
 _Hence, emulate induction using probability calculus._
 
-KEY CONCEPT: Posterior predictive distribution (PPD) (discussed later).
-
 # Components of Bayesian inference w.r.t. concept learning
 ## Defining likelihood
 KEY INTUITION: Avoid suspicious coincidences.
