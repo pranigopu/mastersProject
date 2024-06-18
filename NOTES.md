@@ -73,16 +73,15 @@ Given these facts, if the true hypothesis is in the hypothesis space, then (sinc
 ### Posterior predictive distribution (PPD)
 In essence, PPD gives the probability of a certain observation belonging to a certain concept, given (1) the data and (2) the posteriors for each hypothesis. Hence, PPD is basically the formalisation of a classifier based on the empirical evidence so far. In this way, it represents our "belief state" about the "world" (i.e. the environment we are dealing with). Mathematically, we have that:
 
-$\displaystyle p(\tilde{x} \in C | D) = \sum_h p(y = 1 | \tilde{x}, h) p(h|D)$
+$\displaystyle p(\tilde{x} \in C | D) = \sum_h p(\tilde{x} \in C | h) p(h|D)$
 
 Here:
 
 - $D$: Dataset
 - $C$: Concept by which we classify observations
 - $\tilde{x}$: Some observation
-- $y$: Output indicating whether or not $\tilde{x} \in C$ (1 if yes, 0 if no)
 
-Note that each hypothesis $h$ represents an assumption about the sample space from which $\tilde{x}$ is drawn, and remember that each hypothesis is - in essence - a concept whose extension is proposed to be the sample space. $C$, however, is more specific concept that may be a subset of one of the hypotheses.
+PPD is essentially the weighted average of the probability of each hypothesis being the true hypothesis given the data. The weighting is done using the probability - for each hypothesis - of the observation $\tilde{x}$ being an instance of the concept $C$ given that the hypothesis is true. Note that each hypothesis $h$ represents an assumption about the sample space from which $\tilde{x}$ is drawn, and remember that each hypothesis is - in essence - a concept whose extension is proposed to be the sample space. $C$, however, is more specific concept that may be a subset of one of the hypotheses.
 
 ## Overfitting
 ### "Zero frequency problem" or "Sparse data problem"
