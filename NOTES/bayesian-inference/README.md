@@ -10,6 +10,10 @@
   - [Likelihood](#likelihood)
   - [Prior](#prior)
   - [Denominator](#denominator)
+  - [Estimation of the components](#estimation-of-the-components)
+    - [Estimating the denominator](#estimating-the-denominator)
+    - [Estimating the posterior](#estimating-the-posterior)
+- [Bayesian vs. frequentist](#bayesian-vs-frequentist)
 
 ---
 
@@ -74,8 +78,29 @@ The total probability of getting the observed data across all the potential mode
 
 _For a discrete hypothesis space of models_...
 
-$\displaystyle \sum_{\theta' \in \Theta} P(D | \theta') P(\theta')$
+$\displaystyle P(D) = \sum_{\theta' \in \Theta} P(D | \theta') P(\theta')$
 
 _For a continuous hypothesis space of models_...
 
-$\displaystyle \int_{\theta' \in \Theta} P(D | \theta') P(\theta')$
+$\displaystyle P(D) = \int_{\theta' \in \Theta} P(D | \theta') P(\theta')$
+
+_Hence, we also see that the denominator is the marginal probability of getting the observed data with the model kept variable._
+
+## Estimation of the components
+### Estimating the denominator
+- Jeffrey's rule
+- Reference
+
+### Estimating the posterior
+- Analytical
+    - _Possible of likelihood and prior are conjugates (discussed later)_
+- Computational
+
+# Bayesian vs. frequentist
+**Bayesian**:
+
+Focuses on the uncertainty of underlying conditions that generate certain outcomes. Hence, the potential underlying models are distributed probabilistically. In other words, the Bayesian approach measures the quality of the evidence (i.e. the observed data) for a hypothesis (i.e. a hypothesised model).
+
+**Frequentist**:
+
+Focuses on the uncertainty of the outcomes given certain underlying conditions. Hence, the potential outcomes are distributed probabilistically. In other words, the frequentist approach measures the expected proportional frequency of potential outcomes based on past outcomes.
