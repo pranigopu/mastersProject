@@ -37,9 +37,9 @@ $p_{ij} = \mathbb{P}(X_{n+1} | X_n = i) = \mathbb{P}(X_{n+1} | X_n = i, X_{n-1} 
 
 Here:
 
-- $p_{ij}$: The transition probability from state $i$ to state $j$ (1-step transition probability)
-- $\mathbb{P}$: Probability measure
-- $X_k$: The random variable denoting the state at the $k$-th time step
+- $p_{ij}$ = The transition probability from state $i$ to state $j$ (1-step transition probability)
+- $\mathbb{P}$ = Probability measure
+- $X_k$ = The random variable denoting the state at the $k$-th time step
 
 Hence, how the model is specified, i.e. how the states and state transitions are represented is crucial.
 
