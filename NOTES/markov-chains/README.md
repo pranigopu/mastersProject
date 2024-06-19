@@ -6,8 +6,11 @@
 
 - [Introduction](#introduction)
 - [Markov property/assumption](#markov-property-assumption)
+- [Read further](#read-further)
 
 ---
+
+**NOTE**: In every topic, we shall assume time to be defined in discrete time steps, since it is easier to understand.
 
 # Introduction
 
@@ -43,3 +46,7 @@ Here:
 
 Hence, how the model is specified, i.e. how the states and state transitions are represented is crucial.
 
+# Read further
+
+- [Finite-State Markov Chains]()
+- [Steady-State Behaviour of Markov Chains]()
