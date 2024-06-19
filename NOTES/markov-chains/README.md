@@ -5,7 +5,7 @@
 **Contents**:
 
 - [Introduction](#introduction)
-- [Markov property/assumption](#markov-property/assumption)
+- [Markov property or assumption](#markov-property-or-assumption)
 - [Read further](#read-further)
 
 ---
@@ -26,7 +26,7 @@ Past -----> Future
 
 In other terms, $state(t+1) = f(state(t), noise)$, where $f$ is a function.
 
-# Markov property/assumption
+# Markov property or assumption
 
 A key property/assumption implicit in a Markov process is that given the current state, the past does not matter. In other terms:
 
