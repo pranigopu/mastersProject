@@ -5,7 +5,7 @@
 **Contents**:
 
 - [Introduction](#introduction)
-- [Markov property/assumption](#markov-property-assumption)
+- [Markov property/assumption](#markov-property--assumption)
 - [Read further](#read-further)
 
 ---
