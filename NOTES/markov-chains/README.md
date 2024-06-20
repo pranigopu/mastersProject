@@ -12,9 +12,11 @@
 
 **NOTE**: In every topic, we shall assume time to be defined in discrete time steps, since it is easier to understand.
 
+**MAIN REFERENCE**: ["Lecture 24: Finite-State Markov Chains" from _Part III: Random Processes_ from _Introduction to Probability_](https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/)
+
 # Introduction
 
-A Markov process summarises the influence of the past on the future using the notion of a state, wherein the state evolves over time according to some probability distribution.
+A Markov process or chain summarises the influence of the past on the future using the notion of a state, wherein the state evolves over time according to some probability distribution.
 
 ```
 
@@ -25,6 +27,12 @@ Past ----> Future
 ```
 
 In other terms, $state(t+1) = f(state(t), noise)$, where $f$ is a function.
+
+A Markov process or chain (both are synonymous here, i.e. Markov chain = Markov process) is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. Informally, this may be thought of as, "What happens next depends only on the state of affairs now." ([_Markov chain_, Wikipedia](https://en.wikipedia.org/wiki/Markov_chain)
+
+> FURTHER REFERENCES:
+> - https://en.wikipedia.org/wiki/Markov_chain
+> - https://math.libretexts.org/Bookshelves/Applied_Mathematics/Applied_Finite_Mathematics_(Sekhon_and_Bloom)/10%3A_Markov_Chains/10.01%3A_Introduction_to_Markov_Chains
 
 # Markov property or assumption
 
