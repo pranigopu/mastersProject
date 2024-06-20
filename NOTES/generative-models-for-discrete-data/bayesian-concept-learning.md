@@ -88,12 +88,13 @@ Given these facts, if the true hypothesis is in the hypothesis space, then (sinc
 # Posterior predictive distribution (PPD)
 In essence, PPD gives the probability of a certain observation belonging to a certain concept, given (1) the data and (2) the posteriors for each hypothesis. Hence, PPD is basically the formalisation of a classifier based on the empirical evidence so far. In this way, it represents our "belief state" about the "world" (i.e. the environment we are dealing with). Mathematically, we have that:
 
-$\displaystyle p(\tilde{x} \in C | D) = \sum_h p(\tilde{x} \in C | h) p(h|D)$
+$\displaystyle p(\tilde{x} \in C | D) = \sum_{h \in H} p(\tilde{x} \in C | h) p(h|D)$
 
 Here:
 
 - $D$: Dataset
 - $C$: Concept by which we classify observations
+- $H$: Hypothesis space, i.e. the set of all hypotheses to be considered
 - $\tilde{x}$: Some observation
 
 We can see that PPD is the weighted average of the probability of each hypothesis being the true hypothesis given the data. The weighting for each hypothesis is done using the probability of the observation $\tilde{x}$ belonging to the concept $C$ given that the hypothesis is true.
