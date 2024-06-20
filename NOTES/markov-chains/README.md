@@ -6,7 +6,7 @@
 
 - [Introduction](#introduction)
 - [Markov property or assumption](#markov-property-or-assumption)
-- [Read further](#read-further)
+- [Further reading](#further-reading)
 
 ---
 
@@ -46,7 +46,7 @@ Here:
 
 Hence, how the model is specified, i.e. how the states and state transitions are represented is crucial.
 
-# Read further
+# Further reading
 
 - [Finite-State Markov Chains](https://github.com/pranigopu/mastersProject/blob/main/NOTES/markov-chains/finite-state-markov-chains.md)
 - [Steady-State Behaviour of Markov Chains]()
