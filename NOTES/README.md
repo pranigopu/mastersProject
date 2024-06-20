@@ -2,6 +2,13 @@
 
 ---
 
+- [Bayesian Inference (basics)](https://github.com/pranigopu/mastersProject/tree/main/NOTES/bayesian-inference)
+- [Generative Models for Discrete Data](https://github.com/pranigopu/mastersProject/tree/main/NOTES/generative-models-for-discrete-data)
+    - Draws on Bayesian inference (especially Bayesian modelling)
+    - Explores Bayesian modelling for certain notable classes of problems involving discrete data
+- [Markov Chains](https://github.com/pranigopu/mastersProject/tree/main/NOTES/markov-chains)
+    - Necessary to understand computational approaches to Bayesian inference (e.g. for sampling from the posterior)
+
 # Bayesian computation (especially in neural networks)
 ## Advantages of Bayesian approach in machine learning
 1.<br> Bayesian framework is a precise way of quantifying uncertainty. Hence, they give a way for the model to express its confidence in its outputs.
