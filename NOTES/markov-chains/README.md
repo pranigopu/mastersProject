@@ -18,7 +18,7 @@
 
 # Introduction
 
-A Markov process or chain summarises the influence of the past on the future using the notion of a state, wherein the state evolves over time according to some probability distribution.
+Before seeing the definition, consider the fact that a Markov chain (also called a Markov process) summarises the influence of the past on the future using the notion of a state, wherein the state evolves over time according to some probability distribution. Implicit in a Markov chain is the Markov property/assumption, which we shall see after the introduction.
 
 ```
 
@@ -30,7 +30,11 @@ Past ----> Future
 
 In other terms, $state(t+1) = f(state(t), noise)$, where $f$ is a function.
 
-A Markov process or chain (both are synonymous here, i.e. Markov chain = Markov process) is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. Informally, this may be thought of as, "What happens next depends only on the state of affairs now." ([_Markov chain_, Wikipedia](https://en.wikipedia.org/wiki/Markov_chain)
+---
+
+_Now for the full definition_...
+
+A Markov process or chain is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. Informally, this may be thought of as, "What happens next depends only on the state of affairs now." ([_Markov chain_, Wikipedia](https://en.wikipedia.org/wiki/Markov_chain)
 
 > FURTHER REFERENCES:
 > - https://en.wikipedia.org/wiki/Markov_chain
