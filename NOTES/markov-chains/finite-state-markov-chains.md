@@ -23,7 +23,7 @@
 - $X_n$ = The random variable denoting the state of the system at time stamp $n$
 - $X_0$ = The random variable denoting the initial state of the system (can be given or random)
 
-"Finite state" $\implies$ The set of possible states is finite
+"Finite state" $\implies$ The exhaustive set of possible states is finite
 
 # Transition probabilities
 ## 1-step transition probabilities
