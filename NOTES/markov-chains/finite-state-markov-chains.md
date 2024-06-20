@@ -45,4 +45,4 @@ $= \mathbb{P}(X_n = j | X_0 = i)$
 
 **NOTE 2**: $r_{ij}(0)$ means no transition takes place; it acts as an indicator for the current state, i.e. $r_{ij}(0) = 1$ if $i = j$ and $r_{ij}(0) = 0$ otherwise.
 
-**NOTE 3**: $r_{ij}(1) = p_{ij}$ (where $p_{ij} is the transition probability as defined in the last section)$.
+**NOTE 3**: $r_{ij}(1) = p_{ij}$ (where $p_{ij}$ is the transition probability as defined in the last section).
