@@ -59,3 +59,17 @@ $r_{ij}(0)$ means no transition takes place; it acts as an indicator for the cur
 3.<br>
 
 $r_{ij}(1) = p_{ij}$ (where $p_{ij}$ is the transition probability as defined in the last section).
+
+---
+
+**Recursive calculation of n-step transition probabilities**:
+
+Note that $r_{ij}(n)$ is the same as the probability of transitioning to state $j$ in the step after step $n-1$, which means it is the total probability of transitioning from the current state $i$ to one of the possible states after n-1 steps and then transitioning to state $j$. Hence, given that ${1, 2 ... m}$ represents the exhaustive set of possible states:
+
+$\displaystyle r_{ij}(n) = \sum_{k=1}^{m} r_{ik}(n-1) p_{kj}$ (where $p_{kj}$ is the (1-step) transition probability from state $k$ to state $j$)
+
+Alternatively, note that $r_{ij}(n)$ is the same as the probability of transitioning to state $j$ in $n-1$ steps after first step, which means it is the total probability of transitioning from the current state $i$ to one of the possible states in the first step and then transitioning to state $j$ after $n-1$ steps. Hence, given that ${1, 2 ... m}$ represents the exhaustive set of possible states:
+
+$\displaystyle r_{ij}(n) = \sum_{k=1}^{m} p_{ik} r_{kj}(n-1)$ (where $p_{ik}$ is the (1-step) transition probability from state $i$ to state $k$)
+
+Both of the above are logically equivalent recursive formulas to calculate the n-step transition probability from state $i$ to state $j$.
