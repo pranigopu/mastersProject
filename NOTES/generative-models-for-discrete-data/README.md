@@ -13,7 +13,7 @@
 ---
 
 # Introduction
-A generative model means a model that generates data based on a well-defined random process. For example, a Gaussian generative model generates data based on a normal distribution. In practice, a generative model is proposed to explain the observed data by showing how and with what likelihood the model could generate to the observed data. I  practice, we try to find the most plausible generative model that explains the observed data. As the topic suggests, we shall explore generative models that draw data from discrete sample spaces rather than continuous sample spaces.
+A generative model means a model that generates data based on a well-defined random process. For example, a Gaussian generative model generates data based on a normal distribution. In practice, a generative model is proposed to explain the observed data by showing how and with what likelihood the model could generate to the observed data. I  practice, we try to find the most plausible generative model that explains the observed data. As the topic name suggests, we shall explore generative models that draw data from discrete sample spaces rather than continuous sample spaces.
 
 For each kind of generative model, we shall define:
 
