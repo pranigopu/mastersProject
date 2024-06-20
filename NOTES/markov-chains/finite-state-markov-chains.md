@@ -45,14 +45,14 @@ $= \mathbb{P}(X_n = j | X_0 = i)$
 
 **NOTES**:
 
-1.
+1.<br>
 
 $\displaystyle \sum_{j=1}^{m} r_{ij}(n) = 1$, where $i$ and $n$ are fixed and ${1, 2 ... m}$ represents the exhaustive set of possible states.
 
-2.
+2.<br>
 
 $r_{ij}(0)$ means no transition takes place; it acts as an indicator for the current state, i.e. $r_{ij}(0) = 1$ if $i = j$ and $r_{ij}(0) = 0$ otherwise.
 
-3.
+3.<br>
 
 $r_{ij}(1) = p_{ij}$ (where $p_{ij}$ is the transition probability as defined in the last section).
