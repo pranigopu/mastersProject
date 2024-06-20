@@ -48,5 +48,5 @@ Hence, how the model is specified, i.e. how the states and state transitions are
 
 # Read further
 
-- [Finite-State Markov Chains]()
+- [Finite-State Markov Chains](https://github.com/pranigopu/mastersProject/blob/main/NOTES/markov-chains/finite-state-markov-chains.md)
 - [Steady-State Behaviour of Markov Chains]()
