@@ -30,4 +30,4 @@ $= \mathbb{P}(X_{n+1} = j | X_n = i)$
 
 $= \mathbb{P}(X_1 = j | X_0 = i)$
 
-**NOTE**: $\sum_{j=1}^{m} p_{ij} = 1$, where ${1, 2 ... m}$ represents the exhaustive set of possible states.
+**NOTE**: $\displaystyle \sum_{j=1}^{m} p_{ij} = 1$, where ${1, 2 ... m}$ represents the exhaustive set of possible states.
