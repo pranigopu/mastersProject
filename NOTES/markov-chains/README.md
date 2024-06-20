@@ -10,7 +10,7 @@
 
 ---
 
-**MAIN REFERENCE**: ["Lecture 24: Finite-State Markov Chains" from _Part III: Random Processes_ from _Introduction to Probability_](https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/)
+**MAIN REFERENCE**: ["Lecture 24: Finite-State Markov Chains" from _Part III: Random Processes_ from **Introduction to Probability**](https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/)
 
 ---
 
