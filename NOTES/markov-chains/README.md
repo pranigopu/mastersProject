@@ -18,7 +18,7 @@
 
 # Introduction
 
-Before seeing the definition, consider the fact that a Markov chain (also called a Markov process) summarises the influence of the past on the future using the notion of a state, wherein the state evolves over time according to some probability distribution. Implicit in a Markov chain is the Markov property/assumption, which we shall see after the introduction.
+Before seeing the definition, consider the fact that a Markov chain (also called a Markov process) summarises the influence of the past on the future using the notion of a state, wherein the state evolves over time according to some probability distribution. Implicit in a Markov chain is the Markov property/assumption, which states that the current state has all the information needed to predict the next state.
 
 ```
 
