@@ -34,7 +34,7 @@ In other terms, $state(t+1) = f(state(t), noise)$, where $f$ is a function.
 
 _Now for the full definition_...
 
-A Markov process or chain is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. Informally, this may be thought of as, "What happens next depends only on the state of affairs now." ([_Markov chain_, Wikipedia](https://en.wikipedia.org/wiki/Markov_chain)
+A Markov process or chain is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. Informally, this may be thought of as, "What happens next depends only on the state of affairs now." ([_Markov chain_, Wikipedia](https://en.wikipedia.org/wiki/Markov_chain))
 
 > FURTHER REFERENCES:
 > - https://en.wikipedia.org/wiki/Markov_chain
