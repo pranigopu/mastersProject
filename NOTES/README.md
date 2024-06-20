@@ -23,7 +23,11 @@ Bayesian framework is a precise way of quantifying uncertainty. Hence, they give
 
 Bayesian framework provides a way to prevent overfitting (by tracking the level of uncertainty involved) and is a means to generalise other methods for overfitting, such as regularisation and (more indirectly) dropout.
 
-**SIDE NOTE**: _How is regularisation generalised using a Bayesian framework? Regularisation adds a penalty with respect to some reference, thus biasing the model's weights toward a specific range of values. This can be generalised as a prior assumption about the distribution of the weights._
+---
+
+**SIDE NOTE**: How is regularisation generalised using a Bayesian framework? Regularisation adds a penalty with respect to some reference, thus biasing the model's weights toward a specific range of values. This can be generalised as a prior assumption about the distribution of the weights.
+
+---
 
 3.<br>
 
