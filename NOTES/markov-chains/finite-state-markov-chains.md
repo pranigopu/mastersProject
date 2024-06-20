@@ -4,7 +4,10 @@
 
 **Contents**:
 
-
+- [Introduction](#introduction)
+- [Transition probabilities](#transition-probabilities)
+    - [1-step transition probabilities](#1-step-transition-probabilities)
+    - [n-step transition probabilities](#n-step-transition-probabilities)
 
 ---
 
