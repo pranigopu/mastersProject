@@ -18,7 +18,7 @@ A Markov process summarises the influence of the past on the future using the no
 
 ```
 
-Past -----> Future
+Past ----> Future
     \     /
      State
 
