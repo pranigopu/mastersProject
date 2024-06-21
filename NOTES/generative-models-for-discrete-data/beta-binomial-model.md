@@ -67,11 +67,11 @@ KEY INTUITION 2: If we know nothing about the potential values of the mode param
 
 ---
 
-To generalise our solution and define the distribution of potential values of our beta-binomial generative model's parameter $\theta$, we consider a beta prior distritbuion:
+The beta distribution is a versatile distribution that is easy to define and work with analytically while also being able to take a variety of distribution shapes. Furthermore, if the prior is distributed by a beta distirbution, it would the conjugate prior to a likelihood defined by a binomial or Bernoulli distribution, which means that in such a case, the posterior would also be distributed by a beta distribution. Hence, to define the distribution of potential values of our binomial generative model's parameter $\theta$, we consider a beta prior distribution:
 
 $\text{Beta}(\theta | a, b) \propto \theta^{a-1}(1 - \theta)^{1-b}$
 
-Here, $a$ and $b$ are the hyperparameters.
+Here, $a$ and $b$ are the hyperparameters. If we know nothing about the potential values of $\theta$, then we take a uniform prior, which can be represented by a beta distribution with $a = b = 1$.
  
 ## Defining posterior
 Mathematically, posterior  $p(h|D)$ is the normalised value (i.e. value scaled to 0-1) of $p(D|h) p(h)$. Hence:
