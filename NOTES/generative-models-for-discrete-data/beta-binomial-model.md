@@ -44,7 +44,7 @@ $\mathbb{P}(D | \theta) = \theta^k (1 - \theta)^{n-k} = \text{Bernoulli}(k | n, 
 
 **CASE 2: Dataset being the count of heads**:
 
-$\mathbb{P}(D | \theta) = {n \count k} \theta^k (1 - \theta)^{n-k} = \text{Binomial}(k | n, \theta)$
+$\mathbb{P}(D | \theta) = {n \choose k} \theta^k (1 - \theta)^{n-k} = \text{Binomial}(k | n, \theta)$
 
 ---
 
