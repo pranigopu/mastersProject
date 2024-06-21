@@ -28,7 +28,9 @@ In Bayesian concept learning, the generative models are represented using a "con
 [Read more >>](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data/bayesian-concept-learning.md)
 
 # Beta-binomial model
-In beta-binomial models, the generative models are represented by the parameters of a binomial distribution and a beta distribution; the binomial distribution is for the likelihood component of Bayesian inference, whereas the beta distribution is for the prior component of Bayesian inference. It is a useful model because a prior defined by a beta distribution is a conjugate prior to a likelihood defined by a binomial distribution, which means the posterior distribution can be obtained analytically (rather than computationally) as a beta distribution as well.
+In beta-binomial models, the generative models are represented by the parameters of a binomial distribution and a beta distribution; the binomial distribution is for the likelihood component of Bayesian inference, whereas the beta distribution is for the prior component of Bayesian inference. It is a useful model because a prior defined by a beta distribution is a conjugate prior to a likelihood defined by a binomial distribution, which means the posterior distribution can be obtained analytically (rather than computationally) as a beta distribution as well. Furthermore, the beta-binomial model is the basis of naive Bayes classifiers and Markov models.
+
+[Read more >>](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data/beta-binomial-model.md)
 
 # Dirichlet-multinomial model
 
