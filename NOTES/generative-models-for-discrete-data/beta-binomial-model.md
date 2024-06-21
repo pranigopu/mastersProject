@@ -74,58 +74,15 @@ $\text{Beta}(\theta | a, b) \propto \theta^{a-1}(1 - \theta)^{1-b}$
 Here, $a$ and $b$ are the hyperparameters. If we know nothing about the potential values of $\theta$, then we take a uniform prior, which can be represented by a beta distribution with $a = b = 1$.
  
 ## Defining posterior
-Mathematically, posterior  $p(h|D)$ is the normalised value (i.e. value scaled to 0-1) of $p(D|h) p(h)$. Hence:
+Mathematically, posterior  $\mathbb{P}h|D)$ is the normalised value (i.e. value scaled to 0-1) of $\mathbb{P}D|h) \mathbb{P}h)$. Hence:
 
-$p(h|D) \propto p(D|h) p(h)$
+$\mathbb{P}h|D) \propto \mathbb{P}D|h) \mathbb{P}h)$
 
-If $H$ is the exhaustive set of all hypotheses, then the posterior is given as:
-
-$p(h|D) = \frac{p(D|h) p(h)}{\sum_{h' \in H} p(D|h')}$
-
-Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities for every hypothesis with respect to the data. $p(D, h')$ is the probability of observing both the data $D$ and the hypothesis $h'$ together (not any one _given_ the other). In fact $p(D, h') = p(D|h') p(h')$. Hence, $\sum_{h' \in H} p(D, h') = \sum_{h' \in H} p(D|h') p(h')$; this makes it a suitable normalising value for $p(D|h) p(h)$.
-
-_More on posterior_...
+_To be continued_...
 
 # Maximum a posteriori (MAP) estimate of best hypothesis
 
-$\displaystyle \hat{h}^{MAP} = \text{arg} \max_h p(D|h) p(h) = \text{arg} \max_h (\log p(D|h) + \log p(h))$
-
-Note that the likelihood $p(D|h)$ depends exponentially on $N$, i.e. the number of samples drawn, i.e. the size of the dataset $D$, whereas the prior term $p(h)$ stays constant. Hence, when we have enough data, the data overwhelms the prior. In fact, the MAP estimate converges to the maximum likelihood estimate (MLE) as $N \rightarrow \infty$.
-
-**NOTE**: The MLE estimate, for reference, is: <br> $\displaystyle \hat{h}^{MLE} = \text{arg} \max_h p(D|h) = \text{arg} \max_h \log p(D|h)$
-
----
-
-Hence, as $N \rightarrow \infty$, $\hat{h}^{MAP} \rightarrow \hat{h}^{MLE}$
-
----
-
-Given these facts, if the true hypothesis is in the hypothesis space, then (since it has the lowest $\frac{1}{|h|}$ value) both the MAP and the MLE estimates will converge upon this hypothesis; hence, Bayesian inference is based on consistent estimators. Note that if the hypothesis space does not include the true hypothesis (which is usually the case), we will converge upon the closest hypothesis to the true hypothesis ("closeness" can be formalised, as shall be discussed later).
 
 # Posterior predictive distribution (PPD)
-In essence, PPD gives the probability of a certain observation belonging to a certain concept, given (1) the data and (2) the posteriors for each hypothesis. Hence, PPD is basically the formalisation of a classifier based on the empirical evidence so far. In this way, it represents our "belief state" about the "world" (i.e. the environment we are dealing with). Mathematically, we have that:
-
-$\displaystyle p(\tilde{x} \in C | D) = \sum_{h \in H} p(\tilde{x} \in C | h) p(h|D)$
-
-Here:
-
-- $D$: Dataset
-- $C$: Concept by which we classify observations
-- $H$: Hypothesis space, i.e. the set of all hypotheses to be considered
-- $\tilde{x}$: Some observation
-
-We can see that PPD is the weighted average of the probability of each hypothesis being the true hypothesis given the data. The weighting for each hypothesis is done using the probability of the observation $\tilde{x}$ belonging to the concept $C$ given that the hypothesis is true.
-
-Note that each hypothesis $h$ represents an assumption about the sample space from which $\tilde{x}$ is drawn, and remember that each hypothesis is essentially a concept whose extension is proposed to be the sample space from which the data is drawn. $C$, on the other hand, is more specific concept that may be a subset of one or more of the hypotheses. Hence, PPD gives the posterior probability for an observation belonging to a specific concept (which may be either one of our hypotheses or a subset of one or more of our hypotheses) given the posterior probabilities for each of our hypotheses being true.
 
 # Overfitting
-## "Zero frequency problem" or "Sparse data problem"
-The MLE of PPD can perform poorly if the sample size is small (since unrepresentative samples are more likely the smaller the samples are). Zero frequency problem is when estimation of frequency (of some variable's occurrence in general, beyond what has been observed) is zero due to zero observed instances.
-
-_Why is this a problem?_
-
-Because this problem makes us assign certainty (absolute impossibility, in this case) to enumeration-based induction. Enumeration cannot lead to certainty in induction, only probabilities; hence, it is misleading to assign certainty to something (a prediction or an estimation) that is not certain.
-
-_Why is this problem relevant?_
-
-_How to solve this problem?_
