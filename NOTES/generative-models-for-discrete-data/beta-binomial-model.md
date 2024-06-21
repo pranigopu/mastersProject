@@ -27,7 +27,7 @@
 - **Posterior**: Probability of a certain hypothesis being true having observed certain data
 
 # Introduction
-Here, we have a multidimensional hypothesis space with continuous values, i.e. hypothesis space $H \subset \mathbb{R}^k$, i.e. each hypothesis is a tuple of $k$ real-valued parameters.
+Here, we have a multidimensional hypothesis space with continuous values, i.e. hypothesis space $H \subsetequals \mathbb{R}^k$, i.e. each hypothesis is a tuple of $k$ real-valued parameters.
 
 # Components of Bayesian inference w.r.t. concept learning
 ## Defining likelihood
