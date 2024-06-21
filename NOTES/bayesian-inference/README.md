@@ -76,11 +76,11 @@ $P(\theta | D) \propto P(D | \theta) P(\theta)$
 ## Denominator
 The total probability of getting the observed data across all the potential models. Hence, we see that the denominator is the appropriate normalisation constant for $P(D | \theta) P(\theta)$. Note that given a set of potential models, the denominator is constant. The denominator is given by:
 
-_For a discrete hypothesis space of models_...
+_For a discrete hypothesis space of models_ $\Theta$...
 
 $\displaystyle P(D) = \sum_{\theta' \in \Theta} P(D | \theta') P(\theta')$
 
-_For a continuous hypothesis space of models_...
+_For a continuous hypothesis space of models_ $\Theta$...
 
 $\displaystyle P(D) = \int_{\theta' \in \Theta} P(D | \theta') P(\theta')$
 
