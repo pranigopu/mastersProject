@@ -6,7 +6,7 @@
 
 - [Key definitions](#key-definitions)
 - [Introduction](#introduction)
-- [Components of Bayesian inference w.r.t. concept learning](#components-of-bayesian-inference-wrt-concept-learning)
+- [Components of Bayesian inference w.r.t. concept learning](#components-of-bayesian-inference-wrt-beta-binomial-model)
   - [Defining likelihood](#defining-likelihood)
   - [Defining prior](#defining-prior)
   - [Defining posterior](#defining-posterior)
@@ -27,9 +27,11 @@
 - **Posterior**: Probability of a certain hypothesis being true having observed certain data
 
 # Introduction
-Here, we have a multidimensional hypothesis space with continuous values, i.e. hypothesis space $H \subseteq \mathbb{R}^k$, i.e. each hypothesis is a tuple of $k$ real-valued parameters.
+In many applications we have a multidimensional hypothesis space with continuous values, i.e. hypothesis space $H \subseteq \mathbb{R}^k$, i.e. each hypothesis is a tuple of $k$ real-valued parameters. This is because each hypothesis represents a particular set of probability distributions for the likelihood and prior out of a family of probability distributions. Here, the mathematics is naturally more complex, since we must use integration instead of summation to get the posterior predictive distribution with respect to all the hypotheses.
 
-# Components of Bayesian inference w.r.t. concept learning
+In beta-binomial models in particular, we take the likelihood as distributed by a binomial distributions and the prior as distributed by a beta distribution. It is a useful model for the following reasons: (1) A prior distributed by a beta distribution is a conjugate prior to a likelihood distributed by a binomial distribution, which means the posterior can be obtained analytically as a beta distribution too. (2) It forms the basis for naive Bayes classifiers and Markov models. (3) It is an easy example to chew on and thereby grasp the broader concepts.
+
+# Components of Bayesian inference w.r.t. beta-binomial model
 ## Defining likelihood
 KEY INTUITION: Avoid suspicious coincidences.
 
