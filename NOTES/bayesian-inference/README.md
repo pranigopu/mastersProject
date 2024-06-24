@@ -67,9 +67,7 @@ Adopting a probabilistic perspective for modelling leads to the understanding of
 
 ---
 
-**Further reading on generative models in a Bayesian context**:
-
-[**Generative Models for Discrete Data**](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data)
+**Further reading on generative models in a Bayesian context**: [**Generative Models for Discrete Data**](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data)
 
 # Bayesian vs. frequentist
 **Bayesian**:
