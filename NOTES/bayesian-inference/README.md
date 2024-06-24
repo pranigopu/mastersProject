@@ -12,6 +12,13 @@
 
 ---
 
+**Main resources**:
+
+- ["1. Bayesian Inference" from _Bayesian Computation Book_](https://bayesiancomputationbook.com/markdown/chp_01.html)
+- [Bayesian vs frequentist statistics, Ox educ](https://youtu.be/r76oDIvwETI?si=Fk8-Z6kLIhqULcTq)
+
+---
+
 "_Even if expressing statistical methods is easier than ever, statistics is a field full of subtleties that do not magically disappear by using powerful computation methods._" (quote from: ["1. Bayesian Inference" from _Bayesian Computation Book_](https://bayesiancomputationbook.com/markdown/chp_01.html)).
 
 # Bayesian modelling as a kind of conceptual modelling
@@ -61,8 +68,6 @@ We check whether the model makes sense according to different criteria, includin
 An example of a generalised model: a pair of specific families of distribution,  the e.g. beta-binomial model. An example of specific model under a generalised model: a beta-binomial model with particular parameters for the beta and binomial distributions.
 
 # Bayesian modelling as the creation of generative models
-> KEY REFERENCE: https://bayesiancomputationbook.com/markdown/chp_01.html
-
 Adopting a probabilistic perspective for modelling leads to the understanding of models as things that generate data. Such an understanding show us how probabilistic modelling must be approached; given that models generate data, we can create fitting models for our data just by thinking of how the data could have been generated. Note that such an understanding is concretised by the prior predictive distribution (see: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)). If we revisit the three key steps of Bayesian modelling discussed previously, we can re-frame them as: (1) write a prior predictive distribution, (2) add data to constrain it, (3) check if the result makes sense and (4) iterate if necessary.
 
 ---
