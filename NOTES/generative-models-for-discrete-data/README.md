@@ -28,7 +28,7 @@ For each kind of generative model, we shall define:
 > KEY REFERENCE: https://bayesiancomputationbook.com/markdown/chp_01.html
 
 - $D$ = Observed data so far
-- $D^*$ = Expected or potential data
+- $\hat{D}$ = Expected or potential data
 - $\mathbb{P}$ = Probability measure
 - $\theta$ = A specific model <br> ..._often represented by a specific set of parameter values_
 - $\Theta$ = The exhaustive set of models being considered <br> ..._usually of a specific generalised definition, e.g. a specific family of distributions_
@@ -37,9 +37,9 @@ For each kind of generative model, we shall define:
 
 _Likelihood, prior and posterior have been discussed in_ [**Bayesian Inference**](https://github.com/pranigopu/mastersProject/tree/main/NOTES/bayesian-inference). _Hence, I shall focus on the new concept, i.e. PPD._
 
-PPD is the distribution of expected (i.e. future) data $D^*$ according to the posterior $\mathbb{P}(\theta | D)$ for every $\theta \in \Theta$, which in turn is a consequence of the general model $\Theta$ (whose expectations are quantified by the prior and likelihood) and the observed data $D$. In more common terms, this is the data the general model $\Theta$ is expecting to see after seeing the dataset $D$, i.e. these are the general model’s predictions based on the data observed so far. Mathematically, the PPD is given by:
+PPD is the distribution of expected (i.e. future) data $\hat{D}$ according to the posterior $\mathbb{P}(\theta | D)$ for every $\theta \in \Theta$, which in turn is a consequence of the general model $\Theta$ (whose expectations are quantified by the prior and likelihood) and the observed data $D$. In more common terms, this is the data the general model $\Theta$ is expecting to see after seeing the dataset $D$, i.e. these are the general model’s predictions based on the data observed so far. Mathematically, the PPD is given by:
 
-$mathbb{P}(D^* | D) = \int_{\theta \in \Theta} \mathbb{P}(D^* | \theta) \mathbb{P}(\theta | D) d \theta$
+$mathbb{P}(\hat{D} | D) = \int_{\theta \in \Theta} \mathbb{P}(\hat{D} | \theta) \mathbb{P}(\theta | D) d \theta$
 
 here, we can see that predictions of the general model are computed by integrating out (or marginalizing) over the posterior distribution of specific models, i.e. specific parameter values. As a consequence predictions computed this way will incorporate the uncertainty about our estimates.
 
