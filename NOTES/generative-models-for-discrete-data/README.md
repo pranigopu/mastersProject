@@ -37,7 +37,7 @@ For each kind of generative model, we shall define:
 
 _Likelihood, prior and posterior have been discussed in_ [**Bayesian Inference**](https://github.com/pranigopu/mastersProject/tree/main/NOTES/bayesian-inference). _Hence, I shall focus on the new concept, i.e. PPD._
 
-PPD is the distribution of expected, future, data $D^*$ according to the posterior $\mathbb{P}(\theta | D)$ for every $\theta \in \Theta$, which in turn is a consequence of the general model $\Theta$ (whose expectations are quantified by the prior and likelihood) and the observed data $D$. In more common terms, this is the data the general model $\Theta$ is expecting to see after seeing the dataset $D$, i.e. these are the general model’s predictions based on the data observed so far. Mathematically, the PPD is given by:
+PPD is the distribution of expected (i.e. future) data $D^*$ according to the posterior $\mathbb{P}(\theta | D)$ for every $\theta \in \Theta$, which in turn is a consequence of the general model $\Theta$ (whose expectations are quantified by the prior and likelihood) and the observed data $D$. In more common terms, this is the data the general model $\Theta$ is expecting to see after seeing the dataset $D$, i.e. these are the general model’s predictions based on the data observed so far. Mathematically, the PPD is given by:
 
 $mathbb{P}(D^* | D) = \int_{\theta \in \Theta} \mathbb{P}(D^* | \theta) \mathbb{P}(\theta | D) d \theta$
 
