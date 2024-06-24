@@ -32,6 +32,8 @@ $\displaystyle \mathbb{P}(D^*) = \int_{\theta \in \Theta} \mathbb{P}(D^* | \thet
 
 **NOTE**: $\mathbb{P}(D^*) = \mathbb{P}(D^* | \Theta)$, since $\mathbb{P}(D^*)$ is essentially the marginal probability of getting the potential data $D^*$ with the model kept variable, i.e. with the model having been generalised.
 
+The expression for PrPD looks similar to the denominator component of Bayesian inference. However, unlike the denominator, PrPD is based on a likelihood (i.e. $\mathbb{P}(D^* | \theta)$) that is not conditioned by any observed data.
+
 # Posterior predictive distribution (PPD)
 
 - $D$ = Observed data so far
