@@ -4,6 +4,7 @@
 
 **Contents**:
 
+- [Abbreviations](#abbreviations)
 - [Key definitions](#key-definitions)
 - [Introduction](#introduction)
 - [Components of Bayesian inference w.r.t. beta-binomial model](#components-of-bayesian-inference-wrt-beta-binomial-model)
@@ -13,9 +14,12 @@
 - [Maximum a posteriori (MAP) estimate of best hypothesis](#maximum-a-posteriori-map-estimate-of-best-hypothesis)
 - [Posterior predictive distribution (PPD)](#posterior-predictive-distribution-ppd)
 - [Overfitting](#overfitting)
-  - ["Zero frequency problem" or "Sparse data problem"](#zero-frequency-problem-or-sparse-data-problem)
 
 ---
+
+# Abbreviations
+- **PDF**: Probability density function
+- **IID**: Independently and identically distributed
 
 # Key definitions
 
@@ -71,14 +75,44 @@ The beta distribution is a versatile distribution that is easy to define and wor
 
 $\text{Beta}(\theta | a, b) \propto \theta^{a-1}(1 - \theta)^{1-b}$
 
-Here, $a$ and $b$ are the hyperparameters. If we know nothing about the potential values of $\theta$, then we take a uniform prior, which can be represented by a beta distribution with $a = b = 1$.
+_To be more precise_...
+
+$\text{Beta}(\theta | a, b) = \frac{\theta^{a-1}(1 - \theta)^{1-b}}{B(a, b)}$
+
+Here, $B$ represents the beta function and $a$ and $b$ are the hyperparameters. The hyperparameters encode our prior beliefs about the potential values of $\theta$. If we know nothing about the potential values of $\theta$, then we take a uniform prior, which can be represented by a beta distribution with $a = b = 1$.
  
 ## Defining posterior
-Mathematically, posterior  $\mathbb{P}h|D)$ is the normalised value (i.e. value scaled to 0-1) of $\mathbb{P}D|h) \mathbb{P}h)$. Hence:
+Mathematically, posterior  $\mathbb{P}(h|D)$ is the normalised value (i.e. value scaled to 0-1) of $\mathbb{P}(D|h) \mathbb{P}(h)$. Hence (assuming the dataset to be a particular sequence of IID binaries, i.e. it is an IID Bernoulli dataset):
 
-$\mathbb{P}h|D) \propto \mathbb{P}D|h) \mathbb{P}h)$
+$\mathbb{P}(h|D)$
 
-_To be continued_...
+$= \frac{\mathbb{P}(D|h) \mathbb{P}(h)}{\mathbb{P}(D)}$
+
+$= \frac{1}{\mathbb{P}(D)} \theta^k (1 - \theta)^{n-k} \frac{\theta^{a-1}(1 - \theta)^{1-b}}{B(a, b)}$
+
+$= \frac{1}{\mathbb{P}(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(a, b)}$
+
+The (unconditional) probability $\mathbb{P}(D)$ of the dataset D can be obtained through marginalisation:
+
+$\mathbb{P}(D)$
+
+$\displaystyle= \int_0^1 \mathbb{P}(\theta, D) d \theta$
+
+$\displaystyle= \int_0^1 \mathbb{P}(D | \theta) \mathbb{P}(\theta) d \theta$
+
+$\displaystyle= \int_0^1 \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(a, b)} d \theta$
+
+$\displaystyle= \int_0^1 \frac{B(k + a, n-k + b)}{B(a, b)} d \theta$ (based on the definition of the beta function)
+
+Hence, we get the posterior as:
+
+$\mathbb{P}(h|D)$
+
+$= \frac{1}{\mathbb{P}(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(k + a, n-k + b)}$
+
+$= \text{Beta}(\theta | k + a, n-k + b)$
+
+Hence, note that the prior and posterior densities are given by the same family of distributions under (possibly) distinct hyperparameters. For this reason, the beta PDF is said to be a conjugate prior for the likelihood function of an IID Bernoulli dataset.
 
 # Maximum a posteriori (MAP) estimate of best hypothesis
 
