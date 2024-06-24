@@ -92,6 +92,8 @@ $= \frac{1}{\mathbb{P}(D)} \theta^k (1 - \theta)^{n-k} \frac{\theta^{a-1}(1 - \t
 
 $= \frac{1}{\mathbb{P}(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(a, b)}$
 
+---
+
 The (unconditional) probability $\mathbb{P}(D)$ of the dataset D can be obtained through marginalisation:
 
 $\mathbb{P}(D)$
@@ -103,6 +105,8 @@ $\displaystyle= \int_0^1 \mathbb{P}(D | \theta) \mathbb{P}(\theta) d \theta$
 $\displaystyle= \int_0^1 \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(a, b)} d \theta$
 
 $\displaystyle= \int_0^1 \frac{B(k + a, n-k + b)}{B(a, b)} d \theta$ (based on the definition of the beta function)
+
+---
 
 Hence, we get the posterior as:
 
