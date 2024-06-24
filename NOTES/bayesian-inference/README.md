@@ -65,6 +65,8 @@ An example of a generalised model: a pair of specific families of distribution, 
 
 Adopting a probabilistic perspective for modelling leads to the understanding of models as things that generate data. Such an understanding show us how probabilistic modelling must be approached; given that models generate data, we can create fitting models for our data just by thinking of how the data could have been generated. Note that such an understanding is concretised by the prior predictive distribution (see: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)). If we revisit the three key steps of Bayesian modelling discussed previously, we can re-frame them as: (1) write a prior predictive distribution, (2) add data to constrain it, (3) check if the result makes sense and (4) iterate if necessary.
 
+To read more about generative models in a Bayesian context, see: [**Generative Models for Discrete Data**](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data)
+
 # Bayesian vs. frequentist
 **Bayesian**:
 
