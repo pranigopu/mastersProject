@@ -82,11 +82,11 @@ $\text{Beta}(\theta | a, b) = \frac{\theta^{a-1}(1 - \theta)^{1-b}}{B(a, b)}$
 Here, $B$ represents the beta function and $a$ and $b$ are the hyperparameters. The hyperparameters encode our prior beliefs about the potential values of $\theta$. If we know nothing about the potential values of $\theta$, then we take a uniform prior, which can be represented by a beta distribution with $a = b = 1$.
  
 ## Defining posterior
-Mathematically, posterior  $\mathbb{P}(h|D)$ is the normalised value (i.e. value scaled to 0-1) of $\mathbb{P}(D|h) \mathbb{P}(h)$. Hence (assuming the dataset to be a particular sequence of IID binaries, i.e. it is an IID Bernoulli dataset):
+Mathematically, posterior  $\mathbb{P}(\theta | D)$ is the normalised value (i.e. value scaled to 0-1) of $\mathbb{P}(D | \theta) \mathbb{P}(\theta)$. Hence (assuming the dataset to be a particular sequence of IID binaries, i.e. it is an IID Bernoulli dataset):
 
-$\mathbb{P}(h|D)$
+$\mathbb{P}(\theta | D)$
 
-$= \frac{\mathbb{P}(D|h) \mathbb{P}(h)}{\mathbb{P}(D)}$
+$= \frac{\mathbb{P}(D|\theta) \mathbb{P}(\theta)}{\mathbb{P}(D)}$
 
 $= \frac{1}{\mathbb{P}(D)} \theta^k (1 - \theta)^{n-k} \frac{\theta^{a-1}(1 - \theta)^{1-b}}{B(a, b)}$
 
@@ -110,7 +110,7 @@ $\displaystyle= \int_0^1 \frac{B(k + a, n-k + b)}{B(a, b)} d \theta$ (based on t
 
 Hence, we get the posterior as:
 
-$\mathbb{P}(h|D)$
+$\mathbb{P}(\theta | D)$
 
 $= \frac{1}{\mathbb{P}(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(k + a, n-k + b)}$
 
