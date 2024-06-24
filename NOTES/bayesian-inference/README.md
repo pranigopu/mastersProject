@@ -5,6 +5,8 @@
 **Contents**:
 
 - [Bayesian modelling as a kind of conceptual modelling](#bayesian-modelling-as-a-kind-of-conceptual-modelling)
+- [Key steps in Bayesian modelling](#key-steps-in-bayesian-modelling)
+- [Bayesian modelling as the creation of generative models](#bayesian-modelling-as-the-creation-of-generative-models)
 - [Bayesian vs. frequentist](#bayesian-vs-frequentist)
 - [Further reading](#further-reading)
 
@@ -38,6 +40,30 @@ In Bayesian modelling, the conceptual model may be defined in many ways, such as
 **NOTE 2**: The terms "model" and "process" can also refer to observations from a population of entities, wherein the model or process is based on the distribution of a certain charateristic in the population.
 
 **NOTE 3**: In practice, when dealing with a family of theoretical distributions as the basis for conceptual models, we represent the chosen models with a set of parameter values, given the family of distributions being considered.
+
+# Key steps in Bayesian modelling
+1.<br>
+
+Given some data and some assumptions on how the data could have been generated, we design one or more models (e.g. by combining and transforming random variables).
+
+2.<br>
+
+We use Bayes' theorem to condition our models to the available data. Such a process is a process of inference, the result of which is a posterior distribution (see: ["Posterior distribution (our target)" from _Components of Bayesian Inference_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/components-of-bayesian-inference.md#posterior-distribution-our-target)), which uses the observed data to try to reduce our uncertainty about possible models (often represented by our uncertainty about possible parameter values), though this is not a guarantee of any Bayesian model.
+
+3.<br>
+
+We check whether the model makes sense according to different criteria, including the observed data and our domain-knowledge. Since we are generally uncertain about the models themselves, we sometimes compare several specific models under a generalised model (i.e. well-defined a class of models) and/or several generalised models.
+
+---
+
+**CLARIFICATION NOTE**:
+
+An example of a generalised model: a pair of specific families of distribution,  the e.g. beta-binomial model. An example of specific model under a generalised model: a beta-binomial model with particular parameters for the beta and binomial distributions.
+
+# Bayesian modelling as the creation of generative models
+> KEY REFERENCE: https://bayesiancomputationbook.com/markdown/chp_01.html
+
+Adopting a probabilistic perspective for modelling leads to the understanding of models as things that generate data. Such an understanding show us how probabilistic modelling must be approached; given that models generate data, we can create fitting models for our data just by thinking of how the data could have been generated. Note that such an understanding is concretised by the prior predictive distribution (see: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)). If we revisit the three key steps of Bayesian modelling discussed previously, we can re-frame them as: (1) write a prior predictive distribution, (2) add data to constrain it, (3) check if the result makes sense and (4) iterate if necessary.
 
 # Bayesian vs. frequentist
 **Bayesian**:
