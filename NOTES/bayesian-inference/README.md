@@ -49,4 +49,5 @@ Focuses on the uncertainty of underlying conditions that generate certain outcom
 Focuses on the uncertainty of the outcomes given certain underlying conditions. Hence, the potential outcomes are distributed probabilistically. In other words, the frequentist approach measures the expected proportional frequency of potential outcomes based on past outcomes.
 
 # Further reading
-1. [Components of Bayesian Inference]()
+1. [Components of Bayesian Inference](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/components-of-bayesian-inference.md)
+2. [Predictive distributions](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md)

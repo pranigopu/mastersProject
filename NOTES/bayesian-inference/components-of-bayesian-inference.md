@@ -55,7 +55,7 @@ _For a continuous hypothesis space of models_ $\Theta$...
 
 $\displaystyle P(D) = \int_{\theta' \in \Theta} P(D | \theta') P(\theta')$
 
-_Hence, we also see that the denominator is the marginal probability of getting the observed data with the model kept variable._
+Hence, we also see that the denominator is the marginal probability of getting the observed data with the model kept variable, i.e. with the model having been generalised. Therefore, it is valid to say that $P(D) = P(D | \Theta)$, where $\Theta$ is the generalised model, i.e. the class of models that generalises all the specific models being considered.
 
 # Estimation of the components
 ## Estimating the denominator
