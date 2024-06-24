@@ -36,7 +36,7 @@ The expression for the PrPD looks similar to the denominator component of Bayesi
 
 ---
 
-**Relevance of PrPD**:
+**Relevance of the PrPD**:
 
 We can use samples from the PrPD as a way to evaluate and calibrate our models using domain-knowledge. For example, we may ask questions such as "Is it okay for a model of human heights to predict that a human is negative 1.5 meters tall?". Even before measuring a single person, we can recognize the absurdness of the question. Hence, in general, the PrPD can help inform the validity or lack thereof in one's modeling choices.
 
