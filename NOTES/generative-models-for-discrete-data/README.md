@@ -31,15 +31,15 @@ _Likelihood, prior and posterior have been discussed in_ [_Components of Bayesia
 
 - $D$ = Observed data so far
 - $D^*$ = Expected or potential data
-- $p$ = Probability mass function (for discrete domains) or probability density function (for continuous domains)
+- $P$ = Probability measure
 - $\theta$ = A specific model <br> ..._often represented by a specific set of parameter values_
 - $\Theta$ = The exhaustive set of models being considered <br> ..._usually of a specific generalised definition, e.g. a specific family of distributions_
 
 **NOTE**: $\Theta$ has a specific definition such that it generalises over the various specific models we want to consider. Hence, it can be considered a generalised model in its own right, wherein certain parameters are variable; each set of specific parameter values represents a specific instance or subclass of the generalised model.
 
-PPD is the distribution of expected (i.e. future) data $D^*$ according to the posterior $p(\theta | D)$ for every $\theta \in \Theta$, which in turn is a consequence of the generalised model $\Theta$ (whose expectations are quantified by the prior and likelihood) and the observed data $D$. In more common terms, this is the data the generalised model $\Theta$ is expecting to see after seeing the dataset $D$, i.e. these are the generalised model’s predictions based on the data observed so far. Mathematically, the PPD is given by:
+PPD is the distribution of expected (i.e. future) data $D^*$ according to the posterior $P(\theta | D)$ for every $\theta \in \Theta$, which in turn is a consequence of the generalised model $\Theta$ (whose expectations are quantified by the prior and likelihood) and the observed data $D$. In more common terms, this is the data the generalised model $\Theta$ is expecting to see after seeing the dataset $D$, i.e. these are the generalised model’s predictions based on the data observed so far. Mathematically, the PPD is given by:
 
-$\displaystyle p(D^* | D) = \int_{\theta \in \Theta} p(D^* | \theta) p(\theta | D) d \theta$
+$\displaystyle P(D^* | D) = \int_{\theta \in \Theta} P(D^* | \theta) P(\theta | D) d \theta$
 
 here, we can see that predictions of the generalised model are computed by integrating out (or marginalizing) over the posterior distribution of specific models, i.e. specific parameter values. As a consequence predictions computed this way will incorporate the uncertainty about our estimates.
 
