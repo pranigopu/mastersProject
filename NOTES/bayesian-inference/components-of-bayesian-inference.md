@@ -18,6 +18,7 @@
 
 - $\theta$: Chosen model
 - $D$: Observed data
+- $p$ = Probability mass function (for discrete domains) or probability density function (for continuous domains)
 
 # Posterior distribution (our target)
 The probability of our chosen model being the true model given the observed data. Hence, it is:
