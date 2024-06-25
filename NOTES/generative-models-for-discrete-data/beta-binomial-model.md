@@ -45,17 +45,17 @@ Consider the basic random process of a coin toss. Here, we do not specify the co
 
 **CASE 1: Dataset being a particular sequence of heads and tails**:
 
-$\mathbb{P}(D | \theta) = \theta^k (1 - \theta)^{n-k} = \text{Bernoulli}(k | n, \theta)$
+$p(D | \theta) = \theta^k (1 - \theta)^{n-k} = \text{Bernoulli}(k | n, \theta)$
 
 **CASE 2: Dataset being the count of heads**:
 
-$\mathbb{P}(D | \theta) = {n \choose k} \theta^k (1 - \theta)^{n-k} = \text{Binomial}(k | n, \theta)$
+$p(D | \theta) = {n \choose k} \theta^k (1 - \theta)^{n-k} = \text{Binomial}(k | n, \theta)$
 
 ---
 
 **Sufficient statistics of the data and the equivalence of the above likelihoods**:
 
-The sufficient statistics for a data assumed to be drawn by a probability distribution (our generative model) are the set of statistics of the data needed to infer the parameters of the probability distribution. More formally, $s(D)$ is the set of sufficient statistics for data $D$ if $\mathbb{P}(\theta | D) = \mathbb{P}(\theta | s(D))$. Consequently, given the same assumed probability distribution, if two datasets have the same sufficient statistics, we will infer the same value for the parameters of the probability distribution. In the case of the beta-binomial model as well as the beta-Bernoulli model, the sufficient statistics are $n$ and $k$.
+The sufficient statistics for a data assumed to be drawn by a probability distribution (our generative model) are the set of statistics of the data needed to infer the parameters of the probability distribution. More formally, $s(D)$ is the set of sufficient statistics for data $D$ if $p(\theta | D) = p(\theta | s(D))$. Consequently, given the same assumed probability distribution, if two datasets have the same sufficient statistics, we will infer the same value for the parameters of the probability distribution. In the case of the beta-binomial model as well as the beta-Bernoulli model, the sufficient statistics are $n$ and $k$.
 
 We observe that the sufficient statistics are the exact same as the dataset of the count alone (where the order of heads and tails is not specified). In other words, whether we use the binomial model or the Bernoulli model, we get the same value for $\theta$. In other words, the posterior probability of observing $\theta$ given the observed data is the same whether we use the binomial model or the Bernoulli model
 
@@ -83,25 +83,25 @@ $\text{Beta}(\theta | a, b) = \frac{\theta^{a-1}(1 - \theta)^{1-b}}{B(a, b)}$
 Here, $B$ represents the beta function and $a$ and $b$ are the hyperparameters. The hyperparameters encode our prior beliefs about the potential values of $\theta$. If we know nothing about the potential values of $\theta$, then we take a uniform prior, which can be represented by a beta distribution with $a = b = 1$.
  
 ## Defining posterior
-Mathematically, posterior  $\mathbb{P}(\theta | D)$ is the normalised value (i.e. value scaled to 0-1) of $\mathbb{P}(D | \theta) \mathbb{P}(\theta)$. Hence (assuming the dataset to be a particular sequence of IID binaries, i.e. it is an IID Bernoulli dataset):
+Mathematically, posterior  $p(\theta | D)$ is the normalised value (i.e. value scaled to 0-1) of $p(D | \theta) p(\theta)$. Hence (assuming the dataset to be a particular sequence of IID binaries, i.e. it is an IID Bernoulli dataset):
 
-$\mathbb{P}(\theta | D)$
+$p(\theta | D)$
 
-$= \frac{\mathbb{P}(D|\theta) \mathbb{P}(\theta)}{\mathbb{P}(D)}$
+$= \frac{p(D|\theta) p(\theta)}{p(D)}$
 
-$= \frac{1}{\mathbb{P}(D)} \theta^k (1 - \theta)^{n-k} \frac{\theta^{a-1}(1 - \theta)^{1-b}}{B(a, b)}$
+$= \frac{1}{p(D)} \theta^k (1 - \theta)^{n-k} \frac{\theta^{a-1}(1 - \theta)^{1-b}}{B(a, b)}$
 
-$= \frac{1}{\mathbb{P}(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(a, b)}$
+$= \frac{1}{p(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(a, b)}$
 
 ---
 
-The (unconditional) probability $\mathbb{P}(D)$ of the dataset D can be obtained through marginalisation:
+The (unconditional) probability $p(D)$ of the dataset D can be obtained through marginalisation:
 
-$\mathbb{P}(D)$
+$p(D)$
 
-$\displaystyle= \int_0^1 \mathbb{P}(\theta, D) d \theta$
+$\displaystyle= \int_0^1 p(\theta, D) d \theta$
 
-$\displaystyle= \int_0^1 \mathbb{P}(D | \theta) \mathbb{P}(\theta) d \theta$
+$\displaystyle= \int_0^1 p(D | \theta) p(\theta) d \theta$
 
 $\displaystyle= \int_0^1 \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(a, b)} d \theta$
 
@@ -111,9 +111,9 @@ $\displaystyle= \int_0^1 \frac{B(k + a, n-k + b)}{B(a, b)} d \theta$ (based on t
 
 Hence, we get the posterior as:
 
-$\mathbb{P}(\theta | D)$
+$p(\theta | D)$
 
-$= \frac{1}{\mathbb{P}(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(k + a, n-k + b)}$
+$= \frac{1}{p(D)} \frac{\theta^{k + a-1}(1 - \theta)^{n-k + 1-b}}{B(k + a, n-k + b)}$
 
 $= \text{Beta}(\theta | k + a, n-k + b)$
 
