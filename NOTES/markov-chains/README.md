@@ -63,4 +63,4 @@ Hence, how the model is specified, i.e. how the states and state transitions are
 # Further reading
 
 - [Finite-State Markov Chains](https://github.com/pranigopu/mastersProject/blob/main/NOTES/markov-chains/finite-state-markov-chains.md)
-- [Steady-State Behaviour of Markov Chains]()
+- [Steady-State Behaviour of Markov Chains](https://github.com/pranigopu/mastersProject/blob/main/NOTES/markov-chains/steady-state-behaviour-of-markov-chains.md)
