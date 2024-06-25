@@ -47,9 +47,9 @@ _This is the strong sampling assumption (Tenenbaum)._
 
 Extension of a concept refers to the set of all referents of a concept. Hence, extension of the concept "all even numbers between 1-100" is {0, 2, ... 100}. Given the strong sampling assumption, the probability of sampling $N$ items with replacement from hypothesis class $h$ is given by:
 
-$\mathbb{P}D|h) = [\frac{1}{size(h)}]^N = [\frac{1}{|h|}]^N$ ($D$ is the given data)
+$p(D|h) = [\frac{1}{size(h)}]^N = [\frac{1}{|h|}]^N$ ($D$ is the given data)
 
-This equation is based on the size principle (Tenenbaum), i.e. the model favours the simplest hypothesis (i.e. one with the smallest extension) consistent with the data $D$ ("Occam's razor"). In essence, we consider the simplest hypothesis consistent with the data to be the most likely hypothesis; on this basis, likelihood $\mathbb{P}D|h)$ is defined.
+This equation is based on the size principle (Tenenbaum), i.e. the model favours the simplest hypothesis (i.e. one with the smallest extension) consistent with the data $D$ ("Occam's razor"). In essence, we consider the simplest hypothesis consistent with the data to be the most likely hypothesis; on this basis, likelihood $p(D|h)$ is defined.
 
 **NOTE**: A hypothesis is, in essence, a concept assumed to explain the given data $D$. Hence, formally, a hypothesis is the same as a concept.
 
@@ -60,28 +60,28 @@ _For example, "powers of 2 except 32" is less conceptually natural to "powers of
 
 Defining priors can be controversial due to the ill-defined idea of "natural".
 
-**NOTE**: Prior of hypothesis $h$ is written as $\mathbb{P}h)$.
+**NOTE**: Prior of hypothesis $h$ is written as $p(h)$.
 
 ## Defining posterior
-Mathematically, posterior  $\mathbb{P}h|D)$ is the normalised value (i.e. value scaled to 0-1) of $\mathbb{P}D|h) \mathbb{P}h)$. Hence:
+Mathematically, posterior  $p(h|D)$ is the normalised value (i.e. value scaled to 0-1) of $p(D|h) p(h)$. Hence:
 
-$\mathbb{P}h|D) \propto \mathbb{P}D|h) \mathbb{P}h)$
+$p(h|D) \propto p(D|h) p(h)$
 
 If $H$ is the exhaustive set of all hypotheses, then the posterior is given as:
 
-$\mathbb{P}h|D) = \frac{\mathbb{P}D|h) \mathbb{P}h)}{\sum_{h' \in H} \mathbb{P}D|h')}$
+$p(h|D) = \frac{p(D|h) p(h)}{\sum_{h' \in H} p(D|h')}$
 
-Note that $\sum_{h' \in H} \mathbb{P}D, h')$ is the sum of the combined probabilities for every hypothesis with respect to the data. $\mathbb{P}D, h')$ is the probability of observing both the data $D$ and the hypothesis $h'$ together (not any one _given_ the other). In fact $\mathbb{P}D, h') = \mathbb{P}D|h') \mathbb{P}h')$. Hence, $\sum_{h' \in H} \mathbb{P}D, h') = \sum_{h' \in H} \mathbb{P}D|h') \mathbb{P}h')$; this makes it a suitable normalising value for $\mathbb{P}D|h) \mathbb{P}h)$.
+Note that $\sum_{h' \in H} p(D, h')$ is the sum of the combined probabilities for every hypothesis with respect to the data. $p(D, h')$ is the probability of observing both the data $D$ and the hypothesis $h'$ together (not any one _given_ the other). In fact $p(D, h') = p(D|h') p(h')$. Hence, $\sum_{h' \in H} p(D, h') = \sum_{h' \in H} p(D|h') p(h')$; this makes it a suitable normalising value for $p(D|h) p(h)$.
 
 _More on posterior_...
 
 # Maximum a posteriori (MAP) estimate of best hypothesis
 
-$\displaystyle \hat{h}^{MAP} = \text{arg} \max_h \mathbb{P}D|h) \mathbb{P}h) = \text{arg} \max_h (\log \mathbb{P}D|h) + \log \mathbb{P}h))$
+$\displaystyle \hat{h}^{MAP} = \text{arg} \max_h p(D|h) p(h) = \text{arg} \max_h (\log p(D|h) + \log p(h))$
 
-Note that the likelihood $\mathbb{P}D|h)$ depends exponentially on $N$, i.e. the number of samples drawn, i.e. the size of the dataset $D$, whereas the prior term $\mathbb{P}h)$ stays constant. Hence, when we have enough data, the data overwhelms the prior. In fact, the MAP estimate converges to the maximum likelihood estimate (MLE) as $N \rightarrow \infty$.
+Note that the likelihood $p(D|h)$ depends exponentially on $N$, i.e. the number of samples drawn, i.e. the size of the dataset $D$, whereas the prior term $p(h)$ stays constant. Hence, when we have enough data, the data overwhelms the prior. In fact, the MAP estimate converges to the maximum likelihood estimate (MLE) as $N \rightarrow \infty$.
 
-**NOTE**: The MLE estimate, for reference, is: <br> $\displaystyle \hat{h}^{MLE} = \text{arg} \max_h \mathbb{P}D|h) = \text{arg} \max_h \log \mathbb{P}D|h)$
+**NOTE**: The MLE estimate, for reference, is: <br> $\displaystyle \hat{h}^{MLE} = \text{arg} \max_h p(D|h) = \text{arg} \max_h \log p(D|h)$
 
 ---
 
@@ -94,7 +94,7 @@ Given these facts, if the true hypothesis is in the hypothesis space, then (sinc
 # Posterior predictive distribution (PPD)
 In essence, PPD gives the probability of a certain observation belonging to a certain concept, given (1) the data and (2) the posteriors for each hypothesis. Hence, PPD is basically the formalisation of a classifier based on the empirical evidence so far. In this way, it represents our "belief state" about the "world" (i.e. the environment we are dealing with). Mathematically, we have that:
 
-$\displaystyle \mathbb{P}\tilde{x} \in C | D) = \sum_{h \in H} \mathbb{P}\tilde{x} \in C | h) \mathbb{P}h|D)$
+$\displaystyle p(\tilde{x} \in C | D) = \sum_{h \in H} p(\tilde{x} \in C | h) p(h|D)$
 
 Here:
 
