@@ -41,13 +41,6 @@ The expression for the PrPD looks similar to the denominator component of Bayesi
 We can use samples from the PrPD as a way to evaluate and calibrate our models using domain-knowledge. For example, we may ask questions such as "Is it okay for a model of human heights to predict that a human is negative 1.5 meters tall?". Even before measuring a single person, we can recognize the absurdness of the question. Hence, in general, the PrPD can help inform the validity or lack thereof in one's modeling choices.
 
 # Posterior predictive distribution (PPD)
-
-- $D$ = Observed data so far
-- $D^*$ = Expected or potential data
-- $\mathbb{P}$ = Probability measure
-- $\theta$ = A specific model <br> ..._often represented by a specific set of parameter values_
-- $\Theta$ = The exhaustive set of models being considered <br> ..._usually of a specific generalised definition, e.g. a specific family of distributions_
-
 **NOTE**: $\Theta$ has a specific definition such that it generalises over the various specific models we want to consider. Hence, it can be considered a generalised model in its own right, wherein certain parameters are variable; each set of specific parameter values represents a specific instance or subclass of the generalised model.
 
 The PPD is the distribution of expected (i.e. future) data $D^*$ according to the posterior $P(\theta | D)$ for every $\theta \in \Theta$, which in turn is a consequence of the generalised model $\Theta$ (whose expectations are quantified by the prior and likelihood) and the observed data $D$. In more common terms, this is the data the generalised model $\Theta$ is expecting to see after seeing the dataset $D$, i.e. these are the generalised model’s predictions based on the data observed so far. Mathematically, the PPD is given by:
