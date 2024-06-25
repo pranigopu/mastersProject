@@ -17,6 +17,12 @@
 
 ---
 
+**Abbreviations and notation**:
+
+- **PDF**: Probability density function
+- **IID**: Independently and identically distributed
+- $p$ = Probability mass function (for discrete domains) or probability density function (for continuous domains)
+
 # Key definitions
 
 - **Concept**: Set of all units that fit a definition
