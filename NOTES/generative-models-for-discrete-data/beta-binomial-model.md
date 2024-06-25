@@ -3,8 +3,6 @@
 ---
 
 **Contents**:
-
-- [Abbreviations](#abbreviations)
 - [Key definitions](#key-definitions)
 - [Introduction](#introduction)
 - [Components of Bayesian inference w.r.t. beta-binomial model](#components-of-bayesian-inference-wrt-beta-binomial-model)
@@ -17,7 +15,8 @@
 
 ---
 
-# Abbreviations and notation
+**Abbreviations and notation**:
+
 - **PDF**: Probability density function
 - **IID**: Independently and identically distributed
 - $p$ = Probability mass function (for discrete domains) or probability density function (for continuous domains)
