@@ -41,11 +41,11 @@ A state is transient if it is not recurrent, i.e. if, starting from it, there is
 
 **Recurrent class**:
 
-A group of recurrent states that can transition only between each other
+A group of recurrent states that can transition only between each other.
 
 **Periodic states**:
 
-States in a recurrent class are periodic if all transitions lead from one distinct subclass to another distinct subclass
+States in a recurrent class are periodic if all transitions lead from one distinct subclass to another distinct subclass.
 
 **NOTE**: _There may be more than 1 distinct subclasses, but there must be more than 1._
 
