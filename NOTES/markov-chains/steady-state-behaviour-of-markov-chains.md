@@ -5,8 +5,15 @@
 **Contents**:
 
 - [Background](#background)
-- [Sufficient conditions for steady-state behaviour](#sufficient-conditions-for-steady-state-behaviour)
+- [Conditions for steady-state behaviour](#conditions-for-steady-state-behaviour)
+  - [Necessary and sufficient conditions](#necessary-and-sufficient-conditions)
+  - [Sufficient but not necesasry conditions](#sufficient-but-not-necesasry-conditions)
 - [Calculating steady-state probabilities](#calculating-steady-state-probabilities)
+- [Steady-state Markov chain follows a stationary distribution](#steady-state-markov-chain-follows-a-stationary-distribution)
+
+---
+
+**Main resource**: ["Lecture 25: Steady–State Behavior of Markov Chains" from _Part III: Random Processes_ from **Introduction to Probability**](https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/)
 
 ---
 
@@ -65,7 +72,11 @@ _Back to the cases_...
 
 Hence, we know that the probability of transitioning from any state to any state does not converge for at least some states if either (1) the Markov chain has more than 1 recurrent class, or (2) the Markov chain has periodic states. However, while we know when the answer to the driving question is "no", when is it "yes"? We shall now see...
 
-# Sufficient conditions for steady-state behaviour
+# Conditions for steady-state behaviour
+## Necessary and sufficient conditions
+In general, we know that the n-step transition probability of a Markov chain converges for any state as n approaches infinity provided that (1) the transition probabilities converge, and (2) the converging transition probabilities are independent of the initial state; these are the necessary and sufficient conditions for a Markov chain to have steady-state behaviour. However, checking for these conditions is not straightforward. Hence, we shall see what easier-to-verify conditions could definitely prove that a Markov chain has steady-state behaviour.
+
+## Sufficient but not necesasry conditions
 THEOREM:
 
 $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converges to some $\pi_j$ for all $i$ and $j$ if:
@@ -73,14 +84,10 @@ $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converges to some $\pi_j$ for all $i
 1. Recurrent states are all in a single class, i.e. the Markov chain has only 1 recurrent class
 2. The single recurrent class is not periodic, i.e. the Markov chain has no periodic states
 
-**NOTE**: _The above are not necessary conditions, but they are sufficient conditions._
-
----
-
-Hence, we know that the n-step transition probability of a Markov chain converges for any state as n approaches infinity provided that (1) the transition probabilities converge, and (2) the converging transition probabilities are independent of the initial state. Note again that these are only sufficient conditions, not necessary conditions. Hence, a Markov chain may converge even if one of these conditions are false.
+**NOTE**: _The above are not necessary conditions, but they are sufficient conditions. Hence, a Markov chain may converge even if one or both of these conditions are false._
 
 # Calculating steady-state probabilities
-ASSUMPTION: The Markov chain displays steady-state behaviour.
+ASSUMPTION: The Markov chain has steady-state behaviour.
 
 By the Markov property, we have that:
 
@@ -100,3 +107,6 @@ Now, note that by itself, the system is singular, since $\pi_j = 0 \text{ } \for
 $\displaystyle \sum_{j=1}^m \pi_j= 1$
 
 Adding this equation to system, we see that $\pi_j = 0 \text{ } \forall j$ is an invalid solution, making the system non-singular, which means we can get exact steady-state probabilities by soliving the system.
+
+# Steady-state Markov chain follows a stationary distribution
+The steady-state probability for a given state can be regarded as the probability of the Markov chain (also called Markov process) being at the given state, with no other information provided, i.e. no information about the initial state or the current time step. Since the steady-state probabilities of a steady-state Markov chain are independent of initial state and current time step, they are constant no matter the initial state and no matter the current time step. Hence, it is valid to say that, in some sense, a steady-state Markov chain follows a stationary distribution.
