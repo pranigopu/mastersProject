@@ -51,7 +51,7 @@ Hence, we know that the probability of transitioning from any state to any state
 # Sufficient conditions for steady-state probabilities
 THEOREM:
 
-$r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i$ converges to some $\pi_j$ for all $i$ and $j$ if:
+$r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converges to some $\pi_j$ for all $i$ and $j$ if:
 
 1. Recurrent states are all in a single class, i.e. the Markov chain has only 1 recurrent class
 2. The single recurrent class is not periodic, i.e. the Markov chain has no periodic states
@@ -67,8 +67,15 @@ ASSUMPTION: The Markov chain displays steady-state behaviour.
 
 By the Markov property, we have that:
 
-$\displaystyle r_{ij}(n) = \sum_{k=1}^{m} r_{ik}(n-1) p_{kj}$
+$\displaystyle r_{ij}(n) = \sum_{k=1}^m r_{ik}(n-1) p_{kj}$
 
 As $n \rightarrow \infty$, given the Markov chain's steady-state behaviour:
 
-$r_{ij}(n) = \pi_kj$ and $\displaystyle \sum_{k=1}^{m} r_{ik}(n-1) p_{kj} = \sum_{k=1}^{m} \pi_{k} p_{kj}$
+$r_{ij}(n) = \pi_j$ and $\displaystyle \sum_{k=1}^m r_{ik}(n-1) p_{kj} = \sum_{k=1}^m \pi_{k} p_{kj}$
+
+$\displaystyle \therefore \pi_j = \sum_{k=1}^m \pi_{k} p_{kj}$
+
+Note that we have the above equation for all conceivable states $j \in {1, 2 ... m}$, and for each equation, the right-hand side gives us $m$ variables, namely $\pi_1, \pi_2 ... \pi_m$. Hence, when we consider all conceivable end states of the n-step transition, we get a system of $m$ linear equations with $m$ variables each. Note that "all conceivable end states" takes all the states into account, since we are considering the steady-state probabilities of all states.
+
+
+Now, note that by itself, the system is singular, since $\pi_j = 0 \forall j$ is a valid solution of the system. But when we consider the fact that each $\pi_j$ is a probability, and when we consider the fact that $\pi_1, \pi_2 ... \pi_m$ are the steady-state probabilities of the exhaustive set of possible states ${1, 2 ... m}$, we have that $\sum_{j=1}^m = 1$. Adding this equation to system, we see that $\pi_j = 0 \forall j$ is an invalid solution, making the system non-singular, which means we can get exact steady-state probabilities by soliving the system.
