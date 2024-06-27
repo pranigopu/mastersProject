@@ -78,8 +78,8 @@ $\displaystyle \therefore \pi_j = \sum_{k=1}^m \pi_{k} p_{kj}$
 Note that we have the above equation for all conceivable states $j \in {1, 2 ... m}$, and for each equation, the right-hand side gives us $m$ variables, namely $\pi_1, \pi_2 ... \pi_m$. Hence, when we consider all conceivable end states of the n-step transition, we get a system of $m$ linear equations with $m$ variables each. Note that "all conceivable end states" takes all the states into account, since we are considering the steady-state probabilities of all states.
 
 
-Now, note that by itself, the system is singular, since $\pi_j = 0 \forall j$ is a valid solution of the system. But when we consider the fact that each $\pi_j$ is a probability, and when we consider the fact that $\pi_1, \pi_2 ... \pi_m$ are the steady-state probabilities of the exhaustive set of possible states ${1, 2 ... m}$, we have that:
+Now, note that by itself, the system is singular, since $\pi_j = 0 \text{ } \forall j$ is a valid solution of the system. But when we consider the fact that each $\pi_j$ is a probability, and when we consider the fact that $\pi_1, \pi_2 ... \pi_m$ are the steady-state probabilities of the exhaustive set of possible states ${1, 2 ... m}$, we have that:
 
 $\displaystyle \sum_{j=1}^m \pi_j= 1$
 
-Adding this equation to system, we see that $\pi_j = 0 \forall j$ is an invalid solution, making the system non-singular, which means we can get exact steady-state probabilities by soliving the system.
+Adding this equation to system, we see that $\pi_j = 0 \text{ } \forall j$ is an invalid solution, making the system non-singular, which means we can get exact steady-state probabilities by soliving the system.
