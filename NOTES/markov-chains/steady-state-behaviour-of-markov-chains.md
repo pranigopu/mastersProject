@@ -4,6 +4,8 @@
 
 **Contents**:
 
+- [Background](#background)
+
 ---
 
 # Background
@@ -55,3 +57,18 @@ $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i$ converges to some $\pi_j$ for all $i$
 2. The single recurrent class is not periodic, i.e. the Markov chain has no periodic states
 
 **NOTE**: _The above are not necessary conditions, but they are sufficient conditions._
+
+---
+
+Hence, we know that the n-step transition probability of a Markov chain converges for any state as n approaches infinity provided that (1) the transition probabilities converge, and (2) the converging transition probabilities are independent of the initial state. Note again that these are only sufficient conditions, not necessary conditions. Hence, a Markov chain may converge even if one of these conditions are false.
+
+# Calculating the steady-state probabilities
+ASSUMPTION: The Markov chain displays steady-state behaviour.
+
+By the Markov property, we have that:
+
+$\displaystyle r_{ij}(n) = \sum_{k=1}^{m} r_{ik}(n-1) p_{kj}$
+
+As $n \rightarrow \infty$, given the Markov chain's steady-state behaviour:
+
+$r_{ij}(n) = \pi_kj$, $\displaystyle \sum_{k=1}^{m} r_{ik}(n-1) p_{kj} = \sum_{k=1}^{m} \pi_{k} p_{kj}$
