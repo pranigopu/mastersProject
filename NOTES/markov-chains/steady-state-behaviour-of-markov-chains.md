@@ -5,6 +5,8 @@
 **Contents**:
 
 - [Background](#background)
+- [Sufficient conditions for steady-state behaviour](#sufficient-conditions-for-steady-state-behaviour)
+- [Calculating steady-state probabilities](#calculating-steady-state-probabilities)
 
 ---
 
@@ -48,7 +50,7 @@ _Back to the cases_...
 
 Hence, we know that the probability of transitioning from any state to any state does not converge for at least some states if either (1) the Markov chain has more than 1 recurrent class, or (2) the Markov chain has periodic states. However, while we know when the answer to the driving question is "no", when is it "yes"? We shall now see...
 
-# Sufficient conditions for steady-state probabilities
+# Sufficient conditions for steady-state behaviour
 THEOREM:
 
 $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converges to some $\pi_j$ for all $i$ and $j$ if:
@@ -62,7 +64,7 @@ $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converges to some $\pi_j$ for all $i
 
 Hence, we know that the n-step transition probability of a Markov chain converges for any state as n approaches infinity provided that (1) the transition probabilities converge, and (2) the converging transition probabilities are independent of the initial state. Note again that these are only sufficient conditions, not necessary conditions. Hence, a Markov chain may converge even if one of these conditions are false.
 
-# Calculating the steady-state probabilities
+# Calculating steady-state probabilities
 ASSUMPTION: The Markov chain displays steady-state behaviour.
 
 By the Markov property, we have that:
