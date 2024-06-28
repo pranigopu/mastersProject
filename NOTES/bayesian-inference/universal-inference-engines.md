@@ -7,7 +7,12 @@
 - [Introduction](#introduction)
 - [Markov chain Monte Carlo](#markov-chain-monte-carlo)
     - [Key advantange and disadvantage of MCMC](#key-advantage-and-disadvantage-of-mcmc)
-    - [Key points about MCMC](#key-points-about-mcmc)
+    - [Detailed balance condition](#detailed-balance-condition)
+    - [Key points](#key-points)
+- [Metropolis-Hastings algorithm](#metropolis-hastings-algorithm)
+    - [Defining the transition probability](#defining-the-transition-probability)
+    - [Defining the acceptance probability](#defining-the-acceptance-probability)
+    - [Key points](#key-points-1)
 
 ---
 
@@ -60,7 +65,7 @@ In other terms, the total probability of transitioning from some random state to
 ## Key advantange and disadvantage of MCMC
 The main disadvantage of MCMC is also its main advantage: in MCMC samples are not uncorrelated, which means that while we are more likely to sample more around samples that have a high-probability of being in the target distribution, the downside is that we may get a biased or incomplete estimate for the target distribution, since our sampling is no longer exactly random and thus may not be representative of the distribution it is drawn from.
 
-## Key points about MCMC
+## Key points
 - MCMC can be _potentially_ more efficient, but is not necessarily so
 - MCMC focuses on sampling more from the higher-density regions of the target distribution
 - However, due to randomness, lower-density regions are also sampled (as they must be, of course), but relatively less
