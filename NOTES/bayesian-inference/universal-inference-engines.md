@@ -29,6 +29,21 @@ Hence, our aim is to design a Markov chain with transition probabilities such th
 
 Note that it may take a while for the overall (i.e. long-run) transition probabilities to settle, which means that there would be a sequence of samples (i.e. states) that need to be drawn before we reach the point where the samples tend by-and-large to fit the target distribution. These sequence of samples are the "burn in" samples. The key consideration in designing the right Markov chain is that the transition probabilities between the states (i.e. the samples drawin) lead to the required steady-state probabilities.
 
-One way to design the required transition probabilities with respect to a given target distribution $p$ (which the steady-state probabilities should represent) is by noting that once the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the long-range (i.e. steady-state) probability of observing a state $x$ (i.e. drawing a sample $x$ in our case) and then transitioning to a state $y$ (i.e. then drawing the sample $y$, in our case) is the same as the long-range (i.e. steady-state) probability of observing $y$ and then transitioning to $x$. Why is the condition valid? Because when the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the joint probability of drawing two samples next-to-next should be independent of the order in which they were drawn. In the context of a Markov chain, it is called the "detailed balance condition". Mathematically, it is as follows:
+One way to design the required transition probabilities with respect to a given target distribution $p$ (which the steady-state probabilities should represent) is by noting that once the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the long-range (i.e. steady-state) probability of observing a state $x$ (i.e. drawing a sample $x$ in our case) and then transitioning to state $y$ (i.e. then drawing the sample $y$) should be the same as the long-range (i.e. steady-state) probability of observing $y$ and then transitioning to $x$. Why is the condition valid? Because when the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the joint probability of drawing two samples next-to-next should be independent of the order in which they were drawn. In the context of a Markov chain, it is called the "detailed balance condition". Mathematically, it is as follows:
 
-$p(x) T(y|x) = p(y) T(x|y) \text{ } \forall x, y$
+$p(x) T(y|x) = p(y) T(x|y) \text{ } \forall x, y \in \Theta$
+
+Here:
+
+- $T(u|v)$ is the transition probability from state $v$ to state $u$
+- $p$ is the steady-state probability distribution, which is meant to equal the target distribution
+- $\Theta$ is the sample space
+
+---
+
+We can see that the above condition implies that $p$ is a stationary distribution because:
+
+1. $\displaystyle p(y) = \sum_{x \in \Theta} p(x) T(y|x)$
+2. $\displaystyle p(x) = \sum_{y \in \Theta} p(y) T(x|y)$
+
+In other terms, the total probability of transitioning from some random state to a given state is the same as observing the given state, disregarding the current state and current time step. In other words, the overall probability distribution does not change between transitions, showing a steady-state behaviour and hence a stationary distribution.
