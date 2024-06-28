@@ -6,7 +6,7 @@
 
 ---
 
-# Markov chain Monte Carlo
+# Markov chain Monte Carlo sampling
 **_A broad sampling method_**
 
 Let $p$ be the target distribution we aim to estimate through samples.
@@ -47,3 +47,6 @@ We can see that the above condition implies that $p$ is a stationary distributio
 2. $\displaystyle p(x) = \sum_{y \in \Theta} p(y) T(x|y)$
 
 In other terms, the total probability of transitioning from some random state to a given state is the same as observing the given state, disregarding the current state and current time step. In other words, the overall probability distribution does not change between transitions, showing a steady-state behaviour and hence a stationary distribution.
+
+## Key advantange and disadvantage of MCMC sampling
+The main disadvantage of MCMC is also its main advantage: in MCMC samples are not uncorrelated, which means that while we are more likely to sample more around samples that have a high-probability of being in the target distribution, the downside is that we may get a biased or incomplete estimate for the target distribution, since our sampling is no longer exactly random and thus may not be representative of the distribution it is drawn from.
