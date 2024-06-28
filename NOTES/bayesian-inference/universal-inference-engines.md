@@ -85,13 +85,39 @@ The next sample drawn based on the current sample is accepted or rejected based 
 
 ---
 
-Hence, the transition probability of going from state $a$ (i.e. sampling $a$) to state $b$ (i.e. sampling $b$) is the probability of sampling $b$ after $a$ and then accepting $b$. Mathematically, it is given by:
+Hence, the transition probability of going from state $a$ (i.e. sampling $a$) to state $b$ (i.e. sampling $b$) is the probability of sampling $b$ after $a$ and then accepting $b$. Mathematically, it is given by: $g(b | a) A(a \rightarrow b)$
 
-$g(b | a) A(a \rightarrow b)$.
+# Defining the acceptance probability
+How should the acceptance probability a.k.a. the transition probability $A$ be defined? Here, we use the detailed balance condition seen in MCMC (see: ["Detailed balance condition" from "Markov chain Monte Carlo"](#detailed-balance-condition). Let $T(u|v)$ be the transition probability from state $v$ to state $u$, and let $\Theta$ be the sample space. Then, by the detailed balance condition:
 
+$p(a) T(b|a) = p(b) T(a|b) \text{ } \forall a \in \Theta,  \text{ } \forall b \in \Theta$
 
-How should the acceptance probability a.k.a. the transition probability $A$ be defined? Here, we use the detailed balance condition seen in MCMC (see: ["Detailed balance condition" from "Markov chain Monte Carlo"](#detailed-balance-condition), which is given by the following (note that $\Theta$ is the sample space):
+We know that $f$ is the numerator of $p$. Let $p(x) = \frac{f(x)}{N}$, for some $N$. Then:
 
-$p(x) A(y|x) = p(y) A(x|y) \text{ } \forall x \in \Theta,  \text{ } \forall y \in \Theta$
+$\frac{f(x)}{N} g(b|a) A(a \rightarrow b) = \frac{f(x)}{N} g(a|b) A(b \rightarrow a)$
 
+$\implies \frac{A(a \rightarrow b)}{A(b \rightarrow a)} = \frac{f(a)}{f(b)} \frac{g(a|b)}{g(b|a)}$
+
+---
+
+For convenience, put $\frac{f(a)}{f(b)} = r_f$ and $\frac{g(a|b)}{g(b|a)} = r_g$. Then:
+
+$\frac{A(a \rightarrow b)}{A(b \rightarrow a)} = r_f r_g$
+
+Now, given that we know $A$ defines a probability, we know that $A(a \rightarrow b) \leq 1$ and $A(b \rightarrow a) \leq 1$.
+
+---
+
+Using the above inequalities and equation, we get the following cases:
+
+1. $r_f r_g < 1 \implies A(a \rightarrow b) = r_f r_g$ and $A(b \rightarrow a) = 1$
+2. $r_f r_g \geq 1 \implies A(a \rightarrow b) = 1$ and $A(b \rightarrow a) = \frac{1}{r_f r_g}$
+
+We can simplify the above cases as follows:
+
+$A(a \rightarrow b) = \max(1, r_f r_g)$
+
+---
+
+**INTUITION FOR THE ABOVE**:
 
