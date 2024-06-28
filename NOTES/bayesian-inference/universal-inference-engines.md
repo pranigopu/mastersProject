@@ -147,6 +147,6 @@ Hence, we have the following cases:
 
 What does this mean, practically? It means that if $b$ is a sample from a higher-density region of the target distribution $p$ than $a$, then it will certainly be accepted, which makes sense because we want to sample more from higher-density regions. However, if $b$ is a sample from a lower-density region of the target distribution $p$ than $a$, then it may or may not be accepted from $a$. Furthermore, we see that the probability of accepting $b$ from $a$ is lesser the lesser the density of $b$ is compared to the density of $a$, which also makes sense because we want there to be a lower but non-zero chance of sampling from a lower-density region after sampling from a higher-density region, with the condition that the lower the density, the lower the chance. We see how such a policy is an MCMC method that helps estimate the target distribution more accurately and more efficientl over time.
 
-# Key points
+## Key points
 - Metropolis algorithm is a special case of MH algorithm wherein the candidate distribution $g$ is symmetrical
 - MH algorithm can have an asymmetrical candidate distribution as well
