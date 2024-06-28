@@ -47,8 +47,8 @@ Here:
 
 We can see that the above condition implies that $p$ is a stationary distribution because:
 
-1. $\displaystyle p(y) = \sum_{x \in \Theta} p(x) T(y|x)$
-2. $\displaystyle p(x) = \sum_{y \in \Theta} p(y) T(x|y)$
+- $\displaystyle p(y) = \sum_{x \in \Theta} p(x) T(y|x)$
+- $\displaystyle p(x) = \sum_{y \in \Theta} p(y) T(x|y)$
 
 In other terms, the total probability of transitioning from some random state to a given state is the same as observing the given state, disregarding the current state and current time step. In other words, the overall probability distribution does not change between transitions, showing a steady-state behaviour and hence a stationary distribution.
 
