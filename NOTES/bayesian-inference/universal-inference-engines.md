@@ -4,12 +4,13 @@
 
 **Contents**:
 
-- [Markov chain Monte Carlo sampling](#markov-chain-monte-carlo-sampling)
-    - [ Key advantange and disadvantage of MCMC](#key-advantage-and-disadvantage-of-mcmc)
+- [Markov chain Monte Carlo](#markov-chain-monte-carlo)
+    - [Key advantange and disadvantage of MCMC](#key-advantage-and-disadvantage-of-mcmc)
+    - [Key points about MCMC](#key-points-about-mcmc)
 
 ---
 
-# Markov chain Monte Carlo sampling
+# Markov chain Monte Carlo
 **_A broad sampling method_**
 
 Let $p$ be the target distribution we aim to estimate through samples.
@@ -53,3 +54,7 @@ In other terms, the total probability of transitioning from some random state to
 
 ## Key advantange and disadvantage of MCMC
 The main disadvantage of MCMC is also its main advantage: in MCMC samples are not uncorrelated, which means that while we are more likely to sample more around samples that have a high-probability of being in the target distribution, the downside is that we may get a biased or incomplete estimate for the target distribution, since our sampling is no longer exactly random and thus may not be representative of the distribution it is drawn from.
+
+## Key points about MCMC
+- MCMC can be _potentially_ more efficient, but is not necessarily so
+- MCMC is an umbrella term for a wide variety of methods that define how to design the transition probabilities
