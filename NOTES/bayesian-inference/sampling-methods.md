@@ -22,7 +22,17 @@ Suppose we have a distribution $p$ which we do not yet know fully, but which we 
 # Markov chain Monte Carlo
 **_A broad sampling method_**
 
+**MOTIVATION**: Why is it important?
+
+It forms the theoretical basis for the Metropolis-Hastings algorithm, which is a foundational sampling method.
+
+---
+
+**NOTATION**:
+
 Let $p$ be the target distribution we aim to estimate through samples.
+
+---
 
 KEY IDEAS:
 
@@ -31,6 +41,8 @@ KEY IDEAS:
 - More specifically, we want the next sample to depend on the previous sample
 
 The last key idea essentially becomes the use of a Markov chain for sampling. Furthermore, we are taking a sequence of random samples from the Markov chain to estimate the target distribution $p$, which is essentially a Monte Carlo simulation used to estimate $p$. Hence, our key ideas lead to the combination of a Markov chain and a Monte Carlo simulation, i.e. it leads to a Markov chain Monte Carlo (MCMC) sampling method.
+
+---
 
 KEY QUESTION: How to design a Markov chain that samples from the target distibution?
 
@@ -79,9 +91,12 @@ The main disadvantage of MCMC is also its main advantage: in MCMC samples are no
 
 MH algorithm is not a very modern or particularly efficient algorithm, but it is simple to understand and also provides a foundation to understand more sophisticated and powerful methods for sampling from and estimating the posterior distribution (paraphrased from ["1.2. A DIY Sampler, Do Not Try This at Home" from "1. Bayesian Inference" from _Bayesian Modeling and Computation in Python_](https://bayesiancomputationbook.com/markdown/chp_01.html)).
 
-Let $f$ represent the numerator of the target distribution $p$.
+---
 
-Let $g$ be the candidate distribution using which we shall take new samples.
+**NOTATION**:
+
+- Let $f$ represent the numerator of the target distribution $p$.
+- Let $g$ be the candidate distribution using which we shall take new samples.
 
 ## Defining the transition probability
 The transition probability is made of two components...
