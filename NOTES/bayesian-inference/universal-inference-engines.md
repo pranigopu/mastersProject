@@ -1,14 +1,18 @@
-**UNIVERSAL INFERENCE ENGINE**
+**SAMPLING**
 
 ---
 
 **Contents**:
 
+- [Introduction](#introduction)
 - [Markov chain Monte Carlo](#markov-chain-monte-carlo)
     - [Key advantange and disadvantage of MCMC](#key-advantage-and-disadvantage-of-mcmc)
     - [Key points about MCMC](#key-points-about-mcmc)
 
 ---
+
+# Introduction from a Bayesian context
+Suppose we have a distribution $p$ which we do not yet know fully, but which we know only the numerator of. Note how this situation perfectly matches our situation in many cases of Bayesian inference, where we have the numerator of the posterior distribution but not the denominator, which can be impractical or even impossible to compute (by either estimation or calculation) with enough accuracy. Hence, we see that if we have methods to estimate $p$ using sampling based on some use of the numerator of $p$ to weight the acceptance or rejection of samples, then we shall have methods to at least try to estimate the posterior distribution of a Bayesian model, thereby helping us to perform Bayesian inference in cases where the closed expression of the model cannot be found in its entirety.
 
 # Markov chain Monte Carlo
 **_A broad sampling method_**
@@ -33,6 +37,7 @@ Hence, our aim is to design a Markov chain with transition probabilities such th
 
 Note that it may take a while for the overall (i.e. long-run) transition probabilities to settle, which means that there would be a sequence of samples (i.e. states) that need to be drawn before we reach the point where the samples tend by-and-large to fit the target distribution. These sequence of samples are the "burn in" samples. The key consideration in designing the right Markov chain is that the transition probabilities between the states (i.e. the samples drawin) lead to the required steady-state probabilities.
 
+## Detailed balance condition
 One way to design the required transition probabilities with respect to a given target distribution $p$ (which the steady-state probabilities should represent) is by noting that once the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the long-range (i.e. steady-state) probability of observing a state $x$ (i.e. drawing a sample $x$ in our case) and then transitioning to state $y$ (i.e. then drawing the sample $y$) should be the same as the long-range (i.e. steady-state) probability of observing $y$ and then transitioning to $x$. Why is the condition valid? Because when the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the joint probability of drawing two samples next-to-next should be independent of the order in which they were drawn. In the context of a Markov chain, it is called the "detailed balance condition". Mathematically, it is as follows:
 
 $p(x) T(y|x) = p(y) T(x|y) \text{ } \forall x \in \Theta,  \text{ } \forall y \in \Theta$
@@ -57,4 +62,30 @@ The main disadvantage of MCMC is also its main advantage: in MCMC samples are no
 
 ## Key points about MCMC
 - MCMC can be _potentially_ more efficient, but is not necessarily so
+- MCMC focuses on sampling more from the higher-density regions of the target distribution
+- However, due to randomness, lower-density regions are also sampled (as they must be, of course), but relatively less
 - MCMC is an umbrella term for a wide variety of methods that define how to design the transition probabilities
+- The specific acceptance and rejection methods used under the broader MCMC framework define the specific MCMC method
+
+# Metropolis-Hastings algorithm
+**_An MCMC method_**
+
+Let $f$ represent the numerator of the target distribution $p$.
+
+## Defining the transition probability
+The transition probability is made of two components...
+
+**1. Sampling probability**:
+
+The next sample is sampled based on the current sample using an easier distribution $g$ whose parameters depend on the current sample. For example, we can define the probability of sampling $X_{t+1}$ given the current sample $X_t$ based on the distribution defined as $g(X_{t+1} | X_t) = \text{Normal}(X_t, \sigma^2)$.
+
+**2. Acceptance probability**:
+
+The next sample drawn based on the current sample is accepted or rejected based on the acceptance probability $A$. This is essentially the transition probability, i.e. the probability of transitioning from the current state (i.e. the current sample, in our case) $X_t$ to the prosed next state (i.e. the proposed next sample, in our case) $X_{t+1}$.
+
+
+How should the acceptance probability a.k.a. the transition probability $A$ be defined? Here, we use the detailed balance condition seen in MCMC (see: ["Detailed balance condition" from "Markov chain Monte Carlo"](#detailed-balance-condition), which is given by the following (note that $\Theta$ is the sample space):
+
+$p(x) A(y|x) = p(y) A(x|y) \text{ } \forall x \in \Theta,  \text{ } \forall y \in \Theta$
+
+
