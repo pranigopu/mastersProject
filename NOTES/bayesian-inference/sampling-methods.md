@@ -75,6 +75,10 @@ The main disadvantage of MCMC is also its main advantage: in MCMC samples are no
 # Metropolis-Hastings algorithm
 **_An MCMC method_**
 
+**MOTIVATION**: Why is it important?
+
+MH algorithm is not a very modern or particularly efficient algorithm, but it is simple to understand and also provides a foundation to understand more sophisticated and powerful methods for sampling from and estimating the posterior distribution (paraphrased from ["1.2. A DIY Sampler, Do Not Try This at Home" from "1. Bayesian Inference" from _Bayesian Modeling and Computation in Python_](https://bayesiancomputationbook.com/markdown/chp_01.html)).
+
 Let $f$ represent the numerator of the target distribution $p$.
 
 Let $g$ be the candidate distribution using which we shall take new samples.
