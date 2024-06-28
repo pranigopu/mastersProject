@@ -77,11 +77,17 @@ The transition probability is made of two components...
 
 **1. Sampling probability**:
 
-The next sample is sampled based on the current sample using an easier distribution $g$ whose parameters depend on the current sample. For example, we can define the probability of sampling $X_{t+1}$ given the current sample $X_t$ based on the distribution defined as $g(X_{t+1} | X_t) = \text{Normal}(X_t, \sigma^2)$.
+The next sample is sampled based on the current sample using an easier distribution $g$ whose parameters depend on the current sample. For example, we can define the probability of sampling $b$ given the current sample $a$ based on the distribution defined as $g(b | a) = \text{Normal}(a, \sigma^2)$.
 
 **2. Acceptance probability**:
 
-The next sample drawn based on the current sample is accepted or rejected based on the acceptance probability $A$. This is essentially the transition probability, i.e. the probability of transitioning from the current state (i.e. the current sample, in our case) $X_t$ to the prosed next state (i.e. the proposed next sample, in our case) $X_{t+1}$.
+The next sample drawn based on the current sample is accepted or rejected based on the acceptance probability $A$. This is essentially the transition probability from the current state $a$ to the next state $b$ given that $b$ is what has been sampled after $a$ according to the sampling probability $g(b | a)$. It is denoted by $A(a \rightarrow b)$, read as "the probability of accepting the move from the sample $a$ to the proposed sample $b$".
+
+---
+
+Hence, the transition probability of going from state $a$ (i.e. sampling $a$) to state $b$ (i.e. sampling $b$) is the probability of sampling $b$ after $a$ and then accepting $b$. Mathematically, it is given by:
+
+$g(b | a) A(a \rightarrow b)$.
 
 
 How should the acceptance probability a.k.a. the transition probability $A$ be defined? Here, we use the detailed balance condition seen in MCMC (see: ["Detailed balance condition" from "Markov chain Monte Carlo"](#detailed-balance-condition), which is given by the following (note that $\Theta$ is the sample space):
