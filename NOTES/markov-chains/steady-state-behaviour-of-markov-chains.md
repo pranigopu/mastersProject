@@ -24,7 +24,7 @@ Does the probability of transitioning from any state to any state converge to so
 
 _More formally_...
 
-Does $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i$ converge to some $\pi_j$ for all $i$ and $j$?
+Does $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converge to some $\pi_j$ for all $i$ and $j$?
 
 ---
 
@@ -32,7 +32,7 @@ Does $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i$ converge to some $\pi_j$ for all
 
 ---
 
-Key to answering the above question is to answer whether the initial state $i$ is relevant to the above probability. If yes, then the answer to the above question is no. Hence, we have the question: under what conditions is the initial state $i$ relevant in n-step transition probabilities as n tends to infinity? Here, consider the following cases:
+Key to answering the above question is to answer whether the initial state $i$ is relevant to the above probability. If yes, then the answer to the above question is no. Hence, we have the question: under what conditions is the initial state $i$ relevant in n-step transition probabilities as n tends to infinity? Here, consider the following cases.
 
 ---
 
