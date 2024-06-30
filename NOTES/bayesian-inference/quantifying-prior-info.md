@@ -57,11 +57,14 @@ More precisely, the principle of maximum entropy states the following: (1) Take 
 
 The distributions with the largest entropy under the following constraints are:
 
-- No constraints: Uniform (continuous or discrete, according to the type of variable)
-- A positive mean, with support $[0, \infty)$: Exponential
-- An absolute deviation to the mean, with support $(-\infty, \infty)$: Laplace (a.k.a. double exponential)
-- A given mean and variance, with support $(-\infty, \infty)$: Normal distribution
-- Only two unordered outcomes and a constant mean: Binomial <br> **NOTE**: _Poisson if we have rare events; Poisson can be seen as a special case of binomial_
+| Contraints | Maximal entropy distribution |
+| --- | --- |
+| none | uniform |
+| +ve mean, support $[0, \infty)$ | exponential |
+| given mean and variance, support $(-\infty, \infty)$ | normal |
+| only two unordered outcomes, constant mean | binomial |
+
+**NOTE**: _For the last case, we use Poisson if we have rare events; Poisson can be seen as a special case of binomial._
 
 ---
 
