@@ -61,10 +61,17 @@ The distributions with the largest entropy under the following constraints are:
 | --- | --- |
 | none | uniform |
 | +ve mean, support $[0, \infty)$ | exponential |
+| given absolute deviation to mean, support $(-\infty, \infty)$ | Laplace |
 | given mean and variance, support $(-\infty, \infty)$ | normal |
 | only two unordered outcomes, constant mean | binomial |
 
-**NOTE**: _For the last case, we use Poisson if we have rare events; Poisson can be seen as a special case of binomial._
+- An absolute deviation to the mean, with support $(-\infty, \infty)$: Laplace (a.k.a. double exponential)
+
+---
+
+**NOTE 1**: For the last case, we use Poisson if we have rare events; Poisson can be seen as a special case of binomial.
+
+**NOTE 2**: Laplace distribution is also called the double exponential distribution.
 
 ---
 
