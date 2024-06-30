@@ -10,6 +10,7 @@
 - [Maximum entropy priors](#maximum-entropy-priors)
   - [PRELIMINARY CONCEPT: Entropy](#preliminary-concept-entropy)
   - [MAIN CONCEPT: The principle of maximum entropy](#main-concept-the-principle-of-maximum-entropy)
+- [Weakly informative priors a.k.a. regularisation priors](#weakly-informative-priors-aka-regularisation-priors)
 
 ---
 
@@ -65,8 +66,6 @@ The distributions with the largest entropy under the following constraints are:
 | given mean and variance, support $(-\infty, \infty)$ | normal |
 | only two unordered outcomes, constant mean | binomial |
 
-- An absolute deviation to the mean, with support $(-\infty, \infty)$: Laplace (a.k.a. double exponential)
-
 ---
 
 **NOTE 1**: For the last case, we use Poisson if we have rare events; Poisson can be seen as a special case of binomial.
@@ -79,3 +78,16 @@ For further references for and/or validation of the principle:
 
 - [Principle of maximum entropy (Wikipedia)](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy)
 - ["The Principle of Maximum Entropy" by Mutual Information (YouTube)](https://www.youtube.com/watch?v=2gTrsLVnp9c)
+
+# Weakly informative priors a.k.a. regularisation priors
+For many problems, we often have information about the possible values a parameter of our model for the problem. Such information can be derived in many ways, e.g. the possible range based on the physical meaning of the parameter, the plausible range based on previous experiments/observations, etc.. For example, we know heights must be positive. We can use such information to weakly inform our analysis, i.e. to keep our model within reasonable bounds without making strong assumptions. Priors based on such information are called weakly informative priors; what makes a prior a weakly informative prior is based more on empirical or model-driven factors than on a well-defined mathematical framework.
+
+Regularisation is a procedure of adding information with the aim of solving an ill-posed problem or to reduce the chance of overfitting and priors offer a principled way of performing regularisation. Hence, because weakly-informative priors work to keep the posterior distribution within reasonable bounds, they are also known as regularising priors.
+
+---
+
+**Regularisation priors to prevent overfitting**:
+
+Overfitting occurs when a model makes predictions very close to the dataset used to fit it, but it fails to fit additional data and/or predict future observations with reasonable accuracy. In other words, overfitting occurs when a model is fine-tuned to specifics that may be uncommon in general. Hence, overfitting is the failure to generalise the model. A regularisation prior can help correct for overfitting by ensuring that the model is aligned with at least some reasonable expectations about the system or process being modelled. Hence, Bayesian modelling generalises the process of regularisation, since any regularisation parameter such as, say a cost function of a machine learning algorithm, can be understood as a regularisation prior of a Bayesian model.
+
+**NOTE**: _The counterpart of overfitting is underfitting, which is when a model fails to adequately capture the underlying structure of the data._
