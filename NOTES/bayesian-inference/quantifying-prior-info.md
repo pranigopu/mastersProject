@@ -11,6 +11,7 @@
   - [PRELIMINARY CONCEPT: Entropy](#preliminary-concept-entropy)
   - [MAIN CONCEPT: The principle of maximum entropy](#main-concept-the-principle-of-maximum-entropy)
 - [Weakly informative priors a.k.a. regularisation priors](#weakly-informative-priors-aka-regularisation-priors)
+- [Using prior predictive distributions to decide on priors](#using-prior-predictive-distributions-to-decide-on-priors)
 
 ---
 
@@ -91,3 +92,7 @@ Regularisation is a procedure of adding information with the aim of solving an i
 Overfitting occurs when a model makes predictions very close to the dataset used to fit it, but it fails to fit additional data and/or predict future observations with reasonable accuracy. In other words, overfitting occurs when a model is fine-tuned to specifics that may be uncommon in general. Hence, overfitting is the failure to generalise the model. A regularisation prior can help correct for overfitting by ensuring that the model is aligned with at least some reasonable expectations about the system or process being modelled. Hence, Bayesian modelling generalises the process of regularisation, since any regularisation parameter such as, say a cost function of a machine learning algorithm, can be understood as a regularisation prior of a Bayesian model.
 
 **NOTE**: _The counterpart of overfitting is underfitting, which is when a model fails to adequately capture the underlying structure of the data._
+
+# Using prior predictive distributions to decide on priors
+**For notes on prior predictive distributions, see**: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)
+
