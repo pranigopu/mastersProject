@@ -26,11 +26,17 @@ The posterior distribution is the central object in Bayesian statistics, but it 
 - $\Theta$ = The exhaustive set of models being considered <br> ..._usually of a specific generalised definition, e.g. a specific family of distributions_
 
 # Prior predictive distribution (PrPD)
-The PrPD is the distribution of expected data $D'$ according to the generalised model $\Theta$ (whose expectations are quantified by the prior and likelihood), without having observed any data. In other words, it is the data we expect, given the generalised model, before actually observing any data. Hence, the PrPD tells us about the nature of the generalised model in and of itself. Mathematically, the PrPD is given by:
+The PrPD is the distribution of expected data $D'$ according to the generalised model $\Theta$ (whose expectations are quantified by the prior and likelihood), without having observed any data. In other words, it is the distribution of the data we expect, given the generalised model, before actually observing any data. Hence, the PrPD tells us about the nature of the generalised model in and of itself. Mathematically, the PrPD is given by:
 
 $\displaystyle P(D') = \int_{\theta \in \Theta} P(D' | \theta) P(\theta) d \theta$
 
-**NOTE**: $P(D') = P(D' | \Theta)$, _since_ $P(D')$ _is essentially the marginal probability of getting the potential data $D'$ with the model kept variable, i.e. with the model having been generalised._
+---
+
+**NOTE 1**: $P(D') = P(D' | \Theta)$, since $P(D')$ is essentially the marginal probability of getting the potential data $D'$ with the model kept variable, i.e. with the model having been generalised.
+
+**NOTE 2**: By plugging in $D$ for $D'$, we can see whether the model's prior (i.e. the encoded prior knowledge and/or assumptions) are sufficiently aligned with the underlying structure of the observed data $D$.
+
+---
 
 The expression for the PrPD looks similar to the denominator component of Bayesian inference. However, unlike the denominator, PrPD is based on a likelihood (i.e. $P(D' | \theta)$) that is not conditioned by any observed data.
 

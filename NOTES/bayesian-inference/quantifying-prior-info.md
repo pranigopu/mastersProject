@@ -15,6 +15,8 @@
 
 ---
 
+**Main resource**: ["1. Bayesian Inference" from _Bayesian Computation Book_](https://bayesiancomputationbook.com/markdown/chp_01.html)
+
 # Conjugate priors
 Consider a Bayesian model wherein the likelihood and the prior are defined using theoretical distributions. If the prior is defined with respect to the likelihood such that the posterior's theoretical distribution is of the same kind (i.e. the same family of distributions) as the prior, then we say that the chosen prior is a conjugate prior to the likelihood.
 
@@ -44,7 +46,7 @@ The entropy of a system is the measure of uncertainty we have about the outcomes
 
 The more we know about how likely one outcome is compared to the others, the less uncertainty we have about the outcomes of the system and thus the less entropy the system has. Conversely, the less we know about how likely one outcome is compared to the others, the more uncertainty we have about the outcomes of the system and thus the more entropy the system has. Hence, entropy measures our uncertainty about the distribution of the outcomes of the system.
 
-**NOTE**: _A system is any complex integration of entities and their interactions, e.g. a complex entity, a model, a process, etc. A system, hence, is a generic term for anything that behaves a certain way so as to produce certain outcomes._
+**NOTE**: _A system is any complex integration of entities and their interactions, e.g. a complex entity, a model, a population, a process, etc. A system, hence, is a generic term for anything that behaves a certain way so as to produce certain outcomes._
 
 ## MAIN CONCEPT: The principle of maximum entropy
 Given our prior knowledge/assumptions about a system, the principle of maximum entropy states that the probability distribution which best represents our uncertainty about a system (i.e. about its potential outcomes) is the one with largest entropy. Note that prior knowledge/assumptions about a system also represent prior knowledge/assumptions about the probability distribution of its outcomes.
@@ -96,3 +98,6 @@ Overfitting occurs when a model makes predictions very close to the dataset used
 # Using prior predictive distributions to decide on priors
 **For notes on prior predictive distributions, see**: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)
 
+The prior predictive distribution (PrPD) of a generalised model is the distribution of the data that could be expected, given the prior (i.e. the encoded prior knowledge and/or assumptions) we have chosen. Using the distribution, we can see what prior or range of priors would lead to a reasonable and/or plausible expectation of potential data. In other words, using the PrPD allows us to get reasonable/plausible priors based on our knowledge what is reasonable and/or plausible to expect about the thing (a system or a population) that we want to model.
+
+Additionally, computing the prior predictive distribution to some extent could help us ensure our model has been properly written and is able to run in our probabilistic programming language; it can even help us to debug our model. Later, we shall see more concrete examples of how to reason about prior predictive samples and use them to choose reasonable priors.
