@@ -12,10 +12,10 @@
 
 ---
 
-**Main resources**:
-
-- ["1. Bayesian Inference" from _Bayesian Computation Book_](https://bayesiancomputationbook.com/markdown/chp_01.html)
-- [Bayesian vs frequentist statistics, Ox educ](https://youtu.be/r76oDIvwETI?si=Fk8-Z6kLIhqULcTq)
+> **Main resources**:
+>
+> - [_1. Bayesian Inference_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_01.html)
+> - [Bayesian vs frequentist statistics, Ox educ](https://youtu.be/r76oDIvwETI?si=Fk8-Z6kLIhqULcTq)
 
 ---
 
