@@ -94,3 +94,4 @@ Focuses on the uncertainty of the outcomes given certain underlying conditions. 
 2. [Predictive distributions](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md)
 3. [Sampling methods](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/sampling-methods.md)
 4. [Quantifying prior information](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/quantifying-prior-info.md)
+5. [Exploratory Analysis of Bayesian Models](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/exploratory-analysis-of-bayesian-models.md)
