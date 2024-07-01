@@ -9,7 +9,7 @@
 
 ---
 
-**Main resource** https://bayesiancomputationbook.com/markdown/chp_01.html
+> **Main resource** https://bayesiancomputationbook.com/markdown/chp_01.html
 
 ---
 
