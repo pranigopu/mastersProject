@@ -93,3 +93,4 @@ Focuses on the uncertainty of the outcomes given certain underlying conditions. 
 1. [Components of Bayesian Inference](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/components-of-bayesian-inference.md)
 2. [Predictive distributions](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md)
 3. [Sampling methods](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/sampling-methods.md)
+4. [Quantifying prior information](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/quantifying-prior-info.md)
