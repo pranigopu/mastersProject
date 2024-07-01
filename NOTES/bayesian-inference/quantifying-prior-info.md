@@ -15,7 +15,7 @@
 
 ---
 
-**Main resource**: ["1. Bayesian Inference" from _Bayesian Computation Book_](https://bayesiancomputationbook.com/markdown/chp_01.html)
+> **Main resource**: ["1. Bayesian Inference" from _Bayesian Computation Book_](https://bayesiancomputationbook.com/markdown/chp_01.html)
 
 # Conjugate priors
 Consider a Bayesian model wherein the likelihood and the prior are defined using theoretical distributions. If the prior is defined with respect to the likelihood such that the posterior's theoretical distribution is of the same kind (i.e. the same family of distributions) as the prior, then we say that the chosen prior is a conjugate prior to the likelihood.
@@ -77,10 +77,10 @@ The distributions with the largest entropy under the following constraints are:
 
 ---
 
-For further references for and/or validation of the principle:
-
-- [Principle of maximum entropy (Wikipedia)](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy)
-- ["The Principle of Maximum Entropy" by Mutual Information (YouTube)](https://www.youtube.com/watch?v=2gTrsLVnp9c)
+> For further references for and/or validation of the principle:
+>
+> - [Principle of maximum entropy (Wikipedia)](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy)
+> - ["The Principle of Maximum Entropy" by Mutual Information (YouTube)](https://www.youtube.com/watch?v=2gTrsLVnp9c)
 
 # Weakly informative priors a.k.a. regularisation priors
 For many problems, we often have information about the possible values a parameter of our model for the problem. Such information can be derived in many ways, e.g. the possible range based on the physical meaning of the parameter, the plausible range based on previous experiments/observations, etc.. For example, we know heights must be positive. We can use such information to weakly inform our analysis, i.e. to keep our model within reasonable bounds without making strong assumptions. Priors based on such information are called weakly informative priors; what makes a prior a weakly informative prior is based more on empirical or model-driven factors than on a well-defined mathematical framework.
