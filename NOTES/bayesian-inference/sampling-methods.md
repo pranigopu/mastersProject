@@ -4,15 +4,15 @@
 
 **Contents**:
 
-- [Introduction](#introduction)
+- [Introduction from a Bayesian context](#introduction-from-a-bayesian-context)
 - [Markov chain Monte Carlo](#markov-chain-monte-carlo)
-    - [Key advantange and disadvantage of MCMC](#key-advantage-and-disadvantage-of-mcmc)
-    - [Detailed balance condition](#detailed-balance-condition)
-    - [Key points](#key-points)
+  - [Detailed balance condition](#detailed-balance-condition)
+  - [Key advantange and disadvantage of MCMC](#key-advantange-and-disadvantage-of-mcmc)
+  - [Key points](#key-points)
 - [Metropolis-Hastings algorithm](#metropolis-hastings-algorithm)
-    - [Defining the transition probability](#defining-the-transition-probability)
-    - [Defining the acceptance probability](#defining-the-acceptance-probability)
-    - [Key points](#key-points-1)
+  - [Defining the transition probability](#defining-the-transition-probability)
+- [Defining the acceptance probability](#defining-the-acceptance-probability)
+  - [Key points](#key-points-1)
 
 ---
 
@@ -39,6 +39,8 @@ KEY IDEAS:
 - When we get a sample with a high probability of being in $p$, we want to take samples from its vicinity <br> _Hence, we can get more high-probability samples and thus estimate_ $p$ _with more confidence and efficiency_
 - Hence, we want future samples to depend on past samples in some way
 - More specifically, we want the next sample to depend on the previous sample
+
+**NOTE**: _A sample having a high probability of being in the target distribution simply means that it is from a high density region of the target distribution. For example, if the target distribution is a normal distribution, samples corresponding to points near the mean are from a higher density region than samples corresponding to points further away in the tails; the former have a higher probability of being in the given normal distribution than the latter._
 
 The last key idea essentially becomes the use of a Markov chain for sampling. Furthermore, we are taking a sequence of random samples from the Markov chain to estimate the target distribution $p$, which is essentially a Monte Carlo simulation used to estimate $p$. Hence, our key ideas lead to the combination of a Markov chain and a Monte Carlo simulation, i.e. it leads to a Markov chain Monte Carlo (MCMC) sampling method.
 
