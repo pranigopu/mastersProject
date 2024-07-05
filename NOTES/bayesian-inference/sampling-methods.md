@@ -36,13 +36,17 @@ Let $p$ be the target distribution we aim to estimate through samples.
 
 KEY IDEAS:
 
-- When we get a sample with a high probability of being in $p$, we want to take samples from its vicinity <br> _Hence, we can get more high-probability samples and thus estimate_ $p$ _with more confidence and efficiency_
+- When we get a sample with a high probability of being in $p$, we want to tend to take samples from its vicinity <br> _Hence, we can get more high-probability samples and thus estimate_ $p$ _with more confidence and efficiency_
 - Hence, we want future samples to depend on past samples in some way
 - More specifically, we want the next sample to depend on the previous sample
 
-**NOTE**: _A sample having a high probability of being in the target distribution simply means that it is from a high-density region of the target distribution. For example, if the target distribution is a normal distribution, samples corresponding to points near the mean are from a higher-density region than samples corresponding to points further away in the tails; the former have a higher probability of being in the given normal distribution than the latter._
-
 The last key idea essentially becomes the use of a Markov chain for sampling. Furthermore, we are taking a sequence of random samples from the Markov chain to estimate the target distribution $p$, which is essentially a Monte Carlo simulation used to estimate $p$. Hence, our key ideas lead to the combination of a Markov chain and a Monte Carlo simulation, i.e. it leads to a Markov chain Monte Carlo (MCMC) sampling method.
+
+---
+
+**NOTE 1**: A sample having a high probability of being in the target distribution simply means that it is from a high-density region of the target distribution. For example, if the target distribution is a normal distribution, samples corresponding to points near the mean are from a higher-density region than samples corresponding to points further away in the tails; the former have a higher probability of being in the given normal distribution than the latter.
+
+**NOTE 2**: Seeking more higher-probability samples does not preclude the inclusion of lower-probability samples; indeed, for an accurate estimation of the target distribution, we need all kinds of samples. But the proportion of each kind of sample taken corresponds to its probability with respect to the distribution; we want to sample more higher-probability samples in proportion to how relatively high their probabilities are, while sampling lower-probability samples more occasionally, also in proportion to how relatively low their probabilities are.
 
 ---
 
