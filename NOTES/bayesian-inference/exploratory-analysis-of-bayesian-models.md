@@ -126,5 +126,14 @@ Thus, in practice we need ways to estimate convergence for finite MCMC samples, 
 
 ---
 
-**The various interpretations of** $\hat{R}$:
+$\hat{R}$ **as potential scale reduction factor of variance**:
 
+This is the original interpretation of $\hat{R}$. Under this interpretation, $\hat{R}$ is the limit of the factor by which the variance of the target distribution's estimation (done using sampling) is reduced, as the number of samples tends to infinity. It has a target value of 1, where $\hat{R} = 1$ means that increasing the number of samples will not reduce the variance of the estimation in the long-term.
+
+**NOTE**: $\hat{R}$ _is essentially calculated for the given sampling method, using multiple finite samples obtained using this method._
+
+---
+
+**Calculation of** $\hat{R}$:
+
+I shall not go into details. But in principle, $\hat{R}$ is a measure of the variance between different Markov chains in relation to the variance within each Markov chain. Ideally we should get a value of 1, as the variance between different Markov chains should be the same as the variance within each Markov chain. Practically, values of $\hat{R} \leq 1.01$ are considered safe.
