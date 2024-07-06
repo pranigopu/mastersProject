@@ -9,13 +9,9 @@
 
 ---
 
-**Key tip when going through the notes**:
-
-Whenever you find a term confusing, check [DEFINITIONS](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/definitions.md); your claritication might be there.
+**NOTE**: Whenever you find a term confusing, check [DEFINITIONS](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/definitions.md); your claritication might be there.
 
 ---
-
-"_Even if expressing statistical methods is easier than ever, statistics is a field full of subtleties that do not magically disappear by using powerful computation methods._" (quote from: ["1. Bayesian Inference" from _Bayesian Computation Book_](https://bayesiancomputationbook.com/markdown/chp_01.html)).
 
 # Bayesian vs. frequentist
 

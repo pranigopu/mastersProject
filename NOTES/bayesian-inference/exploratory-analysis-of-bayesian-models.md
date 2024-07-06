@@ -11,6 +11,7 @@
   - [The root of MCMC issues](#the-root-of-mcmc-issues)
   - [Diagnostic 1: Effective sample size (ESS)](#diagnostic-1-effective-sample-size-ess)
   - [Diagnostic 2: Potential scale reduction factor $\\hat{R}$](#diagnostic-2-potential-scale-reduction-factor-hatr)
+- [Diagnostic 3: Monte Carlo standard error (MCSE)](#diagnostic-3-monte-carlo-standard-error-mcse)
 
 ---
 
@@ -136,4 +137,6 @@ This is the original interpretation of $\hat{R}$. Under this interpretation, $\h
 
 **Calculation of** $\hat{R}$:
 
-I shall not go into details. But in principle, $\hat{R}$ is a measure of the variance between different Markov chains in relation to the variance within each Markov chain. Ideally we should get a value of 1, as the variance between different Markov chains should be the same as the variance within each Markov chain. Practically, values of $\hat{R} \leq 1.01$ are considered safe.
+I shall not go into details. But in principle, $\hat{R}$ is a measure of the variance of all samples from all the different Markov chains in relation to the variance within each Markov chain. Ideally we should get a value of 1, as the variance between different Markov chains should be the same as the variance within each Markov chain. The idea is that if the sampling method is effective and reliable, the long-range variance of our estimates should not be that different, no matter where we start in the parameter space (i.e. no matter what the initial state — initial sample in our case — of our Markov chain is). Practically, values of $\hat{R} \leq 1.01$ are considered safe.
+
+# Diagnostic 3: Monte Carlo standard error (MCSE)
