@@ -12,6 +12,8 @@
   - [Diagnostic 1: Effective sample size (ESS)](#diagnostic-1-effective-sample-size-ess)
   - [Diagnostic 2: Potential scale reduction factor $\\hat{R}$](#diagnostic-2-potential-scale-reduction-factor-hatr)
 - [Diagnostic 3: Monte Carlo standard error (MCSE)](#diagnostic-3-monte-carlo-standard-error-mcse)
+- [Diagnostic 4: Plots](#diagnostic-4-plots)
+- [Diagnostic 5: Divergences](#diagnostic-5-divergences)
 
 ---
 
@@ -137,6 +139,23 @@ This is the original interpretation of $\hat{R}$. Under this interpretation, $\h
 
 **Calculation of** $\hat{R}$:
 
-I shall not go into details. But in principle, $\hat{R}$ is a measure of the variance of all samples from all the different Markov chains in relation to the variance within each Markov chain. Ideally we should get a value of 1, as the variance between different Markov chains should be the same as the variance within each Markov chain. The idea is that if the sampling method is effective and reliable, the long-range variance of our estimates should not be that different, no matter where we start in the parameter space (i.e. no matter what the initial state — initial sample in our case — of our Markov chain is). Practically, values of $\hat{R} \leq 1.01$ are considered safe.
+I shall not go into details. But in principle, $\hat{R}$ is a measure of the variance of all samples from all the different Markov chains in relation to the variance within each Markov chain. Ideally we should get a value of 1, as the variance between different Markov chains should be the same as the variance within each Markov chain. The idea is that if the sampling method is effective and reliable, the long-range variance of our estimates should not be that different, no matter where we start in the parameter space (i.e. no matter what the initial state — initial sample in our case — of our Markov chain is). Practically, values of $\hat{R} \leq 1.01$ are considered safe. Generally, $\hat{R}$ is higher than 1, and the aim is to make it as low as possible, i.e. as close to 1 as possible.
 
 # Diagnostic 3: Monte Carlo standard error (MCSE)
+MCSE for sample makes use of the Markov chain central limit theorem as well as the effective sample size (ESS) to derive an error value between expected sample values and observed sample values (observed in the Markov chain used in MCMC).
+
+---
+
+**KEY POINT 1**: Unlike ESS and $\hat{R}$, MCSE is not independent of the scale of the parameter, which means nterpreting whether MCSE is small enough requires domain expertise. For example, if we want to report the value of an estimated parameter to the second decimal, we need to be sure the MCSE is below the second decimal otherwise, we will be, wrongly, reporting a higher precision than we really have.
+
+**KEY POINT 2**: We should check the MCSE only once we are sure ESS is high enough and $\hat{R}$ is low enough; otherwise, MCSE is of no use, because an ESS that is too high and/or an $\hat{R}$ value that is too low are sufficient to indicate a poor sampling method that would lead to high error rates.
+
+# Diagnostic 4: Plots
+Visual diagnosis of the sampling method:
+
+- [Trace plots](https://bayesiancomputationbook.com/markdown/chp_02.html#trace-plots)
+- [Autocorrelation plots](https://bayesiancomputationbook.com/markdown/chp_02.html#autocorrelation-plots)
+- [Rank plots](https://bayesiancomputationbook.com/markdown/chp_02.html#rank-plots)
+
+# Diagnostic 5: Divergences
+To be continued...
