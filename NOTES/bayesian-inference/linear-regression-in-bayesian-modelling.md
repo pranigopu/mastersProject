@@ -4,12 +4,12 @@
 
 **Contents**:
 
-- [Basic scenario](#basic-scenario)
-- [Extending the basic scenario](#extending-the-basic-scenario)
+- [Linear regression in a Bayesian context](#linear-regression-in-a-bayesian-context)
+- [Extending linear regression](#extending-linear-regression)
 
 ---
 
-# Basic scenario
+# Linear regression in a Bayesian context
 Consider the following scenario:
 
 - Observed data $y={y_1, y_2 ... y_n}$
@@ -21,7 +21,9 @@ Now, consider that $Y$ depends linearly on independent variables $X = (X_1, X_2 
 
 $P(y|x, \theta) = \text{Normal}(y|w^Tx, \sigma)$
 
-**NOTE** $w^Tx$ _is a single value._
+**NOTE**: $w^Tx$ _is a single value._
+
+---
 
 Hence, we get the following (putting $\mu = w^Tx$ for convenience):
 
@@ -30,6 +32,8 @@ Hence, we get the following (putting $\mu = w^Tx$ for convenience):
 - Also, we have some prior $P(\mu, \sigma)$ distributing the parameters
 
 **NOTE**: _Though_ $x$ _is given,_ $w$ _is not, making_ $w^Tx$ _a single variable parameter_.
+
+---
 
 Hence, the posterior is as follows:
 
@@ -41,7 +45,16 @@ i.e. $P(w^Tx, \sigma|y) \propto \text{Normal}(Y|w^Tx, \sigma) P(w^Tx, \sigma)$
 
 Using the posterior distribution adds to the usual linear regression model-fitting approach by conveying the level of uncertainty we have about our fitted model as well as other potential models. After all, a fitted model is only an estimate and may not reflect the true relationship between the outcome variable $Y$ and the independent variables $X_1, X_2 ... X_k$.
 
-# Extending the basic scenario
+# Extending linear regression
+Ways of extending linear regression:
+
+- Non-linear relationships
+- Logistic regression (for classification problems)
+
+---
+
+**A note on-linear relationships**:
+
 To model non-linear relationshipps, replace $X$ (taking it as a single random variable, rather than a tuple of random variables as defined before) with some non-linear function of inputs $\phi : \mathbb{R}\rightarrow \mathbb{R}^d$, where $d$ is some constant. For example, we could have $\phi$ such that $\phi(x) = (1, x^2, x^3 ... x^d)$. In such a case, the linear regression model would be as follows (the Bayesian modelling would change accordingly):
 
 $P(y|x, \theta) = \text{Normal}(y|w^T\phi(x), \sigma)$
