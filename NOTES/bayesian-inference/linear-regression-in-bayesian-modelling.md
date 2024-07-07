@@ -42,7 +42,7 @@ i.e. $P(w^Tx, \sigma|y) \propto \text{Normal}(Y|w^Tx, \sigma) P(w^Tx, \sigma)$
 Using the posterior distribution adds to the usual linear regression model-fitting approach by conveying the level of uncertainty we have about our fitted model as well as other potential models. After all, a fitted model is only an estimate and may not reflect the true relationship between the outcome variable $Y$ and the independent variables $X_1, X_2 ... X_k$.
 
 # Extending the basic scenario
-To model non-linear relationshipps, replace $X$ (taking it as a single random variable, rather than a tuple of random variables as defined before) with some non-linear function of inputs $\phi : \mathbb(R) \rightarrow \mathbb(R)^d$, where $d$ is some constant. For example, we could have $\phi$ such that $\phi(x) = (1, x^2, x^3 ... x^d)$. In such a case, the linear regression model would be as follows (the Bayesian modelling would change accordingly):
+To model non-linear relationshipps, replace $X$ (taking it as a single random variable, rather than a tuple of random variables as defined before) with some non-linear function of inputs $\phi : \mathbb{R}\rightarrow \mathbb{R}^d$, where $d$ is some constant. For example, we could have $\phi$ such that $\phi(x) = (1, x^2, x^3 ... x^d)$. In such a case, the linear regression model would be as follows (the Bayesian modelling would change accordingly):
 
 $P(y|x, \theta) = \text{Normal}(y|w^T\phi(x), \sigma)$
 
