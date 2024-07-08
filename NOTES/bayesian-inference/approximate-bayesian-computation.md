@@ -38,7 +38,7 @@ Difficulties with ABC:
 
 We have that:
 
-$D' ~ Sim(\theta)$
+$D' \tilde Sim(\theta)$
 
 Now, we define the distance function $\delta$ such that:
 
@@ -56,6 +56,6 @@ Here:
 
 Hence, we get the posterior as follows:
 
-$P(\theta|D) \undertilde{\propto} \delta(D, D' | \epsilon) P(\theta)$
+$P(\theta|D) \tilde{\propto} \delta(D, D' | \epsilon) P(\theta)$
 
 **NOTE**: $P(\theta)$ _is the prior._
