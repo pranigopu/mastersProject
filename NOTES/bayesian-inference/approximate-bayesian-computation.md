@@ -6,6 +6,8 @@
 
 - [Introduction](#introduction)
 - [Basic formulation](#basic-formulation)
+  - [Using distance between datasets](#using-distance-between-datasets)
+  - [Using distance between summary statistics](#using-distance-between-summary-statistics)
 
 ---
 
@@ -28,34 +30,46 @@ Difficulties with ABC:
 - Being able to actually compute an approximated posterior for the parameters
 
 # Basic formulation
+## Using distance between datasets
 **Notation**:
 
 - $\theta$: Simulator parameter(s)
 - $Sim$: Simulator instantiator
 - $D$: Observed data
-- $D'$: Synthetic data
+- $\tilde{D}$: Synthetic data
 - $P$ = Probability measure
 
 We have that:
 
-$D' \sim Sim(\theta)$
+$\tilde{D} \sim Sim(\theta)$
 
 Now, we define the distance function $\delta$ such that:
 
-$\displaystyle \lim_{\epsilon \rightarrow 0} \delta(D, D' | \epsilon) = P(D|\theta)$
+$\displaystyle \lim_{\epsilon \rightarrow 0} \delta(D, \tilde{D} | \epsilon) = P(D|\theta)$
 
 Here:
 
 - $P(D|\theta)$ is the likelihood for the observed data $D$
 - $\epsilon$ is the tolerance parameter (i.e. numerically defines "close enough")
-- $\delta(D, D' | \epsilon)$ is the distance between $D$ and $D'$ given $\epsilon$ tolerance
+- $\delta(D, \tilde{D} | \epsilon)$ is the distance between $D$ and $\tilde{D}$ given $\epsilon$ tolerance
 
-**NOTE**: _We introduce a tolerance parameter_ $\epsilon$ _because the chance of generating a synthetic dataset being equal to the observed data is virtually zero for most problems. The larger the value of_ $\epsilon$ _the more tolerant we are about how close $D$ and $D'$ has to be in order to consider them as close enough. In general and for a given problem, a larger the tolerance parameter value implies a more crude approximation to the posterior._
+**NOTE**: _We introduce a tolerance parameter_ $\epsilon$ _because the chance of generating a synthetic dataset being equal to the observed data is virtually zero for most problems. The larger the value of_ $\epsilon$ _the more tolerant we are about how close $D$ and $\tilde{D}$ has to be in order to consider them as close enough. In general and for a given problem, a larger the tolerance parameter value implies a more crude approximation to the posterior._
 
 ---
 
 Hence, we get the posterior as follows:
 
-$P(\theta|D) \sim \propto \delta(D, D' | \epsilon) P(\theta)$
+$P(\theta|D) \sim \propto \delta(D, \tilde{D} | \epsilon) P(\theta)$
 
-**NOTE**: $P(\theta)$ _is the prior._
+---
+
+**NOTE 1**: $P(\theta)$ is the prior.
+
+**NOTE 2**: $\sim \propto$ means "approximately proportional to".
+
+## Using distance between summary statistics
+In practice, as we increase the sample size or dimensionality of the data, it becomes increasingly harder to generate simulated data close enough to the observed data, which means it becomes increasingly harder to find small enough values for the distance function. A naive solution is to increase the value of the tolerance $\epsilon$, but this means increasing the error of our approximation. A more effective solution could be to instead use one or more summary statistics and compute the distance between these summary statistics of each dataset instead of computing the distance between the simulated and real datasets.
+
+Let $S(Y)$ be the the tuple of summary statistics for a dataset $Y$.
+
+Hence, instead of $\delta(D, \tilde{D} | \epsilon)$, we use $\delta(S(D), S(\tilde{D}) | \epsilon)$.
