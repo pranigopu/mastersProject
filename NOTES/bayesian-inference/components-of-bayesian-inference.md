@@ -16,7 +16,7 @@
 
 **Notation**:
 
-- $\theta$: Chosen model
+- $\theta$: Chosen model (usually given as parameter values)
 - $D$: Observed data
 - $P$ = Probability measure
 

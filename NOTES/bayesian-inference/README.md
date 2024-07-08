@@ -33,3 +33,4 @@ Focuses on the uncertainty of the outcomes given certain underlying conditions. 
 5. [Quantifying prior information](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/quantifying-prior-info.md)
 6. [Exploratory Analysis of Bayesian Models](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/exploratory-analysis-of-bayesian-models.md)
 7. [Linear Regression in Bayesian Modelling](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/linear-regression-in-bayesian-modelling.md)
+8. [Approximate Bayesian Computation](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/approximate-bayesian-computation.md)
