@@ -14,6 +14,7 @@
 - [Defining the acceptance probability](#defining-the-acceptance-probability)
   - [Key points](#key-points-1)
 - [Hamiltonian Monte Carlo](#hamiltonian-monte-carlo)
+- [Sequential Monte Carlo](#sequential-monte-carlo)
 
 ---
 
@@ -181,3 +182,5 @@ What does this mean, practically? It means that if $b$ is a sample from a higher
 
 # Hamiltonian Monte Carlo
 > **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" _11. Appendicial Topics_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
+
+# Sequential Monte Carlo
