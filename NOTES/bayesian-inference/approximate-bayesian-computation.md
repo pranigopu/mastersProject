@@ -56,6 +56,6 @@ Here:
 
 Hence, we get the posterior as follows:
 
-$P(\theta|D) \utilde{\propto} \delta(D, D' | \epsilon) P(\theta)$
+$P(\theta|D) \sim \propto \delta(D, D' | \epsilon) P(\theta)$
 
 **NOTE**: $P(\theta)$ _is the prior._
