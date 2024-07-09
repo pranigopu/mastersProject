@@ -24,7 +24,7 @@
 # Conjugate priors
 Consider a Bayesian model wherein the likelihood and the prior are defined using theoretical distributions. If the prior is defined with respect to the likelihood such that the posterior's theoretical distribution is of the same kind (i.e. the same family of distributions) as the prior, then we say that the chosen prior is a conjugate prior to the likelihood.
 
-For example in a beta-binomial distribution (see: [_Beta-binomial model_ from **Generative models for discrete data**](https://github.com/pranigopu/mastersProject/blob/main/notes/generative-models-for-discrete-data/beta-binomial-model.md)), we see that if the likelihood is defined using a binomial distribution, then choosing a beta-distributed prior results in a beta-distributed posterior. Here, a beta distribution is a conjugate prior to the binomial-distributed likelihood.
+For example in a beta-binomial distribution (see: [_Beta-binomial model_ from **Generative models for discrete data**](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/generative-models-for-discrete-data/beta-binomial-model.md)), we see that if the likelihood is defined using a binomial distribution, then choosing a beta-distributed prior results in a beta-distributed posterior. Here, a beta distribution is a conjugate prior to the binomial-distributed likelihood.
 
 ---
 
@@ -100,7 +100,7 @@ Overfitting occurs when a model makes predictions very close to the dataset used
 **NOTE**: _The counterpart of overfitting is underfitting, which is when a model fails to adequately capture the underlying structure of the data._
 
 # Using prior predictive distributions to decide on priors
-**For notes on prior predictive distributions, see**: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)
+**For notes on prior predictive distributions, see**: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)
 
 The prior predictive distribution (PrPD) of a generalised model is the distribution of the data that could be expected, given the prior (i.e. the encoded prior knowledge and/or assumptions) we have chosen. Using the distribution, we can see what prior or range of priors would lead to a reasonable and/or plausible expectation of potential data. In other words, using the PrPD allows us to get reasonable/plausible priors based on our knowledge what is reasonable and/or plausible to expect about the thing (a system or a population) that we want to model.
 

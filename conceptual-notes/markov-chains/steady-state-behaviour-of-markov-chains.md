@@ -28,7 +28,7 @@ Does $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converge to some $\pi_j$ for al
 
 ---
 
-**Reference for transition probability notation**: [_Finite State Markov Chains_](https://github.com/pranigopu/mastersProject/blob/main/notes/markov-chains/finite-state-markov-chains.md)
+**Reference for transition probability notation**: [_Finite State Markov Chains_](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/markov-chains/finite-state-markov-chains.md)
 
 ---
 

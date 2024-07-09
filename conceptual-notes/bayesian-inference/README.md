@@ -9,7 +9,7 @@
 
 ---
 
-**NOTE**: Whenever you find a term confusing, check [DEFINITIONS](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/definitions.md); your claritication might be there.
+**NOTE**: Whenever you find a term confusing, check [DEFINITIONS](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/definitions.md); your claritication might be there.
 
 ---
 
@@ -26,11 +26,11 @@ Focuses on the uncertainty of underlying conditions that generate certain outcom
 Focuses on the uncertainty of the outcomes given certain underlying conditions. Hence, the potential outcomes are distributed probabilistically. In other words, the frequentist approach measures the expected proportional frequency of potential outcomes based on past outcomes.
 
 # Further reading
-1. [Introduction to Bayesian Modelling](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/intro-to-bayesian-modelling.md)
-2. [Components of Bayesian Inference](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/components-of-bayesian-inference.md)
-3. [Predictive distributions](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/predictive-distributions.md)
-4. [Sampling methods](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/sampling-methods.md)
-5. [Quantifying prior information](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/quantifying-prior-info.md)
-6. [Exploratory Analysis of Bayesian Models](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/exploratory-analysis-of-bayesian-models.md)
-7. [Linear Regression in Bayesian Modelling](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/linear-regression-in-bayesian-modelling.md)
-8. [Approximate Bayesian Computation](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/approximate-bayesian-computation.md)
+1. [Introduction to Bayesian Modelling](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/intro-to-bayesian-modelling.md)
+2. [Components of Bayesian Inference](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/components-of-bayesian-inference.md)
+3. [Predictive distributions](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/predictive-distributions.md)
+4. [Sampling methods](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md)
+5. [Quantifying prior information](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/quantifying-prior-info.md)
+6. [Exploratory Analysis of Bayesian Models](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/exploratory-analysis-of-bayesian-models.md)
+7. [Linear Regression in Bayesian Modelling](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/linear-regression-in-bayesian-modelling.md)
+8. [Approximate Bayesian Computation](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/approximate-bayesian-computation.md)

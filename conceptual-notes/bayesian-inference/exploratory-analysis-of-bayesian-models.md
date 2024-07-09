@@ -72,7 +72,7 @@ The basic idea behind PPC is to evaluate how close the synthetic data generated 
 # Diagnosing numerical inference
 **_Specifically, diagosing inference using Markov chain Monte Carlo methods_**
 
-In cases where the posterior distribution cannot be evaluated mathematically, it must be evaluated numerically, i.e. using computation. Estimating the posterior distribution using numerical methods (i.e. sampling methods) is called **numerical inference**. Specifically, we focus on the most practically applicable methods, namely Markov chain Monte Carlo (MCMC) methods (see: ["Markov chain Monte Carlo" from _Sampling Methods_](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/sampling-methods.md)). In diagnosing numerical inference, we want to (1) evaluate the quality of the sampling method, (2) identify issues with the sampling that could lead to poor estimation and (3) correct for the aforementioned issues.
+In cases where the posterior distribution cannot be evaluated mathematically, it must be evaluated numerically, i.e. using computation. Estimating the posterior distribution using numerical methods (i.e. sampling methods) is called **numerical inference**. Specifically, we focus on the most practically applicable methods, namely Markov chain Monte Carlo (MCMC) methods (see: ["Markov chain Monte Carlo" from _Sampling Methods_](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md)). In diagnosing numerical inference, we want to (1) evaluate the quality of the sampling method, (2) identify issues with the sampling that could lead to poor estimation and (3) correct for the aforementioned issues.
 
 ## The root of MCMC issues
 The root of issues when using MCMC methods is also the root of its strength, namely the fact that consequent samples are not uncorrelated, and each sample depends on the previous sample, as in a Markov chain. Hence, samples from MCMC methods always have some degree of autocorrelation; we shall soon see the issues arising from this fact.
@@ -108,7 +108,7 @@ Evidently, the value of ESS for a sample can only tell about the effectiveness o
 
 **1. Random seed**:
 
-If you rerun the sampling method that involves randomness in its sampling (as does any MCMC method), using a different random seed each time, you will see that the effective sample size you get will be different each time. In particular, for MCMC methods, where you start the Markov chain is key in deciding how long or short the burn-in will be (for the terminology, see: ["Markov chain Monte Carlo" from _Sampling Methods_](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/sampling-methods.md)).
+If you rerun the sampling method that involves randomness in its sampling (as does any MCMC method), using a different random seed each time, you will see that the effective sample size you get will be different each time. In particular, for MCMC methods, where you start the Markov chain is key in deciding how long or short the burn-in will be (for the terminology, see: ["Markov chain Monte Carlo" from _Sampling Methods_](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md)).
 
 **2. Across parameter space**:
 
