@@ -3,10 +3,10 @@ This directory contains all the papers (or at least their links) relevant to my 
 
 ## Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model
 
-- NOTES LINK:
-- PAPER LINK: https://arxiv.org/abs/1911.08265
+- [>>](https://github.com/pranigopu/mastersProject/tree/main/reading/mastering-atari-go-chess-and-shogi-by-planning-with-a-learned-model) NOTES
+- [>>](https://arxiv.org/abs/1911.08265) PAPER
 
 ## Mastering Diverse Domains through World Models
 
-- NOTES LINK: 
-- PAPER LINK: https://arxiv.org/abs/2301.04104
+- [>>](https://github.com/pranigopu/mastersProject/tree/main/reading/mastering-diverse-domains-through-world-models.md) NOTES
+- [>>](https://arxiv.org/abs/2301.04104) PAPER
