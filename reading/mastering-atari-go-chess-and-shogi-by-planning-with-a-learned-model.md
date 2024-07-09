@@ -1,4 +1,6 @@
-**NOTES** <br> **_Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model_**
+<h1>NOTES</h1>
+
+**_Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model_**
 
 ---
 

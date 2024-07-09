@@ -1,4 +1,6 @@
-**NOTES** <br> **_Mastering Diverse Domains through World Models_**
+<h1>NOTES</h1>
+
+**_Mastering Diverse Domains through World Models_**
 
 ---
 
