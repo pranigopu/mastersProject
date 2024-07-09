@@ -25,7 +25,7 @@ For each kind of generative model, we shall define:
 - The posterior predictive distribution (PPD)
 
 # Posterior predictive distribution (PPD)
-_Likelihood, prior and posterior have been discussed in_ [_Components of Bayesian Inference_ from **Bayesian Inference**](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/components-of-bayesian-inference.md). _Hence, I shall focus on the new concept, i.e. PPD._
+_Likelihood, prior and posterior have been discussed in_ [_Components of Bayesian Inference_ from **Bayesian Inference**](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/components-of-bayesian-inference.md). _Hence, I shall focus on the new concept, i.e. PPD._
 
 > KEY REFERENCE: https://bayesiancomputationbook.com/markdown/chp_01.html
 
@@ -47,12 +47,12 @@ here, we can see that predictions of the generalised model are computed by integ
 ## Bayesian concept learning
 In Bayesian concept learning, the generative models are represented using a "concept", i.e. a set of all units that fit a definition. Note that the concept represents the sample space from which data can be drawn. Hence, we try to find the most plausible concept, i.e. the most plausible sample space from which the observed data could have been drawn. In other words, we try to learn the most plausible concept which the observed data may fall under.
 
-[Read more >>](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data/bayesian-concept-learning.md)
+[Read more >>](https://github.com/pranigopu/mastersProject/blob/main/notes/generative-models-for-discrete-data/bayesian-concept-learning.md)
 
 ## Beta-binomial model
 In beta-binomial models, the generative models are represented by the parameters of a binomial distribution and a beta distribution; the binomial distribution is for the likelihood component of Bayesian inference, whereas the beta distribution is for the prior component of Bayesian inference. It is a useful model because a prior defined by a beta distribution is a conjugate prior to a likelihood defined by a binomial distribution, which means the posterior distribution can be obtained analytically (rather than computationally) as a beta distribution as well. Furthermore, the beta-binomial model is the basis of naive Bayes classifiers and Markov models.
 
-[Read more >>](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data/beta-binomial-model.md)
+[Read more >>](https://github.com/pranigopu/mastersProject/blob/main/notes/generative-models-for-discrete-data/beta-binomial-model.md)
 
 ## Dirichlet-multinomial model
 

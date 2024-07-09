@@ -48,7 +48,7 @@ Given some data and some assumptions on how the data could have been generated, 
 
 2.<br>
 
-We use Bayes' theorem to condition our models to the available data. Such a process is a process of inference, the result of which is a posterior distribution (see: ["Posterior distribution (our target)" from _Components of Bayesian Inference_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/components-of-bayesian-inference.md#posterior-distribution-our-target)), which uses the observed data to try to reduce our uncertainty about possible models (often represented by our uncertainty about possible parameter values), though this is not a guarantee of any Bayesian model.
+We use Bayes' theorem to condition our models to the available data. Such a process is a process of inference, the result of which is a posterior distribution (see: ["Posterior distribution (our target)" from _Components of Bayesian Inference_](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/components-of-bayesian-inference.md#posterior-distribution-our-target)), which uses the observed data to try to reduce our uncertainty about possible models (often represented by our uncertainty about possible parameter values), though this is not a guarantee of any Bayesian model.
 
 3.<br>
 
@@ -61,8 +61,8 @@ We check whether the model makes sense according to different criteria, includin
 An example of a generalised model: a pair of specific families of distribution,  the e.g. beta-binomial model. An example of specific model under a generalised model: a beta-binomial model with particular parameters for the beta and binomial distributions.
 
 # Bayesian modelling as the creation of generative models
-Adopting a probabilistic perspective for modelling leads to the understanding of models as things that generate data. Such an understanding show us how probabilistic modelling must be approached; given that models generate data, we can create fitting models for our data just by thinking of how the data could have been generated. Note that such an understanding is concretised by the prior predictive distribution (see: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/NOTES/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)). If we revisit the three key steps of Bayesian modelling discussed previously, we can re-frame them as: (1) write a prior predictive distribution, (2) add data to constrain it, (3) check if the result makes sense and (4) iterate if necessary.
+Adopting a probabilistic perspective for modelling leads to the understanding of models as things that generate data. Such an understanding show us how probabilistic modelling must be approached; given that models generate data, we can create fitting models for our data just by thinking of how the data could have been generated. Note that such an understanding is concretised by the prior predictive distribution (see: ["Prior predictive distribution (PrPD)" from _Predictive Distributions_](https://github.com/pranigopu/mastersProject/blob/main/notes/bayesian-inference/predictive-distributions.md#prior-predictive-distribution-prpd)). If we revisit the three key steps of Bayesian modelling discussed previously, we can re-frame them as: (1) write a prior predictive distribution, (2) add data to constrain it, (3) check if the result makes sense and (4) iterate if necessary.
 
 ---
 
-**Further reading on generative models in a Bayesian context**: [**Generative Models for Discrete Data**](https://github.com/pranigopu/mastersProject/blob/main/NOTES/generative-models-for-discrete-data)
+**Further reading on generative models in a Bayesian context**: [**Generative Models for Discrete Data**](https://github.com/pranigopu/mastersProject/blob/main/notes/generative-models-for-discrete-data)
