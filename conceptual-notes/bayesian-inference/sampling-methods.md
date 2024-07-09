@@ -9,12 +9,13 @@
   - [Detailed balance condition](#detailed-balance-condition)
   - [Key advantange and disadvantage of MCMC](#key-advantange-and-disadvantage-of-mcmc)
   - [Key points](#key-points)
-- [Metropolis-Hastings algorithm](#metropolis-hastings-algorithm)
-  - [Defining the transition probability](#defining-the-transition-probability)
-- [Defining the acceptance probability](#defining-the-acceptance-probability)
-  - [Key points](#key-points-1)
-- [Hamiltonian Monte Carlo](#hamiltonian-monte-carlo)
+  - [MCMC METHOD 1: Metropolis-Hastings algorithm](#mcmc-method-1-metropolis-hastings-algorithm)
+    - [Defining the transition probability](#defining-the-transition-probability)
+    - [Defining the acceptance probability](#defining-the-acceptance-probability)
+    - [Key points](#key-points-1)
+  - [MCMC METHOD 2: Hamiltonian Monte Carlo](#mcmc-method-2-hamiltonian-monte-carlo)
 - [Sequential Monte Carlo](#sequential-monte-carlo)
+- [Variational inference](#variational-inference)
 
 ---
 
@@ -94,7 +95,7 @@ The main disadvantage of MCMC is also its main advantage: in MCMC samples are no
 - MCMC is an umbrella term for a wide variety of methods that define how to design the transition probabilities
 - The specific acceptance and rejection methods used under the broader MCMC framework define the specific MCMC method
 
-# Metropolis-Hastings algorithm
+## MCMC METHOD 1: Metropolis-Hastings algorithm
 **_An MCMC method_**
 
 **MOTIVATION**: Why is it important?
@@ -108,7 +109,7 @@ MH algorithm is not a very modern or particularly efficient algorithm, but it is
 - Let $f$ represent the numerator of the target distribution $p$.
 - Let $g$ be the candidate distribution using which we shall take new samples.
 
-## Defining the transition probability
+### Defining the transition probability
 The transition probability is made of two components...
 
 **1. Sampling probability**:
@@ -123,7 +124,7 @@ The next sample drawn based on the current sample is accepted or rejected based 
 
 Hence, the transition probability of going from state $a$ (i.e. sampling $a$) to state $b$ (i.e. sampling $b$) is the probability of sampling $b$ after $a$ and then accepting $b$. Mathematically, it is given by: $g(b|a) A(a \rightarrow b)$
 
-# Defining the acceptance probability
+### Defining the acceptance probability
 How should the acceptance probability a.k.a. the transition probability $A$ be defined? Here, we use the detailed balance condition seen in MCMC (see: ["Detailed balance condition" from "Markov chain Monte Carlo"](#detailed-balance-condition)). Let $T(u|v)$ be the transition probability from state $v$ to state $u$, and let $\Theta$ be the sample space. Then, by the detailed balance condition:
 
 $p(a) T(b|a) = p(b) T(a|b) \text{ } \forall a \in \Theta,  \text{ } \forall b \in \Theta$
@@ -176,11 +177,13 @@ Hence, we have the following cases:
 
 What does this mean, practically? It means that if $b$ is a sample from a higher-density region of the target distribution $p$ than $a$, then it will certainly be accepted, which makes sense because we want to sample more from higher-density regions. However, if $b$ is a sample from a lower-density region of the target distribution $p$ than $a$, then it may or may not be accepted from $a$. Furthermore, we see that the probability of accepting $b$ from $a$ is lesser the lesser the density of $b$ is compared to the density of $a$, which also makes sense because we want there to be a lower but non-zero chance of sampling from a lower-density region after sampling from a higher-density region, with the condition that the lower the density, the lower the chance. We see how such a policy is an MCMC method that helps estimate the target distribution more accurately and more efficiently over time.
 
-## Key points
+### Key points
 - Metropolis algorithm is a special case of MH algorithm wherein the candidate distribution $g$ is symmetrical
 - MH algorithm can have an asymmetrical candidate distribution as well
 
-# Hamiltonian Monte Carlo
+## MCMC METHOD 2: Hamiltonian Monte Carlo
 > **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" _11. Appendicial Topics_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
 
 # Sequential Monte Carlo
+
+# Variational inference
