@@ -40,3 +40,6 @@ It means comparing Bayesian inference algorithms as applied to deep learning.
     - https://arxiv.org/pdf/1802.09127.pdf
 - Benchmarking Bayesian Neural Networks and Evaluation Metrics for Regression Tasks (MORE RELEVANT)
     - https://arxiv.org/pdf/2206.06779.pdf
+- (Wenzel et al., 2020a) (IMPORTANT)
+    - https://arxiv.org/pdf/2102.06571
+- https://udlbook.github.io/udlbook/ (check 159) (IMPORTANT)
