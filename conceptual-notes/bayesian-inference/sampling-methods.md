@@ -20,7 +20,7 @@
 ---
 
 # Introduction from a Bayesian context
-Suppose we have a distribution $p$ which we do not yet know fully, but which we know only the numerator of. Note how this situation perfectly matches our situation in many cases of Bayesian inference, where we have the numerator of the posterior distribution but not the denominator, which can be impractical or even impossible to compute (by either estimation or calculation) with enough accuracy. Hence, we see that if we have methods to estimate $p$ using sampling based on some use of the numerator of $p$ to weight the acceptance or rejection of samples, then we shall have methods to at least try to estimate the posterior distribution of a Bayesian model, thereby helping us to perform Bayesian inference in cases where the closed expression of the model cannot be found in its entirety.
+Suppose we have a distribution $p$ which we do not yet know fully, but of which we know only the numerator (or more generally, of which we know only some function proportional to it). Note how this situation perfectly matches our situation in many cases of Bayesian inference, where we have the numerator of the posterior distribution but not the denominator, which can be impractical or even impossible to compute (by either estimation or calculation) with enough accuracy. Hence, we see that if we have methods to estimate $p$ using sampling based on some use of the numerator of $p$ to weight the acceptance or rejection of samples, then we shall have methods to at least try to estimate the posterior distribution of a Bayesian model, thereby helping us to perform Bayesian inference in cases where the closed expression of the model cannot be found in its entirety.
 
 # Markov chain Monte Carlo
 **_A broad sampling method_**
@@ -106,8 +106,10 @@ MH algorithm is not a very modern or particularly efficient algorithm, but it is
 
 **NOTATION**:
 
-- Let $f$ represent the numerator of the target distribution $p$.
-- Let $g$ be the candidate distribution using which we shall take new samples.
+- Let $f$ represent some function proportional to the target distribution $p$
+- Let $g$ be the candidate distribution using which we shall take new samples
+
+**NOTE**: _Commonly,_ $f$ _is the known numerator of_ $p$, _as in the case of_ $p$ _being the posterior in the context of Bayesian inference._
 
 ### Defining the transition probability
 The transition probability is made of two components...
@@ -129,7 +131,7 @@ How should the acceptance probability a.k.a. the transition probability $A$ be d
 
 $p(a) T(b|a) = p(b) T(a|b) \text{ } \forall a \in \Theta,  \text{ } \forall b \in \Theta$
 
-We know that $f$ is the numerator of $p$. Let $p(x) = \frac{f(x)}{N}$, for some $N$. Then:
+We know that $f$ is proportional to $p$. Let $p(x) = \frac{f(x)}{N}$, for some $N$. Then:
 
 $\frac{f(x)}{N} g(b|a) A(a \rightarrow b) = \frac{f(x)}{N} g(a|b) A(b \rightarrow a)$
 
