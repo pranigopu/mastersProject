@@ -43,3 +43,5 @@ It means comparing Bayesian inference algorithms as applied to deep learning.
 - (Wenzel et al., 2020a) (IMPORTANT)
     - https://arxiv.org/pdf/2102.06571
 - https://udlbook.github.io/udlbook/ (check 159) (IMPORTANT)
+
+Unidentified references: (Noci et al., 2021)
