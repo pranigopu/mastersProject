@@ -27,7 +27,7 @@ Papers I had read initially but are no longer relevant due to a change in focus.
 
 **Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model**
 
-[Notes >>](https://github.com/pranigopu/mastersProject/tree/main/reading/mastering-atari-go-chess-and-shogi-by-planning-with-a-learned-model) | [Paper>>](https://arxiv.org/abs/1911.08265)
+[Notes >>](https://github.com/pranigopu/mastersProject/tree/main/reading/mastering-atari-go-chess-and-shogi-by-planning-with-a-learned-model.md) | [Paper>>](https://arxiv.org/abs/1911.08265)
 
 ---
 
