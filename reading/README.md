@@ -8,4 +8,7 @@ This directory contains all the papers (or at least their links) relevant to my 
 [Notes >>](https://github.com/pranigopu/mastersProject/tree/main/reading/mastering-diverse-domains-through-world-models.md) | [Paper >>](https://arxiv.org/abs/2301.04104)
 
 ## Hands-on Bayesian Neural Networks – A Tutorial for Deep Learning Users
-[Notes >>]() | [Paper >>](https://arxiv.org/pdf/2007.06823)
+[Notes >>](https://github.com/pranigopu/mastersProject/blob/main/reading/hands-on-bayesian-neural-networks--a-tutorial-for-deep-learning-users.md) | [Paper >>](https://arxiv.org/pdf/2007.06823)
+
+## Benchmarking Bayesian Neural Networks and Evaluation Metrics for Regression Tasks
+[Notes >>](https://github.com/pranigopu/mastersProject/blob/main/reading/benchmarking-bayesian-neural-networks-and-evaluation-metrics-for-regression-tasks.md) | [Paper >>](https://arxiv.org/pdf/2206.06779)
