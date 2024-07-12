@@ -119,7 +119,7 @@ Hence, note that $Y$ is collection of samples from the marginal $P(y|x, D)$ and 
 ### Quantifying prediction uncertainty and obtaining prediction estimator
 Usually, aggregates are computed on those samples to (1) obtain an estimator for the prediction $y$ — this estimator is denoted by $\hat{y}$ — and (2) summarise the uncertainty of the BNN.
 
-#### For regression problems
+#### <u>For regression problems</u>
 **1. Obtaining the estimator of the prediction**:
 
 Most common approach is averaging the sampled predictions:
@@ -136,7 +136,7 @@ $\displaystyle S_{y|x, D} = \frac{1}{N-1} \sum_{i=1}^N (\Phi_{\theta_i}(x) - \ha
 
 **NOTE**: _We are assuming that_ $\Phi_{\theta_i}(x) - \hat{y}$ _is a column vector._
 
-#### For classification problems
+#### <u>For classification problems</u>
 Here, $\Phi_\theta$ does not give a vector of outputs but rather a vector of probabilities $p$, each corresponding to the estimated probability of the respective label being the true label (for clarity, consider how the last layer of a classification network is defined). In other words, we define $p = \Phi_\theta(x) + \epsilon$. Note that $p$ is a vector wherein the index of each probability corresponds to the label.
 
 **Obtaining the estimator of the prediction**:
