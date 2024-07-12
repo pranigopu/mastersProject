@@ -18,6 +18,8 @@
     - [The marginal](#the-marginal)
     - [Quantifying prediction uncertainty and obtaining prediction estimator](#quantifying-prediction-uncertainty-and-obtaining-prediction-estimator)
       - [For regression problems](#for-regression-problems)
+      - [For classification problems](#for-classification-problems)
+- [Advantages of using BNNs for deep learning](#advantages-of-using-bnns-for-deep-learning)
 
 ---
 
@@ -43,7 +45,7 @@ Using Bayes' formula to train a model can be understood as learning from the dat
 ## SNNs to BNNs
 The point estimate approach, which is the traditional approach in deep learning, is relatively easy to deploy with modern algorithms and software packages, but tends to lack explainability. The final model might also generalize in unforeseen and overconfident ways on out-of-training distribution data points. This property, in addition to the inability of ANNs to say “I don’t know”, is problematic for many critical applications. Of all the techniques that exist to mitigate this, stochastic neural networks have proven to be one of the most generic and flexible.
 
-**Stochastic neural networks (SNNs)** are a type of ANN built by introducing stochastic components into the network. This is performed by giving the network either a stochastic activation or stochastic weights to simulate multiple possible models $\theta$ with their associated probability distribution $p(\theta)$. Thus, BNNs can be considered a special case of ensemble learning.
+**Stochastic neural networks (SNNs)** are a type of ANN built by introducing stochastic components into the network. This is performed by giving the network either a stochastic activation or stochastic weights to simulate multiple possible models $\theta$ with their associated probability distribution $P(\theta)$. Thus, BNNs can be considered a special case of ensemble learning.
 
 _Ensemble learning to SNNs_...
 
@@ -51,7 +53,7 @@ The main motivation behind ensemble learning is that aggregating the predictions
 
 This is accomplished by comparing the predictions of multiple sampled models (based on multiple sampled parametrizations, i.e. multiple sampled values of $\theta$). If models agree, then the uncertainty rises. If models disagree, then the uncertainty falls. This process can be summarized as follows:
 
-$\theta ∼ p(\theta)$ (prior distribution)
+$\theta ∼ P(\theta)$ (prior distribution)
 
 $y = \Phi_\theta(x) + \epsilon$ (regression with stochastic function $\Phi_\theta(x)$)
 
@@ -68,13 +70,14 @@ Choice of deep neural network architecture, i.e. a functional model.
 
 Choice of stochastic model, which consists of the following:
 
-- $p(\theta)$: Prior distribution over the possible model parametrization
-- $p(y|x, \theta)$: Prior confidence in the predictive power of the model 
+- $P(\theta)$: Prior distribution over the possible model parametrization
+- $P(y|x, \theta)$: Prior confidence in the predictive power of the model 
 
 Also, note that:
 
 - The model parametrization can be considered to be the hypothesis $H$
 - The training set is the data $D$
+- $\theta$ can be a single value, a vector or a matrix
 
 **CONSIDER**: _The choice of a BNN's stochastic model is analogous to the choice of loss function when training a point-estimation ANN._
 
@@ -84,6 +87,8 @@ Also, note that:
 The cost function is often defined as the log likelihood of the training set, sometimes with a regularisation term included. From a statistician’s point of view, this is a maximum likelihood estimation (MLE), or a maximum a posteriori (MAP) estimation when regularisation is used.
 
 # Training and applying BNNs
+**NOTE**: _Here, we are only considering BNNs as discriminative models, not generative models._
+
 ## Finding the posterior
 The Bayesian posterior for complex models such as ANNs is a high dimensional and highly non-convex probability distribution. This complexity makes computing it using standard sampling methods (e.g. accept-reject sampling) an intractable problem, especially because computing the evidence (i.e. the denominator of Bayes' formula) is difficult. To address this problem, two broad approaches have been introduced (each approach has various specific methods that implement it):
 
@@ -91,23 +96,25 @@ The Bayesian posterior for complex models such as ANNs is a high dimensional and
 2. Variational inference (VI)
 
 ## Predictions using BNNs
-### The marginal
-Predictions using BNNs are made using probability distribution $p(y|x, D)$, called the marginal, which quantifies the model's uncertainty on a certain prediction $y$. Given the posterior distribution $p(\theta|D)$, the marginal is:
+Note that our discussion of inputs, functions, regression and outputs is done in the context of neural networks. Hence, we have input layer with inputs $x$ and an output layer with outputs (can be one or more) $y$, with a function $\Phi_\theta$ mapping $x$ to $y$ using the weights of the neural network $\theta$. Here, it is key to note that $x$ and $y$ are vectors, while $\theta$ is a matrix that holds the weights of the neural network (they are stored as a matrix to preserve their position in the network).
 
-$\displaystyle p(y|x, D) = \int_\Theta p(y|x, \theta) p(\theta|D) d\theta$
+### The marginal
+Predictions using BNNs are made using probability distribution $P(y|x, D)$, called the marginal, which quantifies the model's uncertainty on a certain prediction $y$. Given the posterior distribution $P(\theta|D)$, the marginal is:
+
+$\displaystyle P(y|x, D) = \int_\Theta P(y|x, \theta) P(\theta|D) d\theta$
 
 ---
 
-However, in practice, $p(y|x, D)$ is sampled indirectly using $y = \Phi_\theta(x) + \epsilon$ (regression with stochastic function $\Phi_\theta(x)$); this equation was discussed previously in the section ["SNNs to BNNs"](#snns-to-bnns). Note that $\theta$ is sampled from the posterior $p(\theta|D)$. Hence, the predictions are sampled as follows:
+However, in practice, $P(y|x, D)$ is sampled indirectly using $y = \Phi_\theta(x) + \epsilon$ (regression with stochastic function $\Phi_\theta(x)$); this equation was discussed previously in the section ["SNNs to BNNs"](#snns-to-bnns). Note that $\theta$ is sampled from the posterior $P(\theta|D)$. Hence, the predictions are sampled as follows:
 
-- Define the posterior $p(\theta|D)$
+- Define the posterior $P(\theta|D)$
 - **for** $i=1$ to $N$
     - Draw $\theta_i \sim \(\theta|D)$
     - $y_i = \Phi_{\theta_i}(x)$
 - **end for**
 - **return** $Y = {y_1, y_2 ... y_N}, \Theta = {\theta_1, \theta_2 ... \theta_N}$
 
-Hence, note that $Y$ is collection of samples from the marginal $p(y|x, D)$ and $\Theta$ is a collection of samples from the posterior $p(\theta|D)$.
+Hence, note that $Y$ is collection of samples from the marginal $P(y|x, D)$ and $\Theta$ is a collection of samples from the posterior $P(\theta|D)$. Also note (though it should be apparent) that $x$ is a vector (of specific inputs), each $y_i$ is a vector (of specific outputs, based on specific weights sampled from the posterior) and each $\theta_i$ is a matrix (of specific weights sampled from the posterior).
 
 ### Quantifying prediction uncertainty and obtaining prediction estimator
 Usually, aggregates are computed on those samples to (1) obtain an estimator for the prediction $y$ — this estimator is denoted by $\hat{y}$ — and (2) summarise the uncertainty of the BNN.
@@ -125,3 +132,23 @@ $\displaystyle \hat{y} = \frac{1}{N} \sum_{i=1}^{N} \Phi_{\theta_i}(x)$
 
 This can be done using the covariance matrix:
 
+$\displaystyle S_{y|x, D} = \frac{1}{N-1} \sum_{i=1}^N (\Phi_{\theta_i}(x) - \hat{y}) (\Phi_{\theta_i}(x) - \hat{y})^T$
+
+**NOTE**: _We are assuming that_ $\Phi_{\theta_i}(x) - \hat{y}$ _is a column vector._
+
+#### For classification problems
+Here, $\Phi_\theta$ does not give a vector of outputs but rather a vector of probabilities $p$, each corresponding to the estimated probability of the respective label being the true label (for clarity, consider how the last layer of a classification network is defined). In other words, we define $p = \Phi_\theta(x) + \epsilon$. Note that $p$ is a vector wherein the index of each probability corresponds to the label.
+
+**Obtaining the estimator of the prediction**:
+
+Averaging the estimated probabilities:
+
+$\displaystyle \hat{p} = \frac{1}{N} \sum_{i=1}^{N} \Phi_{\theta_i}(x)$
+
+Obtaining the label (i.e. index) that maximises the above:
+
+$\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
+
+**NOTE**: $\hat{p} = (p_1, p_2 ... p_k)$
+
+# Advantages of using BNNs for deep learning
