@@ -209,7 +209,7 @@ Variational inference is not an exact method. Rather than allowing sampling from
 ## Theoretical foundations
 **NOTATION**:
 
-$\Theta$ denotes the entire hypothesis space. $\mathbb{E}$ denotes "expectation" (estimated by the mean). $\mathbb{E}_\theta$ denotes marginal expectation with respect to $\theta$. Note that marginal expectation with respect to $\theta$ is the expectation where everything apart from $H$ is kept constant (i.e. $\theta$, which represents the hypothesised model, is kept variable, while $D$, which represents the observed data, is kept constant).
+$\Theta$ denotes the entire hypothesis space. $E$ denotes "expectation" (estimated by the mean). $E_\theta$ denotes marginal expectation with respect to $\theta$. Note that marginal expectation with respect to $\theta$ is the expectation where everything apart from $H$ is kept constant (i.e. $\theta$, which represents the hypothesised model, is kept variable, while $D$, which represents the observed data, is kept constant).
 
 **NOTE**: _The goal is to minimise the KL-divergence._
 
@@ -217,11 +217,11 @@ $\Theta$ denotes the entire hypothesis space. $\mathbb{E}$ denotes "expectation"
 
 KL-divergence between $p$ and $q$ is given by:
 
-$KL(q)$
+$KL(q_\phi(\theta) || p(\theta|D))$
 
-$= \mathbb{E}_\theta(\log q_\phi(\theta) - \log p(\theta|D))$
+$= E_\theta(\log q_\phi(\theta) - \log p(\theta|D))$
 
-$= \mathbb{E}_\theta(\log \frac{q_\phi(\theta)}{p(\theta|D)})$
+$= E_\theta(\log \frac{q_\phi(\theta)}{p(\theta|D)})$
 
 $= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta|D)} d\theta$
 
@@ -253,21 +253,21 @@ Hence, here, minimising the KL-divergence means minimising:
 
 $\int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
 
-$= \mathbb{E}_\theta(\log \frac{q_\phi(\theta)}{p(\theta, D)})$
+$= E_\theta(\log \frac{q_\phi(\theta)}{p(\theta, D)})$
 
-$= \mathbb{E}_\theta(\log q_\phi(\theta) - \log p(\theta, D))$
+$= E_\theta(\log q_\phi(\theta) - \log p(\theta, D))$
 
-$= \mathbb{E}_\theta(\log q_\phi(\theta)) - \mathbb{E}_\theta(\log p(\theta, D))$
+$= E_\theta(\log q_\phi(\theta)) - E_\theta(\log p(\theta, D))$
 
 ---
 
 Minimising the above is the same as maximising the following:
 
-$\mathbb{E}_\theta(\log p(\theta, D)) - \mathbb{E}_\theta(\log q_\phi(\theta))$
+$E_\theta(\log p(\theta, D)) - E_\theta(\log q_\phi(\theta))$
 
-$= \mathbb{E}_\theta(\log p(\theta, D) - \log q_\phi(\theta))$
+$= E_\theta(\log p(\theta, D) - \log q_\phi(\theta))$
 
-$= \mathbb{E}_\theta(\log \frac{p(\theta, D)}{q_\phi(\theta)})$
+$= E_\theta(\log \frac{p(\theta, D)}{q_\phi(\theta)})$
 
 $= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta$
 
