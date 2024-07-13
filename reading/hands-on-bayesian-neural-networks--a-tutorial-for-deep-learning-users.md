@@ -165,7 +165,7 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 
 ---
 
-**Expansion of the above**:
+**Expanding of the above**:
 
 **Point 1**: Quantifying uncertainty helps prevent overconfidence and underconfidence, since well-quantified uncertainty would be more consistent with the observed errors than mere predictions.
 
@@ -173,5 +173,5 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 
 **Point 3**: Any supervised learning algorithm includes some implicit prior. Bayesian methods, when used correctly, will at least make the prior explicit, which would make the model less of a black box. In Bayesian deep learning, priors are often considered as soft constraints that are analogous to regularisation or data transformations such as data augmentation in traditional deep learning. In particular, most regularisation methods used for point estimate neural networks can be understood from a Bayesian perspective as setting a prior.
 
-**Point 4**:  Many learning methods initially not presented as Bayesian can be implicitly understood as being approximate Bayesian (e.g. regularisation, ensembling, etc.). In fact, most of the BNNs used in practice rely on methods that are approximately or implicitly Bayesian, since the exact algorithms are too computationally expensive. **+ Consider**: The Bayesian paradigm also provides a systematic framework to design new learning and regularisation strategies, even for point estimate models.
+**Point 4**:  Many learning methods initially not presented as Bayesian can be implicitly understood as being approximate Bayesian (e.g. regularisation, ensembling, etc.). In fact, most of the BNNs used in practice rely on methods that are approximately or implicitly Bayesian, since the exact algorithms are too computationally expensive. **+ Consider**: _The Bayesian paradigm also provides a systematic framework to design new learning and regularisation strategies, even for point estimate models._
 
