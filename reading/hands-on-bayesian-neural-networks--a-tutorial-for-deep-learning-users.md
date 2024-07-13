@@ -17,19 +17,24 @@
   - [Predictions using BNNs](#predictions-using-bnns)
     - [The marginal](#the-marginal)
     - [Quantifying prediction uncertainty and obtaining prediction estimator](#quantifying-prediction-uncertainty-and-obtaining-prediction-estimator)
-      - [For regression problems](#for-regression-problems)
-      - [For classification problems](#for-classification-problems)
+      - [1. For regression problems](#1-for-regression-problems)
+        - [1.1. Obtaining the estimator of the prediction](#11-obtaining-the-estimator-of-the-prediction)
+        - [1.2. Summarising the uncertainty of the BNN](#12-summarising-the-uncertainty-of-the-bnn)
+      - [2. For classification problems](#2-for-classification-problems)
+        - [2.1. Obtaining the estimator of the prediction](#21-obtaining-the-estimator-of-the-prediction)
 - [Advantages of using BNNs for deep learning](#advantages-of-using-bnns-for-deep-learning)
 
 ---
 
 # Abbreviations
+- ML: Machine learning
 - ANN: Artificial neural network
 - BNN: Bayesian neural network (a kind of ANN)
 - SNN: Stochastic neural network (a kind of ANN)
 - MLE: Maximum likelihood estimation
 - MAP: Maximum a posteriori (usually precedes "estimation")
 - MCMC: Markov chain Monte Carlo
+- NFLT: No free-lunch theorem for machine learning
 - VI: Variational inference
 
 # Notations
@@ -119,8 +124,8 @@ Hence, note that $Y$ is collection of samples from the marginal $P(y|x, D)$ and 
 ### Quantifying prediction uncertainty and obtaining prediction estimator
 Usually, aggregates are computed on those samples to (1) obtain an estimator for the prediction $y$ — this estimator is denoted by $\hat{y}$ — and (2) summarise the uncertainty of the BNN.
 
-#### <u>For regression problems</u>
-**1. Obtaining the estimator of the prediction**:
+#### 1. For regression problems
+##### 1.1. Obtaining the estimator of the prediction
 
 Most common approach is averaging the sampled predictions:
 
@@ -128,7 +133,7 @@ $\displaystyle \hat{y} = \frac{1}{N} \sum_{i=1}^{N} \Phi_{\theta_i}(x)$
 
 **NOTE**:
 
-**2. Summarising the uncertainty of the BNN**:
+##### 1.2. Summarising the uncertainty of the BNN
 
 This can be done using the covariance matrix:
 
@@ -136,10 +141,10 @@ $\displaystyle S_{y|x, D} = \frac{1}{N-1} \sum_{i=1}^N (\Phi_{\theta_i}(x) - \ha
 
 **NOTE**: _We are assuming that_ $\Phi_{\theta_i}(x) - \hat{y}$ _is a column vector._
 
-#### <u>For classification problems</u>
+#### 2. For classification problems
 Here, $\Phi_\theta$ does not give a vector of outputs but rather a vector of probabilities $p$, each corresponding to the estimated probability of the respective label being the true label (for clarity, consider how the last layer of a classification network is defined). In other words, we define $p = \Phi_\theta(x) + \epsilon$. Note that $p$ is a vector wherein the index of each probability corresponds to the label.
 
-**Obtaining the estimator of the prediction**:
+##### 2.1. Obtaining the estimator of the prediction
 
 Averaging the estimated probabilities:
 
@@ -152,3 +157,21 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 **NOTE**: $\hat{p} = (p_1, p_2 ... p_k)$
 
 # Advantages of using BNNs for deep learning
+
+1. Bayesian methods provide a natural approach for quantifying uncertainty
+2. BNNs allow distinguishing between epistemic and aleatoric uncertainty
+3. NFLT $\implies$ any supervised learning algorithm includes an implicit prior
+4. Bayesian paradigm enables the analysis of learning methods
+
+---
+
+**Expansion of the above**:
+
+**Point 1**: Quantifying uncertainty helps prevent overconfidence and underconfidence, since well-quantified uncertainty would be more consistent with the observed errors than mere predictions.
+
+**Point 2**: A BNN's ability to distinguish between epistemic uncertainty $p(θ|D)$ and aleatoric uncertainty $p(y|x, θ)$ means it can learn from a small dataset without overfitting, since at prediction time, points lying outside the training distribution are given high epistemic uncertainty instead of blindly giving a wrong prediction.
+
+**Point 3**: Any supervised learning algorithm includes some implicit prior. Bayesian methods, when used correctly, will at least make the prior explicit, which would make the model less of a black box. In Bayesian deep learning, priors are often considered as soft constraints that are analogous to regularisation or data transformations such as data augmentation in traditional deep learning. In particular, most regularisation methods used for point estimate neural networks can be understood from a Bayesian perspective as setting a prior.
+
+**Point 4**:  Many learning methods initially not presented as Bayesian can be implicitly understood as being approximate Bayesian (e.g. regularisation, ensembling, etc.). In fact, most of the BNNs used in practice rely on methods that are approximately or implicitly Bayesian, since the exact algorithms are too computationally expensive. **+ Consider**: The Bayesian paradigm also provides a systematic framework to design new learning and regularisation strategies, even for point estimate models.
+
