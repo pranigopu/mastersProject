@@ -23,7 +23,10 @@
       - [2. For classification problems](#2-for-classification-problems)
         - [2.1. Obtaining the estimator of the prediction](#21-obtaining-the-estimator-of-the-prediction)
 - [Advantages of using BNNs for deep learning](#advantages-of-using-bnns-for-deep-learning)
-- [Read further](#read-further)
+- [Bayesian inference algorithms](#bayesian-inference-algorithms)
+  - [Markov chain Monte Carlo (MCMC)](#markov-chain-monte-carlo-mcmc)
+  - [Variational inference (VI)](#variational-inference-vi)
+  - [](#)
 
 ---
 
@@ -37,6 +40,10 @@
 - MCMC: Markov chain Monte Carlo
 - NFLT: No free-lunch theorem for machine learning
 - VI: Variational inference
+
+> REFERENCES:
+>
+> - [No free-lunch theorem for machine learning](https://machinelearningmastery.com/no-free-lunch-theorem-for-machine-learning/)
 
 # Notations
 - $D_x$: Training inputs
@@ -176,5 +183,17 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 
 **Point 4**:  Many learning methods initially not presented as Bayesian can be implicitly understood as being approximate Bayesian (e.g. regularisation, ensembling, etc.). In fact, most of the BNNs used in practice rely on methods that are approximately or implicitly Bayesian, since the exact algorithms are too computationally expensive. **+ Consider**: _The Bayesian paradigm also provides a systematic framework to design new learning and regularisation strategies, even for point estimate models._
 
-# Read further
-- [Notes on variational inference]()
+# Bayesian inference algorithms
+## Markov chain Monte Carlo (MCMC)
+A family of algorithms to sample from the exact posterior distribution.
+
+- [My notes on MCMC](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#markov-chain-monte-carlo-mcmc)
+
+## Variational inference (VI)
+A family of algorithms to sample from an approximate posterior distribution.
+
+**NOTE**: _Computationally less intensive and more scalable than MCMC methods._
+
+- [My notes on VI](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#variational-inference-vi)
+
+## 

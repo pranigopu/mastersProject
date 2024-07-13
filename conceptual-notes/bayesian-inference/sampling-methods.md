@@ -5,7 +5,7 @@
 **Contents**:
 
 - [Introduction from a Bayesian context](#introduction-from-a-bayesian-context)
-- [Markov chain Monte Carlo](#markov-chain-monte-carlo)
+- [Markov chain Monte Carlo (MCMC)](#markov-chain-monte-carlo-mcmc)
   - [Detailed balance condition](#detailed-balance-condition)
   - [Key advantange and disadvantage of MCMC](#key-advantange-and-disadvantage-of-mcmc)
   - [Key points](#key-points)
@@ -19,13 +19,14 @@
   - [Motivation](#motivation)
   - [Conceptual introduction](#conceptual-introduction)
   - [Theoretical foundations](#theoretical-foundations)
+  - [Practical computation](#practical-computation)
 
 ---
 
 # Introduction from a Bayesian context
 Suppose we have a distribution $p$ which we do not yet know fully, but of which we know only the numerator (or more generally, of which we know only some function proportional to it). Note how this situation perfectly matches our situation in many cases of Bayesian inference, where we have the numerator of the posterior distribution but not the denominator, which can be impractical or even impossible to compute (by either estimation or calculation) with enough accuracy. Hence, we see that if we have methods to estimate $p$ using sampling based on some use of the numerator of $p$ to weight the acceptance or rejection of samples, then we shall have methods to at least try to estimate the posterior distribution of a Bayesian model, thereby helping us to perform Bayesian inference in cases where the closed expression of the model cannot be found in its entirety.
 
-# Markov chain Monte Carlo
+# Markov chain Monte Carlo (MCMC)
 **_A broad sampling method_**
 
 **MOTIVATION**: Why is it important?
@@ -218,11 +219,11 @@ KL-divergence between $p$ and $q$ is given by:
 
 $KL(q)$
 
-$= \mathbb{E}_\theta(\log q(\theta) - \log p(\theta|D))$
+$= \mathbb{E}_\theta(\log q_\phi(\theta) - \log p(\theta|D))$
 
-$= \mathbb{E}_\theta(\log \frac{q(\theta)}{p(\theta|D)})$
+$= \mathbb{E}_\theta(\log \frac{q_\phi(\theta)}{p(\theta|D)})$
 
-$= \int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta)}{p(\theta|D)} d\theta$
+$= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta|D)} d\theta$
 
 ---
 
@@ -236,38 +237,41 @@ $\implies p(\theta|D) = \frac{p(\theta, D)}{p(D)}$
 
 Hence, we have that:
 
-$KL(q)$
+$KL(q_\phi(\theta) || p(\theta|D))$
 
-$= \int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta) p(D)}{p(\theta, D)} d\theta$
+$= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta) p(D)}{p(\theta, D)} d\theta$
 
-$= p(D) \int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta)}{p(\theta, D)} d\theta$
+$= p(D) \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
 
 ---
 
-Now, note that $p(D)$ is independent of $\theta$.
+Now, note that $p(D)$ is constant with respect to $q_\phi(\theta)$.
 
-$\implies$ $p(D)$ does not help minimise the KL-divergence via $\theta$.
+Hence, here, $p(D)$ is irrelevant in minimising the KL-divergence.
 
 Hence, here, minimising the KL-divergence means minimising:
 
-$\int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta)}{p(\theta, D)} d\theta$
+$\int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
 
-$= \mathbb{E}_\theta(\log \frac{q(\theta)}{p(\theta, D)})$
+$= \mathbb{E}_\theta(\log \frac{q_\phi(\theta)}{p(\theta, D)})$
 
-$= \mathbb{E}_\theta(\log q(\theta) - \log p(\theta, D))$
+$= \mathbb{E}_\theta(\log q_\phi(\theta) - \log p(\theta, D))$
 
-$= \mathbb{E}_\theta(\log q(\theta)) - \mathbb{E}_\theta(\log p(\theta, D))$
+$= \mathbb{E}_\theta(\log q_\phi(\theta)) - \mathbb{E}_\theta(\log p(\theta, D))$
 
 ---
 
 Minimising the above is the same as maximising the following:
 
-$\mathbb{E}_\theta(\log p(\theta, D)) - \mathbb{E}_\theta(\log q(\theta))$
+$\mathbb{E}_\theta(\log p(\theta, D)) - \mathbb{E}_\theta(\log q_\phi(\theta))$
 
-$= \mathbb{E}_\theta(\log p(\theta, D) - \log q(\theta))$
+$= \mathbb{E}_\theta(\log p(\theta, D) - \log q_\phi(\theta))$
 
-$= \mathbb{E}_\theta(\log \frac{p(\theta, D)}{q(\theta)})$
+$= \mathbb{E}_\theta(\log \frac{p(\theta, D)}{q_\phi(\theta)})$
 
-$= \int_{\theta \in \Theta} q(\theta) \log \frac{p(\theta, D)}{q(\theta)} d\theta$
+$= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta$
 
-The above is called the evidence lower bound, i.e. **ELBO**. The ELBO is easier to compute, and maximising the ELBO achieves the same optimisation as minimising the KL-divergence. Of course, the last integral above must be computed, and practically, it is usually computed through approximate methods, such as averaging Monte Carlo samples drawn from the surrogate distribution $q(\theta)$ and plugging them into the ELBO formula.
+The above is called the evidence lower bound, i.e. **ELBO**. The ELBO is easier to compute, and maximising the ELBO achieves the same optimisation as minimising the KL-divergence. Of course, the last integral above must be computed, and practically, it is usually computed through approximate methods, such as averaging Monte Carlo samples drawn from the surrogate distribution $q_\phi(\theta)$ and plugging them into the ELBO formula.
+
+## Practical computation
+Note that VI presents a machine learning optimisation problem, where we have a set of one or more parameters, namely $\phi$ (that define the approximated posterior $q_\phi$), and an objective function, namely ELBO. The most popular method to optimise the ELBO is stochastic VI (SVI), which is in fact the stochastic gradient descent method applied to VI.
