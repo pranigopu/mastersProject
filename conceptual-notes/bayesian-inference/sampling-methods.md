@@ -15,6 +15,10 @@
     - [Key points](#key-points-1)
   - [MCMC METHOD 2: Hamiltonian Monte Carlo](#mcmc-method-2-hamiltonian-monte-carlo)
 - [Other sampling methods](#other-sampling-methods)
+- [Variational inference (VI)](#variational-inference-vi)
+  - [Motivation](#motivation)
+  - [Conceptual introduction](#conceptual-introduction)
+  - [Theoretical foundations](#theoretical-foundations)
 
 ---
 
@@ -188,3 +192,82 @@ What does this mean, practically? It means that if $b$ is a sample from a higher
 # Other sampling methods
 - Sequential Monte Carlo
 - Variational inference
+
+# Variational inference (VI)
+> **Main resources**:
+>
+> - [Hands-on Bayesian Neural Networks – A Tutorial for Deep Learning Users](https://arxiv.org/pdf/2007.06823)
+> - ["11.9.5. Variational Inference" from "11.9. Inference Methods" from _11. Appendiceal Topics_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_11.html#variational-inference)
+
+## Motivation
+MCMC algorithms are the best tools for sampling from the exact posterior. However, their lack of scalability has made them less popular for BNNs, given the size of the models under consideration. Compared to MCMC, variational inference tends to be easier to scale to large data and is faster to run computationally, but with less theoretical guarantees of convergence.
+
+## Conceptual introduction
+Variational inference is not an exact method. Rather than allowing sampling from the exact posterior, the idea is to have a distribution $q_\phi(\theta)$, called the variational distribution, parametrized by a set of parameters $\phi$. The values of the parameters $\phi$ are then learned such that the variational distribution $q_\phi(\theta)$ is as close as possible to the exact posterior $p(\theta|D)$. The measure of closeness that is commonly used is the Kullback-Leibler divergence (KL-divergence). In practice we usually choose $q$ to be of simpler form than $p$, and we find the member of $q$'s family of distributions that is the closest to the target distribution $p$ (the closeness being commonly measured by the KL divergence), using optimization.
+
+## Theoretical foundations
+**NOTATION**:
+
+$\Theta$ denotes the entire hypothesis space. $\mathbb{E}$ denotes "expectation" (estimated by the mean). $\mathbb{E}_\theta$ denotes marginal expectation with respect to $\theta$. Note that marginal expectation with respect to $\theta$ is the expectation where everything apart from $H$ is kept constant (i.e. $\theta$, which represents the hypothesised model, is kept variable, while $D$, which represents the observed data, is kept constant).
+
+**NOTE**: _The goal is to minimise the KL-divergence._
+
+---
+
+KL-divergence between $p$ and $q$ is given by:
+
+$KL(q)$
+
+$= \mathbb{E}_\theta(\log q(\theta) - \log p(\theta|D))$
+
+$= \mathbb{E}_\theta(\log \frac{q(\theta)}{p(\theta|D)})$
+
+$= \int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta)}{p(\theta|D)} d\theta$
+
+---
+
+Now, note that:
+
+$p(\theta, D) = p(\theta|D) p(D)$
+
+$\implies p(\theta|D) = \frac{p(\theta, D)}{p(D)}$
+
+---
+
+Hence, we have that:
+
+$KL(q)$
+
+$= \int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta) p(D)}{p(\theta, D)} d\theta$
+
+$= p(D) \int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta)}{p(\theta, D)} d\theta$
+
+---
+
+Now, note that $p(D)$ is independent of $\theta$.
+
+$\implies$ $p(D)$ does not help minimise the KL-divergence via $\theta$.
+
+Hence, here, minimising the KL-divergence means minimising:
+
+$\int_{\theta \in \Theta} q(\theta) \log \frac{q(\theta)}{p(\theta, D)} d\theta$
+
+$= \mathbb{E}_\theta(\log \frac{q(\theta)}{p(\theta, D)})$
+
+$= \mathbb{E}_\theta(\log q(\theta) - \log p(\theta, D))$
+
+$= \mathbb{E}_\theta(\log q(\theta)) - \mathbb{E}_\theta(\log p(\theta, D))$
+
+---
+
+Minimising the above is the same as maximising the following:
+
+$\mathbb{E}_\theta(\log p(\theta, D)) - \mathbb{E}_\theta(\log q(\theta))$
+
+$= \mathbb{E}_\theta(\log p(\theta, D) - \log q(\theta))$
+
+$= \mathbb{E}_\theta(\log \frac{p(\theta, D)}{q(\theta)})$
+
+$= \int_{\theta \in \Theta} q(\theta) \log \frac{p(\theta, D)}{q(\theta)} d\theta$
+
+The above is called the evidence lower bound, i.e. **ELBO**. The ELBO is easier to compute, and maximising the ELBO achieves the same optimisation as minimising the KL-divergence. Of course, the last integral above must be computed, and practically, it is usually computed through approximate methods, such as averaging Monte Carlo samples drawn from the surrogate distribution $q(\theta)$ and plugging them into the ELBO formula.

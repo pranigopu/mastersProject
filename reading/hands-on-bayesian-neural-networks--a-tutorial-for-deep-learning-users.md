@@ -23,6 +23,7 @@
       - [2. For classification problems](#2-for-classification-problems)
         - [2.1. Obtaining the estimator of the prediction](#21-obtaining-the-estimator-of-the-prediction)
 - [Advantages of using BNNs for deep learning](#advantages-of-using-bnns-for-deep-learning)
+- [Read further](#read-further)
 
 ---
 
@@ -175,3 +176,5 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 
 **Point 4**:  Many learning methods initially not presented as Bayesian can be implicitly understood as being approximate Bayesian (e.g. regularisation, ensembling, etc.). In fact, most of the BNNs used in practice rely on methods that are approximately or implicitly Bayesian, since the exact algorithms are too computationally expensive. **+ Consider**: _The Bayesian paradigm also provides a systematic framework to design new learning and regularisation strategies, even for point estimate models._
 
+# Read further
+- [Notes on variational inference]()
