@@ -223,7 +223,7 @@ $= E_\theta(\log q_\phi(\theta) - \log p(\theta|D))$
 
 $= E_\theta(\log \frac{q_\phi(\theta)}{p(\theta|D)})$
 
-$= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta|D)} d\theta$
+$\displaystyle = \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta|D)} d\theta$
 
 ---
 
@@ -239,9 +239,9 @@ Hence, we have that:
 
 $KL(q_\phi(\theta) || p(\theta|D))$
 
-$= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta) p(D)}{p(\theta, D)} d\theta$
+$\displaystyle = \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta) p(D)}{p(\theta, D)} d\theta$
 
-$= p(D) \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
+$\displaystyle = p(D) \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
 
 ---
 
@@ -251,7 +251,7 @@ Hence, here, $p(D)$ is irrelevant in minimising the KL-divergence.
 
 Hence, here, minimising the KL-divergence means minimising:
 
-$\int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
+$\displaystyle \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
 
 $= E_\theta(\log \frac{q_\phi(\theta)}{p(\theta, D)})$
 
@@ -269,7 +269,7 @@ $= E_\theta(\log p(\theta, D) - \log q_\phi(\theta))$
 
 $= E_\theta(\log \frac{p(\theta, D)}{q_\phi(\theta)})$
 
-$= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta$
+$\displaystyle = \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta$
 
 The above is called the evidence lower bound, i.e. **ELBO**. The ELBO is easier to compute, and maximising the ELBO achieves the same optimisation as minimising the KL-divergence. Of course, the last integral above must be computed, and practically, it is usually computed through approximate methods, such as averaging Monte Carlo samples drawn from the surrogate distribution $q_\phi(\theta)$ and plugging them into the ELBO formula.
 
