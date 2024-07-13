@@ -221,7 +221,7 @@ $KL(q_\phi(\theta) || p(\theta|D))$
 
 $= E_\theta(\log q_\phi(\theta) - \log p(\theta|D))$
 
-$= E_\theta(\log \frac{q_\phi(\theta)}{p(\theta|D)})$
+$\displaystyle = E_\theta(\log \frac{q_\phi(\theta)}{p(\theta|D)})$
 
 $\displaystyle = \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta|D)} d\theta$
 
@@ -253,7 +253,7 @@ Hence, here, minimising the KL-divergence means minimising:
 
 $\displaystyle \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{p(\theta, D)} d\theta$
 
-$= E_\theta(\log \frac{q_\phi(\theta)}{p(\theta, D)})$
+$\displaystyle = E_\theta(\log \frac{q_\phi(\theta)}{p(\theta, D)})$
 
 $= E_\theta(\log q_\phi(\theta) - \log p(\theta, D))$
 
@@ -267,7 +267,7 @@ $E_\theta(\log p(\theta, D)) - E_\theta(\log q_\phi(\theta))$
 
 $= E_\theta(\log p(\theta, D) - \log q_\phi(\theta))$
 
-$= E_\theta(\log \frac{p(\theta, D)}{q_\phi(\theta)})$
+$\displaystyle = E_\theta(\log \frac{p(\theta, D)}{q_\phi(\theta)})$
 
 $\displaystyle = \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta$
 
