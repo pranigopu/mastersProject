@@ -20,6 +20,8 @@
   - [Conceptual introduction](#conceptual-introduction)
   - [Theoretical foundations](#theoretical-foundations)
   - [Practical computation](#practical-computation)
+    - [Introduction](#introduction)
+    - [Bayes-by-backprop](#bayes-by-backprop)
 
 ---
 
@@ -231,7 +233,7 @@ Now, note that:
 
 $p(\theta, D) = p(\theta|D) p(D)$
 
-$\implies p(\theta|D) = \frac{p(\theta, D)}{p(D)}$
+$\displaystyle \implies p(\theta|D) = \frac{p(\theta, D)}{p(D)}$
 
 ---
 
@@ -274,4 +276,30 @@ $\displaystyle = \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)
 The above is called the evidence lower bound, i.e. **ELBO**. The ELBO is easier to compute, and maximising the ELBO achieves the same optimisation as minimising the KL-divergence. Of course, the last integral above must be computed, and practically, it is usually computed through approximate methods, such as averaging Monte Carlo samples drawn from the surrogate distribution $q_\phi(\theta)$ and plugging them into the ELBO formula.
 
 ## Practical computation
+### Introduction
 Note that VI presents a machine learning optimisation problem, where we have a set of one or more parameters, namely $\phi$ (that defines the approximated posterior $q_\phi$), and an objective function, namely ELBO. The most popular method to optimise the ELBO is stochastic VI (SVI), which is in fact the stochastic gradient descent method applied to VI.
+
+Now, note that while VI offers a good mathematical tool for Bayesian inference, it needs to be adapted to deep learning. The main problem is that stochasticity stops backpropagation from functioning at the internal nodes of a network. Solutions to mitigate this problem include:
+
+- Probabilistic backpropagation
+- Bayes-by-backprop (_our next main focus_)
+
+### Bayes-by-backprop
+**_"backprop" means "backpropagation_**
+
+Bayes-by-backprop is a practical implementation of SVI combined with a reparametrisation trick to ensure backpropagation works as usual.
+
+---
+
+**Bayes-by-backprop algorithm**
+
+- $\phi = \phi_0$
+- **for** $i=0$ to N do
+    - Draw $\epsilon \sim q(\epsilon)$
+    - $\theta = t(\epsilon, \phi)$
+    - $f(\theta, \phi) = log(q\phi(\theta)) − log(p(Dy|Dx, \theta)p(\theta))$
+    - $\Delta_\phi f = \text{backprop}_\phi(f)$
+    - $\phi = \phi − \alpha \Delta_\phi f$
+- **end for**
+
+---
