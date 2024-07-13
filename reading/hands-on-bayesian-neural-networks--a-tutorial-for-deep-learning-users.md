@@ -60,7 +60,7 @@ This is accomplished by comparing the predictions of multiple sampled models (ba
 
 $\theta ∼ P(\theta)$ (prior distribution)
 
-$y = \Phi_\theta(x) + \epsilon$ (regression with stochastic function $\Phi_\theta(x)$)
+$y = \Phi_\theta(x) + \epsilon$ (regression with stochastic function $\Phi_\theta(x)$ )
 
 **NOTE**: _As with all regression problems, we use the error term_ $\epsilon$ _to represent random noise that accounts for the fact that the function_ $\Phi$ _is only an approximation._
 
