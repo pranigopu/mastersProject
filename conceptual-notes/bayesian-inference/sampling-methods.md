@@ -209,7 +209,7 @@ Variational inference is not an exact method. Rather than allowing sampling from
 ## Theoretical foundations
 **NOTATION**:
 
-$\Theta$ denotes the entire hypothesis space. $E$ denotes "expectation" (estimated by the mean). $E_\theta$ denotes marginal expectation with respect to $\theta$. Note that marginal expectation with respect to $\theta$ is the expectation where everything apart from $H$ is kept constant (i.e. $\theta$, which represents the hypothesised model, is kept variable, while $D$, which represents the observed data, is kept constant).
+$\Theta$ denotes the entire hypothesis space. $E$ denotes "expectation" (computed by the theoretical mean). $E_\theta$ denotes marginal expectation with respect to $\theta$. Note that marginal expectation with respect to $\theta$ is the expectation where everything apart from $H$ is kept constant (i.e. $\theta$, which represents the hypothesised model, is kept variable, while $D$, which represents the observed data, is kept constant).
 
 **NOTE**: _The goal is to minimise the KL-divergence._
 
@@ -274,4 +274,4 @@ $\displaystyle = \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)
 The above is called the evidence lower bound, i.e. **ELBO**. The ELBO is easier to compute, and maximising the ELBO achieves the same optimisation as minimising the KL-divergence. Of course, the last integral above must be computed, and practically, it is usually computed through approximate methods, such as averaging Monte Carlo samples drawn from the surrogate distribution $q_\phi(\theta)$ and plugging them into the ELBO formula.
 
 ## Practical computation
-Note that VI presents a machine learning optimisation problem, where we have a set of one or more parameters, namely $\phi$ (that define the approximated posterior $q_\phi$), and an objective function, namely ELBO. The most popular method to optimise the ELBO is stochastic VI (SVI), which is in fact the stochastic gradient descent method applied to VI.
+Note that VI presents a machine learning optimisation problem, where we have a set of one or more parameters, namely $\phi$ (that defines the approximated posterior $q_\phi$), and an objective function, namely ELBO. The most popular method to optimise the ELBO is stochastic VI (SVI), which is in fact the stochastic gradient descent method applied to VI.
