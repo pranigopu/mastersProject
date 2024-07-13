@@ -287,7 +287,7 @@ Now, note that while VI offers a good mathematical tool for Bayesian inference, 
 ### Bayes-by-backprop
 **_"backprop" means "backpropagation_**
 
-Bayes-by-backprop is a practical implementation of SVI combined with a reparametrisation trick to ensure backpropagation works as usual.
+Bayes-by-backprop is a practical implementation of SVI combined with a reparametrisation trick to ensure backpropagation works as usual. The first key idea is to use $\epsilon \sim r(\epsilon)$ as a source of noise, wherein the distribution $r$ does not vary. The next key idea is to sample the model parameters $\theta$ not from the approximated posterior $q_{\phi}$ (which is a stochastic function) but from $t(\epsilon, \phi)$ (which is a deterministic function, with only the variable input $\epsilon$ being stochastic). Hence, $\theta \sim t(\epsilon, \phi)$. But the key point here is that $t$ must be defined such that $\theta$ (as sampled from $t$) follows $q_{\phi}$. Note also that $\epsilon$ is independent of $\phi$, which means during backpropagation, it can be considered constant, and its stochasticity does not affect the backpropagation process.
 
 ---
 
