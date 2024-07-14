@@ -1,5 +1,8 @@
 # Resources
 
+## Practical resources
+- [BlackJAX](https://github.com/blackjax-devs/blackjax) (a library of samplers for [JAX](https://github.com/google/jax))
+
 ## Reading material
 - Benchmark for testing reinforcement learning models (LESS RELEVANT)
     - https://michelangeloconserva.github.io/Colosseum/mds/intro.html
