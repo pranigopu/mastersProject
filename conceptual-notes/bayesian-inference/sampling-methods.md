@@ -14,7 +14,6 @@
     - [Defining the acceptance probability](#defining-the-acceptance-probability)
     - [Key points](#key-points-1)
   - [MCMC METHOD 2: Hamiltonian Monte Carlo](#mcmc-method-2-hamiltonian-monte-carlo)
-- [Other sampling methods](#other-sampling-methods)
 - [Variational inference (VI)](#variational-inference-vi)
   - [Motivation](#motivation)
   - [Conceptual introduction](#conceptual-introduction)
@@ -22,6 +21,7 @@
   - [Practical computation](#practical-computation)
     - [Introduction](#introduction)
     - [Bayes-by-backprop](#bayes-by-backprop)
+- [Other sampling methods](#other-sampling-methods)
 
 ---
 
@@ -192,10 +192,6 @@ What does this mean, practically? It means that if $b$ is a sample from a higher
 ## MCMC METHOD 2: Hamiltonian Monte Carlo
 > **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" _11. Appendicial Topics_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
 
-# Other sampling methods
-- Sequential Monte Carlo
-- Variational inference
-
 # Variational inference (VI)
 > **Main resources**:
 >
@@ -316,3 +312,6 @@ Bayes-by-backprop is a practical implementation of SVI combined with a reparamet
 - $\Delta_\phi$: Change with respect to change in $\phi$
 - $D_x$: The training inputs
 - $D_y$: The training labels
+
+# Other sampling methods
+- Sequential Monte Carlo
