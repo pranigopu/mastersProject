@@ -8,9 +8,10 @@
 
 - Murphy, Kevin P. Machine Learning: A Probabilistic Perspective, 2012
     - Check chapters 3 and 7
-- [Paulo Rauber's Notes on the Above](https://www.paulorauber.com/files/notes/machine_learning.pdf) (summarises first 17 chapters of the above)
+- [Paulo Rauber's Notes](https://www.paulorauber.com/files/notes/machine_learning.pdf)
+    - Summarises first 17 chapters of Murphy's textbook (listed above)
     - Check chapters 3 and 7 (corresponds to chapters 3 and 7 of Murphy's book)
-    - **NOTE**: Is less readable but more mathematically rigorous than Murphy's book
+    - **NOTE**: _Is less readable but more mathematically rigorous than Murphy's book_
 - [Bayesian Computation Online Textbook](https://bayesiancomputationbook.com/markdown/chp_01.html)
 
 **For learning Bayesian neural network basics**:
