@@ -287,6 +287,12 @@ Now, note that while VI offers a good mathematical tool for Bayesian inference, 
 ### Bayes-by-backprop
 **_"backprop" means "backpropagation_**
 
+> **Main references**:
+>
+> - [_Bayes by Backprop_ from **Probabilitistic Deep Learning**](https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743)
+
+**NOTE**: _The following is my best attempt at understanding Bayes-by-backprop._
+
 Bayes-by-backprop is a practical implementation of SVI combined with a reparametrisation trick to ensure backpropagation works as usual. The first key idea is to use $\epsilon \sim r(\epsilon)$ as a source of noise, wherein the distribution $r$ does not vary. The next key idea is to sample the model parameters $\theta$ not from the approximated posterior $q_{\phi}$ (which is a stochastic function) but from $t(\epsilon, \phi)$ (which is a deterministic function, with only the variable input $\epsilon$ being stochastic). Hence, $\theta \sim t(\epsilon, \phi)$. But the key point here is that $t$ must be defined such that $\theta$ (as sampled from $t$) follows $q_{\phi}$. Note also that $\epsilon$ is independent of $\phi$, which means during backpropagation, it can be considered constant, and its stochasticity does not affect the backpropagation process.
 
 ---
@@ -297,9 +303,16 @@ Bayes-by-backprop is a practical implementation of SVI combined with a reparamet
 - **for** $i=0$ to N do
     - Draw $\epsilon \sim q(\epsilon)$
     - $\theta = t(\epsilon, \phi)$
-    - $f(\theta, \phi) = log(q\phi(\theta)) − log(p(Dy|Dx, \theta)p(\theta))$
+    - $f(\theta, \phi) = log(q\phi(\theta)) − log(p(D_y | D_x, \theta) p(\theta))$
     - $\Delta_\phi f = \text{backprop}_\phi(f)$
     - $\phi = \phi − \alpha \Delta_\phi f$
 - **end for**
 
 ---
+
+**NOTATION NOTES**:
+
+- $f$: The objective function
+- $\Delta_\phi$: Change with respect to change in $\phi$
+- $D_x$: The training inputs
+- $D_y$: The training labels

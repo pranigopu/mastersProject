@@ -26,7 +26,7 @@
 - [Bayesian inference algorithms](#bayesian-inference-algorithms)
   - [Markov chain Monte Carlo (MCMC)](#markov-chain-monte-carlo-mcmc)
   - [Variational inference (VI)](#variational-inference-vi)
-  - [](#)
+  - [Bayes-by-backprop](#bayes-by-backprop)
 
 ---
 
@@ -196,4 +196,5 @@ A family of algorithms to sample from an approximate posterior distribution.
 
 - [My notes on VI](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#variational-inference-vi)
 
-## 
+## Bayes-by-backprop
+Bayes-by-backprop is a practical implementation of stochastic VI combined with a reparametrisation trick to ensure backpropagation works as usual. Hence, I have put it under the "Variational inference" section: [My notes on Bayes-by-backprop](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#bayes-by-backprop).
