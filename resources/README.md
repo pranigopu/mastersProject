@@ -12,7 +12,7 @@
     - Summarises first 17 chapters of Murphy's textbook (listed above)
     - Check chapters 3 and 7 (corresponds to chapters 3 and 7 of Murphy's book)
     - Is less readable but more mathematically rigorous than Murphy's book
-- [Bayesian Computation Online Textbook](https://bayesiancomputationbook.com/markdown/chp_01.html)
+- [Bayesian Computation Online Textbook](https://bayesiancomputationbook.com/welcome.html)
 
 **For learning Bayesian neural network basics**:
 
