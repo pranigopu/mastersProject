@@ -13,7 +13,8 @@
     - [Defining the transition probability](#defining-the-transition-probability)
     - [Defining the acceptance probability](#defining-the-acceptance-probability)
     - [Key points](#key-points-1)
-  - [MCMC METHOD 2: Hamiltonian Monte Carlo](#mcmc-method-2-hamiltonian-monte-carlo)
+  - [MCMC METHOD 2: Hamiltonian Monte Carlo (HMC)](#mcmc-method-2-hamiltonian-monte-carlo-hmc)
+  - [Mathematical formulation](#mathematical-formulation)
 - [Variational inference (VI)](#variational-inference-vi)
   - [Motivation](#motivation)
   - [Conceptual introduction](#conceptual-introduction)
@@ -108,6 +109,8 @@ The main disadvantage of MCMC is also its main advantage: in MCMC samples are no
 
 MH algorithm is not a very modern or particularly efficient algorithm, but it is simple to understand and also provides a foundation to understand more sophisticated and powerful methods for sampling from and estimating the posterior distribution (paraphrased from ["1.2. A DIY Sampler, Do Not Try This at Home" from "1. Bayesian Inference" from _Bayesian Modeling and Computation in Python_](https://bayesiancomputationbook.com/markdown/chp_01.html)).
 
+**NOTE**: _MH algorithm represents a class of methods, rather than a single method._
+
 ---
 
 **NOTATION**:
@@ -189,8 +192,38 @@ What does this mean, practically? It means that if $b$ is a sample from a higher
 - Metropolis algorithm is a special case of MH algorithm wherein the candidate distribution $g$ is symmetrical
 - MH algorithm can have an asymmetrical candidate distribution as well
 
-## MCMC METHOD 2: Hamiltonian Monte Carlo
+## MCMC METHOD 2: Hamiltonian Monte Carlo (HMC)
 > **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" _11. Appendicial Topics_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
+
+**NOTE**: _HMC is a class of methods, rather than a single method._
+
+---
+
+**MOTIVATION**: Why is it important?
+
+HMC is a class of MCMC methods that uses gradients (of the log-probability of the posterior distribution) to generate new proposed states (i.e. new samples proposed to be from the target distribution). The gradients of the log-probability of the posterior evaluated at a given state (i.e. a given sample) gives information about the posterior density function's geometry. HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by using the gradient to propose new positions (i.e. new samples) that is both far from the current position (i.e. current sample) and with high acceptance probability. This allows HMC to better scale to higher dimensions and, in principle, to more complex geometries (compared to alternative methods). Intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a better sample proposal distribution.
+
+**Reminder**: _A "sample" here is a tuple of one or more values proposed parameter values of the target distribution. What we are trying to do, here and in all sampling methods, is discover (with some level of uncertainty) how well the various potential parameter values would describe the target distribution. Note also that a "position" or a "state" is simply a sample, i.e. simply a proposed tuple of parameter values._
+
+---
+
+**NOTATION**:
+
+- Let $p$ denote the target distribution
+- Let $\theta$ denote a particular position (i.e. state/sample)
+- Let $m$ represent the "momentum" parameter (to be defined soon)
+
+---
+
+**NOTE: The use of "momentum"**:
+
+$m$ , i.e. the "momentum", denotes a parameter used to alter how the Markov chian moves along the gradients (i.e. along the shape of the function corresponding to an approximation of the posterior) to the next state/sample. Why would alter such movement? Because we are not interested in following the gradient toward the mode (i.e. the peak, i.e. the hill, i.e. the local optimum), but rather, we are interested in exploring the high-density region of the posterior. _How high is high enough? Depends on our purposes_.
+
+The analogy commonly used to describe HMC is based on classical mechanics. Let us use the analogy of a planet whose centre is the mode, with its gravitational pull forming a field of force vectors leading into the centre. Our goal is not to follow the force vectors toward the centre, but rather, our goal is to explore the space around the planet where the gravity is high enough (with respect to our purposes). In cases with multiple models (i.e. multimodal posteriors), we can think of a space with multiple planets fixed in place while each exerts its own gravitational pull.
+
+> **Reference (especially for the analogy**): ["Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo" by London Machine Learning Meetup](https://www.youtube.com/watch?v=jUSZboSq1zg)
+
+## Mathematical formulation
 
 # Variational inference (VI)
 > **Main resources**:
