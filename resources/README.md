@@ -11,7 +11,7 @@
 - [Paulo Rauber's Notes](https://www.paulorauber.com/files/notes/machine_learning.pdf)
     - Summarises first 17 chapters of Murphy's textbook (listed above)
     - Check chapters 3 and 7 (corresponds to chapters 3 and 7 of Murphy's book)
-    - **NOTE**: _Is less readable but more mathematically rigorous than Murphy's book_
+    - Is less readable but more mathematically rigorous than Murphy's book
 - [Bayesian Computation Online Textbook](https://bayesiancomputationbook.com/markdown/chp_01.html)
 
 **For learning Bayesian neural network basics**:
@@ -19,7 +19,7 @@
 - [Hands-on Bayesian Neural Networks - A Tutorial for Deep Learning Users](https://arxiv.org/pdf/2007.06823.pdf)
 - [Bayesian Network Priors Revisited](https://arxiv.org/pdf/2102.06571)
 - [Understanding Deep Learning](https://udlbook.github.io/udlbook)
-    - Check around page 159 in the downloadable PDF
+    - Check around page 164 in the downloadable PDF
 - ["Bayes-by-Backprop"](https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743)
 
 **For comparing BNNs**:

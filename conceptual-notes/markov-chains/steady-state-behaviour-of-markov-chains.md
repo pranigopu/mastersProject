@@ -13,7 +13,7 @@
 
 ---
 
-**Main resource**: ["Lecture 25: Steady–State Behavior of Markov Chains" from _Part III: Random Processes_ from **Introduction to Probability**](https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/)
+> **Main resource**: ["Lecture 25: Steady–State Behavior of Markov Chains" from _Part III: Random Processes_ from **Introduction to Probability**](https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/)
 
 ---
 
@@ -28,7 +28,7 @@ Does $r_{ij}(n) = \mathbb{P}(X_n = j | X_0 = i)$ converge to some $\pi_j$ for al
 
 ---
 
-**Reference for transition probability notation**: [_Finite State Markov Chains_](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/markov-chains/finite-state-markov-chains.md)
+> **Reference for transition probability notation**: [_Finite State Markov Chains_](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/markov-chains/finite-state-markov-chains.md)
 
 ---
 
@@ -95,7 +95,7 @@ $\displaystyle r_{ij}(n) = \sum_{k=1}^m r_{ik}(n-1) p_{kj}$
 
 As $n \rightarrow \infty$, given the Markov chain's steady-state behaviour:
 
-$r_{ij}(n) = \pi_j$ and $\displaystyle \sum_{k=1}^m r_{ik}(n-1) p_{kj} = \sum_{k=1}^m \pi_{k} p_{kj}$
+$\displaystyle r_{ij}(n) = \pi_j \text{&} \sum_{k=1}^m r_{ik}(n-1) p_{kj} = \sum_{k=1}^m \pi_{k} p_{kj}$
 
 $\displaystyle \therefore \pi_j = \sum_{k=1}^m \pi_{k} p_{kj}$
 
