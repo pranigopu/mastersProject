@@ -95,7 +95,7 @@ $\displaystyle r_{ij}(n) = \sum_{k=1}^m r_{ik}(n-1) p_{kj}$
 
 As $n \rightarrow \infty$, given the Markov chain's steady-state behaviour:
 
-$\displaystyle r_{ij}(n) = \pi_j, \sum_{k=1}^m r_{ik}(n-1) p_{kj} = \sum_{k=1}^m \pi_{k} p_{kj}$
+$\displaystyle r_{ij}(n) = \pi_j; \sum_{k=1}^m r_{ik}(n-1) p_{kj} = \sum_{k=1}^m \pi_{k} p_{kj}$
 
 $\displaystyle \therefore \pi_j = \sum_{k=1}^m \pi_{k} p_{kj}$
 
