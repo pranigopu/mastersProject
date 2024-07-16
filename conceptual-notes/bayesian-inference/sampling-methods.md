@@ -304,11 +304,13 @@ $\implies - \log P(\theta, m) = - \log P(\theta|D) - \log P(m)$
 
 ---
 
-Notice that the above is in the form of a Hamiltonian, where:
+Notice that the above rquation is in the form of a Hamiltonian, where:
 
 - $H(\theta, m) = - \log P(\theta, m)$
 - $K(m) = - \log P(m)$ ("kinetic energy")
 - $V(\theta) = - \log P(\theta|D)$ ("potential energy")
+
+**NOTE**: _Negative logarithms of probabilities are always_ $\geq 0$, _since probabilities are always between 0 and 1. Hence, the motion-based analogy is valid, which also means that Hamitlon's equations of motion will work as intended, i.e. in the same as they do for physical systems._
 
 # Variational inference (VI)
 > **Main resources**:
