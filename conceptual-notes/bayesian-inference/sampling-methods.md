@@ -199,8 +199,6 @@ What does this mean, practically? It means that if $b$ is a sample from a higher
 - On the other hand, MH can have an asymmetrical candidate distribution as well
 
 ## MCMC METHOD 2: Hamiltonian Monte Carlo (HMC)
-> **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" _11. Appendicial Topics_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
-
 **NOTE**: _HMC is a class of methods, rather than a single method._
 
 ---
@@ -229,6 +227,8 @@ $m$ , i.e. the "momentum", denotes a parameter used to alter how the Markov chia
 The analogy commonly used to describe HMC is based on classical mechanics. Let us use the analogy of a planet whose centre is the mode, with its gravitational pull forming a field of force vectors leading into the centre. Our goal is not to follow the force vectors toward the centre, but rather, our goal is to explore the space around the planet where the gravity is high enough (with respect to our purposes). In cases with multiple models (i.e. multimodal posteriors), we can think of a space with multiple planets fixed in place while each exerts its own gravitational pull.
 
 "Momentum" in the context of HMC is analogous to the physical momentum given to a body in space so that it follows a certain orbital trajectory rather than a trajectory that goes directly toward the planet's centre. More precisely, it is an auxiliary variable that ensures that the Markov chain sampling (done based on following the gradient) samples from a sufficiently high-probability-mass region of the posterior rather than moving toward the posterior distribution's mode.
+
+---
 
 > **Reference (especially for the analogy**): [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ by London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)
 
@@ -279,6 +279,8 @@ Note that in the above equations:
 
 Hence, solving the above equations, we can simulate the system $S$; for example, given the initial positions $\theta$ and initial momenta $m$, we can figure out the change in positions and momenta, thereby figuring out the updated $\theta$ and $m$, and so on. Hence, using Hamilton's equations of motion in such a way, we can figure out how the bodies in the system would move over time, provided that they do not interact, since Hamilton's equations of motion do not account for interactions between bodies. However, in the case of using Hamilton's equations of motion for sampling from a posterior, we have no need to worry about any "interactions".
 
+---
+
 > **References**:
 >
 > - [_Hamiltonian Monte Carlo For Dummies (Statisticians / Pharmacometricians / All)_ by Alan Maloney, **YouTube**](https://www.youtube.com/watch?v=ZGtezhDaSpM)
@@ -312,7 +314,7 @@ Notice that the above rquation is in the form of a Hamiltonian, where:
 - $K(m) = - \log P(m)$ ("kinetic energy")
 - $V(\theta) = - \log P(\theta|D)$ ("potential energy")
 
-Logarithms of probabilities are always less than or equal to 0, since probabilities are always between 0 and 1. Hence, negative logarithms of probabilities are always greater than or equal to 0. Hence, the motion-based analogy is valid, which also means that Hamilton's equations of motion will work as intended, i.e. in the same as they do for physical systems.
+Note that the logarithms of probabilities are always less than or equal to 0, since probabilities are always between 0 and 1. Hence, negative logarithms of probabilities are always greater than or equal to 0. Hence, the motion-based analogy is valid, which also means that Hamilton's equations of motion will work as intended, i.e. in the same as they do for physical systems.
 
 _What does this mean in practice?_
 
@@ -320,13 +322,13 @@ It means we can use one of Hamilton's equations, i.e. $\frac{d \theta}{dt} = \fr
 
 _Hence, we see how HMC allows more efficient exploration of the high-probability-mass region of the posterior, compared to the approaches that explore by diffusing from a starting point over time._
 
+---
+
 > **Main references**:
 >
 > - [_Hamiltonian Monte Carlo For Dummies (Statisticians / Pharmacometricians / All)_ by Alan Maloney, **YouTube**](https://www.youtube.com/watch?v=ZGtezhDaSpM)
 > - [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)
 > - ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" from _11. Appendiceal Topics_ from **Bayesian Computation Notebook**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
-
----
 
 > **Additional reference**: [_The intuition behind the Hamiltonian Monte Carlo algorithm_ by Ben Lambert, **YouTube**](https://www.youtube.com/watch?v=a-wydhEuAm0)
 
@@ -367,6 +369,8 @@ _The above points make HMC a powerful choice to automate Bayesian computation._
 - HMC does not work well for multimodal distributions
 - Adiabatic Monte Carlo extends HMC to work for mutlimodal distributions
 - Hamiltonian equations are solved using symplectic integrators
+
+---
 
 > **Reference**: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)
 
