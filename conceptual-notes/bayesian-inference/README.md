@@ -15,7 +15,7 @@
 
 # Bayesian vs. frequentist
 
-> **Reference**: [Bayesian vs frequentist statistics, Ox educ](https://youtu.be/r76oDIvwETI?si=Fk8-Z6kLIhqULcTq)
+> **Reference**: [_Bayesian vs frequentist statistics_ by Ox educ, **YouTube**](https://youtu.be/r76oDIvwETI?si=Fk8-Z6kLIhqULcTq)
 
 **Bayesian**:
 

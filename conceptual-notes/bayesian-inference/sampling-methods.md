@@ -461,7 +461,7 @@ Note that VI presents a machine learning optimisation problem, where we have a s
 - Bayes-by-backprop (_our next main focus_)
 
 ### Bayes-by-backprop
-**_"backprop" means "backpropagation_**
+**_"backprop" means "backpropagation"_**
 
 > **Main references**:
 >
