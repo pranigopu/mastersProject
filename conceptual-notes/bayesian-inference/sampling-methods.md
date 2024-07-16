@@ -356,8 +356,7 @@ Why we still need to use the Metropolis acceptance criterion? Intuitively, becau
 ### Additional points about HMC
 - HMC is fast and efficient when it works
 - HMC is robust, i.e. it works for a wide variety of distributions
-- When HMC breaks, it is very obvious to observe and report it
-- Hence, HMC has unique diagnostics for when it is broken
+- When HMC breaks, it is very obvious to observe and report it <br> $\rightarrow$ _HMC has unique diagnostics for when it is broken_
 
 _The above points make HMC a powerful choice to automate Bayesian computation._
 
