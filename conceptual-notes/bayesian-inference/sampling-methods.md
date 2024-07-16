@@ -266,7 +266,7 @@ $\displaystyle \frac{dm}{dt} = - \frac{\delta H}{\delta \theta}$
 
 $= - \frac{\delta K}{\delta \theta} - \frac{\delta V}{\delta \theta}$
 
-$= \frac{\delta V}{\delta \theta}$ (because $\frac{\delta K}{\delta \theta} = 0$)
+$= - \frac{\delta V}{\delta \theta}$ (because $\frac{\delta K}{\delta \theta} = 0$)
 
 ---
 
@@ -307,8 +307,8 @@ $\implies - \log P(\theta, m) = - \log P(\theta|D) - \log P(m)$
 Notice that the above is in the form of a Hamiltonian, where:
 
 - $H(\theta, m) = - \log P(\theta, m)$
-- $K(m) = \log P(m)$ ("kinetic energy")
-- $V(\theta) = \log P(\theta|D)$ ("potential energy")
+- $K(m) = - \log P(m)$ ("kinetic energy")
+- $V(\theta) = - \log P(\theta|D)$ ("potential energy")
 
 # Variational inference (VI)
 > **Main resources**:
