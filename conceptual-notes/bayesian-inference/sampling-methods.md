@@ -358,10 +358,14 @@ Why we still need to use the Metropolis acceptance criterion? Intuitively, becau
 - HMC is robust, i.e. it works for a wide variety of distributions
 - When HMC breaks, it is very obvious to observe and report it <br> $\rightarrow$ _HMC has unique diagnostics for when it is broken_
 
+---
+
 _The above points make HMC a powerful choice to automate Bayesian computation._
 
-**HMC-related practical point**:
+---
 
+- HMC does not work well for multimodal distributions
+- Adiabatic Monte Carlo extends HMC to work for mutlimodal distributions
 - Hamiltonian equations are solved using symplectic integrators
 
 > **Reference**: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)
