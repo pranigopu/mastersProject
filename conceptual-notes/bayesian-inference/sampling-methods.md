@@ -9,11 +9,14 @@
   - [Detailed balance condition](#detailed-balance-condition)
   - [Key advantange and disadvantage of MCMC](#key-advantange-and-disadvantage-of-mcmc)
   - [Key points](#key-points)
-  - [MCMC METHOD 1: Metropolis-Hastings algorithm](#mcmc-method-1-metropolis-hastings-algorithm)
+  - [MCMC METHOD 1: Metropolis-Hastings](#mcmc-method-1-metropolis-hastings)
     - [Defining the transition probability](#defining-the-transition-probability)
     - [Defining the acceptance probability](#defining-the-acceptance-probability)
-    - [Key points](#key-points-1)
+    - [Metropolis algorithm](#metropolis-algorithm)
   - [MCMC METHOD 2: Hamiltonian Monte Carlo (HMC)](#mcmc-method-2-hamiltonian-monte-carlo-hmc)
+    - [Key concepts](#key-concepts)
+      - [Momentum](#momentum)
+      - [Hamiltonian (i.e. Hamiltonian function)](#hamiltonian-ie-hamiltonian-function)
   - [Mathematical formulation](#mathematical-formulation)
 - [Variational inference (VI)](#variational-inference-vi)
   - [Motivation](#motivation)
@@ -102,14 +105,14 @@ The main disadvantage of MCMC is also its main advantage: in MCMC samples are no
 - MCMC is an umbrella term for a wide variety of methods that define how to design the transition probabilities
 - The specific acceptance and rejection methods used under the broader MCMC framework define the specific MCMC method
 
-## MCMC METHOD 1: Metropolis-Hastings algorithm
+## MCMC METHOD 1: Metropolis-Hastings
 **_An MCMC method_**
 
 **MOTIVATION**: Why is it important?
 
-MH algorithm is not a very modern or particularly efficient algorithm, but it is simple to understand and also provides a foundation to understand more sophisticated and powerful methods for sampling from and estimating the posterior distribution (paraphrased from ["1.2. A DIY Sampler, Do Not Try This at Home" from "1. Bayesian Inference" from _Bayesian Modeling and Computation in Python_](https://bayesiancomputationbook.com/markdown/chp_01.html)).
+MH is not a very modern or particularly efficient algorithm, but it is simple to understand and also provides a foundation to understand more sophisticated and powerful methods for sampling from and estimating the posterior distribution (paraphrased from ["1.2. A DIY Sampler, Do Not Try This at Home" from "1. Bayesian Inference" from _Bayesian Modeling and Computation in Python_](https://bayesiancomputationbook.com/markdown/chp_01.html)).
 
-**NOTE**: _MH algorithm represents a class of methods, rather than a single method._
+**NOTE**: _MH represents a class of methods, rather than a single method._
 
 ---
 
@@ -188,9 +191,10 @@ Hence, we have the following cases:
 
 What does this mean, practically? It means that if $b$ is a sample from a higher-density region of the target distribution $p$ than $a$, then it will certainly be accepted, which makes sense because we want to sample more from higher-density regions. However, if $b$ is a sample from a lower-density region of the target distribution $p$ than $a$, then it may or may not be accepted from $a$. Furthermore, we see that the probability of accepting $b$ from $a$ is lesser the lesser the density of $b$ is compared to the density of $a$, which also makes sense because we want there to be a lower but non-zero chance of sampling from a lower-density region after sampling from a higher-density region, with the condition that the lower the density, the lower the chance. We see how such a policy is an MCMC method that helps estimate the target distribution more accurately and more efficiently over time.
 
-### Key points
-- Metropolis algorithm is a special case of MH algorithm wherein the candidate distribution $g$ is symmetrical
-- MH algorithm can have an asymmetrical candidate distribution as well
+### Metropolis algorithm
+- The Metropolis algorithm is a special case of MH
+- In Metropolis, the candidate distribution $g$ is strictly symmetrical
+- On the other hand, MH can have an asymmetrical candidate distribution as well
 
 ## MCMC METHOD 2: Hamiltonian Monte Carlo (HMC)
 > **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" _11. Appendicial Topics_ from **Bayesian Computation Book**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
@@ -201,7 +205,9 @@ What does this mean, practically? It means that if $b$ is a sample from a higher
 
 **MOTIVATION**: Why is it important?
 
-HMC is a class of MCMC methods that uses gradients (of the log-probability of the posterior distribution) to generate new proposed states (i.e. new samples proposed to be from the target distribution). The gradients of the log-probability of the posterior evaluated at a given state (i.e. a given sample) gives information about the posterior density function's geometry. HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by using the gradient to propose new positions (i.e. new samples) that is both far from the current position (i.e. current sample) and with high acceptance probability. This allows HMC to better scale to higher dimensions and, in principle, to more complex geometries (compared to alternative methods). Intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a better sample proposal distribution.
+HMC is a class of MCMC methods that uses gradients (of the log-probability of the posterior distribution) to generate new proposed states (i.e. new samples proposed to be from the target distribution). The gradients of the log-probability of the posterior evaluated at a given state (i.e. a given sample) gives information about the posterior density function's geometry. **_HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by using the gradient to propose new positions (i.e. new samples) that is both far from the current position (i.e. current sample) and with high acceptance probability_**. This allows HMC to better scale to higher dimensions and, in principle, to more complex geometries (compared to alternative methods). Intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a better sample proposal distribution.
+
+**NOTE**: _The benefit of consistently proposing new positions that are both far from the current position and with high acceptance rate is that you are likely to gain a much more representative and thus accurate sample of the distribution you want to estimate, but using fewer sampled values; in other words, it tends to make sampling more efficient._
 
 **Reminder**: _A "sample" here is a tuple of one or more values proposed parameter values of the target distribution. What we are trying to do, here and in all sampling methods, is discover (with some level of uncertainty) how well the various potential parameter values would describe the target distribution. Note also that a "position" or a "state" is simply a sample, i.e. simply a proposed tuple of parameter values._
 
@@ -211,19 +217,98 @@ HMC is a class of MCMC methods that uses gradients (of the log-probability of th
 
 - Let $p$ denote the target distribution
 - Let $\theta$ denote a particular position (i.e. state/sample)
-- Let $m$ represent the "momentum" parameter (to be defined soon)
+- Let $m$ denote the "momentum" parameter (to be defined soon)
+- Let $D$ denote the observed data
 
----
-
-**NOTE: The use of "momentum"**:
-
+### Key concepts
+#### Momentum
 $m$ , i.e. the "momentum", denotes a parameter used to alter how the Markov chian moves along the gradients (i.e. along the shape of the function corresponding to an approximation of the posterior) to the next state/sample. Why would alter such movement? Because we are not interested in following the gradient toward the mode (i.e. the peak, i.e. the hill, i.e. the local optimum), but rather, we are interested in exploring the high-density region of the posterior. _How high is high enough? Depends on our purposes_.
 
 The analogy commonly used to describe HMC is based on classical mechanics. Let us use the analogy of a planet whose centre is the mode, with its gravitational pull forming a field of force vectors leading into the centre. Our goal is not to follow the force vectors toward the centre, but rather, our goal is to explore the space around the planet where the gravity is high enough (with respect to our purposes). In cases with multiple models (i.e. multimodal posteriors), we can think of a space with multiple planets fixed in place while each exerts its own gravitational pull.
 
-> **Reference (especially for the analogy**): ["Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo" by London Machine Learning Meetup](https://www.youtube.com/watch?v=jUSZboSq1zg)
+"Momentum" in the context of HMC is analogous to the physical momentum given to a body in space so that it follows a certain orbital trajectory rather than a trajectory that goes directly toward the planet's centre. More precisely, it is an auxiliary variable that ensures that the Markov chain sampling (done based on following the gradient) samples from a sufficiently high-density region of the posterior rather than moving toward the posterior distribution's mode.
+
+> **Reference (especially for the analogy**): [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ by London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)
+
+#### Hamiltonian (i.e. Hamiltonian function)
+**Preliminary topic: Hamilton's equations of motion**:
+
+This is a function based on the Hamilton's equations of motion (see: ["14.3: Hamilton's Equations of Motion" from _Hamiltonian Mechanics_ from _Classical Mechanics (Tatum)_ from **Classical Mechanics**, **LibreTexts Physics**](https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_(Tatum)/14%3A_Hamiltonian_Mechanics/14.03%3A_Hamilton%27s_Equations_of_Motion)), which describe the state of a physical system (i.e. a space of one or more moving bodies). In essence, Hamilton's equations of motion describe any system's temporal evolution that can be defined with a Hamiltonian function, signifying the total energy of the system.
+
+**NOTE**: _Hamilton's equations of motion do not account for interactions between the bodies in a system. Hence, either we use some other means to account for such interactions or we assume that the bodies do not interact. However, in the case of using Hamilton's equations of motion for sampling from a posterior, we have no need to worry about any "interactions"._
+
+**Main topic: Hamiltonian function**:
+
+Consider a system $S$ of $k$ bodies with positions $\theta_1, \theta_2 ... \theta_k$ and momenta $m_1, m_2 ... m_k$. Let $\theta$ be the ordered set of all positions, and let $m$ be the ordered set of all momenta (both sets having the same order with respect to the bodies). Hamilton's equations are derived from a function of all the positions $\theta$ and all the momenta $m$. This function is known as the Hamiltonian. The Hamiltonian, represented by $H(\theta, m)$, amounts to the total energy of the system $S$. Note that we assume that the system is self-contained, and hence, that the system's total energy is constant. Hence, $H(\theta, m)$ is constant, even as the positions and momenta change. More precisely, we have that:
+
+$H(\theta, m) = K(\theta, m) + V(\theta) =$ _constant_
+
+Here:
+
+- $K(m)$: System's total kinetic energy (independent of positions)
+- $V(\theta)$: System's total potential energy (independent of momenta)
+
+---
+
+Using the Hamiltonian, we write Hamilton's equations of motion:
+
+Equation 1:
+
+$\displaystyle \frac{d \theta}{dt} = \frac{\delta H}{\delta m}$
+
+$= \frac{\delta K}{\delta m} + \frac{\delta V}{\delta m}$
+
+$= \frac{\delta K}{\delta m}$ (because $\frac{\delta V}{\delta m} = 0$)
+
+Equation 2:
+
+$\displaystyle \frac{dm}{dt} = - \frac{\delta H}{\delta \theta}$
+
+$= - \frac{\delta K}{\delta \theta} - \frac{\delta V}{\delta \theta}$
+
+$= \frac{\delta V}{\delta \theta}$ (because $\frac{\delta K}{\delta \theta} = 0$)
+
+---
+
+Note that in the above equations:
+
+- $\frac{d \theta}{dt}$ = Change in position with respect to unit change in time
+- $\frac{dm}{dt}$ = Change in momentum with respect to unit change in time
+
+Hence, solving the above equations, we can simulate the system $S$; for example, given the initial positions $\theta$ and initial momenta $m$, we can figure out the change in positions and momenta, thereby figuring out the updated $\theta$ and $m$, and so on. **_Hence, using Hamilton's equations of motion in such a way, we can figure out how the bodies in the system would move over time, provided that they do not interact, since Hamilton's equations of motion do not account for interactions between bodies. However, in the case of using Hamilton's equations of motion for sampling from a posterior, we have no need to worry about any "interactions"._**.
+
+> **References**:
+>
+> - [_Hamiltonian Monte Carlo For Dummies (Statisticians / Pharmacometricians / All)_ by Alan Maloney, **YouTube**](https://www.youtube.com/watch?v=ZGtezhDaSpM)
+> - [_Hamilton's Equations of Motion_ from **StudySmarter.co.uk**](https://www.studysmarter.co.uk/explanations/physics/classical-mechanics/hamiltons-equations-of-motion)
 
 ## Mathematical formulation
+Let us first define the following:
+
+- $P$, the probability density or mass (depending on context)
+- The target distribution $p = P(\theta|D)$ (the posterior distribution)
+- $m$, the set of momentum values corresponding to positions $\theta$
+- $P(m)$, the model distributing potential sets of momentum values
+
+**NOTE**: _"Positions" in this context refer to "samples"._
+
+---
+
+Hence, we have the following joint probability:
+
+$P(\theta, m) = P(\theta|D) P(m)$
+
+$\implies \log P(\theta, m) = \log (P(\theta|D) P(m)) = \log P(\theta|D) + \log P(m)$
+
+$\implies - \log P(\theta, m) = - \log P(\theta|D) - \log P(m)$
+
+---
+
+Notice that the above is in the form of a Hamiltonian, where:
+
+- $H(\theta, m) = - \log P(\theta, m)$
+- $K(m) = \log P(m)$ ("kinetic energy")
+- $V(\theta) = \log P(\theta|D)$ ("potential energy")
 
 # Variational inference (VI)
 > **Main resources**:
