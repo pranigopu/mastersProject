@@ -308,7 +308,7 @@ $\implies - \log P(\theta, m) = - \log P(\theta|D) - \log P(m)$
 
 ---
 
-Notice that the above rquation is in the form of a Hamiltonian, where:
+Notice that the above equation is in the form of a Hamiltonian, where:
 
 - $H(\theta, m) = - \log P(\theta, m)$
 - $K(m) = - \log P(m)$ ("kinetic energy")
@@ -455,9 +455,7 @@ The above is called the evidence lower bound, i.e. **ELBO**. The ELBO is easier 
 
 ## Practical computation
 ### Introduction
-Note that VI presents a machine learning optimisation problem, where we have a set of one or more parameters, namely $\phi$ (that defines the approximated posterior $q_\phi$), and an objective function, namely ELBO. The most popular method to optimise the ELBO is stochastic VI (SVI), which is in fact the stochastic gradient descent method applied to VI.
-
-Now, note that while VI offers a good mathematical tool for Bayesian inference, it needs to be adapted to deep learning. The main problem is that stochasticity stops backpropagation from functioning at the internal nodes of a network. Solutions to mitigate this problem include:
+Note that VI presents a machine learning optimisation problem, where we have a set of one or more parameters, namely $\phi$ (that defines the approximated posterior $q_\phi$), and an objective function, namely ELBO. The most popular method to optimise the ELBO is stochastic VI (SVI), which is in fact the stochastic gradient descent method applied to VI. Now, note that while VI offers a good mathematical tool for Bayesian inference, it needs to be adapted to deep learning. The main problem is that stochasticity stops backpropagation from functioning at the internal nodes of a network. Solutions to mitigate this problem include:
 
 - Probabilistic backpropagation
 - Bayes-by-backprop (_our next main focus_)
