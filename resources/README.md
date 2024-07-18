@@ -27,6 +27,12 @@
 - [Comparing BNN Methods for Supervised Learning Problems](https://www.alignmentforum.org/posts/79eegMp3EBs8ptFqa/neural-uncertainty-estimation-review-article-for-alignment)
 - [Benchmarking Bayesian Neural Networks and Evaluation Metrics for Regression Tasks](https://arxiv.org/pdf/2206.06779.pdf)
 
+**For implementing BNNs**:
+
+- [From Theory to Practice with Bayesian Neural Network, Using Python](https://towardsdatascience.com/from-theory-to-practice-with-bayesian-neural-network-using-python-9262b611b825)
+- [_Bayesian Neural Network Example (Part 4)_ by Kevin Pelaez, **YouTube**](https://www.youtube.com/watch?v=3oo1GVeFDi0)
+- [Bayesian Neural Networks—Implementing, Training, Inference With the JAX Framework](https://neptune.ai/blog/bayesian-neural-networks-with-jax)
+
 ## Obsolete resources
 - [Benchmark for testing reinforcement learning models](https://michelangeloconserva.github.io/Colosseum/mds/intro.html)
 - [Posterior Sampling for Deep Reinforcement Learning](https://arxiv.org/pdf/2305.00477.pdf)
