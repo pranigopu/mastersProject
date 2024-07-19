@@ -30,6 +30,7 @@
 **For implementing BNNs**:
 
 - [From Theory to Practice with Bayesian Neural Network, Using Python](https://towardsdatascience.com/from-theory-to-practice-with-bayesian-neural-network-using-python-9262b611b825)
+- [Bayesian Neural Network (PyTorch)](https://github.com/Harry24k/bayesian-neural-network-pytorch)
 - [_Bayesian Neural Network Example (Part 4)_ by Kevin Pelaez, **YouTube**](https://www.youtube.com/watch?v=3oo1GVeFDi0)
 - [Bayesian Neural Networks—Implementing, Training, Inference With the JAX Framework](https://neptune.ai/blog/bayesian-neural-networks-with-jax)
 
