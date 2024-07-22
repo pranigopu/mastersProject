@@ -353,7 +353,7 @@ $\implies$ Travelling along the contours as per the momenta
 
 ---
 
-Why we still need to use the Metropolis acceptance criterion? Intuitively, because we can think of HMC as a Metropolis-Hasting algorithm with a better proposal method. But a further numerical justification is that the accept-reject steps correct for errors introduced by the numerical simulation of the Hamiltonian equations.
+Why we still need to use the Metropolis acceptance criterion? Intuitively, because we can think of HMC as a Metropolis-Hasting algorithm with a better proposal method. But a further numerical justification is that the accept-reject steps help correct for errors introduced by the numerical simulation of the Hamiltonian equations.
 
 ### Additional points about HMC
 - HMC is fast and efficient when it works
