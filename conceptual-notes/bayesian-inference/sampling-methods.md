@@ -343,12 +343,8 @@ _Hence, we see how HMC allows more efficient exploration of the high-probability
 
 ---
 
-**NOTE**:
-
-"Simulate"
-
-$\implies$ Simulate the system defined by the Hamiltonian equations
-
+**NOTE**: "Simulate" <br>
+$\implies$ Simulate the system defined by the Hamiltonian equations <br>
 $\implies$ Travelling along the contours as per the momenta
 
 ---
