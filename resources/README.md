@@ -47,7 +47,8 @@
 
 - [`torchbnn` - Bayesian Neural Network using PyTorch](https://github.com/Harry24k/bayesian-neural-network-pytorch)
 - [minimc - Just a little MCMC](https://github.com/ColCarroll/minimc)
-- [Hamiltonian Monte Carlo](https://github.com/LoicRaillon/hamiltonian-monte-carlo)
+- [_Hamiltonian Monte Carlo_ by LoicRaillon](https://github.com/LoicRaillon/hamiltonian-monte-carlo)
+- [_Hamiltonian Monte Carlo_ by wcythh](https://github.com/wcythh/hamiltonian-monte-carlo)
 - [_Hamiltonian Monte Carlo from scratch_ from **colindcarroll.com**](https://colindcarroll.com/2019/04/11/hamiltonian-monte-carlo-from-scratch/)
 - [Bayes-by-Backpropagation](https://github.com/HIPS/autograd/blob/master/examples/bayesian_neural_net.py)
 
