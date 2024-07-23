@@ -340,7 +340,7 @@ Notice that the above equation is in the form of a Hamiltonian, where:
 - $K(m) = - \log P(m)$ ("kinetic energy")
 - $V(\theta) = - \log P(\theta|D)$ ("potential energy")
 
-**NOTE**: _The logarithms of probabilities are always less than or equal to 0, since probabilities are always between 0 and 1. Hence, negative logarithms of probabilities are always greater than or equal to 0. Hence, the motion-based analogy is valid, which also means that Hamilton's equations of motion will work as intended, i.e. in the same as they do for physical systems._
+**NOTE**: _The logarithms of probabilities are always less than or equal to 0, since probabilities are always between 0 and 1. Hence, negative logarithms of probabilities are always greater than or equal to 0. Hence, the motion-based analogy is valid, which also means that Hamilton's equations of motion will work as intended, i.e. in the same way as they do for physical systems._
 
 ---
 
@@ -375,7 +375,7 @@ _Why we still need to use the Metropolis acceptance criterion?_ Intuitively, bec
 
 ---
 
-The above is essentially two key steps (done for each iteration of the HMC algorithm):
+The above algorithm is essentially two key steps (done for each iteration of HMC):
 
 **Step 1: Obtain a new momentum**:
 
@@ -398,7 +398,7 @@ The above is essentially two key steps (done for each iteration of the HMC algor
 
 **NOTE**: "Simulate" <br>
 $\implies$ Simulate the system defined by the Hamiltonian equations <br>
-$\implies$ Travelling along the contours as per the momencceptance criterion for HMC
+$\implies$ Travelling along the contours as per the momentum
 
 #### Metropolis acceptance criterion for HMC
 > **Reference**: [_MCMC using Hamiltonian dynamics_ by Radford M. Neal](https://arxiv.org/pdf/1206.1901)
