@@ -228,6 +228,8 @@ The analogy commonly used to describe HMC is based on classical mechanics. Let u
 
 "Momentum" in the context of HMC is analogous to the physical momentum given to a body in space so that it follows a certain orbital trajectory rather than a trajectory that goes directly toward the planet's centre. More precisely, it is an auxiliary variable that ensures that the Markov chain sampling (done based on following the gradient) samples from a sufficiently high-probability-mass region of the posterior rather than moving toward the posterior distribution's mode.
 
+**NOTE**: _Momentum is a vector quantity and can be multi-dimensional. A one-dimensional momentum (a single value) is the momentum of a body along a line, a two-dimensional momentum (a vector of two values) is the momentum of a body across a plane, a three-dimensional momentum (a vector of three values) is the momentum of a body across a space, etc._
+
 ---
 
 > **Reference (especially for the analogy**): [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ by London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)
@@ -235,13 +237,19 @@ The analogy commonly used to describe HMC is based on classical mechanics. Let u
 #### Hamiltonian (i.e. Hamiltonian function)
 **Preliminary topic: Hamilton's equations of motion**:
 
-This is a function based on the Hamilton's equations of motion (see: ["14.3: Hamilton's Equations of Motion" from _Hamiltonian Mechanics_ from _Classical Mechanics (Tatum)_ from **Classical Mechanics**, **LibreTexts Physics**](https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_(Tatum)/14%3A_Hamiltonian_Mechanics/14.03%3A_Hamilton%27s_Equations_of_Motion)), which describe the state of a physical system (i.e. a space of one or more moving bodies). In essence, Hamilton's equations of motion describe any system's temporal evolution that can be defined with a Hamiltonian function, signifying the total energy of the system.
+This is a function based on the Hamilton's equations of motion (see: ["14.3: Hamilton's Equations of Motion" from _Hamiltonian Mechanics_ from _Classical Mechanics (Tatum)_ from **Classical Mechanics**, **LibreTexts Physics**](https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_(Tatum)/14%3A_Hamiltonian_Mechanics/14.03%3A_Hamilton%27s_Equations_of_Motion)), which describe the state of a physical system with one body of a fixed mass moving in a space of $n$ dimensions ($n \geq 1$). In essence, Hamilton's equations of motion describe any system's temporal evolution that can be defined with a Hamiltonian function, signifying the total energy of the system.
 
-**NOTE**: _Hamilton's equations of motion do not account for interactions between the bodies in a system. Hence, either we use some other means to account for such interactions or we assume that the bodies do not interact. However, in the case of using Hamilton's equations of motion for sampling from a posterior, we have no need to worry about any "interactions"._
+---
+
+**NOTE 1**: Hamilton's equations of motion only consider the motion of a single body, and do not explicitly take into account interactions with another body or with a surface. However, interactions with other bodies can be described using changes in momentum. Hence, we can take into account interactions (e.g. collisions, gravitational force, a force field, etc.) as functions of the momentum. In the context of HMC, the "body" would be the imaginary point of the sampler, with two kinds of forces being exerted on it: an imaginary momentum and the contours of the posterior distribution.
+
+**NOTE 2**: Hamilton's equations of motion can apply for any number of dimensions, even though in physics, we would only deal with three dimensions. Hence, in a multidimensional function, e.g. a posterior distribution of the parameters of a neural network, Hamilton's equations would still apply despite the high dimensionality of the space.
+
+**NOTE 3**: Even though Hamilton's equations were meant to deal with physical spaces, we can accurately extend their application to analogous simulated or abstract spaces, such as a high-dimensional sample space for the values of a model's parameters. Hence, they provide a valid basis for exploring the posterior distribution and sampling from it more diversely and efficiently.
 
 **Main topic: Hamiltonian function**:
 
-Consider a system $S$ of $k$ bodies with positions $\theta_1, \theta_2 ... \theta_k$ and momenta $m_1, m_2 ... m_k$. Let $\theta$ be the ordered set of all positions, and let $m$ be the ordered set of all momenta (both sets having the same order with respect to the bodies). Hamilton's equations are derived from a function of all the positions $\theta$ and all the momenta $m$. This function is known as the Hamiltonian. The Hamiltonian, represented by $H(\theta, m)$, amounts to the total energy of the system $S$. Note that we assume that the system is self-contained, and hence, that the system's total energy is constant. Hence, $H(\theta, m)$ is constant, even as the positions and momenta change. More precisely, we have that:
+Consider a system $S$ of $k$ dimensions with coordinates $\theta_1, \theta_2 ... \theta_k$ and dimension-specific momenta $m_1, m_2 ... m_k$ (i.e. each coordinate $\theta_i$ is associated with the momentum $m_i$). Let $\theta$ be the position defined by the $k$ coordinates, and let $m$ be the generalised momentum of the body at $\theta$. Hamilton's equations are derived from a function of the position $\theta$ and the generalised momentum $m$. This function is known as the Hamiltonian. The Hamiltonian, represented by $H(\theta, m)$, amounts to the total energy of the system $S$. Note that we assume that the system is self-contained, and hence, that the system's total energy is constant. Hence, $H(\theta, m)$ is constant, even as the positions and momenta change. More precisely, we have that:
 
 $H(\theta, m) = K(\theta) + V(\theta) =$ _constant_
 
@@ -277,7 +285,9 @@ Note that in the above equations:
 - $\frac{d \theta}{dt}$ = Change in position with respect to unit change in time
 - $\frac{dm}{dt}$ = Change in momentum with respect to unit change in time
 
-Hence, solving the above equations, we can simulate the system $S$; for example, given the initial positions $\theta$ and initial momenta $m$, we can figure out the change in positions and momenta, thereby figuring out the updated $\theta$ and $m$, and so on. Hence, using Hamilton's equations of motion in such a way, we can figure out how the bodies in the system would move over time, provided that they do not interact, since Hamilton's equations of motion do not account for interactions between bodies. However, in the case of using Hamilton's equations of motion for sampling from a posterior, we have no need to worry about any "interactions".
+Hence, solving the above equations, we can simulate the system $S$; for example, given the initial position $\theta$ and initial momentum $m$, we can figure out the change in the position and momentum across time. Hence, using Hamilton's equations of motion in such a way, and using our knowledge of the forces acting on the body (describable as functions of the momentum), we can figure out how the body in the system would move over time. In the case of using Hamilton's equations of motion for sampling from a posterior, the forces are an imaginary momentum and the contours of the posterior distribution, both acting upon an imaginary point representing the sampler.
+
+**NOTE**: _The "forces" described in the context of HMC are meant to guide the efficient exploration of the posterior distribution. The contours of the posterior are a given, so the only thing we can tweak to improve the sampler's performance is the momentum, which can be chosen by us._
 
 ---
 
@@ -294,7 +304,7 @@ Let us first define the following:
 - $m$, the set of momentum values corresponding to positions $\theta$
 - $P(m)$, the model distributing potential sets of momentum values
 
-**NOTE**: _"Positions" in this context refer to "samples"._
+**NOTE**: _"Position" in this context refer to "sample"._
 
 ---
 
