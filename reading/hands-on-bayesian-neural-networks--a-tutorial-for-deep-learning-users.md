@@ -64,7 +64,7 @@ _Ensemble learning to SNNs_...
 
 The main motivation behind ensemble learning is that aggregating the predictions of a large set of average-performing but independent models can lead to better predictions than one well-performing expert model. SNNs may perform better than their point estimate counterparts for a similar reason, but a better performance is not the main aim of SNNs. Rather, the main aim of using an SNN architecture is to grasp the uncertainty about the underlying processes.
 
-This is accomplished by comparing the predictions of multiple sampled models (based on multiple sampled parametrizations, i.e. multiple sampled values of $\theta$). If models agree, then the uncertainty rises. If models disagree, then the uncertainty falls. This process can be summarized as follows:
+This is accomplished by comparing the predictions of multiple sampled models (based on multiple sampled parametrizations, i.e. multiple sampled values of $\theta$). If models agree, then the uncertainty falls. If models disagree, then the uncertainty rises. This process can be summarized as follows:
 
 $\theta ∼ P(\theta)$ (prior distribution)
 
