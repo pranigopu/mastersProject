@@ -262,21 +262,21 @@ Here:
 
 Using the Hamiltonian, we write Hamilton's equations of motion:
 
-Equation 1:
+**Equation 1**:
 
-$\frac{d \theta}{dt} = \frac{\delta H}{\delta m}$
+$\frac{d \theta}{dt} = \frac{\delta H}{\delta m} = \frac{\delta K}{\delta m} + \frac{\delta V}{\delta m} = \frac{\delta K}{\delta m}$
 
-$= \frac{\delta K}{\delta m} + \frac{\delta V}{\delta m}$
+**NOTE**: $\frac{\delta V}{\delta m} = 0$
 
-$= \frac{\delta K}{\delta m}$ (because $\frac{\delta V}{\delta m} = 0$)
+Hence, we have equation 1 as $\frac{d \theta}{dt} = \frac{\delta K}{\delta m}$
 
-Equation 2:
+**Equation 2**:
 
-$\frac{dm}{dt} = - \frac{\delta H}{\delta \theta}$
+$\frac{dm}{dt} = - \frac{\delta H}{\delta \theta} = - \frac{\delta K}{\delta \theta} - \frac{\delta V}{\delta \theta} = - \frac{\delta V}{\delta \theta}$
 
-$= - \frac{\delta K}{\delta \theta} - \frac{\delta V}{\delta \theta}$
+**NOTE**: $\frac{\delta K}{\delta \theta} = 0$
 
-$= - \frac{\delta V}{\delta \theta}$ (because $\frac{\delta K}{\delta \theta} = 0$)
+Hence, we have equation 2 as $\frac{dm}{dt} = - \frac{\delta V}{\delta \theta}$
 
 ---
 
