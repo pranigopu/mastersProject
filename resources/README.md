@@ -1,6 +1,8 @@
-<h1> Resources </h1>
+<h1> RESOURCES </h1>
 
 ---
+
+**Contents**:
 
 - [Practical resources](#practical-resources)
 - [Reading material](#reading-material)
