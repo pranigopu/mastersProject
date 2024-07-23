@@ -33,6 +33,7 @@
 - [Bayesian Neural Network (PyTorch)](https://github.com/Harry24k/bayesian-neural-network-pytorch)
 - [_Bayesian Neural Network Example (Part 4)_ by Kevin Pelaez, **YouTube**](https://www.youtube.com/watch?v=3oo1GVeFDi0)
 - [Bayesian Neural Networks—Implementing, Training, Inference With the JAX Framework](https://neptune.ai/blog/bayesian-neural-networks-with-jax)
+- [Bayes-by-Backpropagation](https://github.com/HIPS/autograd/blob/master/examples/bayesian_neural_net.py)
 
 ## Obsolete resources
 - [Benchmark for testing reinforcement learning models](https://michelangeloconserva.github.io/Colosseum/mds/intro.html)
