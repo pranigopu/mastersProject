@@ -205,11 +205,17 @@ What does this mean, practically? It means that if $b$ is a sample from a higher
 
 **MOTIVATION**: Why is it important?
 
-HMC is a class of MCMC methods that uses gradients (of the log-probability of the posterior distribution) to generate new proposed states (i.e. new samples proposed to be from the target distribution). The gradients of the log-probability of the posterior evaluated at a given state (i.e. a given sample) gives information about the posterior density function's geometry. HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by using the gradient to propose new positions (i.e. new samples) that is both far from the current position (i.e. current sample) and with high acceptance probability. This allows HMC to better scale to higher dimensions and, in principle, to more complex geometries (compared to alternative methods). Intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a better sample proposal distribution.
+HMC is a class of MCMC methods that uses gradients (of the log-probability of the posterior distribution) to generate new proposed states (i.e. new samples proposed to be from the target distribution). The gradients of the log-probability of the posterior evaluated at a given state (i.e. a given sample) gives information about the posterior density function's geometry.
+
+HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by using the gradient to propose new positions (i.e. new samples) that is both far from the current position (i.e. current sample) and with high acceptance probability. This allows HMC to better scale to higher dimensions and, in principle, to more complex geometries (compared to alternative methods). Intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a better sample proposal distribution.
 
 **NOTE**: _The benefit of consistently proposing new positions that are both far from the current position and with high acceptance rate is that you are likely to gain a much more representative and thus accurate sample of the distribution you want to estimate, but using fewer sampled values; in other words, it tends to make sampling more efficient._
 
 **REMINDER**: _A "sample" here is a tuple of one or more values proposed parameter values of the target distribution. What we are trying to do, here and in all sampling methods, is discover (with some level of uncertainty) how well the various potential parameter values would describe the target distribution. Note also that a "position" or a "state" is simply a sample, i.e. simply a proposed tuple of parameter values._
+
+---
+
+As we shall see, HMC is inspired from Hamiltonian mechanics and is hence often explained with an analogy to classical mechanics. In the context of HMC context, the "position" of the sample can be thought of as the location of a particle, and the "momentum" provides the force needed to move the particle through the parameter space.
 
 ---
 
@@ -237,7 +243,7 @@ The analogy commonly used to describe HMC is based on classical mechanics. Let u
 #### Hamiltonian (i.e. Hamiltonian function)
 **Preliminary topic: Hamilton's equations of motion**:
 
-This is a function based on the Hamilton's equations of motion (see: ["14.3: Hamilton's Equations of Motion" from _Hamiltonian Mechanics_ from _Classical Mechanics (Tatum)_ from **Classical Mechanics**, **LibreTexts Physics**](https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_(Tatum)/14%3A_Hamiltonian_Mechanics/14.03%3A_Hamilton%27s_Equations_of_Motion)), which describe the state of a physical system with one body of a fixed mass moving in a space of $n$ dimensions ($n \geq 1$). In essence, Hamilton's equations of motion describe any system's temporal evolution that can be defined with a Hamiltonian function, signifying the total energy of the system.
+This is a function based on the Hamilton's equations of motion (see: ["14.3: Hamilton's Equations of Motion" from _Hamiltonian Mechanics_ from _Classical Mechanics (Tatum)_ from **Classical Mechanics**, **LibreTexts Physics**](https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_(Tatum)/14%3A_Hamiltonian_Mechanics/14.03%3A_Hamilton%27s_Equations_of_Motion)), which describe the state of a physical system with one body of a fixed mass moving in a space of $k$ dimensions ($k \geq 1$). In essence, Hamilton's equations of motion describe any system's temporal evolution that can be defined with a Hamiltonian function, signifying the total energy of the system.
 
 ---
 
@@ -249,14 +255,14 @@ This is a function based on the Hamilton's equations of motion (see: ["14.3: Ham
 
 **Main topic: Hamiltonian function**:
 
-Consider a system $S$ of $k$ dimensions with coordinates $\theta_1, \theta_2 ... \theta_k$ and dimension-specific momenta $m_1, m_2 ... m_k$ (i.e. each coordinate $\theta_i$ is associated with the momentum $m_i$). Let $\theta$ be the position defined by the $k$ coordinates, and let $m$ be the generalised momentum of the body at $\theta$. Hamilton's equations are derived from a function of the position $\theta$ and the generalised momentum $m$. This function is known as the Hamiltonian. The Hamiltonian, represented by $H(\theta, m)$, amounts to the total energy of the system $S$. Note that we assume that the system is self-contained, and hence, that the system's total energy is constant. Hence, $H(\theta, m)$ is constant, even as the positions and momenta change. More precisely, we have that:
+Consider a system $S$ of $k$ dimensions with coordinates $\theta_1, \theta_2 ... \theta_k$ and dimension-specific momenta $m_1, m_2 ... m_k$ (i.e. each coordinate $\theta_i$ is associated with the momentum $m_i$). Let $\theta$ be the position defined by the $k$ coordinates, and let $m$ be the overall (i.e. $k$-dimensional) momentum of the body at $\theta$. Hamilton's equations are derived from a function of the position $\theta$ and the momentum $m$. This function is known as the Hamiltonian. The Hamiltonian, represented by $H(\theta, m)$, amounts to the total energy of the system $S$. Note that we assume that the system is self-contained, and hence, that the system's total energy is constant. Hence, $H(\theta, m)$ is constant, even as the position and momentum change. More precisely, we have that:
 
 $H(\theta, m) = K(\theta) + V(\theta) =$ _constant_
 
 Here:
 
-- $K(m)$: System's total kinetic energy (independent of positions)
-- $V(\theta)$: System's total potential energy (independent of momenta)
+- $K(m)$: System's total kinetic energy (independent of position)
+- $V(\theta)$: System's total potential energy (independent of momentum)
 
 ---
 
@@ -285,9 +291,9 @@ Note that in the above equations:
 - $\frac{d \theta}{dt}$ = Change in position with respect to unit change in time
 - $\frac{dm}{dt}$ = Change in momentum with respect to unit change in time
 
-Hence, solving the above equations, we can simulate the system $S$; for example, given the initial position $\theta$ and initial momentum $m$, we can figure out the change in the position and momentum across time. Hence, using Hamilton's equations of motion in such a way, and using our knowledge of the forces acting on the body (describable as functions of the momentum), we can figure out how the body in the system would move over time. In the case of using Hamilton's equations of motion for sampling from a posterior, the forces are an imaginary momentum and the contours of the posterior distribution, both acting upon an imaginary point representing the sampler.
+Hence, solving the above equations, we can simulate the system $S$; for example, given the initial position $\theta$ and initial momentum $m$, we can figure out the change in the position and momentum across time. Hence, using Hamilton's equations of motion in such a way, and using our knowledge of the forces acting on the body (describable as functions of the momentum), we can figure out how the body in the system would move over time. In the case of using Hamilton's equations of motion for sampling from a posterior (the phrase "sampling from a posterior" is explained in the next section), the forces are an imaginary momentum and the contours of the posterior distribution, both acting upon an imaginary point representing the sampler.
 
-**NOTE**: _The "forces" described in the context of HMC are meant to guide the efficient exploration of the posterior distribution. The contours of the posterior are a given, so the only thing we can tweak to improve the sampler's performance is the momentum, which can be chosen by us._
+**NOTE**: _The "forces" described in the context of HMC are meant to guide the efficient exploration of the posterior distribution. The contours of the posterior are fixed, so the only thing we can adjust to improve the sampler's performance is the momentum._
 
 ---
 
@@ -299,12 +305,17 @@ Hence, solving the above equations, we can simulate the system $S$; for example,
 ### Mathematical formulation
 Let us first define the following:
 
-- $P$, the probability density or mass (depending on context)
+- $P$, the measure of probability density or mass (depending on context)
 - The target distribution $p = P(\theta|D)$ (the posterior distribution)
-- $m$, the set of momentum values corresponding to positions $\theta$
-- $P(m)$, the model distributing potential sets of momentum values
+- $\theta$, the position, i.e. the sample taken from the posterior
+- $m$, the momentum applied to the imaginary sampler point at position $\theta$
+- $P(m)$, the model distributing potential momentum values
 
-**NOTE**: _"Position" in this context refer to "sample"._
+---
+
+**KEY POINT**:
+
+The whole point of a sampling method is to estimate an unknown distribution. Hence, in practice, when we sample from the posterior, it is because we do not know the posterior. However, due to certain theoretical guarantees in the general MCMC approach (mainly the guarantee that the steady-state transition probabilities of the Markov chains simulate the posterior distribution; see: ["Markov chain Monte Carlo (MCMC)" from this document](#markov-chain-monte-carlo-mcmc)), we have that after a certain number of samples, we begin to draw samples as if from the posterior. Hence, when we say "sample from the posterior", we mean that in the way described by the general MCMC approach.
 
 ---
 
@@ -328,7 +339,9 @@ Note that the logarithms of probabilities are always less than or equal to 0, si
 
 _What does this mean in practice?_
 
-It means we can use one of Hamilton's equations, i.e. $\frac{d \theta}{dt} = \frac{\delta H}{\delta m}$, to travel along the contours of the negative log-probability of the posterior to propose the next sample (i.e. the next $\theta$) which is in a similarly high-probability-mass region of the posterior as the current sample (i.e. the current $\theta$). Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen sets of momenta (chosen based on $P(m)$ ), and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the current sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
+It means we can use one of Hamilton's equations, i.e. $\frac{d \theta}{dt} = \frac{\delta H}{\delta m}$, to travel along the contours of the negative log-probability of the posterior to propose the next sample (i.e. the next $\theta$) which is in a similarly high-probability-mass region of the posterior as the current sample (i.e. the current $\theta$). Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen momentum (chosen based on $P(m)$ ), and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the current sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
+
+---
 
 _Hence, we see how HMC allows more efficient exploration of the high-probability-mass region of the posterior, compared to the approaches that explore by diffusing from a starting point over time._
 
