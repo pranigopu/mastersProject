@@ -19,6 +19,7 @@
       - [Hamiltonian (i.e. Hamiltonian function)](#hamiltonian-ie-hamiltonian-function)
     - [Mathematical formulation](#mathematical-formulation)
     - [Algorithm and practical computation](#algorithm-and-practical-computation)
+      - [Metropolis acceptance criterion for HMC](#metropolis-acceptance-criterion-for-hmc)
     - [Additional points about HMC](#additional-points-about-hmc)
 - [Variational inference (VI)](#variational-inference-vi)
   - [Motivation](#motivation)
@@ -78,7 +79,7 @@ Now, note that the probability of drawing a given sample in the next time step f
 Note that it may take a while for the overall (i.e. long-run) transition probabilities to settle, which means that there would be a sequence of samples (i.e. states) that need to be drawn before we reach the point where the samples tend by-and-large to fit the target distribution. These sequence of samples are the "burn in" samples. The key consideration in designing the right Markov chain is that the transition probabilities between the states (i.e. the samples drawn) lead to the required steady-state probabilities.
 
 ## Detailed balance condition
-One way to design the required transition probabilities with respect to a given target distribution $p$ (which the steady-state probabilities should represent) is by noting that once the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the long-range (i.e. steady-state) probability of observing a state $x$ (i.e. drawing a sample $x$ in our case) and then transitioning to state $y$ (i.e. then drawing the sample $y$) should be the same as the long-range (i.e. steady-state) probability of observing $y$ and then transitioning to $x$. Why is the condition valid? Because when the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the joint probability of drawing two samples next-to-next should be independent of the order in which they were drawn. In the context of a Markov chain, it is called the "detailed balance condition". Mathematically, it is as follows:
+One way to design the required transition probabilities with respect to a given target distribution $p$ (which the steady-state probabilities should represent) is by noting that once the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the long-range (i.e. steady-state) probability of observing a state $x$ (i.e. drawing a sample $x$ in our case) and then transitioning to state $y$ (i.e. then drawing the sample $y$) should be the same as the long-range (i.e. steady-state) probability of observing $y$ and then transitioning to $x$. Why is this condition valid? Because when the Markov chain has reached the point where the samples are drawn by-and-large from the target distribution, then the joint probability of drawing two samples next-to-next should be independent of the order in which they were drawn. In the context of a Markov chain, it is called the "detailed balance condition". Mathematically, it is as follows:
 
 $p(x) T(y|x) = p(y) T(x|y) \text{ } \forall x \in \Theta,  \text{ } \forall y \in \Theta$
 
@@ -191,7 +192,7 @@ Hence, we have the following cases:
 1. $p(b) > p(a) \implies A(a \rightarrow b) = 1$
 2. $p(b) < p(a) \implies A(a \rightarrow b) = \frac{p(b)}{p(a)}$
 
-What does this mean, practically? It means that if $b$ is a sample from a higher-probability-mass region of the target distribution $p$ than $a$, then it will certainly be accepted, which makes sense because we want to sample more from higher-probability-mass regions. However, if $b$ is a sample from a lower-density region of the target distribution $p$ than $a$, then it may or may not be accepted from $a$. Furthermore, we see that the probability of accepting $b$ from $a$ is lesser the lesser the density of $b$ is compared to the density of $a$, which also makes sense because we want there to be a lower but non-zero chance of sampling from a lower-density region after sampling from a higher-probability-mass region, with the condition that the lower the density, the lower the chance. We see how such a policy is an MCMC method that helps estimate the target distribution more accurately and more efficiently over time.
+What does this mean, practically? It means that if $b$ is a sample from a higher-probability-mass region of the target distribution $p$ than $a$, then it will certainly be accepted, which makes sense because we want to sample more from higher-probability-mass regions. However, if $b$ is a sample from a lower-density region of the target distribution $p$ than $a$, then it may or may not be accepted from $a$. Furthermore, we see that the probability of accepting $b$ from $a$ is lesser the lesser the density of $b$ is compared to the density of $a$, which also makes sense because we want there to be a lower but non-zero chance of sampling from a sparser region after sampling from a denser region, with the condition that the lower the density, the lower the chance. We see how such a policy is an MCMC method that helps estimate the target distribution more accurately and more efficiently over time.
 
 ### Metropolis algorithm
 - The Metropolis algorithm is a special case of MH
@@ -368,19 +369,70 @@ _Hence, we see how HMC allows more efficient exploration of the high-probability
 - Take $\theta_T$ as our new proposed sample
 - Use the Metropolis acceptance criterion to accept or reject $\theta_T$
 
+_Why we still need to use the Metropolis acceptance criterion?_ Intuitively, because we can think of HMC as a Metropolis-Hasting algorithm with a better proposal method. But a further numerical justification is that the accept-reject steps help correct for errors introduced by the numerical simulation of the Hamiltonian equations.
+
 > **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" from _11. Appendiceal Topics_ from **Bayesian Computation Notebook**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
+
+---
+
+The above is essentially two key steps (done for each iteration of the HMC algorithm):
+
+**Step 1: Obtain a new momentum**:
+
+- A new momentum is randomly drawn from a Gaussian distribution
+- The momentum is drawn independently of the current momentum and position
+
+**NOTE**: _The momentum is always drawn anew from a Gaussian distribution every iteration._
+
+ **Step 2: Probabilistically update both position and momentum**:
+ 
+ - New momentum and position are obtained after a number of simulation steps
+ - The new position is the new proposed sample
+ - Update is "probabilistic" due to the Metropolis acceptance criterion
+
+**NOTE**: _The new momentum and the new position are used to calculate the new Hamiltonian. This is important, because the difference between the previous Hamiltonian and the new Hamiltonian is needed to obtain the acceptance probability when checking the Metropolis acceptance criterion, as we shall see later._
+
+> **Reference**: [_MCMC using Hamiltonian dynamics_ by Radford M. Neal](https://arxiv.org/pdf/1206.1901)
 
 ---
 
 **NOTE**: "Simulate" <br>
 $\implies$ Simulate the system defined by the Hamiltonian equations <br>
-$\implies$ Travelling along the contours as per the momenta
+$\implies$ Travelling along the contours as per the momencceptance criterion for HMC
+
+#### Metropolis acceptance criterion for HMC
+> **Reference**: [_MCMC using Hamiltonian dynamics_ by Radford M. Neal](https://arxiv.org/pdf/1206.1901)
+
+As stated before, we need to use the Metropolis acceptance criterion for two reasons: (1) intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a better proposal method, and (2) as a further numerical justification, the accept-reject steps help correct for errors introduced by the numerical simulation of the Hamiltonian equations.
+
+_But how do we define the Metropolis criterion for HMC?_
+
+Note that in the second essential step of the HMC algorithm, Hamiltonian dynamics are used to propose a new position (i.e. a new sample/state). Starting with the current position and momentum $(\theta, m)$, Hamiltonian dynamics are simulated for a number of steps (e.g. using the Leapfrog method); to be exact, we simulate the trajectory of the point representing the sampler for a number of steps, based on the momenta (as calculated throughout the steps) and the contours of the posterior (or more precisely, the negative log-probability of the posterior). The momentum at the end of this simulated trajectory is then negated (to see why, see the note below), giving a new position and momentum $(\theta^∗, m^*)$. The new, i.e. proposed position $\theta^*$ is accepted as the next state of the Markov chain with probability:
+
+$\min [1, e^{H(\theta, m)−H(\theta^∗, m^∗)}]$, where:
+
+- $H$ is the Hamiltonian, given by $H(\theta, m) = V(\theta) + K(m)$
+- $V$ is analogous to the potential energy in classical mechanics
+- $K$ is analogous to the kinetic energy in classical mechanics
+
+If the proposed state (i.e. position) is not accepted, the next state is the same as the current state.
 
 ---
 
-_Why we still need to use the Metropolis acceptance criterion?_
+**Intuition for the above**:
 
-Intuitively, because we can think of HMC as a Metropolis-Hasting algorithm with a better proposal method. But a further numerical justification is that the accept-reject steps help correct for errors introduced by the numerical simulation of the Hamiltonian equations.
+We have the following cases:
+
+1. $e^{H(\theta, m)−H(\theta^∗, m^∗)} \geq 1 \implies H(\theta^∗, m^∗) \geq H(\theta, m)$
+2. $e^{H(\theta, m)−H(\theta^∗, m^∗)} \leq 1 \implies H(\theta^∗, m^∗) \leq H(\theta, m)$
+
+$H(\theta^∗, m^∗) \geq H(\theta, m)$ means the proposed state is from an equal or higher-probability-mass region of the posterior, which means it should always be accepted, because we want to sample more from equal or higher-probability-mass regions. $H(\theta^∗, m^∗) < H(\theta, m)$ means the proposed state is from a lower-probability-mass region, which means it should be accepted only probabilistically, with the probability of accepting it being proportional to its closeness to the current state (in terms of probability density), because we want there to be a lower but non-zero chance of sampling from a sparser region region after sampling from a denser region, with the condition that the lower the density, the lower the chance.
+
+---
+
+**NOTE: Why negate the momentum variable after the simulation?**
+
+The negation of the momentum at the end of the simulated trajectory makes the Metropolis proposal symmetrical, as needed for the acceptance probability above to be valid (**NOTE**: _I do not get this point_). However, this negation need not be done in practice, since $K(m) = K(−m)$, and since the momentum is always replaced (by randomly sampling it from a Gaussian) in the first step of the next iteration.
 
 ### Additional points about HMC
 - HMC is fast and efficient when it works
