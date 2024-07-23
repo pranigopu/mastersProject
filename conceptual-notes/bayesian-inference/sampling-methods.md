@@ -315,7 +315,7 @@ Let us first define the following:
 
 **KEY POINT**:
 
-The whole point of a sampling method is to estimate an unknown distribution. Hence, in practice, when we sample from the posterior, it is because we do not know the posterior. However, due to certain theoretical guarantees in the general MCMC approach (mainly the guarantee that the steady-state transition probabilities of the Markov chains simulate the posterior distribution; see: ["Markov chain Monte Carlo (MCMC)" from this document](#markov-chain-monte-carlo-mcmc)), we have that after a certain number of samples, we begin to draw samples as if from the posterior. Hence, when we say "sample from the posterior", we mean that in the way described by the general MCMC approach.
+The whole point of a sampling method is to estimate an unknown distribution. Hence, in practice, when we sample from the posterior, it is because we do not know the posterior. However, due to certain theoretical guarantees in the general MCMC approach (mainly the guarantee that the steady-state transition probabilities of the sampler's Markov chain simulate the posterior distribution; see: ["Markov chain Monte Carlo (MCMC)" from this document](#markov-chain-monte-carlo-mcmc)), we have that after a certain number of samples, we begin to draw samples as if from the posterior. Hence, when we say "sample from the posterior", we mean that in the way described by the general MCMC approach.
 
 ---
 
@@ -335,7 +335,9 @@ Notice that the above equation is in the form of a Hamiltonian, where:
 - $K(m) = - \log P(m)$ ("kinetic energy")
 - $V(\theta) = - \log P(\theta|D)$ ("potential energy")
 
-Note that the logarithms of probabilities are always less than or equal to 0, since probabilities are always between 0 and 1. Hence, negative logarithms of probabilities are always greater than or equal to 0. Hence, the motion-based analogy is valid, which also means that Hamilton's equations of motion will work as intended, i.e. in the same as they do for physical systems.
+**NOTE**: _The logarithms of probabilities are always less than or equal to 0, since probabilities are always between 0 and 1. Hence, negative logarithms of probabilities are always greater than or equal to 0. Hence, the motion-based analogy is valid, which also means that Hamilton's equations of motion will work as intended, i.e. in the same as they do for physical systems._
+
+---
 
 _What does this mean in practice?_
 
@@ -343,7 +345,7 @@ It means we can use one of Hamilton's equations, i.e. $\frac{d \theta}{dt} = \fr
 
 ---
 
-_Hence, we see how HMC allows more efficient exploration of the high-probability-mass region of the posterior, compared to the approaches that explore by diffusing from a starting point over time._
+_Hence, we see how HMC allows more efficient exploration of the high-probability-mass region of the posterior, compared to the approaches that explore by diffusing from a starting point over time (e.g. Metropolis-Hastings)._
 
 ---
 
