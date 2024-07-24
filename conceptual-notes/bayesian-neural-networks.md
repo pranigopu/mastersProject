@@ -1,16 +1,18 @@
-<h1>NOTES</h1>
-
-**_Hands-on Bayesian Neural Networks – A Tutorial for Deep Learning Users_**
+**BAYESIAN NEURAL NETWORKS (BNNs)
 
 ---
 
-**Contents**:
+**Contents**
 
+- [References](#references)
 - [Abbreviations](#abbreviations)
 - [Notations](#notations)
-- [Basics of a BNN](#basics-of-a-bnn)
-  - [SNNs to BNNs](#snns-to-bnns)
-  - [Steps to design BNNs](#steps-to-design-bnns)
+- [Why bother with BNNs?](#why-bother-with-bnns)
+- [SNNs to BNNs](#snns-to-bnns)
+  - [Why bother with SNNs?](#why-bother-with-snns)
+  - [What is an SNN?](#what-is-an-snn)
+  - [Ensemble learning to SNNs to BNNs](#ensemble-learning-to-snns-to-bnns)
+- [Steps to design BNNs](#steps-to-design-bnns)
   - [Additional points](#additional-points)
 - [Training and applying BNNs](#training-and-applying-bnns)
   - [Finding the posterior](#finding-the-posterior)
@@ -23,17 +25,18 @@
       - [2. For classification problems](#2-for-classification-problems)
         - [2.1. Obtaining the estimator of the prediction](#21-obtaining-the-estimator-of-the-prediction)
 - [Advantages of using BNNs for deep learning](#advantages-of-using-bnns-for-deep-learning)
-- [Bayesian inference algorithms](#bayesian-inference-algorithms)
-  - [Markov chain Monte Carlo (MCMC)](#markov-chain-monte-carlo-mcmc)
-  - [Variational inference (VI)](#variational-inference-vi)
-  - [Bayes-by-backprop](#bayes-by-backprop)
+
 
 ---
+
+# References
+- [_Hands-on Bayesian Neural Networks – A Tutorial for Deep Learning Users_ by Laurent Valentin Jospin, Hamid Laga, Farid Boussaid, Wray Buntine and Mohammed Bennamoun](https://arxiv.org/pdf/2007.06823)
 
 # Abbreviations
 - ML: Machine learning
 - ANN: Artificial neural network
 - BNN: Bayesian neural network (a kind of ANN)
+- DL: Deep learning
 - SNN: Stochastic neural network (a kind of ANN)
 - MLE: Maximum likelihood estimation
 - MAP: Maximum a posteriori (usually precedes "estimation")
@@ -41,9 +44,7 @@
 - NFLT: No free-lunch theorem for machine learning
 - VI: Variational inference
 
-> **References**:
->
-> - [No free-lunch theorem for machine learning](https://machinelearningmastery.com/no-free-lunch-theorem-for-machine-learning/)
+> **Reference**: [No free-lunch theorem for machine learning](https://machinelearningmastery.com/no-free-lunch-theorem-for-machine-learning/)
 
 # Notations
 - $D_x$: Training inputs
@@ -52,29 +53,47 @@
 - $\theta$: A specific value/set of values of the model parameter <br> _Represents a particular model under the generalised model_
 - $\Theta$: The set of all hypothesised model parameter values
 
-# Basics of a BNN
-Using Bayes' formula to train a model can be understood as learning from the data $D$. Hence, the Bayesian paradigm not only offers a way to quantify uncertainty in deep learning models but also provides a mathematical framework to understand many regularisation techniques and learning strategies that are already used in classic deep learning. BNN is a stochastic artificial neural network trained using Bayesian inference.
+# Why bother with BNNs?
+_BNN is a SNN trained using Bayesian inference._
 
-## SNNs to BNNs
-The point estimate approach, which is the traditional approach in deep learning, is relatively easy to deploy with modern algorithms and software packages, but tends to lack explainability. The final model might also generalize in unforeseen and overconfident ways on out-of-training distribution data points. This property, in addition to the inability of ANNs to say “I don’t know”, is problematic for many critical applications. Of all the techniques that exist to mitigate this, stochastic neural networks have proven to be one of the most generic and flexible.
+---
 
-**Stochastic neural networks (SNNs)** are a type of ANN built by introducing stochastic components into the network. This is performed by giving the network either a stochastic activation or stochastic weights to simulate multiple possible models $\theta$ with their associated probability distribution $P(\theta)$. Thus, SNNs can be considered a special case of ensemble learning.
+The relevance of the above shall become clearer after learning about SNNs.
 
-_Ensemble learning to SNNs_...
+---
 
-The main motivation behind ensemble learning is that aggregating the predictions of a large set of average-performing but independent models can lead to better predictions than one well-performing expert model. SNNs may perform better than their point estimate counterparts for a similar reason, but a better performance is not the main aim of SNNs. Rather, the main aim of using an SNN architecture is to grasp the uncertainty about the underlying processes.
+Using Bayes' formula to train a model can be understood as learning from the data $D$. Hence, the Bayesian inference in DL not only offers a way to quantify uncertainty in DL models but also provides a mathematical framework to understand many regularisation techniques and learning strategies that are already used in classic deep learning.
 
-This is accomplished by comparing the predictions of multiple sampled models (based on multiple sampled parametrizations, i.e. multiple sampled values of $\theta$). If models agree, then the uncertainty falls. If models disagree, then the uncertainty rises. This process can be summarized as follows:
+# SNNs to BNNs
+## Why bother with SNNs?
+Traditional ANNs (i.e. ANNs used for point estimation):
 
-$\theta ∼ P(\theta)$ (prior distribution)
+- Tend to lack explainability, due to not being able to quantify its uncertainty
+- May generalise poorly yet overconfidently for out-of-training data points
 
-$y = \Phi_\theta(x) + \epsilon$ (regression with stochastic function $\Phi_\theta(x)$ )
+_SNNs are the most flexible solution to the above problems._
 
-**NOTE**: _As with all regression problems, we use the error term_ $\epsilon$ _to represent random noise that accounts for the fact that the function_ $\Phi$ _is only an approximation._
+## What is an SNN?
+An SNN is an ANN with stochastic components. More precisely, an SNN is an ANN with either stochastic activations or stochastic weights; thus, an SNN simulates a range of possible models $\theta$ with their associated probability distribution $P(\theta)$. Thus, SNNs can be considered a special case of ensemble learning
 
-A BNN can then be defined as any SNN trained using Bayesian inference.
+## Ensemble learning to SNNs to BNNs
+The main motivation behind ensemble learning is that aggregating the predictions of a large set of average-performing but independent models can lead to more accurate and well-generalised predictions than one well-performing expert model. SNNs may lead to more accurate and well-generalised predictions than their point estimate counterparts for a similar reason, but improving the model's performance is not an SNN's primary aim.
 
-## Steps to design BNNs
+The primary aim of using an SNN is to grasp the uncertainty about the underlying processes. This is done by comparing the predictions of multiple sampled models (based on multiple sampled parametrisations, i.e. multiple sampled values of $\theta$). If models agree, then the uncertainty falls. If models disagree, then the uncertainty rises. This process can be summarised as follows:
+
+| Expression | Remark |
+| --- | --- |
+| $\theta \in \Theta$ | $\Theta$ is the set of all possible/considered models |
+| $\theta ∼ P(\theta)$ | Prior distribution of models |
+| $y = \Phi_\theta(x) + \epsilon$ | Regression with stochastic function $\Phi_\theta(x)$ |
+
+**NOTE**: _As with all regression problems, we use the error term_ $\epsilon$ _to represent random noise that accounts for the fact that the function_ $\Phi_\theta$ _is only an approximation._
+
+---
+
+Hence, we see that
+
+# Steps to design BNNs
 1.<br>
 
 Choice of deep neural network architecture, i.e. a functional model.
@@ -182,19 +201,3 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 **Point 3**: Any supervised learning algorithm includes some implicit prior. Bayesian methods, when used correctly, will at least make the prior explicit, which would make the model less of a black box. In Bayesian deep learning, priors are often considered as soft constraints that are analogous to regularisation or data transformations such as data augmentation in traditional deep learning. In particular, most regularisation methods used for point estimate neural networks can be understood from a Bayesian perspective as setting a prior.
 
 **Point 4**:  Many learning methods initially not presented as Bayesian can be implicitly understood as being approximate Bayesian (e.g. regularisation, ensembling, etc.). In fact, most of the BNNs used in practice rely on methods that are approximately or implicitly Bayesian, since the exact algorithms are too computationally expensive. **+ Consider**: _The Bayesian paradigm also provides a systematic framework to design new learning and regularisation strategies, even for point estimate models._
-
-# Bayesian inference algorithms
-## Markov chain Monte Carlo (MCMC)
-A family of algorithms to sample from the exact posterior distribution.
-
-- [My notes on MCMC](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#markov-chain-monte-carlo-mcmc)
-
-## Variational inference (VI)
-A family of algorithms to sample from an approximate posterior distribution.
-
-**NOTE**: _Computationally less intensive and more scalable than MCMC methods._
-
-- [My notes on VI](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#variational-inference-vi)
-
-## Bayes-by-backprop
-Bayes-by-backprop is a practical implementation of stochastic VI combined with a reparametrisation trick to ensure backpropagation works as usual. Hence, I have put it under the "Variational inference" section: [My notes on Bayes-by-backprop](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#bayes-by-backprop).
