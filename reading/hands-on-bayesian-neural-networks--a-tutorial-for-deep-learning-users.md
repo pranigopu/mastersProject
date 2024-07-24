@@ -122,7 +122,7 @@ However, in practice, $P(y|x, D)$ is sampled indirectly using $y = \Phi_\theta(x
 
 - Define the posterior $P(\theta|D)$
 - **for** $i=1$ to $N$
-    - Draw $\theta_i \sim \(\theta|D)$
+    - Draw $\theta_i \sim (\theta|D)$
     - $y_i = \Phi_{\theta_i}(x)$
 - **end for**
 - **return** $Y = {y_1, y_2 ... y_N}, \Theta = {\theta_1, \theta_2 ... \theta_N}$

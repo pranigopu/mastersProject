@@ -13,7 +13,6 @@
   - [What is an SNN?](#what-is-an-snn)
   - [Ensemble learning to SNNs to BNNs](#ensemble-learning-to-snns-to-bnns)
 - [Steps to design BNNs](#steps-to-design-bnns)
-  - [Additional points](#additional-points)
 - [Training and applying BNNs](#training-and-applying-bnns)
   - [Finding the posterior](#finding-the-posterior)
   - [Predictions using BNNs](#predictions-using-bnns)
@@ -25,6 +24,7 @@
       - [2. For classification problems](#2-for-classification-problems)
         - [2.1. Obtaining the estimator of the prediction](#21-obtaining-the-estimator-of-the-prediction)
 - [Advantages of using BNNs for deep learning](#advantages-of-using-bnns-for-deep-learning)
+- [Additional points](#additional-points)
 
 
 ---
@@ -84,48 +84,88 @@ The primary aim of using an SNN is to grasp the uncertainty about the underlying
 | Expression | Remark |
 | --- | --- |
 | $\theta \in \Theta$ | $\Theta$ is the set of all possible/considered models |
-| $\theta ∼ P(\theta)$ | Prior distribution of models |
+| $\theta ∼ P(\theta)$ | $P(\theta)$ is the probability distribution of models |
 | $y = \Phi_\theta(x) + \epsilon$ | Regression with stochastic function $\Phi_\theta(x)$ |
-
-**NOTE**: _As with all regression problems, we use the error term_ $\epsilon$ _to represent random noise that accounts for the fact that the function_ $\Phi_\theta$ _is only an approximation._
 
 ---
 
-Hence, we see that
+**NOTES ON THE ABOVE**:
+
+**1. Use of the error term** $\epsilon$:
+
+- $\epsilon$ represents random noise in the real-world data generation being modelled
+- Accounts for the fact that the function $\Phi_\theta$ is only an approximation
+
+**2. The source of stochasticity in** $\Phi_\theta$:
+
+Either one of the following:
+
+- Stochastic activations of the neural network
+- Stochastic weights of the neural network
+
+**3. What** $\theta$ **represents**:
+
+- The ordered set of all stochastic parameters of the neural network
+- Usually denotes the ordered set of stochastic weights
+- Can represent the parameters of the stochastic activations
+
+---
+
+Hence, we see that an SNN can be translated into a BNN context as follows:
+
+| Expression | Remark |
+| --- | --- |
+| $\theta \in \Theta$ | $\Theta$ is the hypothesis space of the possible models |
+| $\theta ∼ P(\theta)$ | $P(\theta)$ is the prior distribution over the possible models |
+| $y = \Phi_\theta(x) + \epsilon$ | Model output for input $x$ |
+
+---
+
+**LEXICAL NOTE: "Model" vs. "generalised model"**:
+
+Usually, when talking of "models", I talk about a particular architecture with a particular parametrisation. However, I may also talk about model in the sense of a generalised model, i.e. a particular architecture with a range of possible parametrisations. To avoid ambiguity, when I say "model", I only mean a particular architecture with a particular parametrisation, and when I want to refer to a generalised model, I will refer to it as a "generalised model" and nothing else. Hence, note that when I talk about "possible models", I am talking about the "possible parametrisations of a generalised model".
+
+**Why do I make such a distinction?**
+
+Theoretical analysis often distinguishes between the hypothesis class and specific hypotheses. For example, in DL, the term "model" may be used to refer to both the neural network's architecture (hypothesis class) and a particular parametrisation of a particular architecture meant to generalise over a particular set of inputs (specific hypothesis). Hence, to retain such a distinction while also retaining the broader conceptual link, I distinguish between "generalised model" and "model".
+
+**NOTE**: _Referring to the hypothesis class and the specific hypothesis as "models" is not invalid, because a model is an abstraction of a process designed to represent the process within a given context, and thus, both a hypothesis class and a specific hypothesis are in fact models in their respective contexts. But for the sake of clarity, I shall be using "model" to refer to a specific hypothesis and "generalised model" to refer to a hypothesis class._
 
 # Steps to design BNNs
 1.<br>
 
 Choice of deep neural network architecture, i.e. a functional model.
 
+**NOTE**: _This helps define the hypothesis class, i.e. the generalised model._
+
 2.<br>
 
 Choice of stochastic model, which consists of the following:
 
-- $P(\theta)$: Prior distribution over the possible model parametrization
+- $P(\theta)$: Prior distribution over the possible models
 - $P(y|x, \theta)$: Prior confidence in the predictive power of the model 
 
-Also, note that:
+---
 
-- The model parametrization can be considered to be the hypothesis $H$
+**NOTE**:
+
+- Each model is a specific hypothesis $h$ in a hypothesis space $H$
 - The training set is the data $D$
 - $\theta$ can be a single value, a vector or a matrix
-
-**CONSIDER**: _The choice of a BNN's stochastic model is analogous to the choice of loss function when training a point-estimation ANN._
-
-## Additional points
-**ANN cost function in statistical terms**:
-
-The cost function is often defined as the log likelihood of the training set, sometimes with a regularisation term included. From a statistician’s point of view, this is a maximum likelihood estimation (MLE), or a maximum a posteriori (MAP) estimation when regularisation is used.
+- In a neural network, $\theta$ is a vector or a matrix (usually the latter)
 
 # Training and applying BNNs
 **NOTE**: _Here, we are only considering BNNs as discriminative models, not generative models._
 
 ## Finding the posterior
-The Bayesian posterior for complex models such as ANNs is a high dimensional and highly non-convex probability distribution. This complexity makes computing it using standard sampling methods (e.g. accept-reject sampling) an intractable problem, especially because computing the evidence (i.e. the denominator of Bayes' formula) is difficult. To address this problem, two broad approaches have been introduced (each approach has various specific methods that implement it):
+The Bayesian posterior for complex models such as ANNs is a high dimensional and highly non-convex probability distribution. This complexity makes computing it using standard sampling methods (e.g. accept-reject sampling) an intractable problem, especially because computing the evidence (i.e. the denominator of Bayes' formula) is difficult. To address this problem, two broad approaches have been introduced (each approach has various specific methods that implement it): (1) MCMC and (2) VI.
 
-1. Markov chain Monte Carlo (MCMC)
-2. Variational inference (VI)
+> **Reference for a conceptual understanding of the sampling methods**:
+> 
+> 1. [Markov chain Monte Carlo (MCMC)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#markov-chain-monte-carlo-mcmc)
+> 2. [Variational inference (VI)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#variational-inference-vi)
+
+However, while the above references give a conceptual understanding of the sampling methods, it is not clear how these methods can be used to train a BNN.
 
 ## Predictions using BNNs
 Note that our discussion of inputs, functions, regression and outputs is done in the context of neural networks. Hence, we have input layer with inputs $x$ and an output layer with outputs (can be one or more) $y$, with a function $\Phi_\theta$ mapping $x$ to $y$ using the weights of the neural network $\theta$. Here, it is key to note that $x$ and $y$ are vectors, while $\theta$ is a matrix that holds the weights of the neural network (they are stored as a matrix to preserve their position in the network).
@@ -141,7 +181,7 @@ However, in practice, $P(y|x, D)$ is sampled indirectly using $y = \Phi_\theta(x
 
 - Define the posterior $P(\theta|D)$
 - **for** $i=1$ to $N$
-    - Draw $\theta_i \sim \(\theta|D)$
+    - Draw $\theta_i \sim (\theta|D)$
     - $y_i = \Phi_{\theta_i}(x)$
 - **end for**
 - **return** $Y = {y_1, y_2 ... y_N}, \Theta = {\theta_1, \theta_2 ... \theta_N}$
@@ -201,3 +241,8 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 **Point 3**: Any supervised learning algorithm includes some implicit prior. Bayesian methods, when used correctly, will at least make the prior explicit, which would make the model less of a black box. In Bayesian deep learning, priors are often considered as soft constraints that are analogous to regularisation or data transformations such as data augmentation in traditional deep learning. In particular, most regularisation methods used for point estimate neural networks can be understood from a Bayesian perspective as setting a prior.
 
 **Point 4**:  Many learning methods initially not presented as Bayesian can be implicitly understood as being approximate Bayesian (e.g. regularisation, ensembling, etc.). In fact, most of the BNNs used in practice rely on methods that are approximately or implicitly Bayesian, since the exact algorithms are too computationally expensive. **+ Consider**: _The Bayesian paradigm also provides a systematic framework to design new learning and regularisation strategies, even for point estimate models._
+
+# Additional points
+**ANN cost function in statistical terms**:
+
+The cost function is often defined as the log likelihood of the training set, sometimes with a regularisation term included. From a statistician’s point of view, this is a maximum likelihood estimation (MLE), or a maximum a posteriori (MAP) estimation when regularisation is used.
