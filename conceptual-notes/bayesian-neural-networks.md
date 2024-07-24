@@ -62,7 +62,7 @@ The relevance of the above shall become clearer after learning about SNNs.
 
 ---
 
-A key point is that unlike traditional ANNs, the weights in a BNN are not fixedd but stochastic, and following the Bayesian approach, the weights are distributed in a specific distribution. Before training, this distribution is the prior distribution (which is how the weights are initialised before training), but during and after training using some form of Bayesian inference, this distribution is the posterior distribution.
+A key point is that unlike traditional ANNs, the weights in a BNN are not fixed but stochastic, and more precisely, the weights are distributed in a specific distribution. Before training, this distribution is the prior distribution (which is how the weights are initialised before training), but during and after training using some form of Bayesian inference, this distribution is the posterior distribution.
 
 Hence, the goal of training BNNs is to use Bayesian inference to find the posterior distribution by which the model's weights are distributed. Hence, note that unlike traditional ANNs, the predictions of a BNN are also stochastic, and more precisely, the predictions of a BNN are based on weights as sampled from the posterior distribution. Hence, the Bayesian inference in DL not only offers a way to quantify uncertainty in DL models (using the posterior and output distribution) but also provides a mathematical framework (i.e. using mathematics from Bayesian inference) to understand many regularisation techniques and learning strategies that are already used in classic DL.
 
