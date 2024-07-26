@@ -15,6 +15,7 @@
 - [Steps to design BNNs](#steps-to-design-bnns)
 - [Training and applying BNNs](#training-and-applying-bnns)
   - [Finding the posterior](#finding-the-posterior)
+    - [BNN with HMC](#bnn-with-hmc)
   - [Predictions using BNNs](#predictions-using-bnns)
     - [The marginal](#the-marginal)
     - [Quantifying prediction uncertainty and obtaining prediction estimator](#quantifying-prediction-uncertainty-and-obtaining-prediction-estimator)
@@ -41,6 +42,7 @@
 - MLE: Maximum likelihood estimation
 - MAP: Maximum a posteriori (usually precedes "estimation")
 - MCMC: Markov chain Monte Carlo
+- HMC: Hamiltonian Monte Carlo (a class of MCMC methods)
 - NFLT: No free-lunch theorem for machine learning
 - VI: Variational inference
 
@@ -167,7 +169,14 @@ The Bayesian posterior for complex models such as ANNs is a high dimensional and
 > 1. [Markov chain Monte Carlo (MCMC)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#markov-chain-monte-carlo-mcmc)
 > 2. [Variational inference (VI)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#variational-inference-vi)
 
-However, while the above references give a conceptual understanding of the sampling methods, it is not clear how these methods can be used to train a BNN.
+However, while the above references give a conceptual understanding of the sampling methods, it is not clear how these methods can be used to train a BNN. This shall be the focus of the next few sections, specifically for: Hamiltonian Monte Carlo (HMC, a class of MCMC methods).
+
+### BNN with HMC
+> **Reference**: [_Training BNNs with HMC_ from **janosh.dev**](https://janosh.dev/posts/hmc-bnn)
+
+
+
+> **Additional reference (unused)**: [_Hamiltonian Monte Carlo Methods in Machine Learning_ by Tshilidzi Marwala, Wilson Tsakane Mongwe and Rendani Mbuvha](https://www.sciencedirect.com/book/9780443190353/hamiltonian-monte-carlo-methods-in-machine-learning)
 
 ## Predictions using BNNs
 Note that our discussion of inputs, functions, regression and outputs is done in the context of neural networks. Hence, we have input layer with inputs $x$ and an output layer with outputs (can be one or more) $y$, with a function $\Phi_\theta$ mapping $x$ to $y$ using the weights of the neural network $\theta$. Here, it is key to note that $x$ and $y$ are vectors, while $\theta$ is a matrix that holds the weights of the neural network (they are stored as a matrix to preserve their position in the network).

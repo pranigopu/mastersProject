@@ -8,6 +8,7 @@
 - [Markov chain Monte Carlo (MCMC)](#markov-chain-monte-carlo-mcmc)
   - [Detailed balance condition](#detailed-balance-condition)
   - [Key advantange and disadvantage of MCMC](#key-advantange-and-disadvantage-of-mcmc)
+  - [MCMC vs. multimodal distributions](#mcmc-vs-multimodal-distributions)
   - [Key points](#key-points)
   - [MCMC METHOD 1: Metropolis-Hastings](#mcmc-method-1-metropolis-hastings)
     - [Defining the transition probability](#defining-the-transition-probability)
@@ -100,6 +101,9 @@ In other terms, the total probability of transitioning from some random state to
 
 ## Key advantange and disadvantage of MCMC
 The main disadvantage of MCMC is also its main advantage: in MCMC samples are not uncorrelated, which means that while we are more likely to sample more around samples that have a high-probability of being in the target distribution, the downside is that we may get a biased or incomplete estimate for the target distribution, since our sampling is no longer exactly random and thus may not be representative of the distribution it is drawn from.
+
+## MCMC vs. multimodal distributions
+Multimodal distributions where the modes barely overlap typically pose difficulties to MCMC algorithms. This is because exploring them fully requires entering and passing through a region of low probability density which, by the very nature of MCMC, is a rare event (reference: [_Training BNNs with HMC_ from **janosh.dev**](https://janosh.dev/posts/hmc-bnn)). Hamiltonian Monte Carlo (HMC) (see: ["MCMC METHOD 2: Hamiltonian Monte Carlo (HMC)](#mcmc-method-2-hamiltonian-monte-carlo-hmc)) is a class of MCMC methods that aims to overcome this problem.
 
 ## Key points
 - MCMC can be _potentially_ more efficient, but is not necessarily so
@@ -214,11 +218,13 @@ HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by us
 
 ---
 
-**NOTE 1**: The benefit of consistently proposing new positions that are both far from the current position and with high acceptance rate is that you are likely to gain a much more representative and thus accurate sample of the distribution you want to estimate, but using fewer sampled values; in other words, it tends to make sampling more efficient._
+There are three benefits of consistently proposing new positions that are both far from the current position and with high acceptance rate: (1) You are likely to gain a much more representative and thus accurate sample of the distribution you want to estimate, but using fewer sampled values; in other words, it tends to make sampling more efficient. (2) You can explore multimodal distributions more effectively (see: ["MCMC vs. multimodal distributions"](#mcmc-vs-multimodal-distributions)). (3) You speed up mixing, i.e. generating a Markov chain with less correlated samples, thus partially overcoming the main disadvantage of MCMC methods, namely that the samples are not uncorrelated.  This helps converge to the target distribution faster, especially for higher dimensional target distributions (reference: [_Training BNNs with HMC_ from **janosh.dev**](https://janosh.dev/posts/hmc-bnn)).
 
-**NOTE 2**: Remember that a "sample" here is a tuple of one or more values proposed parameter values of the target distribution. What we are trying to do, here and in all sampling methods, is discover (with some level of uncertainty) how well the various potential parameter values would describe the target distribution. Note also that a "position" or a "state" is simply a sample, i.e. simply a proposed tuple of parameter values.
+---
 
-**NOTE 3**: Sampling from the negative log-probability of the posterior is the same in effect as sampling from the posterior itself (i.e. both lead to samples following the same distribution). Hence, when I refer to sampling from the posterior in the context of HMC, note that I am referring more precisely to sampling from the negative log-probability of the posterior. The distinction is only needed to describe the specific process of HMC and does not reflect on the actual samples obtained. However, apart from describing the specific process of HMC, I find that speaking in terms of sampling from the posterior makes it easier to relate the conceptual basis of HMC (i.e. Hamiltonian mechanics) to posterior sampling, which is why, when possible, I prefer to speak of sampling from the posterior rather than sampling from the negative log-probability of the posterior.
+**NOTE 1**: Remember that a "sample" here is a tuple of one or more values proposed parameter values of the target distribution. What we are trying to do, here and in all sampling methods, is discover (with some level of uncertainty) how well the various potential parameter values would describe the target distribution. Note also that a "position" or a "state" is simply a sample, i.e. simply a proposed tuple of parameter values.
+
+**NOTE 2**: Sampling from the negative log-probability of the posterior is the same in effect as sampling from the posterior itself (i.e. both lead to samples following the same distribution). Hence, when I refer to sampling from the posterior in the context of HMC, note that I am referring more precisely to sampling from the negative log-probability of the posterior. The distinction is only needed to describe the specific process of HMC and does not reflect on the actual samples obtained. However, apart from describing the specific process of HMC, I find that speaking in terms of sampling from the posterior makes it easier to relate the conceptual basis of HMC (i.e. Hamiltonian mechanics) to posterior sampling, which is why, when possible, I prefer to speak of sampling from the posterior rather than sampling from the negative log-probability of the posterior.
 
 ---
 
