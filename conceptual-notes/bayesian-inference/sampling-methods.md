@@ -316,21 +316,38 @@ Hence, solving the above equations, we can simulate the system $S$; for example,
 > - [_Hamilton's Equations of Motion_ from **StudySmarter.co.uk**](https://www.studysmarter.co.uk/explanations/physics/classical-mechanics/hamiltons-equations-of-motion)
 
 ### Mathematical formulation
+**PRELIMINARY POINT: The goal of using a sampling method**:
+
+The whole point of a sampling method is to estimate an unknown distribution. Hence, in practice, when we sample from the posterior, it is because we do not know the posterior. However, due to certain theoretical guarantees in the general MCMC approach (mainly the guarantee that the steady-state transition probabilities of the sampler's Markov chain simulate the posterior distribution; see: ["Markov chain Monte Carlo (MCMC)" from this document](#markov-chain-monte-carlo-mcmc)), we have that after a certain number of samples, we begin to draw samples as if from the posterior. Hence, when we say "sample from the posterior", we mean that in the way described by the general MCMC approach. How HMC in implements the general MCMC approach is what we shall see now
+
+---
+
 Let us first define the following:
 
 - $P$, the measure of probability density or mass (depending on context)
-- The target distribution $p = P(\theta|D)$ (the posterior distribution)
 - $\theta$, the position, i.e. the sample taken from the posterior
+- $P(\theta)$, the prior distribution of $\theta$
+- $p = P(\theta|D)$, the target distribution (the posterior distribution)
 - $m$, the momentum applied to the imaginary sampler point at position $\theta$
 - $P(m)$, the model distributing potential momentum values
 
 ---
 
-**KEY POINT**: The whole point of a sampling method is to estimate an unknown distribution. Hence, in practice, when we sample from the posterior, it is because we do not know the posterior. However, due to certain theoretical guarantees in the general MCMC approach (mainly the guarantee that the steady-state transition probabilities of the sampler's Markov chain simulate the posterior distribution; see: ["Markov chain Monte Carlo (MCMC)" from this document](#markov-chain-monte-carlo-mcmc)), we have that after a certain number of samples, we begin to draw samples as if from the posterior. Hence, when we say "sample from the posterior", we mean that in the way described by the general MCMC approach.
+**What do we need to find?**
+
+- The target distribution, i.e. the posterior distribution $p = P(\theta|D)$
+
+**What do we have available?**
+
+- $P(\theta)$, the prior distribution of $\theta$ defined before the inference
+- $P(m)$, the distribution of momentum values chosen by us
+- Approximation of $P(\theta, m)$, the joint distribution of $\theta$ and $m$
+
+_Why bother with the joint distribution? We shall see._
 
 ---
 
-Hence, we have the following joint probability:
+The prior distribution of $\theta$ is an initial approximation of the actual distribution of $\theta$ (which is approximated more closely by the posterior distribution of $\theta$, using inferences from observations). Hence, the joint distribution $P(\theta, m)$ is also an initial approximation. However, the joint distribution's initial approximation is useful, because we can begin to approximate the posterior distribution of $\theta$ with the following:
 
 $P(\theta, m) = P(\theta|D) P(m)$
 
@@ -338,21 +355,52 @@ $\implies \log P(\theta, m) = \log (P(\theta|D) P(m)) = \log P(\theta|D) + \log 
 
 $\implies - \log P(\theta, m) = - \log P(\theta|D) - \log P(m)$
 
----
-
-Notice that the above equation is in the form of a Hamiltonian, where:
+The above equation is in the form of a Hamiltonian, where:
 
 - $H(\theta, m) = - \log P(\theta, m)$
 - $K(m) = - \log P(m)$ ("kinetic energy")
 - $V(\theta) = - \log P(\theta|D)$ ("potential energy")
 
-**NOTE**: _The logarithms of probabilities are always less than or equal to 0, since probabilities are always between 0 and 1. Hence, negative logarithms of probabilities are always greater than or equal to 0. Hence, the motion-based analogy is valid, which also means that Hamilton's equations of motion will work as intended, i.e. in the same way as they do for physical systems._
+---
+
+**NOTE**:
+
+- Probabilities are always between 0 and 1
+- Hence, the logarithms of probabilities are always less than or equal to 0
+- Hence, negative logarithms of probabilities are always $\geq$ to 0
+- Hence, the physical motion-based analogy is valid
+- Hence means that Hamilton's equations of motion will work as intended
 
 ---
 
-_What does this mean in practice?_
+**What do we need to find?**
 
-It means we can use one of Hamilton's equations, i.e. $\frac{d \theta}{dt} = \frac{\delta H}{\delta m}$, to travel along the contours of the negative log-probability of the posterior to propose the next sample (i.e. the next $\theta$) which is in a similarly high-probability-mass region of the posterior as the current sample (i.e. the current $\theta$). Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen momentum (chosen based on $P(m)$ ), and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the current sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
+- The target distribution, i.e. the posterior distribution $p = P(\theta|D)$
+
+**What do we have available?**
+
+- $K(m) = - \log P(m)$, since we already have $P(m)$
+- $\frac{\delta \theta}{\delta t} = \frac{\delta K}{\delta m}$, since we already have $K(m)$
+- $H = - \log P(\theta, m)$, since we already have $P(\theta, m)$
+- $\frac{\delta m}{\delta t} = \frac{\delta H}{\delta \theta}$, since we already have $H(\theta, m)$
+
+**NOTE**: _We do not have_ $V$ _directly, since we need to find_ $P(\theta|D)$.
+
+**What do we know?**
+
+- How a body's momentum changes across time depends on how the potential energy acts of the body
+- As an analogy for the above, imagine the potential energy as gravitational wells
+- Hence, picking $m$ and changing it based on $H$ leads to positions sampled from $V$
+- $V = - \log P(\theta|D)$ has the same density distribution as $p = P(\theta|D)$
+- In other words, the way $V$ acts upon a body emulates the probability densities in $p$
+- Hence, sampling from $V$ is the same as sampling from $p$
+- Hence, samples aggregated from $V$ can be used to estimate $p$
+
+---
+
+_How can we use what we know/have available to find what we need?_
+
+Starting with a randomly sampled momentum value, we can use $\frac{\delta m}{\delta t} = \frac{\delta H}{\delta \theta}$ to update the momentum across time steps and thereby travel along the contours of the negative log-probability of the posterior and sample the next positions in similarly high-probability-mass regions as the initial sample (i.e. initial position). Using these samples, we can estimate the target distribution $p$, i.e. the posterior. Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen momentum — chosen based on $P(m)$ — and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the initial sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
 
 ---
 
