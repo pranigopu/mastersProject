@@ -418,7 +418,7 @@ $V(\theta) = - \log P(\theta|D) = - \log(P(D|\theta) P(\theta)) + \log z$
 
 ---
 
-But note that the evidence $z$ marginalises out the position $\theta$. Hence, $z$ is independent of position $\theta$.
+But note that $z$ marginalises out the position $\theta$. Hence, $z$ is independent of position $\theta$.
 
 $\implies \frac{\delta V}{\delta \theta} = \frac{\delta (- \log(P(D|\theta) P(\theta)))}{\delta \theta} + 0 = - \frac{\delta \log(P(D|\theta) P(\theta))}{\delta \theta}$
 
@@ -451,7 +451,9 @@ $\implies \frac{\delta V}{\delta \theta} = \frac{\delta (- \log(P(D|\theta) P(\t
 
 _How can we use what we know/have available to find what we need?_
 
-Starting with a randomly sampled momentum value, we can use $\frac{\delta m}{\delta t} = - \frac{\delta V}{\delta \theta}$ to update the momentum across time steps and thereby travel along the contours of the negative log-probability of the posterior and sample the next positions in similarly high-probability-mass regions as the initial sample (i.e. initial position). Using these samples, we can estimate the target distribution $p$, i.e. the posterior. Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen momentum — chosen based on $P(m)$ — and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the initial sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
+Starting with a randomly sampled momentum value, we can use $\frac{\delta m}{\delta t} = - \frac{\delta V}{\delta \theta}$ to update the momentum across time steps and thereby travel along the contours of the negative log-probability of the posterior and sample the next positions in similarly high-probability-mass regions as the initial sample (i.e. initial position). Using these samples, we can estimate the target distribution $p$, i.e. the posterior. It is key to note that, as derived before, $\frac{\delta V}{\delta \theta} = - \frac{\delta \log(P(D|\theta) P(\theta))}{\delta \theta}$, which means the gradient used to update momentum across time steps only depends on what we already know, namely the likelihood $P(D|\theta)$ and the prior $P(\theta)$.
+
+Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen momentum — chosen based on $P(m)$ — and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the initial sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
 
 ---
 
@@ -516,7 +518,7 @@ Note that in the second essential step of the HMC algorithm, Hamiltonian dynamic
 
 $\min [1, e^{H(\theta, m)−H(\theta^∗, m^∗)}]$, where:
 
-- $H$ is the Hamiltonian, given by $H(\theta, m) = V(\theta) + K(m)$
+- $H$ is the Hamiltonian, given by $H(\theta, m) = K(m) + V(\theta)$
 - $V$ is analogous to the potential energy in classical mechanics
 - $K$ is analogous to the kinetic energy in classical mechanics
 
@@ -538,6 +540,42 @@ $H(\theta^∗, m^∗) \geq H(\theta, m)$ means the proposed state is from an equ
 **NOTE: Why negate the momentum variable after the simulation?**
 
 The negation of the momentum at the end of the simulated trajectory makes the Metropolis proposal symmetrical, as needed for the acceptance probability above to be valid (**NOTE**: _I do not get this point_). However, this negation need not be done in practice, since $K(m) = K(−m)$, and since the momentum is always replaced (by randomly sampling it from a Gaussian) in the first step of the next iteration.
+
+---
+
+**NOTE: How do we calculate**  $H(\theta, m) − H(\theta^∗, m^∗)$ **?**
+
+In the case of HMC, the Hamiltonian is given by:
+
+$H(\theta, m) = - \log P(\theta, m) = - \log P(\theta|D) - \log P(m)$
+
+Of course, we do not know $P(\theta|D)$, since this is the target distribution we want to find. However:
+
+$P(\theta|D) \propto P(D|\theta) P(\theta)$
+
+$\implies - \log P(\theta|D) \propto - \log(P(D|\theta) P(\theta)) = - \log P(D|\theta) - \log P(\theta)$
+
+$\implies H(\theta, m) \propto - \log P(D|\theta) - \log P(\theta) - \log P(m)$
+
+Likewise, $H(\theta^*, m^*) \propto - \log P(D|\theta^*) - \log P(\theta^*) - \log P(m^*)$.
+
+The right-hand side in the above two statements is sufficient for our needs. Why? Consider:
+
+Let $P(\theta|D) = \frac{P(D|\theta) P(\theta)}{z}$ for some normalisation constant $z$
+
+$\implies - \log P(\theta|D) = - \log \frac{P(D|\theta) P(\theta)}{z} = - \log P(D|\theta) - \log P(\theta) + \log z$
+
+$\implies H(\theta, m) = - \log P(D|\theta) - \log P(\theta) - \log P(m) + \log z$
+
+Hence, we get $H(\theta, m) − H(\theta^∗, m^∗)$ as follows:
+
+$- \log P(D|\theta) - \log P(\theta) - \log P(m) + \log z - (- \log P(D|\theta^*) - \log P(\theta^*) - \log P(m^*) + \log z)$
+
+$= - \log P(D|\theta) - \log P(\theta) - \log P(m) + \log z + \log P(D|\theta^*) + \log P(\theta^*) + \log P(m^*) - \log z$
+
+$= - \log P(D|\theta) - \log P(\theta) - \log P(m) + \log P(D|\theta^*) + \log P(\theta^*) + \log P(m^*)$
+
+As we can see, the normalisation constant is eliminated, so it has no effect on the acceptance probability.
 
 ### Additional points about HMC
 - HMC is fast and efficient when it works
