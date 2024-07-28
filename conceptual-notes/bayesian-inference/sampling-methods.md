@@ -537,12 +537,6 @@ $H(\theta^∗, m^∗) \geq H(\theta, m)$ means the proposed state is from an equ
 
 ---
 
-**NOTE: Why negate the momentum variable after the simulation?**
-
-The negation of the momentum at the end of the simulated trajectory makes the Metropolis proposal symmetrical, as needed for the acceptance probability above to be valid (**NOTE**: _I do not get this point_). However, this negation need not be done in practice, since $K(m) = K(−m)$, and since the momentum is always replaced (by randomly sampling it from a Gaussian) in the first step of the next iteration.
-
----
-
 **NOTE: How do we calculate**  $H(\theta, m) − H(\theta^∗, m^∗)$ **?**
 
 In the case of HMC, the Hamiltonian is given by:
@@ -567,6 +561,8 @@ $\implies - \log P(\theta|D) = - \log \frac{P(D|\theta) P(\theta)}{z} = - \log P
 
 $\implies H(\theta, m) = - \log P(D|\theta) - \log P(\theta) - \log P(m) + \log z$
 
+Likewise, $H(\theta^*, m^*) = - \log P(D|\theta^*) - \log P(\theta^*) - \log P(m^*) + \log z$
+
 Hence, we get $H(\theta, m) − H(\theta^∗, m^∗)$ as follows:
 
 $- \log P(D|\theta) - \log P(\theta) - \log P(m) + \log z - (- \log P(D|\theta^*) - \log P(\theta^*) - \log P(m^*) + \log z)$
@@ -576,6 +572,12 @@ $= - \log P(D|\theta) - \log P(\theta) - \log P(m) + \log z + \log P(D|\theta^*)
 $= - \log P(D|\theta) - \log P(\theta) - \log P(m) + \log P(D|\theta^*) + \log P(\theta^*) + \log P(m^*)$
 
 As we can see, the normalisation constant is eliminated, so it has no effect on the acceptance probability.
+
+---
+
+**NOTE: Why negate the momentum variable after the simulation?**
+
+The negation of the momentum at the end of the simulated trajectory makes the Metropolis proposal symmetrical, as needed for the acceptance probability above to be valid (**NOTE**: _I do not get this point_). However, this negation need not be done in practice, since $K(m) = K(−m)$, and since the momentum is always replaced (by randomly sampling it from a Gaussian) in the first step of the next iteration.
 
 ### Additional points about HMC
 - HMC is fast and efficient when it works
