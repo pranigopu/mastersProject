@@ -326,28 +326,39 @@ Let us first define the following:
 
 - $P$, the measure of probability density or mass (depending on context)
 - $\theta$, the position, i.e. the sample taken from the posterior
-- $P(\theta)$, the prior distribution of $\theta$
-- $p = P(\theta|D)$, the target distribution (the posterior distribution)
+- $\Theta$, the sample space of positions
+- $p$, the target distribution, i.e. the posterior distribution
 - $m$, the momentum applied to the imaginary sampler point at position $\theta$
-- $P(m)$, the model distributing potential momentum values
+
+**NOTE**: $\theta$ _denotes a specific parametrisation of the generalised model which we are trying to fit to the data. Hence, since models are usually parametrised by more than one specific parameter,_ $\theta$ _is usually a vector of specific parameters._ $\Theta$ _denotes the hypothesis space, i.e. the set of all possible parametrisations considered by us of the generalised model. Hence, note that_ $\theta$ _represents a specific model, whereas_ $\Theta$ _represents the sample space of specific models, each being a specific parametrisation of the generalised model. Also note that if_ $\theta$ _is k-dimensional (i.e. has k elements, denoting k specific parameters), then_ $\Theta$ _is a k-dimensional sample space, and consequently, we are dealing with "positions" and "momentum" in a k-dimensional space._
 
 ---
 
 **What do we need to find?**
 
-- The target distribution, i.e. the posterior distribution $p = P(\theta|D)$
+- $p = P(\theta|D)$, the target distribution, i.e. the posterior distribution
 
 **What do we have available?**
 
+- $D$, dataset of observations (from the data-generation process we are trying to model)
+- $P(D|\theta)$, the likelihood of dataset $D$ given the model parametrised by $\theta$
 - $P(\theta)$, the prior distribution of $\theta$ defined before the inference
 - $P(m)$, the distribution of momentum values chosen by us
-- Approximation of $P(\theta, m)$, the joint distribution of $\theta$ and $m$
 
-_Why bother with the joint distribution? We shall see._
+**What do we know?**
+
+- $\displaystyle P(\theta|D) = \frac{P(D|\theta) P(\theta)}{\int_{\theta' \in \Theta} P(\theta', D) d\theta'} \propto P(D|\theta) P(\theta)$
+- $P(\theta, m) = P(\theta|D) P(m)$
+
+**What we do not know in practice**:
+
+- $\displaystyle \int_{\theta' \in \Theta} P(\theta', D) d\theta'$, the denominator or "evidence" in Bayesian inference
+
+**NOTE**: _Of course, if we knew the denominator, the posterior_ $p = P(\theta|D)$ _would already by known._
 
 ---
 
-The prior distribution of $\theta$ is an initial approximation of the actual distribution of $\theta$ (which is approximated more closely by the posterior distribution of $\theta$, using inferences from observations). Hence, the joint distribution $P(\theta, m)$ is also an initial approximation. However, the joint distribution's initial approximation is useful, because we can begin to approximate the posterior distribution of $\theta$ with the following:
+Why bother with the joint distribution? Because of the following:
 
 $P(\theta, m) = P(\theta|D) P(m)$
 
@@ -373,6 +384,48 @@ The above equation is in the form of a Hamiltonian, where:
 
 ---
 
+**REMINDER**:
+
+Hamiltonian's equations are as follows:
+
+Equation 1:
+
+$\frac{d \theta}{dt} = \frac{\delta H}{\delta m} = \frac{\delta K}{\delta m} + \frac{\delta V}{\delta m} = \frac{\delta K}{\delta m}$ (because $\frac{\delta V}{\delta m} = 0$)
+
+i.e.
+
+$\frac{d \theta}{dt} = \frac{\delta K}{\delta m}$
+
+Equation 2:
+
+$\frac{dm}{dt} = - \frac{\delta H}{\delta \theta} = - \frac{\delta K}{\delta \theta} - \frac{\delta V}{\delta \theta} = - \frac{\delta V}{\delta \theta}$ (because $\frac{\delta K}{\delta \theta} = 0$)
+
+i.e.
+
+$\frac{dm}{dt} = - \frac{\delta V}{\delta \theta}$
+
+---
+
+We know that $\displaystyle P(\theta|D) = \frac{P(D|\theta) P(\theta)}{\int_{\theta' \in \Theta} P(\theta', D) d\theta'}$
+
+$\implies \log P(\theta|D) = \log \frac{P(D|\theta) P(\theta)}{\int_{\theta' \in \Theta} P(\theta', D) d\theta'} = \log(P(D|\theta) P(\theta)) - \log(\int_{\theta' \in \Theta} P(\theta', D) d\theta')$
+
+---
+
+For convenience, put $\displaystyle z = \int_{\theta' \in \Theta} P(\theta', D) d\theta'$. Hence, we have that:
+
+$V(\theta) = - \log P(\theta|D) = - \log(P(D|\theta) P(\theta)) + \log z$
+
+---
+
+But note that the evidence $z$ marginalises out the position $\theta$. Hence, $z$ is independent of position $\theta$.
+
+$\implies \frac{\delta V}{\delta \theta} = \frac{\delta (- \log(P(D|\theta) P(\theta)))}{\delta \theta} + 0 = - \frac{\delta \log(P(D|\theta) P(\theta))}{\delta \theta}$
+
+**NOTE**: $\frac{dm}{dt} = - \frac{\delta V}{\delta \theta} \implies \frac{\delta V}{\delta \theta}$ _determines momentum change across time steps (i.e. across sampling steps)._
+
+---
+
 **What do we need to find?**
 
 - The target distribution, i.e. the posterior distribution $p = P(\theta|D)$
@@ -382,25 +435,23 @@ The above equation is in the form of a Hamiltonian, where:
 - $K(m) = - \log P(m)$, since we already have $P(m)$
 - $\frac{\delta \theta}{\delta t} = \frac{\delta K}{\delta m}$, since we already have $K(m)$
 - $H = - \log P(\theta, m)$, since we already have $P(\theta, m)$
-- $\frac{\delta m}{\delta t} = \frac{\delta H}{\delta \theta}$, since we already have $H(\theta, m)$
-
-**NOTE**: _We do not have_ $V$ _directly, since we need to find_ $P(\theta|D)$.
+- $\frac{\delta m}{\delta t} = - \frac{\delta V}{\delta \theta}$
 
 **What do we know?**
 
 - How a body's momentum changes across time depends on how the potential energy acts of the body
-- As an analogy for the above, imagine the potential energy as gravitational wells
-- Hence, picking $m$ and changing it based on $H$ leads to positions sampled from $V$
+- As an analogy for the above, imagine the potential energy $V$ as a set of gravitational wells
+- Hence, after picking $m$, we change it based on $V$
 - $V = - \log P(\theta|D)$ has the same density distribution as $p = P(\theta|D)$
 - In other words, the way $V$ acts upon a body emulates the probability densities in $p$
-- Hence, sampling from $V$ is the same as sampling from $p$
+- Hence, sampling a body's position across time based on $V$ is the same as sampling from $p$
 - Hence, samples aggregated from $V$ can be used to estimate $p$
 
 ---
 
 _How can we use what we know/have available to find what we need?_
 
-Starting with a randomly sampled momentum value, we can use $\frac{\delta m}{\delta t} = \frac{\delta H}{\delta \theta}$ to update the momentum across time steps and thereby travel along the contours of the negative log-probability of the posterior and sample the next positions in similarly high-probability-mass regions as the initial sample (i.e. initial position). Using these samples, we can estimate the target distribution $p$, i.e. the posterior. Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen momentum — chosen based on $P(m)$ — and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the initial sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
+Starting with a randomly sampled momentum value, we can use $\frac{\delta m}{\delta t} = - \frac{\delta V}{\delta \theta}$ to update the momentum across time steps and thereby travel along the contours of the negative log-probability of the posterior and sample the next positions in similarly high-probability-mass regions as the initial sample (i.e. initial position). Using these samples, we can estimate the target distribution $p$, i.e. the posterior. Note that we can make the proposal after a number of iterations for travelling along the above contour using the chosen momentum — chosen based on $P(m)$ — and if we do so, we can get the proposed sample from a similarly high-probability-mass region of the posterior that is also far from the initial sample. This number of iterations (or alternatively, the time for which we allow the algorithm to travel along the contour) can be picked at random to optimise the algorithm's performance in the long run (reference: [_Michael Betancourt: Scalable Bayesian Inference with Hamiltonian Monte Carlo_ from London Machine Learning Meetup, **YouTube**](https://www.youtube.com/watch?v=jUSZboSq1zg)).
 
 ---
 
