@@ -412,7 +412,7 @@ $\implies \log P(\theta|D) = \log \frac{P(D|\theta) P(\theta)}{\int_{\theta' \in
 
 ---
 
-For convenience, put $\displaystyle z = \int_{\theta' \in \Theta} P(\theta', D) d\theta'$. Hence, we have that:
+For convenience, put $\displaystyle z = \int_{\theta' \in \Theta} P(\theta', D) d\theta'$. Hence:
 
 $V(\theta) = - \log P(\theta|D) = - \log(P(D|\theta) P(\theta)) + \log z$
 
