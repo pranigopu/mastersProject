@@ -11,6 +11,7 @@
   - [Hamiltonian (i.e. Hamiltonian function)](#hamiltonian-ie-hamiltonian-function)
     - [PRELIMINARY TOPIC: Hamilton's equations of motion](#preliminary-topic-hamiltons-equations-of-motion)
     - [MAIN TOPIC: Hamiltonian function](#main-topic-hamiltonian-function)
+- [Further conceptual clarity](#further-conceptual-clarity)
 - [Mathematical formulation](#mathematical-formulation)
   - [PRELIMINARY POINT: The goal of using a sampling method](#preliminary-point-the-goal-of-using-a-sampling-method)
   - [MAIN TOPIC: Mathematical formulation of HMC](#main-topic-mathematical-formulation-of-hmc)
@@ -134,6 +135,13 @@ Hence, solving the above equations, we can simulate the system $S$; for example,
 >
 > - [_Hamiltonian Monte Carlo For Dummies (Statisticians / Pharmacometricians / All)_ by Alan Maloney, **YouTube**](https://www.youtube.com/watch?v=ZGtezhDaSpM)
 > - [_Hamilton's Equations of Motion_ from **StudySmarter.co.uk**](https://www.studysmarter.co.uk/explanations/physics/classical-mechanics/hamiltons-equations-of-motion)
+
+# Further conceptual clarity
+**_The following are excerpts from_** [_A Conceptual Introduction to Hamiltonian Monte Carlo_ by Michael Betancourt](https://arxiv.org/pdf/1701.02434)
+
+This assumption implies that the variation in the integrand is dominated by the target density, and hence we should consider the neighborhood around the mode where the density is maximized. This intuition is consistent with the many statistical methods that utilize the mode, such as maximum likelihood estimators and Laplace approximations, although conflicts with our desire to avoid the specific details of the target density. Indeed, this intuition is fatally naive as it misses a critical detail.
+
+Expectation values are given by accumulating the integrand over a volume of parameter space and, while the density is largest around the mode, there is not much volume there. To identify the regions of parameter space that dominate expectations we need to consider the behavior of both the density and the volume. In high-dimensional spaces the volume behaves very differently from the density, resulting in a tension that concentrates the significant regions of parameter space away from either extreme
 
 # Mathematical formulation
 ## PRELIMINARY POINT: The goal of using a sampling method
@@ -295,7 +303,7 @@ _Hence, we see how HMC allows more efficient exploration of the high-probability
 - Take $\theta_T$ as our new proposed sample
 - Use the Metropolis acceptance criterion to accept or reject $\theta_T$
 
-_Why we still need to use the Metropolis acceptance criterion?_ Intuitively, because we can think of HMC as a Metropolis-Hasting algorithm with a better proposal method. But a further numerical justification is that the accept-reject steps help correct for errors introduced by the numerical simulation of the Hamiltonian equations.
+_Why we still need to use the Metropolis acceptance criterion?_ Intuitively, because we can think of HMC as a Metropolis-Hasting algorithm with a better proposal method. But a further numerical justification is that the accept-reject steps help correct for errors introduced by the numerical simulation of the Hamiltonian equations. _Let us explore this numerical justification._ In practice, we can simulate Hamiltonian dynamics only approximately, which means that even if our momentum is well chosen so as to travel along contours of high-probability-mass, the sample (i.e. position) we reach at the end of our simulation may be from a lower-probability-mass region. To correct for this, we make the probability of accepting the new sample proportional to its distance (in terms of its probability-mass region) to the initial sample (i.e. the starting position of the simulation).
 
 > **Reference**: ["11.9.3. Hamiltonian Monte Carlo" from "11.9. Inference Methods" from _11. Appendiceal Topics_ from **Bayesian Computation Notebook**](https://bayesiancomputationbook.com/markdown/chp_11.html#hamiltonian-monte-carlo)
 
