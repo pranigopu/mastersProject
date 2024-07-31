@@ -8,13 +8,19 @@ Papers relevant to my project's main focus.
 
 **Hands-on Bayesian Neural Networks – A Tutorial for Deep Learning Users**
 
-[Notes >>](https://github.com/pranigopu/mastersProject/blob/main/reading/hands-on-bayesian-neural-networks--a-tutorial-for-deep-learning-users.md) | [Paper >>](https://arxiv.org/pdf/2007.06823)
+[Notes >>](https://github.com/pranigopu/mastersProject/blob/main/reading/hands-on-bayesian-neural-networks--a-tutorial-for-deep-learning-users.md) | [Paper >>](https://arxiv.org/pdf/2007.06823) | [Personal Copy of Paper >>](https://github.com/pranigopu/mastersProject/blob/main/reading/hands-on-bayesian-neural-networks--a-tutorial-for-deep-learning-users.pdf)
 
 ---
 
 **Benchmarking Bayesian Neural Networks and Evaluation Metrics for Regression Tasks**
 
-[Notes >>](https://github.com/pranigopu/mastersProject/blob/main/reading/benchmarking-bayesian-neural-networks-and-evaluation-metrics-for-regression-tasks.md) | [Paper >>](https://arxiv.org/pdf/2206.06779)
+[Notes >>](https://github.com/pranigopu/mastersProject/blob/main/reading/benchmarking-bayesian-neural-networks-and-evaluation-metrics-for-regression-tasks.md) | [Paper >>](https://arxiv.org/pdf/2206.06779) | [Personal Copy of Paper >>](https://github.com/pranigopu/mastersProject/blob/main/reading/benchmarking-bayesian-neural-networks-and-evaluation-metrics-for-regression-tasks.pdf)
+
+---
+
+**A Conceptual Introduction to Hamiltonian Monte Carlo**
+
+[Notes >>](https://github.com/pranigopu/mastersProject/blob/main/reading/a-conceptual-introduction-to-hamiltonian-monte-carlo.md) | [Paper >>](https://arxiv.org/pdf/1701.02434) | [Personal Copy of Paper >>](https://github.com/pranigopu/mastersProject/blob/main/reading/a-conceptual-introduction-to-hamiltonian-monte-carlo.pdf)
 
 ---
 

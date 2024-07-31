@@ -139,9 +139,6 @@ Hence, solving the above equations, we can simulate the system $S$; for example,
 # Further conceptual clarity
 **_The following are excerpts from_** [_A Conceptual Introduction to Hamiltonian Monte Carlo_ by Michael Betancourt](https://arxiv.org/pdf/1701.02434)
 
-This assumption implies that the variation in the integrand is dominated by the target density, and hence we should consider the neighborhood around the mode where the density is maximized. This intuition is consistent with the many statistical methods that utilize the mode, such as maximum likelihood estimators and Laplace approximations, although conflicts with our desire to avoid the specific details of the target density. Indeed, this intuition is fatally naive as it misses a critical detail.
-
-Expectation values are given by accumulating the integrand over a volume of parameter space and, while the density is largest around the mode, there is not much volume there. To identify the regions of parameter space that dominate expectations we need to consider the behavior of both the density and the volume. In high-dimensional spaces the volume behaves very differently from the density, resulting in a tension that concentrates the significant regions of parameter space away from either extreme
 
 # Mathematical formulation
 ## PRELIMINARY POINT: The goal of using a sampling method
