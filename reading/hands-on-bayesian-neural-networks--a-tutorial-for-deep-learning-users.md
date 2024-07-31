@@ -187,14 +187,14 @@ $\displaystyle \hat{y} = \text{arg}\max_i \hat{p}$ ($i$ represents the index)
 ## Markov chain Monte Carlo (MCMC)
 A family of algorithms to sample from the exact posterior distribution.
 
-- [My notes on MCMC](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#markov-chain-monte-carlo-mcmc)
+- [My notes on MCMC](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods/markov-chain-monte-carlo-mcmc)
 
 ## Variational inference (VI)
 A family of algorithms to sample from an approximate posterior distribution.
 
 **NOTE**: _Computationally less intensive and more scalable than MCMC methods._
 
-- [My notes on VI](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#variational-inference-vi)
+- [My notes on VI](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi)
 
 ## Bayes-by-backprop
-Bayes-by-backprop is a practical implementation of stochastic VI combined with a reparametrisation trick to ensure backpropagation works as usual. Hence, I have put it under the "Variational inference" section: [My notes on Bayes-by-backprop](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#bayes-by-backprop).
+Bayes-by-backprop is a practical implementation of stochastic VI combined with a reparametrisation trick to ensure backpropagation works as usual. Hence, I have put it under the "Variational inference" section: [My notes on Bayes-by-backprop](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi/bayes-by-backprop.md).

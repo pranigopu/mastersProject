@@ -166,8 +166,8 @@ The Bayesian posterior for complex models such as ANNs is a high dimensional and
 
 > **Reference for a conceptual understanding of the sampling methods**:
 > 
-> 1. [Markov chain Monte Carlo (MCMC)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#markov-chain-monte-carlo-mcmc)
-> 2. [Variational inference (VI)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods.md#variational-inference-vi)
+> 1. [Markov chain Monte Carlo (MCMC)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods/markov-chain-monte-carlo-mcmc)
+> 2. [Variational inference (VI)](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi)
 
 However, while the above references give a conceptual understanding of the sampling methods, it is not clear how these methods can be used to train a BNN. This shall be the focus of the next few sections, specifically for: Hamiltonian Monte Carlo (HMC, a class of MCMC methods).
 
