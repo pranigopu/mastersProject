@@ -11,7 +11,7 @@
   - [Hamiltonian (i.e. Hamiltonian function)](#hamiltonian-ie-hamiltonian-function)
     - [PRELIMINARY TOPIC: Hamilton's equations of motion](#preliminary-topic-hamiltons-equations-of-motion)
     - [MAIN TOPIC: Hamiltonian function](#main-topic-hamiltonian-function)
-- [Further conceptual clarity](#further-conceptual-clarity)
+- [Further conceptual clarity on HMC](#further-conceptual-clarity-on-hmc)
 - [Mathematical formulation](#mathematical-formulation)
   - [PRELIMINARY POINT: The goal of using a sampling method](#preliminary-point-the-goal-of-using-a-sampling-method)
   - [MAIN TOPIC: Mathematical formulation of HMC](#main-topic-mathematical-formulation-of-hmc)
@@ -136,9 +136,13 @@ Hence, solving the above equations, we can simulate the system $S$; for example,
 > - [_Hamiltonian Monte Carlo For Dummies (Statisticians / Pharmacometricians / All)_ by Alan Maloney, **YouTube**](https://www.youtube.com/watch?v=ZGtezhDaSpM)
 > - [_Hamilton's Equations of Motion_ from **StudySmarter.co.uk**](https://www.studysmarter.co.uk/explanations/physics/classical-mechanics/hamiltons-equations-of-motion)
 
-# Further conceptual clarity
-**_The following are excerpts from_** [_A Conceptual Introduction to Hamiltonian Monte Carlo_ by Michael Betancourt](https://arxiv.org/pdf/1701.02434)
+# Further conceptual clarity on HMC
+_A Conceptual Introduction to Hamiltonian Monte Carlo_ by Michael Betancourt:
 
+- **Paper**: https://arxiv.org/pdf/1701.02434
+- **Notes**: [`a-conceptual-introduction-to-hamiltonian-monte-carlo.md`](https://github.com/pranigopu/mastersProject/blob/main/reading/a-conceptual-introduction-to-hamiltonian-monte-carlo.md)
+
+**NOTE**: _The notes contain key excerpts, a helpful organisation of ideas and clarifying comments._
 
 # Mathematical formulation
 ## PRELIMINARY POINT: The goal of using a sampling method
