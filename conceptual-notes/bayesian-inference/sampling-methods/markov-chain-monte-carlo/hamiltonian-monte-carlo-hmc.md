@@ -142,7 +142,7 @@ _A Conceptual Introduction to Hamiltonian Monte Carlo_ by Michael Betancourt:
 - **Paper**: https://arxiv.org/pdf/1701.02434
 - **Notes**: [`a-conceptual-introduction-to-hamiltonian-monte-carlo.md`](https://github.com/pranigopu/mastersProject/blob/main/reading/a-conceptual-introduction-to-hamiltonian-monte-carlo.md)
 
-**NOTE**: _The notes contain key excerpts, a helpful organisation of ideas and clarifying comments._
+_The notes contain key excerpts, a helpful organisation of ideas and clarifying comments._
 
 # Mathematical formulation
 ## PRELIMINARY POINT: The goal of using a sampling method
