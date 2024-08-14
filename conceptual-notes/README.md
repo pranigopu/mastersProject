@@ -1,11 +1,11 @@
-**NOTES**
+**CONCEPTUAL NOTES**
 
 ---
 
 **Contents**:
 
 - [Bayesian computation](#bayesian-computation)
-    - [Advantages of Bayesian approach in machine learning](#advantages-of-bayesian-approach-in-machine-learning)
+  - [Advantages of Bayesian approach in machine learning](#advantages-of-bayesian-approach-in-machine-learning)
     - [Disadvantages of Bayesian approach in machine learning](#disadvantages-of-bayesian-approach-in-machine-learning)
 - [Further reading](#further-reading)
 
