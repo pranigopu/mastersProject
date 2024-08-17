@@ -40,7 +40,7 @@ In the absence of prior information, one may follow the principle of indifferenc
 **NOTE 2**: There is no way to make a prior totally uninformative; the inclusion of a prior necessarily includes at least some information and/or assumptions about the problem or the model. Even if we assume that all outcomes are equally likely, it is still an assumption. It is not a fault but a feature; Bayesian modelling presupposes at least some information and/or assumptions, and is not meant to operate from a state of total ignorance.
 
 ## Jeffrey's prior
-A kind of uninformative prior that does not presuppose any particular kind of model definition. In other words, for any model definition used, the posterior obtained using a Jeffrey's prior — i.e. a Jeffrey's posterior — can be transformed to the Jeffrey's posterior for any other model definition. In other words, a Jeffrey's prior makes no assumption about the way a model is parametrised; it is invariant under reparametrisation.
+A kind of uninformative prior that does not presuppose any particular kind of model definition. In other words, for any model definition used, the posterior obtained using a Jeffrey's prior — i.e. a Jeffrey's posterior — can be transformed to the Jeffrey's posterior for any other model definition. In other words, a Jeffrey's prior makes no assumption about the way a model is parameterised; it is invariant under reparametrisation.
 
 **NOTE**: _How the Jeffrey's posterior for one model can be transformed into the Jeffrey's posterior for another model? That is beyond the scope of my notes here. For more information,_ see: [An introduction to Jeffreys priors - 1](https://www.youtube.com/watch?v=S42N_6pQ5TA).
 

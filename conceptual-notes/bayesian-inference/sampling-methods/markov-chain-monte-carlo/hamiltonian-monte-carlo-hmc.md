@@ -157,7 +157,7 @@ Let us first define the following:
 - $p$, the target distribution, i.e. the posterior distribution
 - $m$, the momentum applied to the imaginary sampler point at position $\theta$
 
-**NOTE**: $\theta$ _denotes a specific parametrisation of the generalised model which we are trying to fit to the data. Hence, since models are usually parametrised by more than one specific parameter,_ $\theta$ _is usually a vector of specific parameters._ $\Theta$ _denotes the hypothesis space, i.e. the set of all possible parametrisations considered by us of the generalised model. Hence, note that_ $\theta$ _represents a specific model, whereas_ $\Theta$ _represents the sample space of specific models, each being a specific parametrisation of the generalised model. Also note that if_ $\theta$ _is k-dimensional (i.e. has k elements, denoting k specific parameters), then_ $\Theta$ _is a k-dimensional sample space, and consequently, we are dealing with "positions" and "momentum" in a k-dimensional space._
+**NOTE**: $\theta$ _denotes a specific parametrisation of the generalised model which we are trying to fit to the data. Hence, since models are usually parameterised by more than one specific parameter,_ $\theta$ _is usually a vector of specific parameters._ $\Theta$ _denotes the hypothesis space, i.e. the set of all possible parametrisations considered by us of the generalised model. Hence, note that_ $\theta$ _represents a specific model, whereas_ $\Theta$ _represents the sample space of specific models, each being a specific parametrisation of the generalised model. Also note that if_ $\theta$ _is k-dimensional (i.e. has k elements, denoting k specific parameters), then_ $\Theta$ _is a k-dimensional sample space, and consequently, we are dealing with "positions" and "momentum" in a k-dimensional space._
 
 ---
 
@@ -168,7 +168,7 @@ Let us first define the following:
 **What do we have available?**
 
 - $D$, dataset of observations (from the data-generation process we are trying to model)
-- $P(D|\theta)$, the likelihood of dataset $D$ given the model parametrised by $\theta$
+- $P(D|\theta)$, the likelihood of dataset $D$ given the model parameterised by $\theta$
 - $P(\theta)$, the prior distribution of $\theta$ defined before the inference
 - $P(m)$, the distribution of momentum values chosen by us
 

@@ -32,7 +32,7 @@ Let $p$ be the target distribution we aim to estimate through samples.
 
 
 # Key ideas behind MCMC
-- When we get a sample with a high probability of being in $p$, we want to tend to take samples from its vicinity <br> _Hence, we can get more high-probability samples and thus estimate_ $p$ _with more confidence and efficiency_
+- When we get a sample with a high probability of being from $p$, we want to tend to take samples in its vicinity <br> _Hence, we can get more high-probability samples and thus estimate_ $p$ _with more confidence and efficiency_
 - Hence, we want future samples to depend on past samples in some way
 - More specifically, we want the next sample to depend on the previous sample
 
@@ -40,7 +40,7 @@ The last key idea essentially becomes the use of a Markov chain for sampling. Fu
 
 ---
 
-**NOTE 1**: A sample having a high probability of being in the target distribution simply means that it is from a high-probability-mass region of the target distribution. For example, if the target distribution is a normal distribution, samples corresponding to points near the mean are from a higher-probability-mass region than samples corresponding to points further away in the tails; the former have a higher probability of being in the given normal distribution than the latter.
+**NOTE 1**: A sample having a high probability of being from the target distribution simply means that it is from a high-probability-mass region of the target distribution. For example, if the target distribution is a normal distribution, samples corresponding to points near the mean are from a higher-probability-mass region than samples corresponding to points further away in the tails; the former have a higher probability of being in the given normal distribution than the latter.
 
 **NOTE 2**: Seeking more higher-probability samples does not preclude the inclusion of lower-probability samples; indeed, for an accurate estimation of the target distribution, we need all kinds of samples. But the proportion of each kind of sample taken corresponds to its probability with respect to the distribution; we want to sample more higher-probability samples in proportion to how relatively high their probabilities are, while sampling lower-probability samples more occasionally, also in proportion to how relatively low their probabilities are.
 
@@ -78,7 +78,7 @@ We can see that the above condition implies that $p$ is a stationary distributio
 In other terms, the total probability of transitioning from some random state to a given state is the same as observing the given state, disregarding the current state and current time step. In other words, the overall probability distribution does not change between transitions, showing a steady-state behaviour and hence a stationary distribution.
 
 # Key advantange and disadvantage of MCMC
-The main disadvantage of MCMC is also its main advantage: in MCMC samples are not uncorrelated, which means that while we are more likely to sample more around samples that have a high-probability of being in the target distribution, the downside is that we may get a biased or incomplete estimate for the target distribution, since our sampling is no longer exactly random and thus may not be representative of the distribution it is drawn from.
+The main disadvantage of MCMC is also its main advantage: in MCMC samples are not uncorrelated, which means that while we are more likely to sample more around samples that have a high-probability of being from the target distribution, the downside is that we may get a biased or incomplete estimate for the target distribution, since our sampling is no longer exactly random and thus may not be representative of the distribution it is drawn from.
 
 # MCMC vs. multimodal distributions
 Multimodal distributions where the modes barely overlap typically pose difficulties to MCMC algorithms. This is because exploring them fully requires entering and passing through a region of low probability density which, by the very nature of MCMC, is a rare event (reference: [_Training BNNs with HMC_ from **janosh.dev**](https://janosh.dev/posts/hmc-bnn)). Hamiltonian Monte Carlo (HMC) (see: ["MCMC METHOD 2: Hamiltonian Monte Carlo (HMC)](#mcmc-method-2-hamiltonian-monte-carlo-hmc)) is a class of MCMC methods that aims to overcome this problem.
