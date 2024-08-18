@@ -27,7 +27,7 @@ Variational inference is not an exact method. Rather than allowing sampling from
 # Theoretical foundations
 **NOTATION**:
 
-$\Theta$ denotes the entire hypothesis space. $E$ denotes "expectation" (computed by the theoretical mean). $E_\theta$ denotes marginal expectation with respect to $\theta$. Note that marginal expectation with respect to $\theta$ is the expectation where everything apart from $H$ is kept constant (i.e. $\theta$, which represents the hypothesised model, is kept variable, while $D$, which represents the observed data, is kept constant).
+$\Theta$ denotes the entire hypothesis space. $E$ denotes "expectation" (computed by the theoretical mean). $E_\theta$ denotes marginal expectation with respect to $\theta$. Note that marginal expectation with respect to $\theta$ is the expectation where everything apart from $\theta$ is kept constant (i.e. $\theta$, which represents the hypothesised model, is kept variable, while $D$, which represents the observed data, is kept constant).
 
 **NOTE**: _The goal is to minimise the KL-divergence._
 
