@@ -174,7 +174,7 @@ However, $P(\theta|D)$ is the posterior being approximated and thus cannot be in
 	\int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta
 \end{equation*}
 
-ELBO is derived such that maximising it achieves the same optimisation as minimising KL-divergence (the derivation is given in the appendix). In practice, the above integral is estimated through numerical methods, e.g. averaging Monte Carlo samples drawn from the variational and joint distributions and plugging them into the ELBO formula (Martin et al., 2021)\footnote{Here, the integral becomes a summation.}.
+ELBO is derived such that maximising it achieves the same optimisation as minimising KL-divergence (the derivation is given in the appendix). In practice, the above integral is estimated through numerical methods, e.g. averaging Monte Carlo samples drawn from the variational and joint distributions and plugging them into the ELBO formula\footnote{Here, the integral becomes a summation.} (Martin et al., 2021).
 
 \section{Methodology}
 The methodological focus is on four key areas: (1) well-motivated synthetic regression problems, (2) a BNN via an exact Bayesian inference method, (3) a BNN via an approximate Bayesian inference method, and (4) methods of evaluating the performance of the aforementioned BNNs. The implementations are in Python.
@@ -188,13 +188,13 @@ The focus is not on the predictive accuracy of the models but rather the models'
     \item The data has complexities leading to areas of uncertainty\\
 \end{itemize}
 
-The four synthetic regression problems used in Brian and Da Veiga (2022) are such that each problem meets some or all of the above requirements; note that the problems that meet only specific requirements help focus on specific aspects of the BNNs' performance. The problems have been changed without changing their essence and are as follows (note that $\mathcal{N}(\mu, \sigma)$ denotes a normal distribution with mean $\mu$ and standard deviation $\sigma$, whereas $\mathcal{U}([a, b])$ notes a uniform distribution over the interval $[a, b]$):\\
+The four synthetic regression problems used by Brian and Da Veiga (2022) are such that each problem meets some or all of the above requirements; note that the problems that meet only specific requirements help focus on specific aspects of the BNNs' performance. The problems have been changed without changing their essence and are as follows (note that $\mathcal{N}(\mu, \sigma)$ denotes a normal distribution with mean $\mu$ and standard deviation $\sigma$, whereas $\mathcal{U}([a, b])$ denotes a uniform distribution over the interval $[a, b]$):\\
 
 \textbf{Synthetic Problem A}
 
 \begin{tabular}{m{2.5cm} | m{6cm}}
     Outputs & $y_i = \cos{2x_i} + \sin{x_i} + \epsilon_i$ \\
-    Error term & $\epsilon \sim \mathcal{N}(0, 0.25)$ \\
+    Error term & $\epsilon_i \sim \mathcal{N}(0, 0.25)$ \\
     Train inputs & $x_i \sim \mathcal{U}([-3, 3])$ \\
     Test inputs & $x_i \sim \mathcal{U}([-3, 3])$
 \end{tabular} \\
@@ -203,7 +203,7 @@ The four synthetic regression problems used in Brian and Da Veiga (2022) are suc
 
 \begin{tabular}{m{2.5cm} | m{6cm}}
     Outputs & $y_i = 0.1x_i^3 + \epsilon_i$ \\
-    Error term & $\epsilon \sim \mathcal{N}(0, 0.25)$ \\
+    Error term & $\epsilon_i \sim \mathcal{N}(0, 0.25)$ \\
     Train inputs & $x_i \sim \mathcal{U}([-4, 1] \bigcup [1, 4])$ \\
     Test inputs & $x_i \sim \mathcal{U}([-4, 4])$
 \end{tabular} \\
@@ -212,7 +212,7 @@ The four synthetic regression problems used in Brian and Da Veiga (2022) are suc
 
 \begin{tabular}{m{2.5cm} | m{6cm}}
     Outputs & $y_i = -(1 + x_i)\sin(1.2x_i) + \epsilon_i$ \\
-    Error term & $\epsilon \sim \mathcal{N}(0, 0.5)$ \\
+    Error term & $\epsilon_i \sim \mathcal{N}(0, 0.5)$ \\
     95\% train inputs & $x_i \sim \mathcal{U}([-6, 2] \bigcup [2, 6])$ \\
     5\% train inputs & $x_i \sim \mathcal{U}([-2, 2])$ \\
     Test inputs & $x_i \sim \mathcal{U}([-6, 6])$
@@ -223,12 +223,12 @@ The four synthetic regression problems used in Brian and Da Veiga (2022) are suc
 \begin{tabular}{m{2.5cm} | m{6cm}}
     Outputs & $y_i = f(x_i, w) + \epsilon_i$ \\
     Weights & $w \sim \mathcal{N}(0, I_d)$ \\
-    Error term & $\epsilon \sim \mathcal{N}(0, 500)$ \\
+    Error term & $\epsilon_i \sim \mathcal{N}(0, 500)$ \\
     Training inputs & $x_i \sim \mathcal{U}([-10, 6] \bigcup [6, 10] \bigcup [14, 18])$ \\
     Test inputs & $x_i \sim \mathcal{U}([-12, 22])$
 \end{tabular} \\~\\
 
-Note that $f$ in synthetic problem D denotes a feed-forward neural network with three hidden layers of sizes 100 (thus, 20501 parameters in total); the network's weights $w$ are sampled once from a standard multivariate Gaussian distribution $\mathcal{N}(0, I_d)$.\\
+Note that $f$ in synthetic problem D denotes a feed-forward neural network with three hidden layers with 100 neurons each (thus, 20501 parameters in total); the network's weights $w$ are sampled once from a standard multivariate Gaussian distribution $\mathcal{N}(0, I_d)$.\\
 
 Problems A and C introduce complexity in their functional forms, problems B and D introduce gaps in the data, and problem C introduces data sparsity within the interval $[-2, 2]$. In each problem, the noise terms $\epsilon_i$ are normally distributed so that the outputs are normally distributed, hence making normal priors and likelihoods viable in the later Bayesian inferences; such an approach is motivated by the fact that normal distributions are easy to work with mathematically. The standard deviations of the noise terms were chosen by trial and error. Hence, the problems introduce uncertainty through noise, shape, gaps and sparsity.\\
 
