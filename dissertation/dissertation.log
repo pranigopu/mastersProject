@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.27)  19 AUG 2024 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.27)  20 AUG 2024 02:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -711,6 +711,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--225
  []
 
 
+Overfull \hbox (0.98706pt too wide) in paragraph at lines 232--232
+[]|\OT1/ptm/m/n/10 Hidden| 
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 226--237
 
  []
@@ -877,27 +882,91 @@ ptm/m/n/8 . Avail-able at:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--375
-\OT1/ptm/m/n/10 deriva-tion of ELBO, check []\OT1/ptm/m/it/10 conceptual-notes/
-bayesian-
+Underfull \hbox (badness 4441) in paragraph at lines 366--367
+[]\OT1/ptm/m/n/10 This is of the form $\OML/cmm/m/it/10 H\OT1/cmr/m/n/10 (\OML/
+cmm/m/it/10 ^^R; m\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 K\OT1/cmr/m/n/10 (\OML/c
+mm/m/it/10 ^^R\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m
+/it/10 ^^R\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--375
-\OT1/ptm/m/it/10 inference/sampling-methods/variational-inference-vi[] \OT1/ptm
-/m/n/10 in
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--375
-[]\OT1/ptm/m/it/10 github.com/pranigopu/mastersProject[]\OT1/ptm/m/n/10 , the r
-epos-i-tory
+Underfull \hbox (badness 1824) in paragraph at lines 377--378
+[]\OT1/ptm/m/n/10 Let $\OML/cmm/m/it/10 ^^R$ \OT1/ptm/m/n/10 be the cur-rent po
+-si-tion (i.e. the cur-rent state
  []
 
 
-Underfull \hbox (badness 2134) in paragraph at lines 374--375
-\OT1/ptm/m/n/10 is es-ti-mated through nu-mer-i-cal meth-ods, e.g. av-er-ag-ing
+Underfull \hbox (badness 4254) in paragraph at lines 377--378
+\OT1/ptm/m/n/10 of the Markov chain sam-pling the Bayesian model's
+ []
 
+
+Underfull \hbox (badness 5607) in paragraph at lines 377--378
+\OT1/ptm/m/n/10 pa-ram-e-ter-i-sa-tions). Let $\OML/cmm/m/it/10 m$ \OT1/ptm/m/n
+/10 be the cur-rent mo-men-tum.
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 377--378
+\OT1/ptm/m/n/10 mo-men-tum. Also, let $\OML/cmm/m/it/10 H\OT1/cmr/m/n/10 (\OML/
+cmm/m/it/10 ^^R; m\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 be the Hamil-to-nian for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
+
+ []
+
+[6]
+Underfull \hbox (badness 3690) in paragraph at lines 400--401
+[]\OT1/ptm/m/n/10 ELBO is de-rived such that max-imis-ing it achieves
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+\OT1/ptm/m/n/10 the same op-ti-mi-sa-tion as min-imis-ing KL-divergence.
+ []
+
+
+Underfull \hbox (badness 6725) in paragraph at lines 400--401
+\OT1/ptm/m/n/10 In prac-tice, the above in-te-gral is es-ti-mated through
+ []
+
+
+Underfull \hbox (badness 2680) in paragraph at lines 400--401
+\OT1/ptm/m/n/10 drawn from the vari-a-tional and joint dis-tri-bu-tions and
+ []
+
+
+Underfull \hbox (badness 1394) in paragraph at lines 400--401
+\OT1/ptm/m/n/10 plug-ging them into the ELBO for-mula[][][] (Mar-tin et al.,
+ []
+
+
+Underfull \hbox (badness 1931) in paragraph at lines 400--401
+\OT1/ptm/m/n/10 2021). For the deriva-tion of ELBO, check []\OT1/ptm/m/it/10 co
+nceptual-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+\OT1/ptm/m/it/10 notes/bayesian-inference/sampling-methods/variational-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+\OT1/ptm/m/it/10 inference-vi[] \OT1/ptm/m/n/10 in []\OT1/ptm/m/it/10 github.co
+m/pranigopu/mastersProject[]\OT1/ptm/m/n/10 , the
  []
 
 
@@ -911,7 +980,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6] (./dissertation.aux)
+[7
+
+] (./dissertation.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-10-23>
@@ -920,27 +991,28 @@ Package rerunfilecheck Info: File `dissertation.out' has not changed.
 (rerunfilecheck)             Checksum: FDDD6CEF77CD29882A24B4A0D242C7C5;2776.
  ) 
 Here is how much of TeX's memory you used:
- 11868 strings out of 474398
- 182670 string characters out of 5754205
+ 11871 strings out of 474398
+ 182696 string characters out of 5754205
  1955036 words of memory out of 5000000
  33737 multiletter control sequences out of 15000+600000
  598219 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1405b,442s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1405b,451s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/t
-exlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2023/texmf
--dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/
-urw/times/utmri8a.pfb>
-Output written on dissertation.pdf (6 pages, 171149 bytes).
+cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/202
+3/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2023/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on dissertation.pdf (7 pages, 185884 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
- 49 named destinations out of 1000 (max. 500000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

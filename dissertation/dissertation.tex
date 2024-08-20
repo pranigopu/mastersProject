@@ -85,7 +85,7 @@ For example, Metropolis-Hastings (an MCMC method) proposes new samples using a r
 \end{enumerate}
 
 \subsection{Hamiltonian Monte Carlo (HMC)}
-HMC is a class of MCMC methods that uses gradients of the negative log-probability of the posterior to generate new proposed states, i.e. new samples proposed to be from the target distribution (the reason for using the negative log-probability of the posterior is explained in the appendix). The gradients of the negative log-probability of the posterior evaluated at a given state (i.e. a given sample) give information about the posterior density function's geometry. Owing to the geometric interpretation of HMC, states (i.e. samples) are also called positions.\\
+HMC is a class of MCMC methods that uses gradients of the negative log-probability of the posterior to generate new proposed states, i.e. new samples proposed to be from the target distribution (the reason for using the negative log-probability of the posterior is explained in appendix A). The gradients of the negative log-probability of the posterior evaluated at a given state (i.e. a given sample) give information about the posterior density function's geometry. Owing to the geometric interpretation of HMC, states (i.e. samples) are also called positions.\\
 
 As with MCMC, only the unnormalised posterior $P(D|\theta)P(\theta)$ is needed for HMC, because the gradients of the negative log-probability are equal for the posterior $P(\theta|D)$ and the unnormalised posterior $P(D|\theta)P(\theta)$, as show below:\\
 
@@ -154,14 +154,14 @@ HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by us
     \hline
 \end{tabular} \\
 
-HMC can be explained using a physical analogy, wherein $-\log p$ defines the contours of a force field (e.g. a gravitational field) along which a body — the sampler, in our case — can travel, with each position representing a sample. Starting from the current position $\theta_0$, the leapfrog integrator is a symplectic integrator that uses the gradient of $-\log p$ and the current momentum $m_0$ to simulate the exact trajectory of the sampler along the contours of $-\log p$ for $L = \frac{T}{\Delta t}$ discrete time steps. Thus, a symplectic integrator discretises the Hamiltonian equations used to explore the posterior. If the momentum is well-chosen, the trajectory travels through positions with the same or similar acceptance probabilities as the current position. However, despite its accuracy, a symplectic integrator is likely to introduce at least some errors in the calculation of trajectories (Betancourt, 2018). Furthermore, the momentum may be sub-optimal. To account for such errors, a proposed sample is accepted based on the Metropolis criterion, i.e. a proposed sample is accepted with the acceptance probability $\alpha = \min(1, e^{H_\text{old} - H_\text{new}})$ (Neal, 2012). The mathematical details and reasoning are given in the appendix.
+HMC can be explained using a physical analogy, wherein $-\log p$ defines the contours of a force field (e.g. a gravitational field) along which a body — the sampler, in our case — can travel, with each position representing a sample. Starting from the current position $\theta_0$, the leapfrog integrator is a symplectic integrator that uses the gradient of $-\log p$ and the current momentum $m_0$ to simulate the exact trajectory of the sampler along the contours of $-\log p$ for $L = \frac{T}{\Delta t}$ discrete time steps. Thus, a symplectic integrator discretises the Hamiltonian equations used to explore the posterior. If the momentum is well-chosen, the trajectory travels through positions with the same or similar acceptance probabilities as the current position. However, despite its accuracy, a symplectic integrator is likely to introduce at least some errors in the calculation of trajectories (Betancourt, 2018). Furthermore, the momentum may be sub-optimal. To account for such errors, a proposed sample is accepted based on the Metropolis criterion, i.e. a proposed sample is accepted with the acceptance probability $\alpha = \min(1, e^{H_\text{old} - H_\text{new}})$ (Neal, 2012). The mathematical details and reasoning are given in appendix B.
 
 \subsection{Variational Inference (VI)}
 VI is a method of analytically approximating the target distribution. More precisely, VI approximates the target distribution $p$ using a distribution $q_\phi$ — called the variational distribution — parameterised by $\phi$. To approximate $p$ using $q_{\phi}$, $\phi$ is optimised to minimise the distance between $p$ and $q_{\phi}$; a well-established measure of distance is the Kullback-Leibler divergence (KL-divergence). Hence, when applied to Bayesian inference, VI is an approximate Bayesian inference method, the target distribution being the posterior.\\
 
 In theory, MCMC converges to the posterior, but in practice, this convergence may be inefficient or even infeasible due to the posterior's complexity arising from the model's complexity. After all, converging to the posterior through samples is a statistical inference problem that has a need for sufficient sample quantity and quality; the higher the posterior's complexity, the higher the need. VI, on the other hand, simplifies the statistical inference problem to an optimisation problem (Ganguly and Earp, , 2021), gaining efficiency while losing the theoretical guarantee of convergence, since in general, there is no theoretical guarantee that a known distribution can converge to an unknown distribution. \\
 
-A well-established method to perform VI is with the use of the Evidence Lower Bound (ELBO), which is derived from the KL-divergence between the variational distribution and the posterior (see appendix). However, the focus shall be on the method used in \textit{torchbnn}, a PyTorch-based implementation of BNNs (Lee et al., 2022), since this method can be more easily applied to a neural network. Given an ANN, the variational distribution is taken as a distribution whose parameters are functions of the existing weights and/or biases of the ANN. For example, the variational distribution can be a normal distribution parameterised by $(\mu_q, \sigma_q)$, where $\mu_q$ and $\sigma_q$ are the mean and standard deviation of the ANN's weights. Given a well-defined prior, the training is done using (1) a point-estimation loss chosen as per the given problem (e.g. mean squared error, for regression problems), and (2) the KL-divergence between the variational distribution and the prior. Hence, the sum of the point-estimation loss and KL-divergence serves as a measure of distance between the variational distribution and the posterior.
+A well-established method to perform VI is with the use of the Evidence Lower Bound (ELBO), which is derived from the KL-divergence between the variational distribution and the posterior (see appendix C). However, the focus shall be on the method used in \textit{torchbnn}, a PyTorch-based implementation of BNNs (Lee et al., 2022), since this method can be more easily applied to a neural network. Given an ANN, the variational distribution is taken as a distribution whose parameters are functions of the existing weights and/or biases of the ANN. For example, the variational distribution can be a normal distribution parameterised by $(\mu_q, \sigma_q)$, where $\mu_q$ and $\sigma_q$ are the mean and standard deviation of the ANN's weights. Given a well-defined prior, the training is done using (1) a point-estimation loss chosen as per the given problem (e.g. mean squared error, for regression problems), and (2) the KL-divergence between the variational distribution and the prior. Hence, the sum of the point-estimation loss and KL-divergence serves as a measure of distance between the variational distribution and the posterior.
 
 \section{Methodology}
 The methodological focus is on four key areas: (1) well-motivated synthetic regression problems, (2) a BNN via an exact Bayesian inference method, (3) a BNN via an approximate Bayesian inference method, and (4) methods of evaluating the performance of the aforementioned BNNs. The implementations are in Python.
@@ -223,7 +223,7 @@ Problems A and C introduce complexity in their functional forms, problems B and 
 \subsubsection{Functional Model}
 An artificial neural network (ANN) is used as the generative model, i.e. functional model. The ANN's architecture is meant to simple enough to allow for as efficient sampling as possible, yet complex enough to allow for the accurate modelling of each synthetic regression problem. The ANN's architecture is as follows (note that the parameters include bias terms, 100 per layer):\\
 
-\begin{tabular}{| m{2cm} | m{2cm} | m{2cm} |}
+\begin{tabular}{| m{1cm} | m{1.5cm} | m{2cm} |}
     \hline
     \textbf{Layer} & \textbf{Shape} & \textbf{Parameters} \\
     \hline
@@ -354,11 +354,37 @@ The model is trained using mean squared error (MSE) for the point-estimation los
 \bibitem Lee, S., Kim, H. and Lee, J. (2022). "Graddiv: Adversarial robustness of randomized neural networks via gradient diversity regularization". \textit{IEEE Transactions on Pattern Analysis and Machine Intelligence}. IEEE.
 
 \end{thebibliography}
-\vspace{12pt}
 
 \section*{Appendix}
-\subsection*{Appendix A: VI with KL-Divergence}
-KL-divergence is a well-established measure of distance used in VI. If used, the optimisation function would based on the KL-divergence between $q_\phi(\theta)$ and $p = P(\theta|D)$. Given that $\Theta$ is the set of all hypothetical parameterisations of a given model, the KL-divergence between $q_\phi(\theta)$ and $P(\theta|D)$ is given by the following (the derivation is in the appendix):
+\subsection*{Appendix A: Use of Negative Log-Probability in HMC}
+Let $\theta = (\theta_1, \theta_2 ... \theta_k)$ be a parameterisation of a given generative model. Let $m$ be the momentum, where $m = (m_1, m_2 ... m_k)$ (each $m_i$ being the momentum in the $i$th dimension). Also, note that $P(\theta, m) = P(\theta|D)P(m)$, which means $\log P(\theta, m) = \log (P(\theta|D) P(m)) = \log P(\theta|D) + \log P(m)$. Hence:
+
+\begin{equation*}
+	- \log P(\theta, m) = - \log P(\theta|D) - \log P(m)
+\end{equation*}
+
+This is of the form $H(\theta, m) = K(\theta) + V(\theta)$, where $H(\theta, m) = - \log P(\theta, m)$ (Hamiltonian),  $K(m) = - \log P(m)$ ("kinetic energy"), and $V(\theta) = - \log P(\theta|D)$ ("potential energy"). Thus, we have Hamilton's equations:
+
+\begin{equation*}
+	\frac{d \theta}{dt} = \frac{\delta H}{\delta m}, \text{ } \frac{dm}{dt} = - \frac{\delta H}{\delta \theta}
+\end{equation*}
+
+Hamilton's equations describe the state of a physical system with one body of a fixed mass moving in a space of $k$ dimensions ($k \geq 1$). Now, even though Hamilton's equations were meant to deal with physical spaces, we can accurately extend their application to analogous simulated or abstract spaces, such as a high-dimensional parameter space of a Bayesian model.\\
+
+In the context Bayesian inference, the "position" of the sample can be thought of as the location of a particle, and the "momentum" provides the force needed to move the particle through the parameter space of the distributions. As shown above, the Hamiltonian for Bayesian inference has the negative log-probability of the posterior. However, since the negative log-probability preserves the distribution of the posterior's probability mass as well as the posterior's modes (albeit that the modes are represented by minima instead of maxima), samples from the the negative log-probability of the posterior follow the same distribution as samples the posterior. Hence, Hamilton's equations a valid means to explore the posterior.
+
+\subsection*{Appendix B: Reasoning for HMC's Acceptance Criterion}
+Let $\theta$ be the current position (i.e. the current state of the Markov chain sampling the Bayesian model's parameterisations). Let $m$ be the current momentum. Likewise, let $\theta^*$ and $m^*$ be the proposed position and momentum. Also, let $H(\theta, m)$ be the Hamiltonian for position $\theta$ and momentum $m$. Then, we have the following cases:\\
+
+\begin{itemize}
+	\item $e^{H(\theta, m) - H(\theta^*, m^*)} \geq 1 \implies H(\theta^*, m^*) \geq H(\theta, m)$
+	\item $e^{H(\theta, m) - H(\theta^*, m^*)} \leq 1 \implies H(\theta^*, m^*) \leq H(\theta, m)$ \\
+\end{itemize}
+
+$H(\theta^*, m^*) \geq H(\theta, m)$ means the proposed state is from a region in the posterior of equal or higher probability mass, which means it should always be accepted, because we want to sample more from regions of equal or higher probability mass. $H(\theta^*, m^*) < H(\theta, m)$ means the proposed state is from a region of lower probability mass, which means it should be accepted only probabilistically, with the probability of accepting it being proportional to its closeness to the current state (in terms of probability density), because we want there to be a lower but non-zero chance of sampling from a sparser region region after sampling from a denser region, with the condition that the lower the density, the lower the chance.
+
+\subsection*{Appendix C: VI with Evidence Lower Bound (ELBO)}
+KL-divergence is a well-established measure of distance used in VI. If used, the optimisation function would based on the KL-divergence between $q_\phi(\theta)$ and $p = P(\theta|D)$. Given that $\Theta$ is the set of all hypothetical parameterisations of a given model, the KL-divergence between $q_\phi(\theta)$ and $P(\theta|D)$ is given by the following:
 
 \begin{equation*}
 	KL(q_\phi(\theta) || P(\theta|D))
@@ -371,7 +397,7 @@ However, $P(\theta|D)$ is the posterior being approximated and thus cannot be in
 	\int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta
 \end{equation*}
 
-ELBO is derived such that maximising it achieves the same optimisation as minimising KL-divergence (for the derivation of ELBO, check \href{https://github.com/pranigopu/mastersProject/tree/main/conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi}{\textit{conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi}} in \href{https://github.com/pranigopu/mastersProject}{\textit{github.com/pranigopu/mastersProject}}, the repository associated with this paper). In practice, the above integral is estimated through numerical methods, e.g. averaging Monte Carlo samples drawn from the variational and joint distributions and plugging them into the ELBO formula\footnote{Here, the integral becomes a summation.} (Martin et al., 2021).
+ELBO is derived such that maximising it achieves the same optimisation as minimising KL-divergence. In practice, the above integral is estimated through numerical methods, e.g. averaging Monte Carlo samples drawn from the variational and joint distributions and plugging them into the ELBO formula\footnote{Here, the integral becomes a summation.} (Martin et al., 2021). For the derivation of ELBO, check \href{https://github.com/pranigopu/mastersProject/tree/main/conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi}{\textit{conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi}} in \href{https://github.com/pranigopu/mastersProject}{\textit{github.com/pranigopu/mastersProject}}, the repository associated with this paper.
 
 \end{document}
 
