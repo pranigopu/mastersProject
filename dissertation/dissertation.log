@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.27)  20 AUG 2024 02:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.27)  21 AUG 2024 22:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -113,7 +113,9 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEPARstartletwidth=\dimen163
 \c@IEEEbiography=\count266
 \@IEEEtranrubishbin=\box52
-) (c:/texlive/2023/texmf-dist/tex/latex/cite/cite.sty
+)
+** ATTENTION: Overriding command lockouts (line 2).
+(c:/texlive/2023/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
@@ -450,24 +452,24 @@ File: l3backend-pdftex.def 2023-10-23 L3 backend support: PDF output (pdfTeX)
 (./dissertation.aux)
 \openout1 = `dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 -- Lines per column: 56 (exact).
 (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -492,88 +494,88 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 15.
+Package hyperref Info: Link coloring OFF on input line 16.
 
 (./dissertation.out) (./dissertation.out)
 \@outlinefile=\write3
 \openout3 = `dissertation.out'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
+
+Underfull \hbox (badness 1748) in paragraph at lines 36--37
+\OT1/ptm/m/n/10 neu-ral net-work (SNN) trained us-ing Bayesian in-fer-ence
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
 
 (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
 
 
 (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 49--66
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--66
-
- []
-
-[1{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/202
-3/texmf-dist/fonts/enc/dvips/base/8r.enc}
+) [1{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2
+023/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 55--72
 
  []
 
 
-Underfull \hbox (badness 2828) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 55--72
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+
+Underfull \hbox (badness 2828) in paragraph at lines 81--82
 []\OT1/ptm/m/n/10 MCMC works when we know the prior $\OML/cmm/m/it/10 P\OT1/cmr
 /m/n/10 (\OML/cmm/m/it/10 ^^R\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 and
  []
 
 
-Underfull \hbox (badness 2293) in paragraph at lines 75--76
+Underfull \hbox (badness 2293) in paragraph at lines 81--82
 \OT1/ptm/m/n/10 like-li-hood $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 10 D\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^R\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 an
 d thereby know the un-nor-malised
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 2318) in paragraph at lines 77--78
+Underfull \hbox (badness 2318) in paragraph at lines 83--84
 \OT1/ptm/m/n/10 prob-a-bil-ity $\OML/cmm/m/it/10 $\OT1/ptm/m/n/10 , are such t
 hat (1) the Markov chain is
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
-
- []
-
-
-Underfull \hbox (badness 7814) in paragraph at lines 90--91
-[]\OT1/ptm/m/n/10 As with MCMC, only the un-nor-malised pos-te-rior
  []
 
 
@@ -582,56 +584,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 90--91
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 100--101
+Underfull \hbox (badness 7814) in paragraph at lines 96--97
+[]\OT1/ptm/m/n/10 As with MCMC, only the un-nor-malised pos-te-rior
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 106--107
 \OT1/ptm/m/n/10 po-si-tion (i.e. cur-rent sam-ple) and with high ac-cep-tance
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
-
+Underfull \hbox (badness 1571) in paragraph at lines 106--107
+\OT1/ptm/m/n/10 prob-a-bil-ity (Mar-tin et al., 2021). This al-lows HMC to
  []
 
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 104.
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--156
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
 [2]
-Underfull \hbox (badness 1831) in paragraph at lines 160--161
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 110.
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--162
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--162
+
+ []
+
+
+Underfull \hbox (badness 1831) in paragraph at lines 166--167
 \OT1/ptm/m/n/10 dis-tri-bu-tion. More pre-cisely, VI ap-prox-i-mates the tar-ge
 t
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--161
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 162--163
+Underfull \hbox (badness 1460) in paragraph at lines 168--169
 []\OT1/ptm/m/n/10 In the-ory, MCMC con-verges to the pos-te-rior, but in
  []
 
 
-Underfull \hbox (badness 3803) in paragraph at lines 162--163
+Underfull \hbox (badness 3803) in paragraph at lines 168--169
 \OT1/ptm/m/n/10 prac-tice, this con-ver-gence may be in-ef-fi-cient or even
  []
 
 
-Underfull \hbox (badness 1466) in paragraph at lines 162--163
+Underfull \hbox (badness 1466) in paragraph at lines 168--169
 \OT1/ptm/m/n/10 gain-ing ef-fi-ciency while los-ing the the-o-ret-i-cal guar-an
 -tee
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
  []
 
@@ -640,130 +668,135 @@ Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
-
- []
-
-
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
 
-[3]
-Overfull \hbox (24.2484pt too wide) in paragraph at lines 182--188
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
+
+ []
+
+
+Overfull \hbox (24.2484pt too wide) in paragraph at lines 190--196
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--188
+Underfull \hbox (badness 10000) in paragraph at lines 190--196
 
  []
 
 
-Overfull \hbox (24.2484pt too wide) in paragraph at lines 191--197
+Overfull \hbox (24.2484pt too wide) in paragraph at lines 199--205
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--197
+Underfull \hbox (badness 10000) in paragraph at lines 199--205
 
  []
 
 
-Overfull \hbox (24.2484pt too wide) in paragraph at lines 200--207
+Overfull \hbox (24.2484pt too wide) in paragraph at lines 208--215
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--207
+Underfull \hbox (badness 10000) in paragraph at lines 208--215
 
  []
 
 
-Overfull \hbox (24.2484pt too wide) in paragraph at lines 210--217
+Overfull \hbox (24.2484pt too wide) in paragraph at lines 218--225
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--217
+Underfull \hbox (badness 10000) in paragraph at lines 218--225
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--217
+Underfull \hbox (badness 10000) in paragraph at lines 218--225
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 
  []
 
 
-Overfull \hbox (0.98706pt too wide) in paragraph at lines 232--232
+Overfull \hbox (0.98706pt too wide) in paragraph at lines 240--240
 []|\OT1/ptm/m/n/10 Hidden| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--237
+Underfull \hbox (badness 10000) in paragraph at lines 234--245
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--237
+Underfull \hbox (badness 10000) in paragraph at lines 234--245
 
  []
 
 
-Overfull \hbox (0.84283pt too wide) in paragraph at lines 240--241
+Overfull \hbox (0.84283pt too wide) in paragraph at lines 248--249
 [] 
  []
 
 
-Underfull \hbox (badness 4168) in paragraph at lines 243--244
+Underfull \hbox (badness 4168) in paragraph at lines 251--252
  \OT1/ptm/m/it/10 2) HMC Sam-pler: [][][] \OT1/ptm/m/n/10 The HMC sam-pler used
  is the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--244
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 \OT1/ptm/m/it/10 Hamil-to-ni-an-Mon-te-Carlo \OT1/ptm/m/n/10 ker-nel from the T
-en-sor-flow
+en-sor-Flow
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--244
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
 [4]
-Overfull \hbox (0.84283pt too wide) in paragraph at lines 251--252
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+
+ []
+
+
+Overfull \hbox (0.84283pt too wide) in paragraph at lines 259--260
 [] 
  []
 
 
-Underfull \hbox (badness 2293) in paragraph at lines 254--255
+Underfull \hbox (badness 2293) in paragraph at lines 262--263
 \OT1/ptm/m/n/10 sam-pling, the like-li-hood $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 
 (\OML/cmm/m/it/10 D\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 ^^R\OT1/cmr/m/n/10 )$ \OT
 1/ptm/m/n/10 and prior $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R
@@ -771,13 +804,8 @@ Underfull \hbox (badness 2293) in paragraph at lines 254--255
  []
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 254--255
+Underfull \hbox (badness 2165) in paragraph at lines 262--263
 \OT1/ptm/m/n/10 be de-fined so as to de-fine the un-nor-malised pos-te-rior
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 254--255
-
  []
 
 
@@ -786,103 +814,99 @@ Underfull \hbox (badness 10000) in paragraph at lines 262--263
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--283
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
  []
 
 
-Overfull \hbox (0.84283pt too wide) in paragraph at lines 284--285
-[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 289--306
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 289--306
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
-
- []
-
-
-Overfull \hbox (0.98706pt too wide) in paragraph at lines 318--318
-[]|\OT1/ptm/m/n/10 Hidden| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 312--323
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 312--323
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
-[]\OT1/ptm/m/n/8 Martin, O. A., Ku-mar, R. and Lao, J. (2021). "Bayesian
+Overfull \hbox (0.84283pt too wide) in paragraph at lines 292--293
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--314
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--314
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
+
+ []
+
+
+Overfull \hbox (0.98706pt too wide) in paragraph at lines 326--326
+[]|\OT1/ptm/m/n/10 Hidden| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--331
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--331
+
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 332--333
-\OT1/ptm/m/n/8 Mod-el-ing and Com-pu-ta-tion in Python". Avail-able at:
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
-[]\OT1/ptm/m/n/8 Chandra, R. and Sim-mons, J. (2023) "Bayesian neu-ral
+Underfull \hbox (badness 1371) in paragraph at lines 344--345
+[]\OT1/ptm/m/n/8 Carroll, C. (2019). \OT1/ptm/m/it/8 Hamil-to-nian Monte Carlo 
+from scratch\OT1/ptm/m/n/8 . [on-
  []
 
 
-Underfull \hbox (badness 6526) in paragraph at lines 334--335
-\OT1/ptm/m/n/8 net-works via MCMC: a Python-based tu-to-rial". Avail-able at:
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+\OT1/ptm/m/n/8 from: https://github.com/Harry24k/bayesian-neural-network-pytorc
+h
+ []
+
+[6]
+Overfull \hbox (0.84283pt too wide) in paragraph at lines 377--378
+[] 
  []
 
 
-Underfull \hbox (badness 4266) in paragraph at lines 346--347
-\OT1/ptm/m/n/8 ics". \OT1/ptm/m/it/8 Hand-book of Markov Chain Monte Carlo\OT1/
-ptm/m/n/8 . Avail-able at:
- []
-
-
-Underfull \hbox (badness 4441) in paragraph at lines 366--367
+Underfull \hbox (badness 4441) in paragraph at lines 386--387
 []\OT1/ptm/m/n/10 This is of the form $\OML/cmm/m/it/10 H\OT1/cmr/m/n/10 (\OML/
 cmm/m/it/10 ^^R; m\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 K\OT1/cmr/m/n/10 (\OML/c
 mm/m/it/10 ^^R\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m
@@ -890,81 +914,101 @@ mm/m/it/10 ^^R\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 V\OT1/cmr/m/n/10 (\OML/cmm/m
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 392--393
 
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 377--378
+Overfull \hbox (0.84283pt too wide) in paragraph at lines 396--397
+[] 
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 399--400
 []\OT1/ptm/m/n/10 Let $\OML/cmm/m/it/10 ^^R$ \OT1/ptm/m/n/10 be the cur-rent po
 -si-tion (i.e. the cur-rent state
  []
 
 
-Underfull \hbox (badness 4254) in paragraph at lines 377--378
+Underfull \hbox (badness 4254) in paragraph at lines 399--400
 \OT1/ptm/m/n/10 of the Markov chain sam-pling the Bayesian model's
  []
 
 
-Underfull \hbox (badness 5607) in paragraph at lines 377--378
+Underfull \hbox (badness 5607) in paragraph at lines 399--400
 \OT1/ptm/m/n/10 pa-ram-e-ter-i-sa-tions). Let $\OML/cmm/m/it/10 m$ \OT1/ptm/m/n
 /10 be the cur-rent mo-men-tum.
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 377--378
+Underfull \hbox (badness 2245) in paragraph at lines 399--400
 \OT1/ptm/m/n/10 mo-men-tum. Also, let $\OML/cmm/m/it/10 H\OT1/cmr/m/n/10 (\OML/
 cmm/m/it/10 ^^R; m\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 be the Hamil-to-nian for
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[6]
-Underfull \hbox (badness 3690) in paragraph at lines 400--401
+
+Overfull \hbox (0.84283pt too wide) in paragraph at lines 408--409
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
+
+ []
+
+
+Underfull \hbox (badness 3690) in paragraph at lines 424--425
 []\OT1/ptm/m/n/10 ELBO is de-rived such that max-imis-ing it achieves
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--401
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 \OT1/ptm/m/n/10 the same op-ti-mi-sa-tion as min-imis-ing KL-divergence.
  []
 
 
-Underfull \hbox (badness 6725) in paragraph at lines 400--401
+Underfull \hbox (badness 6725) in paragraph at lines 424--425
 \OT1/ptm/m/n/10 In prac-tice, the above in-te-gral is es-ti-mated through
  []
 
 
-Underfull \hbox (badness 2680) in paragraph at lines 400--401
+Underfull \hbox (badness 2680) in paragraph at lines 424--425
 \OT1/ptm/m/n/10 drawn from the vari-a-tional and joint dis-tri-bu-tions and
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 400--401
+Underfull \hbox (badness 1394) in paragraph at lines 424--425
 \OT1/ptm/m/n/10 plug-ging them into the ELBO for-mula[][][] (Mar-tin et al.,
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 400--401
+Underfull \hbox (badness 1931) in paragraph at lines 424--425
 \OT1/ptm/m/n/10 2021). For the deriva-tion of ELBO, check []\OT1/ptm/m/it/10 co
 nceptual-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--401
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 \OT1/ptm/m/it/10 notes/bayesian-inference/sampling-methods/variational-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--401
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 \OT1/ptm/m/it/10 inference-vi[] \OT1/ptm/m/n/10 in []\OT1/ptm/m/it/10 github.co
 m/pranigopu/mastersProject[]\OT1/ptm/m/n/10 , the
  []
@@ -991,13 +1035,13 @@ Package rerunfilecheck Info: File `dissertation.out' has not changed.
 (rerunfilecheck)             Checksum: FDDD6CEF77CD29882A24B4A0D242C7C5;2776.
  ) 
 Here is how much of TeX's memory you used:
- 11871 strings out of 474398
- 182696 string characters out of 5754205
- 1955036 words of memory out of 5000000
- 33737 multiletter control sequences out of 15000+600000
+ 11879 strings out of 474398
+ 182834 string characters out of 5754205
+ 1951036 words of memory out of 5000000
+ 33742 multiletter control sequences out of 15000+600000
  598219 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1405b,451s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1405b,450s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dis
@@ -1009,10 +1053,10 @@ fb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/202
 3/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2023/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on dissertation.pdf (7 pages, 185884 bytes).
+Output written on dissertation.pdf (7 pages, 189666 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
+ 223 PDF objects out of 1000 (max. 8388607)
+ 188 compressed objects within 2 object streams
+ 55 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

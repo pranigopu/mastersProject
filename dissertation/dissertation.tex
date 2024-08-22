@@ -1,4 +1,5 @@
 \documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithm}
@@ -15,7 +16,6 @@
 \begin{document}
 \bibliographystyle{unsrt}
 
-
 \title{Comparative Study of BNN Implementations\\}
 
 \author{\IEEEauthorblockN{Pranav Narendra Gopalkrishna\\231052045\\Paulo Rauber\\MSc. Artificial Intelligence}}
@@ -31,7 +31,13 @@ Markov Chain Monte Carlo (MCMC), Variational Inference (VI), Hamiltonian Monte C
 \end{IEEEkeywords}
 
 \section{Introduction}
-The focus is on two kinds of BNNs: (1) BNN via an exact Bayesian inference method, and (2) a BNN via an approximate Bayesian inference method. Due to their sound theories and practical successes, HMC (a class of MCMC methods) and VI are used for an exact and approximate Bayesian inference method respectively.
+The focus is on two kinds of BNNs: (1) BNN via an exact Bayesian inference method, and (2) a BNN via an approximate Bayesian inference method. Due to their sound theories and practical successes, HMC (a class of MCMC methods) and VI are used for an exact and approximate Bayesian inference method respectively.\\
+
+This comparative study explores Bayesian neural networks (BNNs), which is a kind of neural network that can quantify the uncertainty of its predictions. A BNN is a stochastic neural network (SNN) trained using Bayesian inference (Jospin et al., 2020). An SNN is a neural network (NN) with stochastic elements (e.g. stochastic weights or stochastic activations) that, through its stochasticity, simulates a range of models according to some probability distribution of models; thus, SNNs are a special case of ensemble learning. Hence, a BNN is an SNN whose models are distributed by a posterior for the parameterisations of a more generalised model. This project explores two types of implementations of BNNs: (1) exact Bayesian inference using Markov Chain Monte Carlo (MCMC) sampling, and (2) approximate Bayesian inference using Variational Inference (VI).\\
+
+Modelling data using NNs is often a black-box approach, wherein the NN’s confidence in its predictions is unknown. BNNs are a means to achieve a level of transparency in neural networks by using Bayesian inference to quantify its uncertainty and explain – mathematically – how it is quantified.  Hence, BNNs are a valuable area to explore My aim was threefold: (1) bridge the gap between BNN’s theory and its implementation, (2) implement two essentially different approaches to quantifying the uncertainty of a neural network’s predictions, and (3) make my project reproducible to someone new to Bayesian inference.
+
+janosh.dev, 2019
 
 \section{Related Work}
 Jospin et al. give an in-depth introduction to Bayesian inference for deep learning, covering a wide range of topics from Bayesian inference algorithms to performance metric for BNNs. Bayesian inference itself (from the mathematics to the algorithms) is covered more deeply by Martin et al. (2021) in their textbook "Bayesian Modelling and Computation in Python"; notably, the textbook also introduces MCMC methods (Metropolis-Hastings and HMC) and VI. On the other hand, Chandra and Simmons (2023) give a practical tutorial for implementing MCMC using Python, starting from MCMC for a single-valued parameter and progressing to linear regression via MCMC and finally to BNNs via MCMC.\\
@@ -97,7 +103,7 @@ $\displaystyle = - \frac{\delta}{\delta \theta} \log P(D|\theta) P(\theta) + \fr
 
 $\displaystyle = - \frac{\delta}{\delta \theta} \log P(D|\theta) P(\theta)$ (since $P(D)$ is a constant) \\
 
-HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by using gradients to propose new positions (i.e. new samples) that is both far from the current position (i.e. current sample) and with high acceptance probability (Martin et al., 2021). This allows HMC to scale well to higher dimensions and, in principle, to more complex geometries compared to other MCMC methods (Martin et al., 2021). Intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a better sample proposal distribution (Martin et al., 2021). The HMC algorithm is given below (Carroll, 2019):\\
+HMC tries to avoid the random walk behaviour typical of Metropolis-Hastings by using gradients to propose new positions (i.e. new samples) that is both far from the current position (i.e. current sample) and with high acceptance probability (Martin et al., 2021). This allows HMC to scale well to higher dimensions and, in principle, to more complex geometries compared to other MCMC methods (Martin et al., 2021). Intuitively, we can think of HMC as a Metropolis-Hasting algorithm with a superior sample proposal distribution (Martin et al., 2021). The HMC algorithm is given below (Carroll, 2019):\\
 
 \begin{algorithm}{H}
 \textbf{input} $n, -\log p, \theta_0, T, \Delta t$
@@ -152,19 +158,21 @@ HMC tries to avoid the random walk behavior typical of Metropolis-Hastings by us
     \hline
     $\text{leapfrog}$ & Leapfrog integrator \\
     \hline
-\end{tabular} \\
+\end{tabular} \\~\\
 
-HMC can be explained using a physical analogy, wherein $-\log p$ defines the contours of a force field (e.g. a gravitational field) along which a body — the sampler, in our case — can travel, with each position representing a sample. Starting from the current position $\theta_0$, the leapfrog integrator is a symplectic integrator that uses the gradient of $-\log p$ and the current momentum $m_0$ to simulate the exact trajectory of the sampler along the contours of $-\log p$ for $L = \frac{T}{\Delta t}$ discrete time steps. Thus, a symplectic integrator discretises the Hamiltonian equations used to explore the posterior. If the momentum is well-chosen, the trajectory travels through positions with the same or similar acceptance probabilities as the current position. However, despite its accuracy, a symplectic integrator is likely to introduce at least some errors in the calculation of trajectories (Betancourt, 2018). Furthermore, the momentum may be sub-optimal. To account for such errors, a proposed sample is accepted based on the Metropolis criterion, i.e. a proposed sample is accepted with the acceptance probability $\alpha = \min(1, e^{H_\text{old} - H_\text{new}})$ (Neal, 2012). The mathematical details and reasoning are given in appendix B.
+HMC can be explained using a physical analogy, wherein $-\log p$ defines the contours of a force field (e.g. a gravitational field) along which a body — the sampler, in our case — can travel, with each position representing a sample. Starting from the current position $\theta_0$, the leapfrog integrator is a symplectic integrator that uses the gradient of $-\log p$ and the current momentum $m_0$ to simulate the exact trajectory of the sampler along the contours of $-\log p$ for $L = \frac{T}{\Delta t}$ discrete time steps. Thus, a symplectic integrator discretises the Hamiltonian equations used to explore the posterior. If the momentum is well-chosen, the trajectory travels through positions with the same or similar acceptance probabilities as the current position. However, despite its accuracy, a symplectic integrator is likely to introduce at least some errors in the calculation of trajectories (Betancourt, 2018). Furthermore, the momentum may be sub-optimal. To account for such errors, a proposed sample is accepted based on the Metropolis criterion, i.e. a proposed sample is accepted with the acceptance probability $\alpha = \min(1, e^{H_\text{old} - H_\text{new}})$ (Neal, 2011). The mathematical details and reasoning are given in appendix B.
 
 \subsection{Variational Inference (VI)}
 VI is a method of analytically approximating the target distribution. More precisely, VI approximates the target distribution $p$ using a distribution $q_\phi$ — called the variational distribution — parameterised by $\phi$. To approximate $p$ using $q_{\phi}$, $\phi$ is optimised to minimise the distance between $p$ and $q_{\phi}$; a well-established measure of distance is the Kullback-Leibler divergence (KL-divergence). Hence, when applied to Bayesian inference, VI is an approximate Bayesian inference method, the target distribution being the posterior.\\
 
 In theory, MCMC converges to the posterior, but in practice, this convergence may be inefficient or even infeasible due to the posterior's complexity arising from the model's complexity. After all, converging to the posterior through samples is a statistical inference problem that has a need for sufficient sample quantity and quality; the higher the posterior's complexity, the higher the need. VI, on the other hand, simplifies the statistical inference problem to an optimisation problem (Ganguly and Earp, , 2021), gaining efficiency while losing the theoretical guarantee of convergence, since in general, there is no theoretical guarantee that a known distribution can converge to an unknown distribution. \\
 
-A well-established method to perform VI is with the use of the Evidence Lower Bound (ELBO), which is derived from the KL-divergence between the variational distribution and the posterior (see appendix C). However, the focus shall be on the method used in \textit{torchbnn}, a PyTorch-based implementation of BNNs (Lee et al., 2022), since this method can be more easily applied to a neural network. Given an ANN, the variational distribution is taken as a distribution whose parameters are functions of the existing weights and/or biases of the ANN. For example, the variational distribution can be a normal distribution parameterised by $(\mu_q, \sigma_q)$, where $\mu_q$ and $\sigma_q$ are the mean and standard deviation of the ANN's weights. Given a well-defined prior, the training is done using (1) a point-estimation loss chosen as per the given problem (e.g. mean squared error, for regression problems), and (2) the KL-divergence between the variational distribution and the prior. Hence, the sum of the point-estimation loss and KL-divergence serves as a measure of distance between the variational distribution and the posterior.
+A well-established method to perform VI is with the use of the Evidence Lower Bound (ELBO), which is derived from the KL-divergence between the variational distribution and the posterior (see appendix C). However, the focus shall be on the method used in \textit{torchbnn}, a PyTorch-based implementation of BNNs (Kim, 2020; Lee et al., 2021), since this method can be more easily applied to a neural network. This implementation is an adversarial BNN based on the paper by Lee et al. (2021), which, while not a VI method explicitly, shall now be shown to be a VI method implicitly, i.e. in essence.\\
+
+Given an ANN, the variational distribution is taken as a distribution whose parameters are functions of the existing weights and/or biases of the ANN. For example, the variational distribution can be a normal distribution parameterised by $(\mu_q, \sigma_q)$, where $\mu_q$ and $\sigma_q$ are the mean and standard deviation of the ANN's weights. Given a well-defined prior, the training is done using (1) a point estimation loss chosen as per the given problem (e.g. mean squared error, for regression problems), and (2) the KL-divergence between the variational distribution and the prior. Hence, the sum of the point estimation loss and KL-divergence serves as a measure of distance between the variational distribution and the posterior.
 
 \section{Methodology}
-The methodological focus is on four key areas: (1) well-motivated synthetic regression problems, (2) a BNN via an exact Bayesian inference method, (3) a BNN via an approximate Bayesian inference method, and (4) methods of evaluating the performance of the aforementioned BNNs. The implementations are in Python.
+The methodological focus is on four key areas: (1) well-motivated synthetic regression problems, (2) a BNN via an exact Bayesian inference method, (3) a BNN via an approximate Bayesian inference method, and (4) methods of evaluating the performance of the aforementioned BNNs. The implementations are in Python, using both TensorFlow and PyTorch. Note that for both kinds of BNNs, the training parameters (namely the learning rate, number of epochs and batch size) were chosen by trail-and-error based on which values produced a similarly high levels of average accuracy (i.e. after having averaged the samples/predictions).
 
 \subsection{Synthetic Regression Problems}
 The focus is not on the predictive accuracy of the models but rather the models' ability to quantify the uncertainty about the process (real-life or synthetic) that is generating the observed data. Hence, the problems need the be such that:\\
@@ -235,18 +243,18 @@ An artificial neural network (ANN) is used as the generative model, i.e. functio
     \hline
 \end{tabular} \\~\\
 
-The ANN is trained for $50$ epochs and a batch size of $2$, using a learning rate of $0.01$. The ANN's weights are initialised by random values and are trained using stochastic gradient descent with mean squared error loss. To improve the ANN's performance, (1) per training loop, only the weights of the epoch with the lowest loss are saved, and (2) more than one training loops are run for the same regression problem, with the weights reinitialised at the start of every loop. In the end, the best performing weights (i.e. the weights with the lowest loss) are chosen.
+The ANN is trained for $500$ epochs and a batch size of $32$, using a learning rate of $0.01$. The ANN's weights are initialised by random values and are trained using stochastic gradient descent with mean squared error loss. To improve the ANN's performance, (1) per training loop, only the weights of the epoch with the lowest loss are saved, and (2) more than one training loops are run for the same regression problem, with the weights reinitialised at the start of every loop. In the end, the best performing weights (i.e. the weights with the lowest loss) are chosen.
 
 \par\noindent\rule{0.49\textwidth}{0.1pt}
 
 \subsubsection{HMC Sampler}
-The HMC sampler used is the \textit{HamiltonianMonteCarlo} kernel from the Tensorflow Probability MCMC Package. The number of samples to be drawn is set as 10000, since this was sufficient to lead to more than 1000 accepted sample proposals. The number of burn-in steps (i.e. the steps for which the Markov chain is considered to be converging to its steady-state) is set as 5000.\\
+The HMC sampler used is the \textit{HamiltonianMonteCarlo} kernel from the TensorFlow Probability MCMC Package. The number of samples to be drawn is set as 10000, since this was sufficient to lead to more than 1000 accepted sample proposals. The number of burn-in steps (i.e. the steps for which the Markov chain is considered to be converging to its steady-state) is set as 5000.\\
 
 To discretise the Hamiltonian equations used to explore the posterior, this HMC sampler uses the leapfrog integrator, which has two hyperparameters: (1) step-size $\Delta t$ (i.e. the size of the discrete time steps\footnote{"Time" here is fictitious, referring to the physical analogy.} for which the Hamiltonian equations are solved, thereby simulating the sampler's trajectory when exploring the posterior) and (2) the number of leapfrog steps $L$; hence, the length of the sampler's simulated trajectory from the current sample to the proposed sample is $T = L \cdot \Delta t$.\\
 
-Based on Neal (2012, p. 135), if the step-size is too large, the discretisation errors of the simulated trajectories get so large that the proposed samples have a low acceptance rate, i.e. there are to too many sub-optimal proposals. If the step-size is too small, the simulated trajectory's length $T$ gets so small that the exploration of the posterior is too inefficient, possibly more inefficient than even a random walk. To avoid such issues, the simple step-size adaptation policy is used, wherein the step-size is not fixed before sampling but rather multiplicatively increased or decreased during sampling (tfp.mcmc.SimpleStepSizeAdaptation), based on the logarithm of the acceptance probabilities; this policy is based on equation 19 of Andrieu and Thoms (2008). To achieve this policy in code, the \textit{HamiltonianMonteCarlo} kernel is wrapped in the \textit{SimpleStepSizeAdaptation} kernel from the Tensorflow Probability MCMC Package. The number of adaptation steps is given as 0.8 times the number of burn-in steps. \\
+Based on Neal (2012, p. 135), if the step-size is too large, the discretisation errors of the simulated trajectories get so large that the proposed samples have a low acceptance rate, i.e. there are to too many sub-optimal proposals. If the step-size is too small, the simulated trajectory's length $T$ gets so small that the exploration of the posterior is too inefficient, possibly more inefficient than even a random walk. To avoid such issues, the simple step-size adaptation policy is used, wherein the step-size is not fixed before sampling but rather multiplicatively increased or decreased during sampling (tfp.mcmc.SimpleStepSizeAdaptation), based on the logarithm of the acceptance probabilities; this policy is based on equation 19 of Andrieu and Thoms (2008). To achieve this policy in code, the \textit{HamiltonianMonteCarlo} kernel is wrapped in the \textit{SimpleStepSizeAdaptation} kernel from the TensorFlow Probability MCMC Package. The number of adaptation steps is given as 0.8 times the number of burn-in steps. \\
 
-The simulated trajectory's length $T = L \cdot \Delta t$ is key to the HMC exploring the state space systematically rather than by a random walk (Neal, 2012, p. 137). Having chosen the step-size $\Delta t$, the number of leapfrog steps $L$ must now be chosen. Choosing the number of leapfrog steps $L$ for a complex problem has to be done through trial-and-error; in the case of exploring the posterior of the weights of a neural network, which is a high-dimensional, non-convex and thus multi-modal distribution, a high number of leapfrog steps such as $L = 100$ may be suitable (Neal, 2012, p. 137) and is hence chosen.
+The simulated trajectory's length $T = L \cdot \Delta t$ is key to the HMC exploring the state space systematically rather than by a random walk (Neal, 2011, p. 137). Having chosen the step-size $\Delta t$, the number of leapfrog steps $L$ must now be chosen. Choosing the number of leapfrog steps $L$ for a complex problem has to be done through trial-and-error; in the case of exploring the posterior of the weights of a neural network, which is a high-dimensional, non-convex and thus multi-modal distribution, a high number of leapfrog steps such as $L = 100$ may be suitable (Neal, 2011, p. 137) and is hence chosen.
 
 \par\noindent\rule{0.49\textwidth}{0.1pt}
 
@@ -261,7 +269,7 @@ For basic architectures as used in Bayesian regression, it is standard to use a 
 
 Here, $I_d$ is an identity matrix of $d$ dimensions, where $d$ is the dimensionality of $\theta$. There is no theoretical argument that makes such a prior superior to any other (Jospin et al., 2020), but in practice, if lacking more well-motivated priors, a zero mean normal prior is preferred due to (1) its mathematical properties and (2) the ease of taking its logarithm (logarithms are used in machine learning to prevent arithmetic overflow). Furthermore, such a prior serves to make the ANN to keep its weights within a range unless there is overwhelming evidence to the contrary. In particular, a multivariate normal prior with mean $0$ and diagonal covariance $\sigma I_d$ is equivalent to a weighted $l_2$ regularisation when training a point estimate ANN (Jospin et al., 2020).\\
 
-A regression problem models the output (i.e. the target) $y_i$ as $y_i = f_\theta(x_i) + \epsilon_i$, where $x_i$ is the input, $f_\theta$ is the functional model parameterised by $\theta$, and $epsilon_i$ is the error term. Here, the error term is taken to be distributed by $\mathcal{N}(0, \tau)$. The likelihood of the observed data $D$ given the parameterisation $\theta$ presupposes (1) the observed data $D = (x, y)$, where $x = (x_1, x_2 ... x_n)$ and $y = (y_1, y_2... y_n)$ (here, we consider the inputs as one-dimensional) (2) the functional model $f_\theta$ as parameterised by $\theta$, and (3) the distribution of error terms. Note that when taking the likelihood, $D$ and $\theta$ are taken as constant. Hence, the target $y$ is also distributed by a normal distribution, its standard deviation being the same as the standard deviation for the error term. More precisely, given $\hat{y_i} = f_\theta(x_i)$, we have that $y_i \sim \mathcal{N}(f_\theta(x_i), \tau)$. Hence, the likelihood density for $y = (y_1, y_2... y_n)$ is:
+A regression problem models the output (i.e. the target) $y_i$ as $y_i = f_\theta(x_i) + \epsilon_i$, where $x_i$ is the input, $f_\theta$ is the functional model parameterised by $\theta$, and $epsilon_i$ is the error term. Here, the error term is taken to be distributed by $\mathcal{N}(0, \tau)$. The likelihood of the observed data $D$ given the parameterisation $\theta$ presupposes (1) the observed data $D = (x, y)$, where $x = (x_1, x_2 ... x_n)$ and $y = (y_1, y_2... y_n)$ (here, we consider the inputs as one-dimensional) (2) the functional model $f_\theta$ as parameterised by $\theta$, and (3) the distribution of error terms. Note that when taking the likelihood, $D$ and $\theta$ are taken as constant. Hence, the target $y$ is also distributed by a normal distribution, its standard deviation being the same as the standard deviation for the error term. More precisely, given $\hat{y_i} = f_\theta(x_i)$, we have that $y_i \sim \mathcal{N}(f_\theta(x_i), \tau)$ (note that $\tau$ is assumed to be known, and is assigned the exact value of the standard deviation of the given synthetic regression problem's error term $\epsilon_i$). Hence, the likelihood density for $y = (y_1, y_2... y_n)$ is:
 
 \begin{equation*}
 	\mathcal{N}(f_\theta(x), \tau)(y) = \prod_{i=1}^n \mathcal{N}(f_\theta(x_i), \tau)(y_i)
@@ -273,7 +281,7 @@ The above product would lead to arithmetic overflow if there are a substantial n
 	\log \prod_{i=1}^n \mathcal{N}(f_\theta(x_i), \tau)(y_i) = \sum_{i=1}^n \log \mathcal{N}(f_\theta(x_i), \tau)(y_i)
 \end{equation*}
 
-The \textit{HamiltonianMonteCarlo} kernel from the Tensorflow Probability MCMC Package takes in a callable for the target log-probability, which becomes the log-probability of the unnormalised posterior for Bayesian inference. Hence, this callable is to return the following:\\
+The \textit{HamiltonianMonteCarlo} kernel from the TensorFlow Probability MCMC Package takes in a callable for the target log-probability, which becomes the log-probability of the unnormalised posterior for Bayesian inference. Hence, this callable is to return the following:\\
 
 $\log P(D|\theta)P(\theta) = \log P(D|\theta) + \log P(\theta)$ \\
 
@@ -307,7 +315,7 @@ For reference, the ANN weights:\\
 Instead of distributing the weights of the ANN as a whole, only the hidden weights (index 2) were chosen as the parameter to be distributed because it has 10000 out of the ANN's 10401 parameters, i.e. $\sim 96.145\%$ of the ANN's parameters. Moreover, distributing only one array of weights makes implementing and applying the prior and likelihood far easier, since prior and likelihood functions need to only work with only one array rather than a list of arrays with non-matching shapes.\\
 
 \subsection{VI Implementation}
-The implementation of VI is done using the package \textit{torchbnn} (Lee et al., 2022), which is an implementation of BNNs using PyTorch. The BNN architecture is given below:\\
+The implementation of VI is done using the package \textit{torchbnn} (Lee et al., 2021), which is an implementation of BNNs using PyTorch. The BNN architecture is given below:\\
 
 \begin{tabular}{| m{1cm} | m{2cm} | m{1.5cm} | m{2cm} |}
     \hline
@@ -323,39 +331,51 @@ The implementation of VI is done using the package \textit{torchbnn} (Lee et al.
 
 For parity in the architectures of the HMC implementation and the VI implementation, only hidden layer's weights are to be distributed. More precisely, only the hidden layer is a Bayes' linear layer. In \textit{torchbnn}, a Bayes' linear layer is one with a normal prior $\mathcal{N}(\mu, \sigma)$ and with a normal variational distribution $q_\phi$ parameterised by $\phi = (\mu_q, \sigma_q)$, wherein $\mu_q$ and $\sigma_q$ are the mean and standard deviation of the layer's weights.\\
 
-The model is trained using mean squared error (MSE) for the point-estimation loss and KL-divergence between the variational distribution and the prior. The sum of the MSE and KL-divergence serves as a measure of distance between the variational distribution and the posterior. The model is trained for $3000$ epochs with a batch size of $100$.
+The model is trained using mean squared error (MSE) for the point estimation loss and KL-divergence between the variational distribution and the prior. The sum of the MSE and KL-divergence serves as a measure of distance between the variational distribution and the posterior. The model is trained for $3000$ epochs with a batch size of $100$.
 
 \begin{thebibliography}{00}
 
-\bibitem{Jospin et al., 2020} Jospin, L. V., Laga, H., Boussaid, F., Buntine, W. and Bennamoun, M. (2020). "Hands-on Bayesian Neural Networks – A Tutorial for Deep Learning Users". Available at: https://arxiv.org/pdf/2007.06823.
+\bibitem{Andrieu and Thoms, 2008} Andrieu, C. and Thoms, J. (2008). A tutorial on adaptive MCMC. \textit{Springer}. 18, pp. 343–373. doi:10.1007/s11222-008-9110-y.
 
-\bibitem{Martin et al., 2021} Martin, O. A., Kumar, R. and Lao, J. (2021). "Bayesian Modeling and Computation in Python". Available at: https://bayesiancomputationbook.com.
+\bibitem{Betancourt, 2018} Betancourt, M. (2018). A Conceptual Introduction to Hamiltonian Monte Carlo. \textit{arXiv preprint arXiv:1701.02434}.
 
-\bibitem{Chandra and Simmons, 2023} Chandra, R. and Simmons, J. (2023) "Bayesian neural networks via MCMC: a Python-based tutorial". Available at: https://arxiv.org/pdf/2304.02595.
+\bibitem{Brian and Da Veiga, 2022} Brian, S. and Da Veiga, S. (2022). Benchmarking Bayesian neural networks and evaluation metrics for regression tasks. \textit{arXiv preprint arXiv:2206.06779}.
 
-\bibitem{Brian and Da Veiga, 2022} Brian, S. and Da Veiga, S. (2022). "Benchmarking Bayesian neural networks and evaluation metrics for regression tasks". Available at: https://arxiv.org/pdf/2206.06779.
+\bibitem{Carroll, 2019} Carroll, C. (2019). \textit{Hamiltonian Monte Carlo from scratch}. [online] Available from: https://colindcarroll.com/2019/04/11/hamiltonian-monte-carlo-from-scratch [Accessed 21 August 2024].
 
-\bibitem{Yao et al., 2019} Yao, J., Pan, W., Ghosh, S. and Doshi-Velez, F. (2019). "Quality of Uncertainty Quantification for Bayesian Neural Network Inference". Available at: https://arxiv.org/pdf/1906.09686.
+\bibitem{Chandra and Simmons, 2023} Chandra, R. and Simmons, J. (2023). Bayesian neural networks via MCMC: a Python-based tutorial. \textit{arXiv preprint arXiv:2304.02595}.
 
-\bibitem{Foong et al., 2019} Foong, A. Y. K., Burt, D. R., Li, Y. and Turner, R. E. (2019). "On the Expressiveness of Approximate Inference in Bayesian Neural Networks". Available at: https://arxiv.org/pdf/1909.00719.
+\bibitem{Foong et al., 2019} Foong, A. Y. K., Burt, D. R., Li, Y. and Turner, R. E. (2019). On the Expressiveness of Approximate Inference in Bayesian Neural Networks. \textit{arXiv preprint arXiv:1909.00719}.
 
-\bibitem{Betancourt, 2018} Betancourt, M. (2018). "A Conceptual Introduction to Hamiltonian Monte Carlo". Available at: https://arxiv.org/pdf/1701.02434.
+\bibitem{Ganguly and Earp, 2021} Ganguly, A. and Earp, S. W. F. (2021). An Introduction to Variational Inference. \textit{arXiv preprint arXiv:2108.13083}.
 
-\bibitem{Ganguly and Earp, 2021} Ganguly, A. and Earp, S. W. F. (2021). "An Introduction to Variational Inference". Available at: https://arxiv.org/pdf/2108.13083.
+\bibitem{janosh.dev, 2019} janosh.dev (2019). \textit{Training BNNs with HMC}. [online] Available from: https://janosh.dev/posts/hmc-bnn [Accessed 21 August 2024].
 
-\bibitem{Neal, 2012} Neal, R. (2012). "Chapter 5: MCMC using Hamiltonian dynamics". \textit{Handbook of Markov Chain Monte Carlo}. Available at: https://arxiv.org/pdf/1206.1901.
+\bibitem{Jospin et al., 2020} Jospin, L. V., Laga, H., Boussaid, F., Buntine, W. and Bennamoun, M. (2020). Hands-on Bayesian Neural Networks – A Tutorial for Deep Learning Users. \textit{arXiv preprint arXiv:2007.06823}.
 
-\bibitem{Carroll, 2019} Carroll, C. (2019). "Hamiltonian Monte Carlo from scratch". Available at: https://colindcarroll.com/2019/04/11/hamiltonian-monte-carlo-from-scratch.
+\bibitem{Kim, 2020} Kim, H. (2020). \textit{Bayesian-Neural-Network-Pytorch}. [online] Available from: https://github.com/Harry24k/bayesian-neural-network-pytorch [Accessed 21 August 2024].
 
-\bibitem{tfp.mcmc.SimpleStepSizeAdaptation} "tfp.mcmc.SimpleStepSizeAdaptation". \textit{Tensorflow Documentation}.
+\bibitem{Lee et al., 2021} Lee, S., Kim, H. and Lee, J. (2021). GradDiv: Adversarial Robustness of Randomized Neural Networks via Gradient Diversity Regularization. \textit{arXiv preprint arXiv:2107.02425}.
 
-\bibitem{Andrieu and Thoms, 2008} Andrieu, C. and Thoms, J. (2008). "A tutorial on adaptive MCMC". Available at: https://link.springer.com/article/10.1007/s11222-008-9110-y
+\bibitem{Martin et al., 2021} Martin. O. A., Kumar, R. and Lao, J. Bayesian Modeling and Computation in Python. Boca Ratón, Florida, USA: CRC Press, Taylor \& Francis Group. ISBN: 978-0-367-89436-8.
 
-\bibitem Lee, S., Kim, H. and Lee, J. (2022). "Graddiv: Adversarial robustness of randomized neural networks via gradient diversity regularization". \textit{IEEE Transactions on Pattern Analysis and Machine Intelligence}. IEEE.
+\bibitem{Murphy, 2012} Murphy, K. P. (2012). '3. Generative models for discrete data'. \textit{Machine Learning: A Probabilistic Perspective}. London, England: The MIT Press. pp. 65-87.
+
+\bibitem{Neal, 2011} Neal, R. (2011). 'Chapter 5: MCMC using Hamiltonian dynamics'. In: Brooks, S., Gelman, A., Jones, G., and Meng, X. \textit{Handbook of Markov Chain Monte Carlo}. Boca Ratón, Florida, USA: CRC Press, Taylor \& Francis Group. pp. 113-162.
+
+\bibitem{TensorFlow, 2023} TensorFlow. (2023). \textit{tfp.mcmc.SimpleStepSizeAdaptation}. [online] Available from: \url{https://www.tensorflow.org/probability/api_docs/python/tfp/mcmc/SimpleStepSizeAdaptation} [Accessed 21 August 2024].
+
+\bibitem{Yao et al., 2019} Yao, J., Pan, W., Ghosh, S. and Doshi-Velez, F. (2019). Quality of Uncertainty Quantification for Bayesian Neural Network Inference. \textit{arXiv preprint arXiv:1906.09686}.
 
 \end{thebibliography}
+\vspace{12pt}
+
+\clearpage %Page break
 
 \section*{Appendix}
+
+\par\noindent\rule{0.49\textwidth}{0.1pt}
+
 \subsection*{Appendix A: Use of Negative Log-Probability in HMC}
 Let $\theta = (\theta_1, \theta_2 ... \theta_k)$ be a parameterisation of a given generative model. Let $m$ be the momentum, where $m = (m_1, m_2 ... m_k)$ (each $m_i$ being the momentum in the $i$th dimension). Also, note that $P(\theta, m) = P(\theta|D)P(m)$, which means $\log P(\theta, m) = \log (P(\theta|D) P(m)) = \log P(\theta|D) + \log P(m)$. Hence:
 
@@ -373,6 +393,8 @@ Hamilton's equations describe the state of a physical system with one body of a 
 
 In the context Bayesian inference, the "position" of the sample can be thought of as the location of a particle, and the "momentum" provides the force needed to move the particle through the parameter space of the distributions. As shown above, the Hamiltonian for Bayesian inference has the negative log-probability of the posterior. However, since the negative log-probability preserves the distribution of the posterior's probability mass as well as the posterior's modes (albeit that the modes are represented by minima instead of maxima), samples from the the negative log-probability of the posterior follow the same distribution as samples the posterior. Hence, Hamilton's equations a valid means to explore the posterior.
 
+\par\noindent\rule{0.49\textwidth}{0.1pt}
+
 \subsection*{Appendix B: Reasoning for HMC's Acceptance Criterion}
 Let $\theta$ be the current position (i.e. the current state of the Markov chain sampling the Bayesian model's parameterisations). Let $m$ be the current momentum. Likewise, let $\theta^*$ and $m^*$ be the proposed position and momentum. Also, let $H(\theta, m)$ be the Hamiltonian for position $\theta$ and momentum $m$. Then, we have the following cases:\\
 
@@ -381,7 +403,9 @@ Let $\theta$ be the current position (i.e. the current state of the Markov chain
 	\item $e^{H(\theta, m) - H(\theta^*, m^*)} \leq 1 \implies H(\theta^*, m^*) \leq H(\theta, m)$ \\
 \end{itemize}
 
-$H(\theta^*, m^*) \geq H(\theta, m)$ means the proposed state is from a region in the posterior of equal or higher probability mass, which means it should always be accepted, because we want to sample more from regions of equal or higher probability mass. $H(\theta^*, m^*) < H(\theta, m)$ means the proposed state is from a region of lower probability mass, which means it should be accepted only probabilistically, with the probability of accepting it being proportional to its closeness to the current state (in terms of probability density), because we want there to be a lower but non-zero chance of sampling from a sparser region region after sampling from a denser region, with the condition that the lower the density, the lower the chance.
+$H(\theta^*, m^*) \geq H(\theta, m)$ means the proposed state is from a region in the posterior of equal or higher probability mass, which means it should always be accepted, because we want to sample more from regions of equal or higher probability mass. $H(\theta^*, m^*) < H(\theta, m)$ means the proposed state is from a region of lower probability mass, which means it should be accepted only probabilistically, with the probability of accepting it being proportional to its closeness to the current state (in terms of probability density), because we want there to be a lower but non-zero chance of sampling from a sparser region after sampling from a denser region, with the condition that the lower the density, the lower the chance.
+
+\par\noindent\rule{0.49\textwidth}{0.1pt}
 
 \subsection*{Appendix C: VI with Evidence Lower Bound (ELBO)}
 KL-divergence is a well-established measure of distance used in VI. If used, the optimisation function would based on the KL-divergence between $q_\phi(\theta)$ and $p = P(\theta|D)$. Given that $\Theta$ is the set of all hypothetical parameterisations of a given model, the KL-divergence between $q_\phi(\theta)$ and $P(\theta|D)$ is given by the following:
@@ -389,13 +413,13 @@ KL-divergence is a well-established measure of distance used in VI. If used, the
 \begin{equation*}
 	KL(q_\phi(\theta) || P(\theta|D))
 	= \int_{\theta \in \Theta} q_\phi(\theta) \log \frac{q_\phi(\theta)}{P(\theta|D)} d\theta
-\end{equation*}
+\end{equation*} \\
 
 However, $P(\theta|D)$ is the posterior being approximated and thus cannot be in the optimisation function. But there exists a function derived from KL-divergence, namely the Evidence Lower Bound (ELBO), that uses only the variational distribution $q_\phi$ and the joint distribution $P(\theta, D) = P(D|\theta)|P(\theta)$, i.e. the unnormalised posterior. Note that these distributions are known, since $q_\phi$ and the prior $P(\theta)$ are chosen and since the likelihood $P(D|\theta)$ is based on a chosen generative model. Mathematically, ELBO is given as follows (Jospin et al., 2020):
 
 \begin{equation*}
 	\int_{\theta \in \Theta} q_\phi(\theta) \log \frac{p(\theta, D)}{q_\phi(\theta)} d\theta
-\end{equation*}
+\end{equation*} \\
 
 ELBO is derived such that maximising it achieves the same optimisation as minimising KL-divergence. In practice, the above integral is estimated through numerical methods, e.g. averaging Monte Carlo samples drawn from the variational and joint distributions and plugging them into the ELBO formula\footnote{Here, the integral becomes a summation.} (Martin et al., 2021). For the derivation of ELBO, check \href{https://github.com/pranigopu/mastersProject/tree/main/conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi}{\textit{conceptual-notes/bayesian-inference/sampling-methods/variational-inference-vi}} in \href{https://github.com/pranigopu/mastersProject}{\textit{github.com/pranigopu/mastersProject}}, the repository associated with this paper.
 
