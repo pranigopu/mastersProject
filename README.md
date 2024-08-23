@@ -11,18 +11,11 @@
 
 ---
 
-The project GitHub repository link is available [here](https://github.com/pranigopu/mastersProject).
-
----
-
 Directories within this repository:
 
 - `code`: Contains all code written/used for the project
-    - `demonstrations`
-    - `extra`
-    - `storage`
 - `conceptual-notes`: Contains all theoretical notes written/used for the project
-- `dissertation-and-reflection`: Contains all files for the dissertation and reflection
-- `reading`: Contains PDF copies and notes of referenced research papers
+- `deliverables`: Contains all files for the dissertation, reflection and presentation
+- `reading`: Contains PDF copies and Markdown notes of referenced research papers
 - `resources`: Contains key theoretical and practical resources for the project
 - 
