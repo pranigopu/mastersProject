@@ -4,18 +4,15 @@
 
 **Contents**:
 
-- [Practical resources](#practical-resources)
 - [Reading material](#reading-material)
   - [For learning Bayesian inference basics](#for-learning-bayesian-inference-basics)
   - [For learning Bayesian neural network basics](#for-learning-bayesian-neural-network-basics)
   - [For comparing BNNs](#for-comparing-bnns)
   - [For implementing BNNs](#for-implementing-bnns)
 - [Obsolete resources](#obsolete-resources)
+- [Potential Resources for the Future](#potential-resources-for-the-future)
 
 ---
-
-# Practical resources
-- [BlackJAX](https://github.com/blackjax-devs/blackjax) (a library of samplers for [JAX](https://github.com/google/jax))
 
 # Reading material
 ## For learning Bayesian inference basics
@@ -42,8 +39,6 @@
 **Examples**:
 
 - [From Theory to Practice with Bayesian Neural Network, Using Python](https://towardsdatascience.com/from-theory-to-practice-with-bayesian-neural-network-using-python-9262b611b825)
-- [_Bayesian Neural Network Example (Part 4)_ by Kevin Pelaez, **YouTube**](https://www.youtube.com/watch?v=3oo1GVeFDi0)
-- [Bayesian Neural Networks—Implementing, Training, Inference With the JAX Framework](https://neptune.ai/blog/bayesian-neural-networks-with-jax)
 
 **Implementations**:
 
@@ -52,7 +47,8 @@
 - [_Hamiltonian Monte Carlo_ by LoicRaillon](https://github.com/LoicRaillon/hamiltonian-monte-carlo)
 - [_Hamiltonian Monte Carlo_ by wcythh](https://github.com/wcythh/hamiltonian-monte-carlo)
 - [_Hamiltonian Monte Carlo from scratch_ from **colindcarroll.com**](https://colindcarroll.com/2019/04/11/hamiltonian-monte-carlo-from-scratch/)
-- [Bayes-by-Backpropagation](https://github.com/HIPS/autograd/blob/master/examples/bayesian_neural_net.py)
+
+---
 
 # Obsolete resources
 - [Benchmark for testing reinforcement learning models](https://michelangeloconserva.github.io/Colosseum/mds/intro.html)
@@ -61,4 +57,8 @@
 
 ---
 
-Unidentified references: (Noci et al., 2021)
+# Potential Resources for the Future
+- [BlackJAX](https://github.com/blackjax-devs/blackjax) (a library of samplers for [JAX](https://github.com/google/jax))
+- [Bayes-by-Backpropagation](https://github.com/HIPS/autograd/blob/master/examples/bayesian_neural_net.py)
+- [_Bayesian Neural Network Example (Part 4)_ by Kevin Pelaez, **YouTube**](https://www.youtube.com/watch?v=3oo1GVeFDi0)
+- [Bayesian Neural Networks—Implementing, Training, Inference With the JAX Framework](https://neptune.ai/blog/bayesian-neural-networks-with-jax)
