@@ -29,11 +29,11 @@ Deep learning using neural networks (NNs) lacks transparency about the model's c
 \end{abstract}
 
 \begin{IEEEkeywords}
-Bayesian Inference (BI), Markov Chain Monte Carlo (MCMC), Variational Inference (VI), Hamiltonian Monte Carlo (HMC), Neural Network (NN), Bayesian Neural Network (BNN)
+Bayesian Inference (BI), Markov Chain Monte Carlo (MCMC), Variational Inference (VI), Hamiltonian Monte Carlo (HMC), Artificial Neural Network (ANN), Bayesian Neural Network (BNN)
 \end{IEEEkeywords}
 
 \section{Introduction}
-A BNN is a kind of NN that can quantify its confidence about its predictions, or more precisely, its predictive uncertainty. Furthermore, using the framework of BI, it can explain – mathematically – how this uncertainty is quantified. To elaborate, a BNN is a stochastic neural network (SNN) trained using BI (Jospin et al., 2020). An SNN is an NN with stochastic elements (e.g. stochastic weights or stochastic activations) that, through its stochasticity, simulates a number of models according to some probability distribution of models; thus, SNNs are a special case of ensemble learning. Thus, a BNN is an SNN whose models are distributed by a posterior for the parameterisations of a more generalised model.\\
+A BNN is a kind of ANN that can quantify its confidence about its predictions, or more precisely, its predictive uncertainty. Furthermore, using the framework of BI, it can explain – mathematically – how this uncertainty is quantified. To elaborate, a BNN is a stochastic neural network (SNN) trained using BI (Jospin et al., 2020). An SNN is an ANN with stochastic elements (e.g. stochastic weights or stochastic activations) that, through its stochasticity, simulates a number of models according to some probability distribution of models; thus, SNNs are a special case of ensemble learning. Thus, a BNN is an SNN whose models are distributed by a posterior for the parameterisations of a more generalised model.\\
 
 There are practical reasons to explore BNNs. Firstly, BNNs help distinguish between epistemic uncertainty (uncertainty due to lack of knowledge) and aleatoric uncertainty (uncertainty due to the model's inherent stochasticity, i.e. uncertainty due to factors that cannot be accounted for practically); thus, BNNs help avoid overfitting, since when making predictions, the model gives a high epistemic uncertainty for points outside the expected distribution of data points (which is based on the training data points) instead of a prediction that is likely to be incorrect (Jospin et al., 2020). Secondly, every deep learning model has assumptions about the distribution of its parameters; these assumptions are implicit in the initialisation of its weights and measures (if any) to avoid overfitting, such as regularisation and drop-out. A BNN makes assumptions about its parameters explicit through its prior, thus making the model more transparent and interpretable.\\
 
@@ -125,7 +125,7 @@ The methodological focus is on four key areas: (1) well-motivated synthetic regr
 The focus is not on the predictive accuracy of the models but rather the models' ability to quantify the uncertainty about the process (real-life or synthetic) that is generating the observed data. Hence, the problems need the be such that:\\
 
 \begin{itemize}
-    \item Basic NN models can accurately train for them
+    \item Basic ANN models can accurately train for them
     \item The data is noisy enough to cause uncertainty
     \item The data has complexities leading to areas of uncertainty\\
 \end{itemize}
@@ -176,7 +176,7 @@ Problems A and C introduce complexity in their functional forms, problems B and 
 
 \subsection{HMC Implementation}
 \subsubsection{Functional Model}
-An artificial neural network (ANN), implemented using TensorFlow's Keras API, is used as the generative model, i.e. functional model for BI. The ANN's architecture is meant to simple enough to allow for as efficient sampling as possible, yet complex enough to allow for the accurate modelling of each synthetic regression problem. The ANN's architecture is as follows (note that the parameters include bias terms, $100$ per layer):\\
+An ANN, implemented using TensorFlow's Keras API, serves as the generative model, i.e. the functional model for BI. The ANN's architecture is meant to simple enough to allow for as efficient sampling as possible, yet complex enough to allow for an accurate modelling of each of the four synthetic regression problems. The ANN's architecture is as follows (note that the parameters include bias terms, $100$ per layer):\\
 
 \begin{tabular}{| m{1cm} | m{1.5cm} | m{2cm} |}
     \hline
@@ -263,8 +263,6 @@ For reference, the ANN weights:\\
 
 Instead of distributing the weights of the ANN as a whole, only the hidden weights (index 2) were chosen as the parameter to be distributed because it has 10000 out of the ANN's 10401 parameters, i.e. $\sim 96.145\%$ of the ANN's parameters. Moreover, distributing only one array of weights makes implementing and applying the prior and likelihood far easier, since prior and likelihood functions need to only work with only one array rather than a list of arrays with non-matching shapes.\\
 
-\par\noindent\rule{0.49\textwidth}{0.1pt}
-
 \subsection{VI Implementation}
 The implementation of VI is done using PyTorch and the package \textit{torchbnn} (Lee et al., 2021), which is an implementation of BNNs using PyTorch. The BNN architecture is given below:\\
 
@@ -330,7 +328,7 @@ Observe that for both models in problem D, despite the presence of a gap in the 
 In the next set of experiments, the models were trained for sparser data, i.e. $15$ data points per problem instead of $100$, without purposefully added gaps in the data. To achieve a comparable level of predictive accuracy, the functional model for HMC BNN and the VI BNN were trained for $500$ and $2000$ epochs respectively (batch size and learning rate being the same as before). The experiment was focused on problems A and B. The goal here was to test whether the models show greater predictive uncertainty due to the data's sparsity. The results are presented in \textbf{Table III}. In problem A and for both models, greater variation in predictions is observed where data is sparser, i.e. in the interval $[2, 3]$. In problem B, HMC BNN shows a much greater variation in predictions in the interval $[-2, 3]$, where there are no data points, which corresponds to a much greater uncertainty about its predictions in the absence of data. However, the variation in the predictions of VI BNN in problem B does not show the same correspondence between variation in the predictions and uncertainty about the predictions.
 
 \section{Conclusion}
-Given the domain of  synthetic regression problems with single-valued inputs, the performance of HMC BNN aligns reasonably well with expectations about the predictive uncertainty of the model, which suggests that taking HMC samples from a trained ANN is a promising approach to quantifying a model's predictive uncertainty. However, since only one layer of the model was distributed, the HMC samples are likely not representative of the distribution of potential parameterisations of the ANN as a whole, since ANNs are often sensitive to the initialisation of their weights. In other words, the distribution of the hidden layer's weights while keeping other layers constant would not sufficiently explore the multi-modal posterior of the ANN's weights as a whole. Hence, valuable further work to more rigorously study the effectiveness of HMC in deep learning would be to develop an HMC BNN implementation that can sample for the weights of the whole model, as done by Brian and Da Veiga (2022).\\
+Given the domain of synthetic regression problems with single-valued inputs, the performance of HMC BNN aligns reasonably well with expectations about the predictive uncertainty of the model, which suggests that taking HMC samples from a trained ANN is a promising approach to quantifying a model's predictive uncertainty. However, since only one layer of the model was distributed, the HMC samples are likely not representative of the distribution of potential parameterisations of the ANN as a whole, since ANNs are often sensitive to the initialisation of their weights. In other words, since a set of trained weights can be reasonably assumed to represent a sample at or close to one of the posterior's mode (as indicated in \textit{2) HMC Sampler} from subsection \textit{B. HMC Implementation} from section \textbf{IV. Methodology}), the distribution of the hidden layer's weights while keeping other layers constant would not sufficiently explore the multi-modal posterior of the ANN's weights as a whole. Hence, valuable further work to more rigorously study the effectiveness of HMC in deep learning would be to develop an HMC BNN implementation that can sample for the weights of the whole model, as done by Brian and Da Veiga (2022).\\
 
 The VI BNN implementation used, which is based on adversarial BNN, shows less consistent and overall poorer performance. This may be a deficiency in the particular approximate BI method used, and hence, no broader conclusion about the effectiveness of approximate BI methods can be made. Hence, further work would be valuable in exploring the effectiveness of other approximate BI methods, such as Bayes-by-Backpropagation, optimisation using the Evidence Lower Bound (ELBO) and Monte Carlo drop-out.
 
