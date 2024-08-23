@@ -1,20 +1,28 @@
-# Master's project
+<h1>Master's Project and Dissertation</h1>
 
-## Key criteria for project topic
-- Ensure that the topic produces valuable intermediate steps
-    - The value addition must begin as early in the research as possible
-    - It is risky to work on something that only works as a complex integration of many parts
+**_Comparative Evaluation of Uncertainty Quantification of Bayesian Neural Networks_**
 
-### Possible topics
-- Comparing Bayesian methods for neural networks
-    - Stage 1: Empirical comparison (i.e. understanding what)
-    - Stage 2: Understanding the empirical results theoretically (i.e. understanding why)
-- Extending model-based reinforcement learning methods using Bayesian methods
+---
 
-**CONSIDER**: To compare BNNs in the context of RL or supervised learning?
+- **Student Name**: Pranav Narendra Gopalkrishna
+- **Student Number**: 231052045
+- **Project Supervisor**: Paulo Rauber
+- **Programme Name**: MSc. Artificial Intelligence
 
-While good benchmarks are available, and while BNNs can be used in the pipeline to support RL methods, the end result is opaque w.r.t. the performance of the BNNs themselves, i.e. the actual confidence of the BNN is abstracted away in the agent's performance. _Hence, it is an easier and more informative project to compare BNN methods in the context of supervised learning_, since the confidence of each BNN can be tested against new data to see how well they hold up.
+---
 
-**CONSIDER**: What does comparing BNN methods mean?
+The project GitHub repository link is available [here](https://github.com/pranigopu/mastersProject).
 
-It means comparing Bayesian inference algorithms as applied to deep learning.
+---
+
+Directories within this repository:
+
+- `code`: Contains all code written/used for the project
+    - `demonstrations`
+    - `extra`
+    - `storage`
+- `conceptual-notes`: Contains all theoretical notes written/used for the project
+- `dissertation-and-reflection`: Contains all files for the dissertation and reflection
+- `reading`: Contains PDF copies and notes of referenced research papers
+- `resources`: Contains key theoretical and practical resources for the project
+- 
