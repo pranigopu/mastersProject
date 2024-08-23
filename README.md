@@ -18,4 +18,3 @@ Directories within this repository:
 - `deliverables`: Contains all files for the dissertation, reflection and presentation
 - `reading`: Contains PDF copies and Markdown notes of referenced research papers
 - `resources`: Contains key theoretical and practical resources for the project
-- 
