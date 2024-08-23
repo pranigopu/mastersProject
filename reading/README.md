@@ -29,7 +29,7 @@ Papers relevant to my project's main focus.
 
 ---
 
-# Less relevant papers
+# Irrelevant papers
 Papers I had read initially but are no longer relevant due to a change in focus.
 
 ---
