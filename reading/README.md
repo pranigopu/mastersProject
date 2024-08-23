@@ -1,4 +1,7 @@
-# Reading
+<h1> READING </h1>
+
+---
+
 This directory contains all the papers (or at least their links) relevant to my project in some way. This directory also contains my summaries or commentaries on them.
 
 # Relevant papers
