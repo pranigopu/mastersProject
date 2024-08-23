@@ -11,6 +11,8 @@ This directory contains the code used to reach the results presented in the fina
 
 ---
 
+_The following presents notes collected during the coding stage of the project_...
+
 ---
 
 <h1> NOTES </h1>
