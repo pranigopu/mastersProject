@@ -1,4 +1,4 @@
-<h1> Code for the project </h1>
+<h1> CODE FOR THE PROJECT </h1>
 
 This directory contains the code used to reach the results presented in the final dissertation.
 
