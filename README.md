@@ -13,8 +13,8 @@
 
 Directories within this repository:
 
-- `code`: Contains all code written/used for the project
-- `conceptual-notes`: Contains all theoretical notes written/used for the project
-- `deliverables`: Contains all files for the dissertation, reflection and presentation
-- `reading`: Contains PDF copies and Markdown notes of referenced research papers
-- `resources`: Contains key theoretical and practical resources for the project
+- [`code`](https://github.com/pranigopu/mastersProject/tree/main/code): Contains all code written/used for the project
+- [`conceptual-notes`](https://github.com/pranigopu/mastersProject/tree/main/conceptual-notes): Contains all theoretical notes written/used for the project
+- [`deliverables`](https://github.com/pranigopu/mastersProject/tree/main/deliverables): Contains all files for the dissertation, reflection and presentation
+- [`reading`](https://github.com/pranigopu/mastersProject/tree/main/reading): Contains PDF copies and Markdown notes of referenced research papers
+- [`resources`](https://github.com/pranigopu/mastersProject/tree/main/resources): Contains key theoretical and practical resources for the project

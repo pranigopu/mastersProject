@@ -1,4 +1,4 @@
-<h1> Code for the project </h1>
+<h1> CODE FOR THE PROJECT </h1>
 
 This directory contains the code used to reach the results presented in the final dissertation.
 
@@ -10,6 +10,8 @@ This directory contains the code used to reach the results presented in the fina
 - [`MCMC_from_scratch.ipynb` (Google Colab Notebook)](https://colab.research.google.com/drive/1YQBSfS1Nb8a9TAMsV1RjWsiErWqXLbrj#scrollTo=Cg6SOq3kiWPP)
 
 ---
+
+_The following presents notes collected during the coding stage of the project_...
 
 ---
 

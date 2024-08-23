@@ -1,4 +1,7 @@
-# Reading
+<h1> READING </h1>
+
+---
+
 This directory contains all the papers (or at least their links) relevant to my project in some way. This directory also contains my summaries or commentaries on them.
 
 # Relevant papers
@@ -26,7 +29,7 @@ Papers relevant to my project's main focus.
 
 ---
 
-# Less relevant papers
+# Irrelevant papers
 Papers I had read initially but are no longer relevant due to a change in focus.
 
 ---
