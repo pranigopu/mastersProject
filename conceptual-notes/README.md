@@ -4,17 +4,13 @@
 
 **Contents**:
 
-- [Bayesian computation](#bayesian-computation)
-  - [Advantages of Bayesian approach in machine learning](#advantages-of-bayesian-approach-in-machine-learning)
-    - [Disadvantages of Bayesian approach in machine learning](#disadvantages-of-bayesian-approach-in-machine-learning)
+- [Advantages of Bayesian approach in machine learning](#advantages-of-bayesian-approach-in-machine-learning)
+- [Disadvantages of Bayesian approach in machine learning](#disadvantages-of-bayesian-approach-in-machine-learning)
 - [Further reading](#further-reading)
 
 ---
 
-# Bayesian computation
-**_Especially in neural networks_**
-
-## Advantages of Bayesian approach in machine learning
+# Advantages of Bayesian approach in machine learning
 1.<br>
 
 Bayesian framework is a precise way of quantifying uncertainty. Hence, they give a way for the model to express its confidence in its outputs.
@@ -38,7 +34,7 @@ Allows making the distinction between epistemic and aleatoric uncertainty.
 
 Philosophically, all uncertainty (at least with respect to mechanical phenomena) is epistemic, but in practice, many phenomena have too many factors to feasibly learn enough to overcome every aspect of uncertainty. A lot of models are unable to consider aleatoric uncertainty, which makes them overly confident about their predictions when it is clear they practically cannot be.
 
-### Disadvantages of Bayesian approach in machine learning
+# Disadvantages of Bayesian approach in machine learning
 1.<br>
 
 A neural network aims to generalise an unknown domain; this is often already a complex learning problem. Bayesian neural networks aim also to estimate the uncertainty they have about their predictions; this adds a layer of complexity on the learning problem. Furthermore, learning enough about an unknown domain to estimate uncertainty is epistemologically unreliable when using statistics alone.
