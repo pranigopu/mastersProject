@@ -9,7 +9,7 @@
 
 ---
 
-**NOTE**: Whenever you find a term confusing, check [DEFINITIONS](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/definitions.md); your claritication might be there.
+**NOTE**: Whenever you find a term confusing, check [DEFINITIONS](https://github.com/pranigopu/mastersProject/blob/main/conceptual-notes/bayesian-inference/definitions.md); your clarification might be there.
 
 ---
 
