@@ -15,7 +15,7 @@
 ---
 
 # Bayesian modelling as a kind of conceptual modelling
-A conceptual model is a sufficiently abstract and useful representation of an entity or a system. Here, "abstract" means only relevant details are considered and irrelevant deatils are omitted. Note that "relevance" and "sufficiency" is w.r.t. the given context and purpose. Hence, a conceptual model is a useful essentialisation of an entity or a system.
+A conceptual model is a sufficiently abstract and useful representation of an entity or system. Here, "abstract" means only relevant details are considered and irrelevant details are omitted. Note that "relevance" and "sufficiency" is w.r.t. the given context and purpose. Hence, a conceptual model is a useful essentialisation of an entity or a system.
 
 Bayesian modelling is the process of inferring a conceptual model that explains the observed data. Here, the conceptual model is a generative model, i.e. a model that generates data based on a well-defined random process. Bayesian modelling consists of (1) proposing a conceptual model, (2) making assumptions about the model before any observations are taken into account, (3) taking observations into account, and (4) measuring the plausibility of the model given the prior assumptions and the observed data. Hence, we see that Bayesian modelling has the following needs:
 
