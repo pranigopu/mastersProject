@@ -261,7 +261,7 @@ For reference, the ANN weights:\\
     \hline
 \end{tabular}\\~\\
 
-Instead of distributing the weights of the ANN as a whole, only the hidden weights (index 2) were chosen as the parameter to be distributed because it has 10000 out of the ANN's 10401 parameters, i.e. $\sim 96.145\%$ of the ANN's parameters. Moreover, distributing only one array of weights makes implementing and applying the prior and likelihood far easier, since prior and likelihood functions need to only work with only one array rather than a list of arrays with non-matching shapes.\\
+Instead of distributing the weights of the ANN as a whole, only the hidden weights (index 2) were chosen as the parameter to be distributed because it has 10000 out of the ANN's 10401 parameters, i.e. $\sim 96.145\%$ of the ANN's parameters. Moreover, distributing only one array of weights makes implementing and applying the prior and likelihood far easier, since prior and likelihood functions need to work with only one array rather than a list of arrays with non-matching shapes.\\
 
 \subsection{VI Implementation}
 The implementation of VI is done using PyTorch and the package \textit{torchbnn} (Lee et al., 2021), which is an implementation of BNNs using PyTorch. The BNN architecture is given below:\\
