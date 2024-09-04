@@ -44,7 +44,7 @@ A neural network aims to generalise an unknown domain; this is often already a c
 Making the implicit prior assumptions of a learning model explicit can be challenging.
 
 # Further reading
-- [Bayesian Inference (basics)](https://github.com/pranigopu/mastersProject/tree/main/conceptual-notes/bayesian-inference)
+- [Bayesian Inference](https://github.com/pranigopu/mastersProject/tree/main/conceptual-notes/bayesian-inference)
 - [Generative Models for Discrete Data](https://github.com/pranigopu/mastersProject/tree/main/conceptual-notes/generative-models-for-discrete-data)
     - Draws on Bayesian inference (especially Bayesian modelling)
     - Explores Bayesian modelling for certain notable classes of problems involving discrete data
