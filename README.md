@@ -4,7 +4,7 @@
 
 ---
 
-Read the final disseratation [here](https://github.com/pranigopu/mastersProject/blob/main/deliverables/dissertation).
+Read the final dissertation [here](https://github.com/pranigopu/mastersProject/blob/main/deliverables/dissertation).
 
 ---
 
