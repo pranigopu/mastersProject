@@ -4,6 +4,10 @@
 
 ---
 
+Read the final disseratation [here](https://github.com/pranigopu/mastersProject/blob/main/deliverables/dissertation).
+
+---
+
 - **Student Name**: Pranav Narendra Gopalkrishna
 - **Student Number**: 231052045
 - **Project Supervisor**: Paulo Rauber
