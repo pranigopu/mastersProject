@@ -99,9 +99,9 @@ As with MCMC, only the unnormalised posterior $P(D|\theta)P(\theta)$ is needed f
 
 $\displaystyle - \frac{\delta}{\delta \theta} \log P(\theta|D) = - \frac{\delta}{\delta \theta} \log \frac{P(D|\theta)P(\theta)}{P(D)}$ (by Bayes' rule)
 
-$\displaystyle = - \frac{\delta}{\delta \theta} (\log P(D|\theta) P(\theta) - P(D))$
+$\displaystyle = - \frac{\delta}{\delta \theta} (\log P(D|\theta) P(\theta) - \log P(D))$
 
-$\displaystyle = - \frac{\delta}{\delta \theta} \log P(D|\theta) P(\theta) + \frac{\delta}{\delta \theta} P(D)$
+$\displaystyle = - \frac{\delta}{\delta \theta} \log P(D|\theta) P(\theta) + \frac{\delta}{\delta \theta} \log P(D)$
 
 $\displaystyle = - \frac{\delta}{\delta \theta} \log P(D|\theta) P(\theta)$ (since $P(D)$ is a constant)\\
 
