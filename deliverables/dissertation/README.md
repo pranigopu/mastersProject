@@ -1,4 +1,6 @@
-# Dissertation 
+# Dissertation
+Read the dissertation [here](https://github.com/pranigopu/mastersProject/blob/main/deliverables/dissertation/dissertation.pdf).
+
 ## Change log
 [26-10-2024] Corrected the mathematical formula in the technical explanation of Hamiltonian Monte Carlo.
 
