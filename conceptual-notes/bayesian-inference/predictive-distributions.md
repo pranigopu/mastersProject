@@ -38,7 +38,7 @@ $\displaystyle P(D') = \int_{\theta \in \Theta} P(D' | \theta) P(\theta) d \thet
 
 ---
 
-The expression for the PrPD looks similar to the denominator component of Bayesian inference. However, unlike the denominator, PrPD is based on a likelihood (i.e. $P(D' | \theta)$) that is not conditioned by any observed data.
+The expression for the PrPD looks similar to the denominator component of Bayesian inference. However, unlike the denominator, PrPD is based on a likelihood (i.e. $P(D' | \theta)$ ) that is not conditioned by any observed data.
 
 ---
 
